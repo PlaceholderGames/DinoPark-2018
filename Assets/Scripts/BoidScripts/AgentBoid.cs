@@ -20,16 +20,24 @@ public class AgentBoid : MonoBehaviour {
 		
 	}
 
+    // Each boid must maintain a reasonable amount of distance between
+    // itself and neighbours, otherwise the flock would become overcrowded.
     void Separation ()
     {
 
     }
 
+    // The boids should have an average alignment. If a boid deviates from this
+    // alignment then there could be some fun emergent behaviour. For the most part
+    // try to keep them heading towards a point with an average heading.
     void Alignmnent ()
     {
 
     }
 
+    // Every boid should try to move towards the average position of all other
+    // boids. As opposed to separation, this dictates how close roughly a boid
+    // should be.
     void Cohesion()
     {
 
