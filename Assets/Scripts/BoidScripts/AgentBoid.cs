@@ -24,7 +24,6 @@ public class AgentBoid : MonoBehaviour {
     // itself and neighbours, otherwise the flock would become overcrowded.
     void Separation ()
     {
-
     }
 
     // The boids should have an average alignment. If a boid deviates from this
@@ -45,6 +44,8 @@ public class AgentBoid : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        // All three functions return velocities. These are used to determine the transform.position.
+        // TEST CODE. ATTEMPTING TO GET SEAGULL ROTATION CORRECT.
+        transform.position = transform.position + transform.forward * 0.1f;
 	}
 }
