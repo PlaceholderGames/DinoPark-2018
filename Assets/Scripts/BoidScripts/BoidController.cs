@@ -15,11 +15,14 @@ public class BoidController : MonoBehaviour {
     // Set our boid GameObject to public, allows for faster debugging.
     // Can just plug our agent in the Unity viewer like this.
     public GameObject agent;
-    public int flockSize = 10;    
-    
+    public static int flockSize = 10;
+
+    // Declare an empty vector 3 to be the agent's current goal.
+    public static Vector3 goal = Vector3.zero;
+
     // In the start function we want to set a starting position for each
     // agent and instantiate them in these spots.
-	void Start () {
+    void Start () {
         for(int i = 0; i < flockSize; i++)
         {
             // In hindsight I probably should have named this Spawn
@@ -27,6 +30,11 @@ public class BoidController : MonoBehaviour {
             SpawnParse();
         }
 	}
+
+    void Update()
+    {
+       
+    }
 
     // Parse a Vector3 to another function. SpawnParse essentially uses insideUnitSphere
     // to set a location around the radius of the controller.
@@ -42,6 +50,19 @@ public class BoidController : MonoBehaviour {
         var rotation = Quaternion.Slerp(transform.rotation, Random.rotation, 0.2f);
         var boid = Instantiate(agent, parsedPosition, rotation) as GameObject;
         return boid;
+    }
+
+    // Every random seconds, create a goal for the boid to head for.
+    public void setGoal()
+    {
+        // Spool this random range in the Update function.
+        if(Random.Range(0, 10000) < 50)
+        {
+            // Remember the map is very large. Try this to begin with, tweak later.
+            goal = new Vector3(Random.Range(-100, 100),
+                               Random.Range(-100, 100),
+                               Random.Range(-100, 100));
+        }
     }
     
 }

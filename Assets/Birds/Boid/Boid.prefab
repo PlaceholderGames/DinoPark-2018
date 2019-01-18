@@ -82,7 +82,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4815854985092402}
   - component: {fileID: 111066370451318600}
-  - component: {fileID: 114384123595860650}
   m_Layer: 0
   m_Name: BoidPrefab
   m_TagString: Untagged
@@ -158,6 +157,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4435297758035836}
+  - component: {fileID: 114518705518045980}
   m_Layer: 0
   m_Name: Boid
   m_TagString: Untagged
@@ -414,17 +414,18 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 1
---- !u!114 &114384123595860650
+--- !u!114 &114518705518045980
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1340241251659306}
+  m_GameObject: {fileID: 1722740733424788}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e537a9d66cd45b441806ca892bd88424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0.1
 --- !u!137 &137800974515092344
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
