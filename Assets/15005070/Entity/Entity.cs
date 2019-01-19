@@ -11,7 +11,14 @@ public class Entity : MonoBehaviour
     /// Entity's genetic information. Used for both self-reference
     /// and (mainly) for supplying genetic material when
     /// </summary>
-    private DNA dna;
+    protected DNA dna;
+
+    /// <summary>
+    /// Entity's reference to the finite-state machine. The FSM is
+    /// what controls the Entity's behaviour with the stuff this class
+    /// provides.
+    /// </summary>
+    protected FSM fsm;
 
     /// <summary>
     /// Self-reference to Entity's prefab so that
@@ -46,7 +53,11 @@ public class Entity : MonoBehaviour
     /// </summary>
     protected virtual void derivedFixedUpdate() {}
 
-    private void Start() { derivedStart(); }
+    private void Start()
+    {
+        fsm = GetComponent<FSM>();
+        derivedStart();
+    }
     private void Update() { derivedUpdate(); }
     private void FixedUpdate() { derivedFixedUpdate(); }
 
