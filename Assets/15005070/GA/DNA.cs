@@ -12,7 +12,7 @@ public enum PossibleGenes { Speed = 0, Sight = 1, Hunger = 2 }
 /// Code representation of the genetic material used by all
 /// game Entities controlled by the genetic algorithm.
 /// </summary>
-class DNA
+public class DNA
 {
     /// <summary>
     /// Number of genes

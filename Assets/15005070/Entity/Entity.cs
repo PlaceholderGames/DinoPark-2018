@@ -32,7 +32,7 @@ public class Entity : MonoBehaviour
     /// </summary>
     protected Animator anim;
 
-    /// <summary>
+    /// <summary> 
     /// Allows subclasses to pass their own Start functionality
     /// without having to override the Start() belonging to Entity.
     /// Start is called when first frame update.
