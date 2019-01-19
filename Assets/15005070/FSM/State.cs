@@ -39,17 +39,20 @@ public class State
     }
 
     /// <summary>
-    /// 
+    /// The State's start-up tasks that are only used once. Virtual allows
+    /// subclasses to override this with their own version.
     /// </summary>
     public virtual void Start() { }
 
     /// <summary>
-    /// 
+    /// The State's per-frame update tasks. Virtual allows subclasses to override
+    /// this with their own version.
     /// </summary>
     public virtual void Update() { }
 
     /// <summary>
-    /// 
+    /// The State's transition-to-another-state tasks. Virtual allows subclasses to 
+    /// override this with their own version, although there should be no need to.
     /// </summary>
     public virtual void Transition() { if (endState != null) fsm.ChangeState(endState); }
 }
