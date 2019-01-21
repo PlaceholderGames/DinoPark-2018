@@ -79,20 +79,18 @@ public class Entity : MonoBehaviour
     private void FixedUpdate() { derivedFixedUpdate(); }
 
     /// <summary>
-    /// Universal Entity movement function for making sure all Entities
-    /// move in a similar manner with given parametre set.
+    /// Move towards position. Moves Entity towards a set position until
+    /// termination range is reached.
     /// </summary>
-    /// <param name="targetPos">Position to transit to.</param>
-    /// <param name="targetRange">Range in which transit is considered complete.</param>
-    /// <param name="speed">Speed of both movement and movement animation.</param>
-    /// <param name="modifier">A specified speed modifier for when needed.</param>
-    /// <returns>Returns true when entity has reached target position.</returns>
-    public bool MoveTo(Vector3 targetPos, float targetRange = 0.1f, float speed = 1f, float modifier = 1f)
+    /// <param name="target">Target position the Entity needs to reach.</param>
+    /// <param name="terminateRange">Range in which the Entity needs to be relative to target to consider itself "arrived".</param>
+    /// <param name="modifier">Additional modifier for changing translation & rotation speeds.</param>
+    public bool MoveToPos(Vector3 target, float terminateRange = 0.1f, float modifier = 1f)
     {
-        if (Vector3.Distance(targetPos, transform.position) > targetRange)
+        if (Vector3.Distance(target, transform.position) >= terminateRange)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, (speed * modifier) * Time.deltaTime);
-            transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, targetPos - transform.position, (speed * 2) * Time.deltaTime, 0.0f));
+            transform.position = Vector3.MoveTowards(transform.position, target, (dna.GetGene(PossibleGenes.Speed) * modifier) * Time.deltaTime);
+            transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, target - transform.position, ((dna.GetGene(PossibleGenes.Speed) * modifier) * 2) * Time.deltaTime, 0.0f));
             if (anim) anim.enabled = true;
             return false;
         }
@@ -101,6 +99,24 @@ public class Entity : MonoBehaviour
             if (anim) anim.enabled = false;
             return true;
         }
+
+        //IMPLEMENT HEIGHT, WATER, AND BLOCKAGE DETECTION IN HERE
+    }
+
+    /// <summary>
+    /// Move at direction. Moves Entity continously in a set
+    /// direction.
+    /// </summary>
+    /// <param name="direction">Target rotation the Entity needs to achieve.</param>
+    /// <param name="modifier">Additional modifier for changing translation & rotation speeds.</param>
+    public bool MoveAtDir(Quaternion direction, float modifier = 1f)
+    {
+        transform.position += Vector3.forward * (dna.GetGene(PossibleGenes.Speed) * modifier) * Time.deltaTime;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, direction, (dna.GetGene(PossibleGenes.Speed) * modifier) * Time.deltaTime);
+        if (anim) anim.enabled = true;
+        return false;
+        
+        //IMPLEMENT HEIGHT, WATER, AND BLOCKAGE DETECTION IN HERE
     }
 
     /// <summary>

@@ -19,32 +19,23 @@
 using UnityEngine;
 
 /// <summary>
-/// Brief what this State represents.
+/// Summarise overall action.
 /// </summary>
 public class FSMTemplate : FSMState
 {
     public FSMTemplate(FSMCommon nCOM) : base(nCOM) { com = nCOM; }
-    
-    /// <summary>
-    /// Brief what these tasks are.
-    /// </summary>
+
     public override void Start()
     {
         if (com.debugging) Debug.Log(com.name + ": entered Template State");
         base.Start();
     }
 
-    /// <summary>
-    /// Brief what these tasks are.
-    /// </summary>
     public override void Update()
     {
         base.Update();
     }
 
-    /// <summary>
-    /// Brief what these tasks are.
-    /// </summary>
     public override void Transition()
     {
         base.Transition();

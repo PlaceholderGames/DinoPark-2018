@@ -1,4 +1,5 @@
-﻿/// <summary>
+﻿using UnityEngine;
+/// <summary>
 /// Contains variables that are common & universally needed by all
 /// States. The use of this will prevent the need for reinitializing
 /// the same variables each time a State object is initalized. 
