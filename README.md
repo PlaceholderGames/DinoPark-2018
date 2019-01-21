@@ -1,2 +1,2 @@
-# DinoPark-2017
-repo for Dino Park 2017, the testbed for CS3S667
+# DinoPark-2018
+repo for Dino Park 2018, the testbed for CS3S667
