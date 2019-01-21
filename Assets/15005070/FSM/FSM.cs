@@ -11,7 +11,7 @@ public class FSM : MonoBehaviour
     /// <summary>
     /// Current state the FSM is current at.
     /// </summary>
-    private State current;
+    private FSMState current;
 
     private void Update()
     {
@@ -23,7 +23,7 @@ public class FSM : MonoBehaviour
     /// Allows for proper  change between FSM states.
     /// </summary>
     /// <param name="nState">New state to change to.</param>
-    public void ChangeState(State nState)
+    public void ChangeState(FSMState nState)
     {
         current = nState;
         current.Start();
@@ -32,5 +32,5 @@ public class FSM : MonoBehaviour
     /// <summary>
     /// Returns the current state as is.
     /// </summary>
-    public State GetState() { return current; }
+    public FSMState GetState() { return current; }
 }

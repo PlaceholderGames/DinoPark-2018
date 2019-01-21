@@ -102,4 +102,12 @@ public class Entity : MonoBehaviour
             return true;
         }
     }
+
+    /// <summary>
+    /// Allows other scripts to access the Entity's DNA
+    /// to evaulate or modify at will. Ideally this is 
+    /// limited to future GA class (comment will need 
+    /// updating in the future).
+    /// </summary>
+    public DNA AccessDNA() { return dna; }
 }

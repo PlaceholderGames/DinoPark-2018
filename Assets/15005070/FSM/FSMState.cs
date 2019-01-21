@@ -3,7 +3,7 @@
 /// mechanics required by FSM to operate properly with
 /// integrity.
 /// </summary>
-public class State
+public class FSMState
 {
     /// <summary>
     /// Internal reference to the Entity's finite-state machine.
@@ -13,7 +13,7 @@ public class State
     /// <summary>
     /// Required concluding state that this state will end up as.
     /// </summary>
-    protected State endState;
+    protected FSMState endState;
 
     /// <summary>
     /// Internal reference to the parent Entity whose's being runned
@@ -32,7 +32,7 @@ public class State
     /// </summary>
     /// <param name="nFSM">Reference to parent FSM component.</param>
     /// <param name="nParent">Reference to parent Entity component.</param>
-    public State(FSM nFSM, Entity nParent)
+    public FSMState(FSM nFSM, Entity nParent)
     {
         fsm = nFSM;
         parent = nParent;
