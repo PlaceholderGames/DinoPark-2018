@@ -1,5 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
+/// <summary>
+/// Used for allowing easier referencing to entity stats,
+/// where each stat corresponds with an element in the stats array
+/// in Entity class
+/// </summary>
+public enum EntityStats { Hunger = 0, Tiredness = 1 }
 
 /// <summary>
 /// Base class for all diversified species-specific AI agents.
@@ -7,6 +14,16 @@
 /// </summary>
 public class Entity : MonoBehaviour
 {
+    /// <summary>
+    /// Number of stats
+    /// </summary>
+    protected int statCount = 2;
+
+    /// <summary>
+    /// Stores stats data
+    /// </summary>
+    protected List<float> stats = new List<float>();
+
     /// <summary>
     /// Entity's genetic information. Used for both self-reference
     /// and (mainly) for supplying genetic material when
