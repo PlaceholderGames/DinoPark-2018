@@ -10,30 +10,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoidController : MonoBehaviour {
+public class BoidController : MonoBehaviour
+{
 
     // Set our boid GameObject to public, allows for faster debugging.
     // Can just plug our agent in the Unity viewer like this.
     public GameObject agent;
     public static int flockSize = 10;
 
+    public GameObject goalPrefab;
+
     // Declare an empty vector 3 to be the agent's current goal.
     public static Vector3 goal = Vector3.zero;
 
     // In the start function we want to set a starting position for each
     // agent and instantiate them in these spots.
-    void Start () {
-        for(int i = 0; i < flockSize; i++)
+    void Start()
+    {
+        for (int i = 0; i < flockSize; i++)
         {
             // In hindsight I probably should have named this Spawn
             // and the other function something else. It'll do for now.
             SpawnParse();
         }
-	}
 
-    void Update()
-    {
-       
+        // In the start function call setGoal. In the setGoal function,
+        // we call Invoke again every random seconds.
+        Invoke("setGoal", 1.0f);
     }
 
     // Parse a Vector3 to another function. SpawnParse essentially uses insideUnitSphere
@@ -55,14 +58,16 @@ public class BoidController : MonoBehaviour {
     // Every random seconds, create a goal for the boid to head for.
     public void setGoal()
     {
-        // Spool this random range in the Update function.
-        if(Random.Range(0, 10000) < 50)
-        {
-            // Remember the map is very large. Try this to begin with, tweak later.
-            goal = new Vector3(Random.Range(-100, 100),
-                               Random.Range(-100, 100),
-                               Random.Range(-100, 100));
-        }
+
+        // Remember the map is very large. Try this to begin with, tweak later.
+        goal = new Vector3(Random.Range(0, 1500),
+                           Random.Range(200, 300),
+                           Random.Range(0, 1500));
+
+        goalPrefab.transform.position = goal;
+        // Repeatedly call this function every x seconds.
+        Invoke("setGoal", Random.Range(1.0f, 10.0f));
+        Debug.Log("Agent goal: ");
+        Debug.Log(goal.ToString());
     }
-    
 }

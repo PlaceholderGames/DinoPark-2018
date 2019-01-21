@@ -84,9 +84,14 @@ public class AgentBoid : MonoBehaviour
             // Use a Slerp to gradually rotation towards the desired alignment.
             transform.rotation = Quaternion.Slerp(alignedRotation, transform.rotation, 0.01f * 10);
         }
-        
-        // Primary movement for the agent. Simple move forward for now - NEXT:
-        // make this a movement towards a genertated goal.
-        transform.position = transform.position + transform.forward * speed;
+
+        // Access the public static variable goal in BoidController.
+        Vector3 boidGoal = BoidController.goal;
+        Debug.Log("Controller goal: ");
+        Debug.Log(boidGoal.ToString());
+        transform.position = Vector3.MoveTowards(transform.position, boidGoal, speed);
+        var goalRotation = Quaternion.FromToRotation(Vector3.forward, boidGoal.normalized);
+        transform.rotation = Quaternion.Slerp(goalRotation, transform.rotation, 0.01f * 10);
+
     }
 }
