@@ -1,42 +1,27 @@
 /// <summary>
-/// Base class for all states. Contains the basic
-/// mechanics required by FSM to operate properly with
-/// integrity.
+/// Base class for all states. Contains the basic mechanics required
+/// by FSM to operate properly with integrity.
 /// </summary>
 public class FSMState
 {
     /// <summary>
-    /// Internal reference to the Entity's finite-state machine.
+    /// State's reference to the FSM's common variables class that allows for
+    /// universal variables to be accessed by different states without the need
+    /// for reinitalization/re-setting for each State class instance.
     /// </summary>
-    protected FSM fsm;
+    protected FSMCommon com;
 
     /// <summary>
-    /// Required concluding state that this state will end up as.
+    /// Required concluding state that this state will end up as. This will be
+    /// initialised in Start().
     /// </summary>
     protected FSMState endState;
 
     /// <summary>
-    /// Internal reference to the parent Entity whose's being runned
-    /// by this state.
-    /// </summary>
-    protected Entity parent;
-
-    /// <summary>
-    /// Internal reference to any target Entity that this state should
-    /// know about.
-    /// </summary>
-    protected Entity target;
-
-    /// <summary>
     /// Default state constructor.
     /// </summary>
-    /// <param name="nFSM">Reference to parent FSM component.</param>
-    /// <param name="nParent">Reference to parent Entity component.</param>
-    public FSMState(FSM nFSM, Entity nParent)
-    {
-        fsm = nFSM;
-        parent = nParent;
-    }
+    /// <param name="nCOM">Reference to FSMCommon obj belonging to parent FSM.</param>
+    public FSMState(FSMCommon nCOM) { com = nCOM; }
 
     /// <summary>
     /// The State's start-up tasks that are only used once. Virtual allows
@@ -54,5 +39,5 @@ public class FSMState
     /// The State's transition-to-another-state tasks. Virtual allows subclasses to 
     /// override this with their own version, although there should be no need to.
     /// </summary>
-    public virtual void Transition() { if (endState != null) fsm.ChangeState(endState); }
+    public virtual void Transition() { if (endState != null) com.fsm.ChangeState(endState); }
 }

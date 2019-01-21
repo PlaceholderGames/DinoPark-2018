@@ -2,8 +2,10 @@ using System;
 using UnityEngine;
 
 /// <summary>
-/// Finite-state machine class.
-/// Manages the update cycle and changing of states.
+/// Finite-state machine component. Manages the update cycle and changing of States.
+/// The FSM is designed to be self-contained and basically independent as possible
+/// from Entity component class so that modifications to code are easier. FSMCommon
+/// will be the bridge between them.
 /// </summary>
 [RequireComponent(typeof(Entity))]
 public class FSM : MonoBehaviour
@@ -20,7 +22,7 @@ public class FSM : MonoBehaviour
     }
 
     /// <summary>
-    /// Allows for proper  change between FSM states.
+    /// Allows for proper (managed) change between FSM states.
     /// </summary>
     /// <param name="nState">New state to change to.</param>
     public void ChangeState(FSMState nState)

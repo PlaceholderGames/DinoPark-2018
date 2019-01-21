@@ -9,7 +9,7 @@ using UnityEngine;
 public enum EntityStats { Hunger = 0, Tiredness = 1 }
 
 /// <summary>
-/// Base class for all diversified species-specific AI agents.
+/// Base component class for all diversified species-specific AI agents.
 /// Contains common functionality and variables used by all.
 /// </summary>
 public class Entity : MonoBehaviour
@@ -79,12 +79,12 @@ public class Entity : MonoBehaviour
     private void FixedUpdate() { derivedFixedUpdate(); }
 
     /// <summary>
-    /// Universal Entity movement function for making sure
-    /// all Entities move in a similar manner with given parametre set.
+    /// Universal Entity movement function for making sure all Entities
+    /// move in a similar manner with given parametre set.
     /// </summary>
     /// <param name="targetPos">Position to transit to.</param>
     /// <param name="targetRange">Range in which transit is considered complete.</param>
-    /// <param name="speed">Speed of both movement and movement animation<./param>
+    /// <param name="speed">Speed of both movement and movement animation.</param>
     /// <param name="modifier">A specified speed modifier for when needed.</param>
     /// <returns>Returns true when entity has reached target position.</returns>
     public bool MoveTo(Vector3 targetPos, float targetRange = 0.1f, float speed = 1f, float modifier = 1f)
@@ -102,6 +102,12 @@ public class Entity : MonoBehaviour
             return true;
         }
     }
+
+    /// <summary>
+    /// Returns specific state data.
+    /// </summary>
+    /// <param name="stat">Specific stat to request data from.</param>
+    public float GetStat(EntityStats stat) { return stats[(int)stat]; }
 
     /// <summary>
     /// Allows other scripts to access the Entity's DNA

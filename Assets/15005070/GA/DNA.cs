@@ -61,7 +61,6 @@ public class DNA
     /// for it to work properly.</param>
     public void SetDNA(float[] newGenes)
     {
-        //Randomly decide start values for all genes
         for (int i = 0; i < newGenes.Length; i++)
             genes[i] = newGenes[i];
     }
