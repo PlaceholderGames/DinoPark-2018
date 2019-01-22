@@ -33,6 +33,26 @@ public class AgentBoid : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, boidGoal, speed);
     }
 
+    // Take a tenant of the boid algorithm and apply it.
+    void ApplyTenant(Vector3 tenant)
+    {
+        // TO-DO: Make the tenant impact the transform.
+    }
+
+    void FlockingUpdate()
+    {
+        // TO-DO: make an array or list in BoidController so we can pass the game object to the functions.
+        // Set Vector3 for each boid algorithm tenant here.
+        Vector3 separation = Separation(//boid);
+        Vector3 alignment = Alignment(//boid);
+        Vector3 cohesion = Cohesion(//boid);
+
+        // Use the ApplyTenant() function to apply the 3 tenants to the boid.
+        ApplyTenant(separation);
+        ApplyTenant(alignment);
+        ApplyTenant(cohesion);
+    }
+
     // Keep a degree of separation amongst the boids.
     Vector3 Separation()
     {
