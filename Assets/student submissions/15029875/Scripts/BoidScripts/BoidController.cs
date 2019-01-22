@@ -16,12 +16,11 @@ public class BoidController : MonoBehaviour
     // Set our boid GameObject to public, allows for faster debugging.
     // Can just plug our agent in the Unity viewer like this.
     public GameObject agent;
-    public static int flockSize = 10;
-
-    public GameObject goalPrefab;
+    public static int flockSize = 10;   
 
     // Declare an empty vector 3 to be the agent's current goal.
     public static Vector3 goal = Vector3.zero;
+    public GameObject goalPrefab;
 
     // In the start function we want to set a starting position for each
     // agent and instantiate them in these spots.
@@ -60,14 +59,13 @@ public class BoidController : MonoBehaviour
     {
 
         // Remember the map is very large. Try this to begin with, tweak later.
-        goal = new Vector3(Random.Range(0, 1500),
-                           Random.Range(200, 300),
-                           Random.Range(0, 1500));
+        goal = new Vector3(Random.Range(0, 1500),    // x
+                           Random.Range(200, 300),   // y
+                           Random.Range(0, 1500));   // z
 
         goalPrefab.transform.position = goal;
+
         // Repeatedly call this function every x seconds.
         Invoke("setGoal", Random.Range(1.0f, 10.0f));
-        Debug.Log("Agent goal: ");
-        Debug.Log(goal.ToString());
     }
 }
