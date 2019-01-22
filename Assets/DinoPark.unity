@@ -4923,7 +4923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapGrid: {fileID: 1154115553}
   target: {fileID: 1562790417}
-  nodeType: {fileID: 0}
+  nodeType: {fileID: 114276978806050306, guid: 88f27ac62f9b33544b4b892fa62b9c03, type: 2}
   path: {fileID: 0}
 --- !u!114 &122096376
 MonoBehaviour:
