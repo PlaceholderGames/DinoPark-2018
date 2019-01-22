@@ -4,7 +4,7 @@
 /// States. The use of this will prevent the need for reinitializing
 /// the same variables each time a State object is initalized. 
 /// </summary>
-public struct FSMCommon
+public class FSMCommon
 {
     /// <summary>
     /// Reference to State's parent Entity's name. Used for self-identification.
@@ -30,6 +30,27 @@ public struct FSMCommon
     /// by this state.
     /// </summary>
     public Entity parent;
+
+    /// <summary>
+    /// Default FSMCommon constructor.
+    /// </summary>
+    public FSMCommon() { }
+
+    /// <summary>
+    /// Modified FSMCommon constructor. Allows initialisation of most FSMCommon
+    /// variables in one go.
+    /// </summary>
+    /// <param name="nName"></param>
+    /// <param name="nDebugging"></param>
+    /// <param name="nFSM"></param>
+    /// <param name="nParent"></param>
+    public FSMCommon(string nName, bool nDebugging, FSM nFSM, Entity nParent)
+    {
+        name = nName;
+        debugging = nDebugging;
+        fsm = nFSM;
+        parent = nParent;
+    }
 
     /// <summary>
     /// Reference to Sate's target Entity. Making this universal might be helpful

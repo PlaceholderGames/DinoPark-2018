@@ -6,7 +6,7 @@ using UnityEngine;
 /// where each gene corresponds with an element in the genes array
 /// in DNA class.
 /// </summary>
-public enum PossibleGenes { Speed = 0, Sight = 1, Hunger = 2 }
+public enum PossibleGenes { Speed = 0, Sight = 1, Hunger = 2, Aggression = 3, GrowthCap = 4, GrowthRate = 5, Reserved6 = 6, Reserved7 = 7, Reserved8 = 8, Reserved9 = 9 }
 
 /// <summary>
 /// Code representation of the genetic material used by all
@@ -17,7 +17,7 @@ public class DNA
     /// <summary>
     /// Number of genes
     /// </summary>
-    private int geneCount = 3;
+    private int geneCount = 10;
 
     /// <summary>
     /// Stores genetic data used to represent different stats
@@ -26,7 +26,9 @@ public class DNA
     private List<float> genes = new List<float>();
 
     /// <summary>
-    /// Default DNA constructor that initialises all gene values.
+    /// Default DNA constructor. Initialises (zeroes) the values
+    /// in the genes list. This constructor is designed for initialising
+    /// DNA objects that are destined to be copied into.
     /// </summary>
     public DNA()
     {
@@ -35,34 +37,34 @@ public class DNA
 
         //Randomly decide start values for all genes
         for (int i = 0; i < geneCount; i++)
-            genes[geneCount] = Random.Range(0f, 0f);
+            genes[geneCount] = 0f;
     }
 
     /// <summary>
-    /// Specific DNA constructor that initalises only desired gene values.
-    /// Useful for Entities with more limited gene sets.
+    /// Modified DNA constructor. Allows passing of DNA data directly
+    /// into the constructor.
     /// </summary>
-    /// <param name="desiredGenes">Array of genes to be initalised.</param>
-    public DNA(PossibleGenes[] desiredGenes)
+    /// <param name="desiredGenes">Genes you are wanting to pass data into.</param>
+    /// <param name="newGenes">Gene data array whose layout matches that of desiredGenes' order.</param>
+    public DNA(PossibleGenes[] desiredGenes, float[] newGenes)
     {
         //Ensures the genes list can faciliate the maximum amount of genes
         genes.Capacity = geneCount;
 
-        //Randomly decide start values for desired genes
+        ///
         foreach (PossibleGenes gene in desiredGenes)
-            genes[(int)gene] = Random.Range(0f, 0f);
+            genes[(int)gene] = newGenes[(int)gene];
     }
 
     /// <summary>
     /// Allows new genes to be transplanted over the current genes.
     /// </summary>
-    /// <param name="newGenes">New genes to be set in to this DNA object.
-    /// The index must correspond with current gene format (PossibleGenes)
-    /// for it to work properly.</param>
-    public void SetDNA(float[] newGenes)
+    /// <param name="desiredGenes">Genes you are wanting to pass data into.</param>
+    /// <param name="newGenes">Gene data array whose layout matches that of desiredGenes' order.</param>
+    public void SetDNA(PossibleGenes[] desiredGenes, float[] newGenes)
     {
-        for (int i = 0; i < newGenes.Length; i++)
-            genes[i] = newGenes[i];
+        foreach (PossibleGenes gene in desiredGenes)
+            genes[(int)gene] = newGenes[(int)gene];
     }
 
     /// <summary>

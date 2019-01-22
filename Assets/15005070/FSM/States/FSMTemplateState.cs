@@ -21,9 +21,9 @@ using UnityEngine;
 /// <summary>
 /// Summarise overall action.
 /// </summary>
-public class FSMTemplate : FSMState
+public class FSMTemplateState : FSMState
 {
-    public FSMTemplate(FSMCommon nCOM) : base(nCOM) { com = nCOM; }
+    public FSMTemplateState(FSMCommon nCOM) : base(nCOM) { com = nCOM; }
 
     public override void Start()
     {

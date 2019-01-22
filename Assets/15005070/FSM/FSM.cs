@@ -7,7 +7,6 @@ using UnityEngine;
 /// from Entity component class so that modifications to code are easier. FSMCommon
 /// will be the bridge between them.
 /// </summary>
-[RequireComponent(typeof(Entity))]
 public class FSM : MonoBehaviour
 {
     /// <summary>

@@ -12,6 +12,7 @@ public enum EntityStats { Hunger = 0, Tiredness = 1 }
 /// Base component class for all diversified species-specific AI agents.
 /// Contains common functionality and variables used by all.
 /// </summary>
+[RequireComponent(typeof(FSM))]
 public class Entity : MonoBehaviour
 {
     /// <summary>
@@ -54,21 +55,21 @@ public class Entity : MonoBehaviour
     /// without having to override the Start() belonging to Entity.
     /// Start is called when first frame update.
     /// </summary>
-    protected virtual void derivedStart() { }
+    public virtual void derivedStart() { }
 
     /// <summary>
     /// Allows subclasses to pass their own Update functionality
     /// without having to override Update() belonging to Entity.
     /// Update is called once per frame.
     /// </summary>
-    protected virtual void derivedUpdate() { }
+    public virtual void derivedUpdate() { }
 
     /// <summary>
     /// Allows subclasses to pass their own Update functionality
     /// without having to override Update() belonging to Entity.
     /// FixedUpdate is used for physics.
     /// </summary>
-    protected virtual void derivedFixedUpdate() {}
+    public virtual void derivedFixedUpdate() {}
 
     private void Start()
     {

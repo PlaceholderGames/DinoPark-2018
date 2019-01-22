@@ -21,14 +21,14 @@ using UnityEngine;
 /// <summary>
 /// Instructs Entity to walk around randomly.
 /// </summary>
-public class FSMRoaming : FSMState
+public class FSMRoamingState : FSMState
 {
     /// <summary>
     /// 
     /// </summary>
     Quaternion targetDir;
 
-    public FSMRoaming(FSMCommon nCOM) : base(nCOM) { com = nCOM; }
+    public FSMRoamingState(FSMCommon nCOM) : base(nCOM) { com = nCOM; }
 
     public override void Start()
     {
