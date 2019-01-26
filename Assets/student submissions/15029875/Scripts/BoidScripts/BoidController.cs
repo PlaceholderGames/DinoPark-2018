@@ -12,60 +12,124 @@ using UnityEngine;
 
 public class BoidController : MonoBehaviour
 {
+    private static int flockSize = 20;
 
-    // Set our boid GameObject to public, allows for faster debugging.
-    // Can just plug our agent in the Unity viewer like this.
-    public GameObject agent;
-    public static int flockSize = 10;   
+    private float speedModifier = 5;
 
-    // Declare an empty vector 3 to be the agent's current goal.
-    public static Vector3 goal = Vector3.zero;
-    public GameObject goalPrefab;
+    // The variables below are weightings for the three
+    // tenants of the boid algorithm.
+    [SerializeField]
+    private float alignmentWeight = 1;
+
+    [SerializeField]
+    private float cohesionWeight = 1;
+
+    [SerializeField]
+    private float separationWeight = 1;
+
+    [SerializeField]
+    private float followWeight = 5;
+
+    // Serialized field for our prefab.
+    [SerializeField]
+    private AgentBoid prefab;
+
+    // Set up spawn variables here. Start the location at zero.
+    [SerializeField]
+    private float spawnRadius = 3.0f;
+    private Vector3 spawnLocation = Vector3.zero;
+
+    [SerializeField]
+    public Transform target;
+
+    // Three vectors for the three tenants of the Reynold algorithm.
+    // The fourth is the separation value.
+    private Vector3 flockCenter;
+    private Vector3 flockDirection;
+    private Vector3 targetDirection;
+    private Vector3 separation;
+
+    // We need a way to get the speed modified for AgentBoid.
+    public float SpeedModifier { get { return speedModifier; } }
+
+    public List<AgentBoid> boidList = new List<AgentBoid>();
 
     // In the start function we want to set a starting position for each
     // agent and instantiate them in these spots.
     void Start()
     {
+
+    }
+
+    // Essentially spawn the agents and assign them to a list.
+    private void Awake()
+    {
+        // Declare a new list boidList to be the size of our flock.
+        boidList = new List<AgentBoid>(flockSize);
         for (int i = 0; i < flockSize; i++)
         {
-            // In hindsight I probably should have named this Spawn
-            // and the other function something else. It'll do for now.
-            SpawnParse();
+            // Use Random.insideUnitSphere with other vector variables to 
+            // determine how spread out our spawning will be.
+            spawnLocation = Random.insideUnitSphere * spawnRadius + transform.position;
+            AgentBoid boid = Instantiate(prefab, spawnLocation, transform.rotation) as AgentBoid;
+            boid.transform.parent = transform;
+            boid.BoidController = this;
+            // Finally add the boid to the list.
+            boidList.Add(boid);
+        }
+    }
+
+    public Vector3 Flock(AgentBoid boid, Vector3 boidPosition, Vector3 boidDirection)
+    {
+        // Set the four vectors used by the Reynold alogirithm to zero for now.
+        flockDirection = Vector3.zero;
+        flockCenter = Vector3.zero;
+        targetDirection = Vector3.zero;
+        separation = Vector3.zero;
+
+        // For every boid we're aware of:
+        for (int i = 0; i < boidList.Count; i++)
+        {
+            // Find a neighbouring boid.
+            AgentBoid neighbour = boidList[i];
+            // Only check against a neighbour.
+            if(neighbour != boid)
+            {
+                // Take the direction of all the boids.
+                flockDirection += neighbour.Direction;
+                // Take the position of all the boids.
+                // Note: use local position for this.
+                flockCenter += neighbour.transform.localPosition;
+                // Take the delta to all neighbour boids.
+                separation += neighbour.transform.localPosition - boidPosition;
+                separation *= -1;
+            }
         }
 
-        // In the start function call setGoal. In the setGoal function,
-        // we call Invoke again every random seconds.
-        Invoke("setGoal", 1.0f);
-    }
+        // ALIGNMENT //
+        // This is the average direction of all agents.
+        // Note: remember to normalize.
+        flockDirection /= flockSize;
+        flockDirection = flockDirection.normalized * alignmentWeight;
 
-    // Parse a Vector3 to another function. SpawnParse essentially uses insideUnitSphere
-    // to set a location around the radius of the controller.
-    public GameObject SpawnParse()
-    {
-        return Spawn(transform.position + Random.insideUnitSphere * 5);
-    }
+        // COHESION //
+        // Take the center of the flock and try to keep averagely (is that a word?)
+        // with the group.
+        flockCenter /= flockSize;
+        flockCenter = flockCenter.normalized * cohesionWeight;
 
-    // Take the parsed position, which should be inside a sphere radius (if not - something's gone
-    // terribly wrong...) and instantiate the agnet prefab with a random rotation.
-    public GameObject Spawn(Vector3 parsedPosition)
-    {
-        var rotation = Quaternion.Slerp(transform.rotation, Random.rotation, 0.2f);
-        var boid = Instantiate(agent, parsedPosition, rotation) as GameObject;
-        return boid;
-    }
+        // SEPARATION //
+        // Keep the agents separated with a fair distance.
+        separation /= flockSize;
+        separation = separation.normalized * separationWeight;
 
-    // Every random seconds, create a goal for the boid to head for.
-    public void setGoal()
-    {
+        // Now set a direction vector for the flock to head towards.
+        // If this is a bit wonky you can change the followWeight variable.
+        targetDirection = target.localPosition - boidPosition;
+        targetDirection = targetDirection * followWeight;
 
-        // Remember the map is very large. Try this to begin with, tweak later.
-        goal = new Vector3(Random.Range(0, 1500),    // x
-                           Random.Range(200, 300),   // y
-                           Random.Range(0, 1500));   // z
 
-        goalPrefab.transform.position = goal;
-
-        // Repeatedly call this function every x seconds.
-        Invoke("setGoal", Random.Range(1.0f, 10.0f));
+        // Return the sum of all these vectors and this is where the magic takes place.
+        return flockDirection + flockCenter + separation + targetDirection;
     }
 }
