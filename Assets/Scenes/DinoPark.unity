@@ -5179,8 +5179,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57baca79e7625134195f471e283c064b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 1382791962168452, guid: 961dc3b15718fb440a64151e69e52f61, type: 2}
-  goalPrefab: {fileID: 1368497258}
+  alignmentWeight: 1
+  cohesionWeight: 1
+  separationWeight: 1
+  followWeight: 5
+  prefab: {fileID: 114518705518045980, guid: 81ab869caad0b5e439b47d45b957ff73, type: 2}
+  spawnRadius: 3
+  target: {fileID: 1368497262}
+  boidList: []
 --- !u!4 &515159248
 Transform:
   m_ObjectHideFlags: 0
@@ -5468,6 +5474,7 @@ GameObject:
   - component: {fileID: 1368497261}
   - component: {fileID: 1368497260}
   - component: {fileID: 1368497259}
+  - component: {fileID: 1368497263}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -5542,6 +5549,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1368497263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1368497258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d43664f7a20a7d4da6c601b843d82d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounds: {x: 0, y: 0, z: 0}
+  moveSpeed: 10
+  turnSpeed: 3
+  targetPointTolerance: 5
 --- !u!1 &1562790417
 GameObject:
   m_ObjectHideFlags: 0

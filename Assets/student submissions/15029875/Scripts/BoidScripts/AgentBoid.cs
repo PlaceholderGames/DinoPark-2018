@@ -57,5 +57,10 @@ public class AgentBoid : MonoBehaviour
         direction = targetDirection.normalized;
         direction *= boidController.SpeedModifier;
         transform.Translate(direction * Time.deltaTime);
+        // There is some real funky problem with the rotation.
+        // To circumvent this I've included this really horribly forced LookAt transformation,
+        // which actually works really well. I'm not sure if this is how a boid algorithm should go,
+        // but it works...
+        transform.LookAt(targetDirection);
     }
 }

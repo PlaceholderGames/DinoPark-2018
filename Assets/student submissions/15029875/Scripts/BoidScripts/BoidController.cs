@@ -12,7 +12,7 @@ using UnityEngine;
 
 public class BoidController : MonoBehaviour
 {
-    private static int flockSize = 20;
+    private static int flockSize = 40;
 
     private float speedModifier = 5;
 
@@ -53,13 +53,6 @@ public class BoidController : MonoBehaviour
     public float SpeedModifier { get { return speedModifier; } }
 
     public List<AgentBoid> boidList = new List<AgentBoid>();
-
-    // In the start function we want to set a starting position for each
-    // agent and instantiate them in these spots.
-    void Start()
-    {
-
-    }
 
     // Essentially spawn the agents and assign them to a list.
     private void Awake()
@@ -127,8 +120,7 @@ public class BoidController : MonoBehaviour
         // If this is a bit wonky you can change the followWeight variable.
         targetDirection = target.localPosition - boidPosition;
         targetDirection = targetDirection * followWeight;
-
-
+        
         // Return the sum of all these vectors and this is where the magic takes place.
         return flockDirection + flockCenter + separation + targetDirection;
     }
