@@ -17,13 +17,13 @@ public class DNA
     /// <summary>
     /// Number of genes
     /// </summary>
-    private int geneCount = 10;
+    private const int geneCount = 10;
 
     /// <summary>
     /// Stores genetic data used to represent different stats
     /// for the Entity.
     /// </summary>
-    private List<float> genes = new List<float>();
+    private List<float> genes = new List<float>(new float[geneCount]);
 
     /// <summary>
     /// Default DNA constructor. Initialises (zeroes) the values
@@ -48,12 +48,7 @@ public class DNA
     /// <param name="newGenes">Gene data array whose layout matches that of desiredGenes' order.</param>
     public DNA(PossibleGenes[] desiredGenes, float[] newGenes)
     {
-        //Ensures the genes list can faciliate the maximum amount of genes
-        genes.Capacity = geneCount;
-
-        ///
-        foreach (PossibleGenes gene in desiredGenes)
-            genes[(int)gene] = newGenes[(int)gene];
+        SetDNA(desiredGenes, newGenes);
     }
 
     /// <summary>

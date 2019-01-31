@@ -132,5 +132,5 @@ public class Entity : MonoBehaviour
     /// limited to future GA class (comment will need 
     /// updating in the future).
     /// </summary>
-    public DNA AccessDNA() { return dna; }
+    public DNA GetDNA() { return dna; }
 }

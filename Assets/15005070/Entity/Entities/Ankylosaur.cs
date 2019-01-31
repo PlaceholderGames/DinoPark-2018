@@ -3,7 +3,7 @@
 /// <summary>
 /// 
 /// </summary>
-class Prey :  Entity
+class Ankylosaur :  Entity
 {
 
 }
