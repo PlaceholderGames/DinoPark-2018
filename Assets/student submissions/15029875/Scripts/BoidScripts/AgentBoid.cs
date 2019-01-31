@@ -6,61 +6,55 @@
 // appears as a result.
 // There are three primary tenants to a boid algorithm:
 // Separation // Alignment // Cohesion //
-// NOTE: I use a lot of "tenants" in this script. "Tenants" also means "rules".
-// This script has been adapted from the third edition of
-// Unity 2017 Game AI Programming written by Barrera, Kyaw and Swe.
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AgentBoid : MonoBehaviour
 {
+    private BoidController boidController;
+
+    public Rigidbody boidRB { get; private set; }
+ 
     // Create private variables we want to access from the editor.
     [SerializeField]
-    private BoidController boidController;
-    // Set two directions: the current and target direction.
-    private Vector3 targetDirection;
-    private Vector3 direction;
+    public float neighbourRad;
 
-    // Standard set/get for the controller.
-   public BoidController BoidController
-    {
-        get { return boidController;  }
-        set { boidController = value;  }
-    }
-
-    // Get the direction.
-    public Vector3 Direction { get { return direction; } }
+    [SerializeField]
+    public float separationBound;
 
     private void Awake()
     {
-        // Initialize with a standard forward direction.
-        direction = transform.forward.normalized;
-        // A bit of validation.
         if(boidController != null)
         {
             Debug.Log("No boid controller attached.");
         }
+
+        boidRB = GetComponent<Rigidbody>();
+
+        boidController = GetComponentInParent<BoidController>();
+
+        // Initialize random velocities.
+        boidRB.velocity = new Vector3(Random.value * 2 - 1, Random.value * 2 - 1, Random.value * 2 - 1);
     }
 
     private void Update()
     {
-        targetDirection = BoidController.Flock(this, transform.localPosition, direction);
-        // If there is no target direction:
-        if(targetDirection == Vector3.zero)
+        // Always face forward.
+        transform.rotation = Quaternion.LookRotation(boidRB.velocity);
+    }
+
+    private void FixedUpdate()
+    {
+        positionLogic();
+
+    }
+
+    private void positionLogic()
+    {
+        if ( Vector3.Distance(transform.localPosition, Vector3.zero) > 40f )
         {
-            // Do nothing.
-            return;
+            boidRB.velocity += (Vector3.zero - transform.localPosition) * 0.1f * Time.deltaTime;
         }
-        // Else set the direction of the agent to a direction with a speed 
-        // taken from the controller and move towards it.
-        direction = targetDirection.normalized;
-        direction *= boidController.SpeedModifier;
-        transform.Translate(direction * Time.deltaTime);
-        // There is some real funky problem with the rotation.
-        // To circumvent this I've included this really horribly forced LookAt transformation,
-        // which actually works really well. I'm not sure if this is how a boid algorithm should go,
-        // but it works...
-        transform.LookAt(targetDirection);
     }
 }

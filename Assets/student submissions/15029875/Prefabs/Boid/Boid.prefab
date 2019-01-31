@@ -158,6 +158,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4435297758035836}
   - component: {fileID: 114518705518045980}
+  - component: {fileID: 54734773038444784}
+  - component: {fileID: 135863918942715294}
   m_Layer: 0
   m_Name: Boid
   m_TagString: Untagged
@@ -398,6 +400,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1283080140478072}
   m_Mesh: {fileID: 4300000, guid: 41d1431faf80546a5be7ffe38aba1a1e, type: 3}
+--- !u!54 &54734773038444784
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1722740733424788}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!111 &111066370451318600
 Animation:
   m_ObjectHideFlags: 1
@@ -425,7 +442,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e537a9d66cd45b441806ca892bd88424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  neighbourRad: 10
+  separationBound: 2
+--- !u!135 &135863918942715294
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1722740733424788}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &137800974515092344
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

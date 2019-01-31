@@ -12,116 +12,135 @@ using UnityEngine;
 
 public class BoidController : MonoBehaviour
 {
-    private static int flockSize = 40;
+    // Serialized field for our prefab.
+    [SerializeField]
+    private AgentBoid prefab;
 
-    private float speedModifier = 5;
+    private static int flockSize = 30;
 
     // The variables below are weightings for the three
     // tenants of the boid algorithm.
     [SerializeField]
-    private float alignmentWeight = 1;
+    private float alignmentWeight = 0.5f;
 
     [SerializeField]
-    private float cohesionWeight = 1;
+    private float cohesionWeight = 0.9f;
 
     [SerializeField]
-    private float separationWeight = 1;
-
-    [SerializeField]
-    private float followWeight = 5;
-
-    // Serialized field for our prefab.
-    [SerializeField]
-    private AgentBoid prefab;
+    private float separationWeight = 0.1f;
 
     // Set up spawn variables here. Start the location at zero.
     [SerializeField]
     private float spawnRadius = 3.0f;
     private Vector3 spawnLocation = Vector3.zero;
 
-    [SerializeField]
-    public Transform target;
-
-    // Three vectors for the three tenants of the Reynold algorithm.
-    // The fourth is the separation value.
-    private Vector3 flockCenter;
-    private Vector3 flockDirection;
-    private Vector3 targetDirection;
-    private Vector3 separation;
-
-    // We need a way to get the speed modified for AgentBoid.
-    public float SpeedModifier { get { return speedModifier; } }
-
-    public List<AgentBoid> boidList = new List<AgentBoid>();
+    private AgentBoid[] boids;
 
     // Essentially spawn the agents and assign them to a list.
     private void Awake()
     {
         // Declare a new list boidList to be the size of our flock.
-        boidList = new List<AgentBoid>(flockSize);
+        boids = new AgentBoid[flockSize];
+
         for (int i = 0; i < flockSize; i++)
         {
             // Use Random.insideUnitSphere with other vector variables to 
             // determine how spread out our spawning will be.
             spawnLocation = Random.insideUnitSphere * spawnRadius + transform.position;
-            AgentBoid boid = Instantiate(prefab, spawnLocation, transform.rotation) as AgentBoid;
-            boid.transform.parent = transform;
-            boid.BoidController = this;
-            // Finally add the boid to the list.
-            boidList.Add(boid);
+
+            boids[i] = Instantiate(prefab, spawnLocation, Quaternion.identity) as AgentBoid;
+            boids[i].transform.parent = transform;
         }
     }
 
-    public Vector3 Flock(AgentBoid boid, Vector3 boidPosition, Vector3 boidDirection)
+    private void FixedUpdate()
     {
-        // Set the four vectors used by the Reynold alogirithm to zero for now.
-        flockDirection = Vector3.zero;
-        flockCenter = Vector3.zero;
-        targetDirection = Vector3.zero;
-        separation = Vector3.zero;
-
-        // For every boid we're aware of:
-        for (int i = 0; i < boidList.Count; i++)
+        for (int i = 0; i < flockSize; i++)
         {
-            // Find a neighbouring boid.
-            AgentBoid neighbour = boidList[i];
-            // Only check against a neighbour.
-            if(neighbour != boid)
+            // Select an individual boid.
+            AgentBoid boid = boids[i];
+            // If the boid is not equal to null and the rigidbody is not equal to null:
+            if (boid != null && boid.boidRB != null)
             {
-                // Take the direction of all the boids.
-                flockDirection += neighbour.Direction;
-                // Take the position of all the boids.
-                // Note: use local position for this.
-                flockCenter += neighbour.transform.localPosition;
-                // Take the delta to all neighbour boids.
-                separation += neighbour.transform.localPosition - boidPosition;
-                separation *= -1;
+                // Set the rules of the Reynolds algorithm by accessing the corresponding functions.
+                Vector3 parsedAlignment = Alignment(boid) * alignmentWeight * Time.deltaTime;
+                Vector3 parsedCohesion = Cohesion(boid) * cohesionWeight * Time.deltaTime;
+                Vector3 parsedSeparation = Separation(boid) * separationWeight * Time.deltaTime;
+
+                // Where the magic happens. Sum the vectors together.
+                boid.boidRB.velocity += (parsedAlignment + parsedCohesion + parsedSeparation);
             }
         }
+    }
 
-        // ALIGNMENT //
-        // This is the average direction of all agents.
-        // Note: remember to normalize.
-        flockDirection /= flockSize;
-        flockDirection = flockDirection.normalized * alignmentWeight;
+    private Vector3 Alignment(AgentBoid boid)
+    {
+        // Set velocity to zero.
+        Vector3 alignment = Vector3.zero;
+        int iterator = 0;
+        for(int i = 0; i < flockSize; i++)
+        {
+            // Returns the distance between a and b.
+            // Use this to find the distance between a boid and it's neighbour.
+            float distance = Vector3.Distance(boids[i].transform.localPosition, boid.transform.localPosition);
+            // If the distance between the two is greater than zero and less than the radius
+            // defined in the AgentBoid script, then:
+            if (distance > 0 && distance < boid.neighbourRad)
+            {
+                // Set the velocity.
+                alignment += boids[i].boidRB.velocity;
+                iterator++;
+            }
+        }
+        // Return the alignment. Do not forget to normalize this!
+        if (iterator > 0)
+        { return (alignment / (flockSize - 1)).normalized; }
+        else
+        { return Vector3.zero; }
+    }
 
-        // COHESION //
-        // Take the center of the flock and try to keep averagely (is that a word?)
-        // with the group.
-        flockCenter /= flockSize;
-        flockCenter = flockCenter.normalized * cohesionWeight;
+    private Vector3 Cohesion(AgentBoid boid)
+    {
+        Vector3 cohesion = Vector3.zero;
+        int iterator = 0;
+        for(int i = 0; i < flockSize; i++)
+        {
+            // Returns the distance between a and b.
+            // Use this to find the distance between a boid and it's neighbour.
+            float distance = Vector3.Distance(boids[i].transform.localPosition, boid.transform.localPosition);
+            if (distance > 0 && distance < boid.neighbourRad)
+            {
+                // Set the velocity.
+                cohesion += boids[i].transform.localPosition;
+                iterator++;
+            }
+        }
+        // Return the cohesion vector. Do not forget to normalize this!
+        if (iterator > 0)
+        { return ((cohesion / (flockSize - 1)) - boid.transform.localPosition).normalized; }
+        else
+        { return Vector3.zero; }
+    }
 
-        // SEPARATION //
-        // Keep the agents separated with a fair distance.
-        separation /= flockSize;
-        separation = separation.normalized * separationWeight;
-
-        // Now set a direction vector for the flock to head towards.
-        // If this is a bit wonky you can change the followWeight variable.
-        targetDirection = target.localPosition - boidPosition;
-        targetDirection = targetDirection * followWeight;
-        
-        // Return the sum of all these vectors and this is where the magic takes place.
-        return flockDirection + flockCenter + separation + targetDirection;
+    private Vector3 Separation(AgentBoid boid)
+    {
+        Vector3 separation = Vector3.zero;
+        int iterator = 0;
+        for (int i = 0; i < flockSize; i++)
+        {
+            // Returns the distance between a and b.
+            // Use this to find the distance between a boid and it's neighbour.
+            float distance = Vector3.Distance(boids[i].transform.localPosition, boid.transform.localPosition);
+            if(distance > 0 && distance < boid.separationBound)
+            {
+                separation -= (boids[i].transform.localPosition - boid.transform.localPosition).normalized / distance;
+                iterator++;
+            }
+        }
+        // Return the separation vector. Do not forget to normalize this!
+        if (iterator > 0)
+        { return (separation / (flockSize - 1)).normalized; }
+        else
+        { return Vector3.zero; }
     }
 }
