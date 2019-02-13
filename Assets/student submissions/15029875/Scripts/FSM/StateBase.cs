@@ -10,7 +10,8 @@ using UnityEngine;
 // allowing us to initialise functions in their own inherited classes.
 public abstract class StateBase {
 
-    public abstract void BeginS(StateMachine SM);
-    public abstract void UpdateS(StateMachine SM);
-    public abstract void EndS(StateMachine SM);
+    public abstract void BeginState(StateMachine SM);
+    public abstract void UpdateState(StateMachine SM);
+    public abstract void EndState(StateMachine SM);
+
 }

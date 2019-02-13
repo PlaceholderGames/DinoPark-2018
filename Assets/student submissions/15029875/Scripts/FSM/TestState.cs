@@ -4,18 +4,42 @@ using UnityEngine;
 
 public class TestState : StateBase
 {
-    public override void BeginS(StateMachine SM)
+    // Static variable declared once.
+    private static TestState instance;
+
+    // Accessor function.
+    public static TestState Instance
     {
-        throw new System.NotImplementedException();
+        get
+        {
+            // If there isn't an instance,
+            if (instance == null)
+            {
+                // Call our constructor.
+                new TestState();
+            }
+            // Once an instance exists, return it.
+            return instance;
+        }
     }
 
-    public override void EndS(StateMachine SM)
+    public override void BeginState(StateMachine SM)
     {
-        throw new System.NotImplementedException();
+        TestExists();
     }
 
-    public override void UpdateS(StateMachine SM)
+    public override void EndState(StateMachine SM)
     {
-        Debug.Log("UPDATING");
+        TestExists();
+    }
+
+    public override void UpdateState(StateMachine SM)
+    {
+        TestExists();
+    }
+
+    void TestExists()
+    {
+        Debug.Log("I exist!");
     }
 }

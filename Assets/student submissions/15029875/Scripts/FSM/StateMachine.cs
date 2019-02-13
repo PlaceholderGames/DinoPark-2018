@@ -13,21 +13,20 @@ public class StateMachine : MonoBehaviour {
     public void SwitchState(StateBase nState)
     {
         // First end the current state.
-        currentState.EndS(this);
+        currentState.EndState(this);
         // Then set the current state to the new state.
         currentState = nState;
         // Then begin the new state.
-        currentState.BeginS(this);
+        currentState.BeginState(this);
     }
 
-    // Run an update function here.
-    private void Update()
+    public void Update()
     {
         // If we have a current state:
         if (currentState != null)
         {
             // Run the state's update function.
-            currentState.UpdateS(this);
+            currentState.UpdateState(this);
         }
     }
 }
