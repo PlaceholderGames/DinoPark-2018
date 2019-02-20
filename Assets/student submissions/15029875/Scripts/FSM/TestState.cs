@@ -1,25 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using StateMachineInternals;
 using UnityEngine;
 
-public class TestState : StateBase
+public class TestState : IState
 {
-    // Static variable declared once.
-    private static AgentBase agent;
-
-    public TestState(AgentBase owner) { agent = owner; }
-
-    public override void BeginState(StateMachine SM)
+    public void BeginState()
     {
-        TestExists();
+        Debug.Log("Entered state.");
     }
 
-    public override void EndState(StateMachine SM)
+    public void EndState()
     {
-        TestExists();
+        Debug.Log("Exited state.");
     }
 
-    public override void UpdateState(StateMachine SM)
+    public void UpdateState()
     {
         TestExists();
     }

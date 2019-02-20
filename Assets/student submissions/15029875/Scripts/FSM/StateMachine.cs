@@ -1,46 +1,63 @@
 ﻿// Owned by an agent.
 // Manages the behaviour for said agent.
+// Using a namespace because it better encapsulates the base state class along with the
+// state machine.
 namespace StateMachineInternals
     {
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
 
-    public class StateMachine : MonoBehaviour {
+    // Feed a type A to the StateMachine, being our agent.
+    public class StateMachine : MonoBehaviour
+    {
 
         // Point to the current state.
-        private StateBase currentState;
+        private IState currentState;
+        // Also hold a reference to the previous state.
+        private IState previousState;
 
-        public void SwitchState(StateBase nState)
+        public void SwitchState(IState nState)
         {
-            // First end the current state.
-            currentState.EndState(this);
-            // Then set the current state to the new state.
-            currentState = nState;
-            // Then begin the new state.
-            currentState.BeginState(this);
+            // If a current state exists:
+            if (this.currentState != null)
+            {
+                // Exit the current state.
+                this.currentState.EndState();
+            }            
+            // Set any existing previous state to the current state.
+            this.previousState = this.currentState;
+            // Set the current state to the new state.
+            this.currentState = nState;
+            // Begin the new state.
+            this.currentState.BeginState();
         }
 
         public void Update()
         {
-            // If we have a current state:
-            if (currentState != null)
+            if (this.currentState != null)
             {
-                // Run the state's update function.
-                currentState.UpdateState(this);
+                this.currentState.UpdateState();
             }
+        }
+
+        public void SwitchToPrevious()
+        {
+            this.currentState.EndState();
+            this.currentState = this.previousState;
+            this.currentState.BeginState();
         }
     }
 
-    // As this is a base class for inherited states
-    // it's by best design to make this an abstract class
-    // allowing us to initialise functions in their own inherited classes.
-    public abstract class StateBase
+
+    // Interface for each state. Sets the begin, update and end functionality
+    // for each state.
+    public interface IState
     {
 
-        public abstract void BeginState(StateMachine SM);
-        public abstract void UpdateState(StateMachine SM);
-        public abstract void EndState(StateMachine SM);
+        void BeginState();
+        void UpdateState();
+        void EndState();
 
     }
 

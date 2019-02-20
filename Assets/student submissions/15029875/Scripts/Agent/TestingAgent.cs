@@ -1,22 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using StateMachineInternals;
 using UnityEngine;
 
 public class TestingAgent : AgentBase {
 
-    // Create an instance of the state machine.
-    StateMachine stateMachine;
-
+    private StateMachine stateMachine = new StateMachine();
     // Constructor.
     public TestingAgent()
     {
         this.HP = 100;
-        // Set a state.
-        stateMachine.SwitchState(new TestState(this));
+        this.stateMachine.SwitchState(new TestState());
     }
 
     public override void Update()
     {
-
+        this.stateMachine.Update();
     }
 }
