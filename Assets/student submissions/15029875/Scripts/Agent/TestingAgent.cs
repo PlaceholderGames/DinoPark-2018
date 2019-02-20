@@ -5,18 +5,18 @@ using UnityEngine;
 public class TestingAgent : AgentBase {
 
     // Create an instance of the state machine.
-    private StateMachine currentState;
+    StateMachine stateMachine;
 
     // Constructor.
     public TestingAgent()
     {
         this.HP = 100;
         // Set a state.
-        currentState.SwitchState(TestState.Instance);
+        stateMachine.SwitchState(new TestState(this));
     }
 
     public override void Update()
     {
-        currentState.Update();
+
     }
 }

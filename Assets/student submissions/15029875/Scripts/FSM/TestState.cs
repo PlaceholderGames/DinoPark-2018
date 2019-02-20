@@ -5,23 +5,9 @@ using UnityEngine;
 public class TestState : StateBase
 {
     // Static variable declared once.
-    private static TestState instance;
+    private static AgentBase agent;
 
-    // Accessor function.
-    public static TestState Instance
-    {
-        get
-        {
-            // If there isn't an instance,
-            if (instance == null)
-            {
-                // Call our constructor.
-                new TestState();
-            }
-            // Once an instance exists, return it.
-            return instance;
-        }
-    }
+    public TestState(AgentBase owner) { agent = owner; }
 
     public override void BeginState(StateMachine SM)
     {
