@@ -26,7 +26,7 @@ public class FSMRoamingState : FSMState
     /// <summary>
     /// 
     /// </summary>
-    Quaternion targetDir;
+    Vector3 targetDest;
 
     public FSMRoamingState(FSMCommon nCOM) : base(nCOM) { com = nCOM; }
 
@@ -35,13 +35,10 @@ public class FSMRoamingState : FSMState
         if (com.debugging) Debug.Log(com.name + ": entered Roaming State");
         base.Start();
 
-        //Randomise roaming direction
-        float angle = Random.Range(0, 360);
-        if (com.debugging) Debug.Log(com.name + ": roam towards angle " + angle);
-
-        //Calculate relative direction to use 
-        targetDir = Quaternion.Euler(com.parent.transform.rotation.eulerAngles) * Quaternion.Euler(0, angle, 0);
-        if (com.debugging) Debug.Log(com.name + ": rotate to " + targetDir.eulerAngles);
+        //Randomise roaming destination
+        Vector3 cur = com.parent.transform.position;
+        Vector3 dest = new Vector3(cur.x + Random.Range(-1000, 1000), 0, cur.z + Random.Range(-1000, 1000));
+        if (com.debugging) Debug.Log(com.name + ": roam towards " + dest);
     }
 
     public override void Update()
@@ -49,7 +46,7 @@ public class FSMRoamingState : FSMState
         base.Update();
 
         //Move Entity in the target direction
-        com.parent.MoveAtDir(targetDir);
+        com.parent.MoveToPos(targetDest, 10f, 4.8f);
     }
 
     public override void Transition()

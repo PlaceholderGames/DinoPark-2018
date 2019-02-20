@@ -91,7 +91,7 @@ public class Entity : MonoBehaviour
         if (Vector3.Distance(target, transform.position) >= terminateRange)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, (dna.GetGene(PossibleGenes.Speed) * modifier) * Time.deltaTime);
-            transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, target - transform.position, ((dna.GetGene(PossibleGenes.Speed) * modifier) * 2) * Time.deltaTime, 0.0f));
+            transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, target - transform.position, (dna.GetGene(PossibleGenes.Speed) * 0.33f) * Time.deltaTime, 0.0f));
             if (anim) anim.enabled = true;
             return false;
         }
@@ -113,11 +113,12 @@ public class Entity : MonoBehaviour
     public bool MoveAtDir(Quaternion direction, float modifier = 1f)
     {
         transform.position += Vector3.forward * (dna.GetGene(PossibleGenes.Speed) * modifier) * Time.deltaTime;
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, direction, (dna.GetGene(PossibleGenes.Speed) * modifier) * Time.deltaTime);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, direction, dna.GetGene(PossibleGenes.Speed) * (modifier * 2) * Time.deltaTime);
         if (anim) anim.enabled = true;
-        return false;
-        
+
         //IMPLEMENT HEIGHT, WATER, AND BLOCKAGE DETECTION IN HERE
+
+        return false;
     }
 
     /// <summary>
