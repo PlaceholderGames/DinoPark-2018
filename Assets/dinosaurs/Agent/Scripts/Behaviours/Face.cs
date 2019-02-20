@@ -8,7 +8,7 @@ public class Face : Align {
     public override void Awake()
     {
         base.Awake();
-        targetAux = target;
+        targetAux = target;    
         target = new GameObject();
         target.AddComponent<Agent>();
     }
