@@ -9,11 +9,12 @@ public class MyRapty : Agent
         IDLE,       // The default state on creation.
         EATING,     // This is for eating depending on location of a target object (killed prey)
         DRINKING,   // This is for Drinking, depending on y value of the object to denote water level
+        ALERTING,   //Alerting nearby Raptors
         ALERTED,      // This is for hightened awareness, such as looking around
         HUNTING,    // Moving with the intent to hunt
         ATTACKING,  // Causing damage to a specific target
         FLEEING,     // Running away from a specific target
-        DEAD
+        DEAD        //Ded
     };
     private Animator anim;
 
@@ -25,6 +26,7 @@ public class MyRapty : Agent
         anim.SetBool("isIdle", true);
         anim.SetBool("isEating", false);
         anim.SetBool("isDrinking", false);
+        anim.SetBool("isAlerting", false);
         anim.SetBool("isAlerted", false);
         anim.SetBool("isHunting", false);
         anim.SetBool("isAttacking", false);
@@ -42,6 +44,11 @@ public class MyRapty : Agent
         // Eating - requires a box collision with a dead dino
 
         // Drinking - requires y value to be below 32 (?)
+        if (transform.position.y <= 32)
+        {
+            anim.SetBool("isDrinking", true);
+        }
+        // Alerting
 
         // Alerted - up to the student what you do here
 
@@ -50,6 +57,10 @@ public class MyRapty : Agent
         // Fleeing - up to the student what you do here
 
         // Dead - If the animal is being eaten, reduce its 'health' until it is consumed
+        if (anim.GetBool("isDead") == true)
+        {
+            
+        }
 
         base.Update();
     }
