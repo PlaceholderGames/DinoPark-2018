@@ -9,7 +9,7 @@ public class TestingAgent : AgentBase {
     // Constructor.
     public TestingAgent()
     {
-        this.HP = 100;
+        this.health = 100;
         this.stateMachine.SwitchState(new TestState());
     }
 

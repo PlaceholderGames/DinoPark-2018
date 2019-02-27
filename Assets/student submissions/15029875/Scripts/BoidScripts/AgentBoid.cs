@@ -10,7 +10,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AgentBoid : MonoBehaviour
+public class AgentBoid : AgentBase
 {
     private BoidController boidController;
 
@@ -38,7 +38,7 @@ public class AgentBoid : MonoBehaviour
         boidRB.velocity = new Vector3(Random.value * 2 - 1, Random.value * 2 - 1, Random.value * 2 - 1);
     }
 
-    private void Update()
+    public override void Update()
     {
         // Always face forward.
         transform.rotation = Quaternion.LookRotation(boidRB.velocity);
