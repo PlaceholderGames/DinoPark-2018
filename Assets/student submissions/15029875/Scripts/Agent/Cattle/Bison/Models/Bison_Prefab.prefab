@@ -68,6 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4902888892139116}
   - component: {fileID: 95260027524320068}
+  - component: {fileID: 114142715530215918}
   m_Layer: 0
   m_Name: Bison_Prefab
   m_TagString: Untagged
@@ -137,7 +138,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1514205186221710}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -298,6 +299,17 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114142715530215918
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328434976469428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68fcc4d06a7b8b445ad7a95e268bc098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1183024399 &6000828046046706784
 LookAtConstraint:
   m_ObjectHideFlags: 1

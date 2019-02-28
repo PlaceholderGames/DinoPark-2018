@@ -7,7 +7,6 @@ using UnityEngine;
 // as well as idle.
 public class AgentBison : AgentBase
 {
-
     private StateMachine stateMachine = new StateMachine();
     // Constructor.
     private void Start()
