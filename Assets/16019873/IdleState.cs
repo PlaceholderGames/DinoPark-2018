@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleState : StateMachineBehaviour
+public class IdleState : DinoBaseClass
 {
     //first object is to grab and get hold of the water object
     GameObject moveDino;
@@ -23,7 +23,8 @@ public class IdleState : StateMachineBehaviour
     {
         //even if the 'quest' that the dino is doing at the moment, it would still go back to the original position
         //and restart 'idle' again after being interrupted
-        moveDino = animator.gameObject;
+        //moveDino = animator.gameObject;
+        base.OnStateEnter(animator, stateInfo, layerIndex);
         currentWaypoint = 0;
 
 	}
@@ -36,7 +37,7 @@ public class IdleState : StateMachineBehaviour
         //if a waypoint is reached 
         //then update and get a new one
         //as it starts at 0
-        if(Vector3.Distance(waypoints[currentWaypoint].transform.position, moveDino.transform.position) < 3.0f)
+        if(Vector3.Distance(waypoints[currentWaypoint].transform.position, moveDino.transform.position) < accuracy)
         {
             currentWaypoint++;
             //creates a circuit of waypoints
@@ -50,9 +51,9 @@ public class IdleState : StateMachineBehaviour
         //move the dino forward
         //slerp is to slowly turn and start facing the waypoint
         var direction = waypoints[currentWaypoint].transform.position - moveDino.transform.position;
-        moveDino.transform.rotation = Quaternion.Slerp(moveDino.transform.rotation, Quaternion.LookRotation(direction), 1.0f * Time.deltaTime);
+        moveDino.transform.rotation = Quaternion.Slerp(moveDino.transform.rotation, Quaternion.LookRotation(direction), rotationSpeed * Time.deltaTime);
         //pushing it forward to the z axis
-        moveDino.transform.Translate(0, 0, Time.deltaTime * 2.0f);
+        moveDino.transform.Translate(0, 0, Time.deltaTime * speed);
 
 	}
 
