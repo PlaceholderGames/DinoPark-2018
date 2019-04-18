@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7137675dd8356e4408a1e412cfbcdb1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sun: {fileID: 20}
+  sun: {fileID: 0}
   secondsInFullDay: 120
   currentTimeOfDay: 0
 --- !u!4 &22
@@ -509,14 +509,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cccef4a5cd119f12a000e6888f962b59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterLevel: 35.35
-  uAudio: {fileID: 8300000, guid: 0b709289cd111022a00028498f962b59, type: 3}
-  aAudio: {fileID: 8300000, guid: 72a305adcd114932a000b4e88f962b59, type: 3}
-  uColor: {r: 0.18640013, g: 0.22588846, b: 0.25403225, a: 1}
-  uDensity: 0.015
-  aColor: {r: 0.68369573, g: 0.68369573, b: 0.68369573, a: 1}
+  waterLevel: 0
+  uAudio: {fileID: 0}
+  aAudio: {fileID: 0}
+  uColor: {r: 1, g: 1, b: 1, a: 1}
+  uDensity: 0.05
+  aColor: {r: 1, g: 1, b: 1, a: 1}
   aDensity: 0.008
-  waterSurface: {fileID: 204138151}
+  waterSurface: {fileID: 0}
 --- !u!81 &42
 AudioListener:
   m_ObjectHideFlags: 0
@@ -537,10 +537,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ec2fe99d1108b9d0006a298d76c639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  axes: 2
-  sensitivityX: 10
-  sensitivityY: 10
-  minimumX: 0
+  axes: 0
+  sensitivityX: 15
+  sensitivityY: 15
+  minimumX: -360
   maximumX: 360
   minimumY: -60
   maximumY: 60
@@ -686,13 +686,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ec2fe99d1108b9d0006a298d76c639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  axes: 1
+  axes: 0
   sensitivityX: 15
-  sensitivityY: 0
+  sensitivityY: 15
   minimumX: -360
   maximumX: 360
-  minimumY: 0
-  maximumY: 0
+  minimumY: -60
+  maximumY: 60
 --- !u!114 &63
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,11 +704,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9fb038bf8d24c54a9a89c9e9275ebe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  freeCamPosition: {fileID: 1957780153}
-  moveFPS: {fileID: 55}
-  fpsCam: {fileID: 31}
-  freecam: {fileID: 142751451}
-  fpsFreeCamScript: {fileID: 1957780154}
+  freeCamPosition: {fileID: 0}
+  moveFPS: {fileID: 0}
+  fpsCam: {fileID: 0}
+  freecam: {fileID: 0}
+  fpsFreeCamScript: {fileID: 0}
 --- !u!143 &64
 CharacterController:
   m_ObjectHideFlags: 0
@@ -739,7 +739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47bb4669ad11abd5d00015498d76c639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 6
   jumpSpeed: 8
   gravity: 20
 --- !u!1 &69
@@ -971,7 +971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0288d39bb3434f6098d09ea872cc8c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  col: {fileID: 1823471747}
+  col: {fileID: 0}
 --- !u!114 &1226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -983,22 +983,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952cb3f7cd49147318058e801143502d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  siblings:
-  - {fileID: 1241}
-  - {fileID: 1251}
+  siblings: []
   index: 0
   offset: 0
-  slideMin: -0.3
+  slideMin: -0.1
   slideMax: 0.4
-  slideSpeed: 0.3
-  slideSharpness: 1.2
-  scaleMin: 6
-  scaleMax: 3
-  scaleSpeed: 0.3
-  scaleSharpness: 0.75
-  fadeSpeed: 0.7
-  baseScroll: {x: -0.25, y: 0, z: 0.05}
-  baseRotation: 125
+  slideSpeed: 0.5
+  slideSharpness: 1
+  scaleMin: 1
+  scaleMax: 0.4
+  scaleSpeed: 0.5
+  scaleSharpness: 0.5
+  fadeSpeed: 0
+  baseScroll: {x: 0.1, y: 0, z: 0.3547}
+  baseRotation: 0
   baseScale: {x: 10, y: 10, z: 10}
   original: {fileID: 0}
 --- !u!23 &1228
@@ -1129,7 +1127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0288d39bb3434f6098d09ea872cc8c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  col: {fileID: 1823471747}
+  col: {fileID: 0}
 --- !u!23 &1244
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1218,7 +1216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0288d39bb3434f6098d09ea872cc8c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  col: {fileID: 1823471747}
+  col: {fileID: 0}
 --- !u!23 &1254
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4921,9 +4919,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d3bf3ac688a604b8a7c6f6532e01ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapGrid: {fileID: 1154115553}
-  target: {fileID: 1562790417}
-  nodeType: {fileID: 114276978806050306, guid: 88f27ac62f9b33544b4b892fa62b9c03, type: 2}
+  mapGrid: {fileID: 0}
+  target: {fileID: 0}
+  nodeType: {fileID: 0}
   path: {fileID: 0}
 --- !u!114 &122096376
 MonoBehaviour:
@@ -5003,8 +5001,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 178b237049bf9d74a97a8d754a89aee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 2.5
-  smoothing: 0.5
+  sensitivity: 5
+  smoothing: 2
 --- !u!82 &142751453
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5230,12 +5228,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cccef4a5cd119f12a000e6888f962b59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterLevel: 35.35
-  uAudio: {fileID: 8300000, guid: 0b709289cd111022a00028498f962b59, type: 3}
-  aAudio: {fileID: 8300000, guid: 72a305adcd114932a000b4e88f962b59, type: 3}
-  uColor: {r: 0.18640013, g: 0.22588846, b: 0.25403225, a: 1}
-  uDensity: 0.015
-  aColor: {r: 0.68369573, g: 0.68369573, b: 0.68369573, a: 1}
+  waterLevel: 0
+  uAudio: {fileID: 0}
+  aAudio: {fileID: 0}
+  uColor: {r: 1, g: 1, b: 1, a: 1}
+  uDensity: 0.05
+  aColor: {r: 1, g: 1, b: 1, a: 1}
   aDensity: 0.008
   waterSurface: {fileID: 0}
 --- !u!81 &142751455
@@ -5258,10 +5256,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ec2fe99d1108b9d0006a298d76c639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  axes: 2
-  sensitivityX: 5
-  sensitivityY: 5
-  minimumX: 0
+  axes: 0
+  sensitivityX: 15
+  sensitivityY: 15
+  minimumX: -360
   maximumX: 360
   minimumY: -60
   maximumY: 60
@@ -5526,11 +5524,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &204138151 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2300000, guid: 780611a67e8e941a2b3aa96e5915a793,
-    type: 2}
-  m_PrefabInternal: {fileID: 975727239}
 --- !u!1 &282057778
 GameObject:
   m_ObjectHideFlags: 0
@@ -7300,12 +7293,13 @@ GameObject:
   - component: {fileID: 1053393924}
   - component: {fileID: 1053393928}
   - component: {fileID: 1053393927}
-  - component: {fileID: 1053393922}
+  - component: {fileID: 1053393932}
   - component: {fileID: 1053393926}
   - component: {fileID: 1053393929}
   - component: {fileID: 1053393930}
   - component: {fileID: 1053393921}
   - component: {fileID: 1053393931}
+  - component: {fileID: 1053393922}
   m_Layer: 9
   m_Name: Rapty
   m_TagString: Rapty
@@ -7324,12 +7318,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c59c8556abd1c4676b97deb06d20aff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 200
-  viewAngle: 240
-  stereoAngle: 60
+  viewRadius: 0
+  viewAngle: 0
+  stereoAngle: 0
   targetMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
   visibleTargets: []
   stereoVisibleTargets: []
 --- !u!114 &1053393922
@@ -7340,20 +7334,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1053393920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42a6f95c9a9069e479c5fd3cf29e8d66, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e69c5f7ca411f24f9d25d20c500dc3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blendWeight: 0
-  blendPriority: 0
-  priorityThreshold: 0.2
-  blendPipeline: 0
-  maxSpeed: 2
-  maxAccel: 4
-  maxRotation: 80
-  maxAngularAccel: 0
-  orientation: 0
-  rotation: 0
-  velocity: {x: 0, y: 0, z: 0}
+  otherDino: {fileID: 1736867214}
+  bite: {fileID: 0}
+  Cube: {fileID: 2117262792}
 --- !u!54 &1053393923
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7414,12 +7400,12 @@ MonoBehaviour:
   weight: 1
   priority: 1
   target: {fileID: 0}
-  targetRadius: 0.1
-  slowRadius: 3
+  targetRadius: 0
+  slowRadius: 0
   timeToTarget: 0.1
-  offset: 2
-  radius: 3
-  rate: 60
+  offset: 0
+  radius: 0
+  rate: 0
 --- !u!114 &1053393927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7431,14 +7417,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe399c0304a8c8d4a8b4dcd0c21b65c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blendWeight: 1
+  blendWeight: 0
   blendPriority: 0
   priorityThreshold: 0.2
   blendPipeline: 0
-  maxSpeed: 1
-  maxAccel: 3
-  maxRotation: 80
-  maxAngularAccel: 150
+  maxSpeed: 0
+  maxAccel: 0
+  maxRotation: 0
+  maxAngularAccel: 0
   orientation: 0
   rotation: 0
   velocity: {x: 0, y: 0, z: 0}
@@ -7467,8 +7453,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   priority: 1
-  target: {fileID: 1736867214}
-  maxPrediction: 15
+  target: {fileID: 0}
+  maxPrediction: 0
 --- !u!114 &1053393930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7480,11 +7466,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ca6187b927cca4da30b2d50d619de3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 2
+  weight: 1
   priority: 1
-  target: {fileID: 1736867214}
-  targetRadius: 0.3
-  slowRadius: 2.5
+  target: {fileID: 0}
+  targetRadius: 0
+  slowRadius: 0
   timeToTarget: 0.1
 --- !u!95 &1053393931
 Animator:
@@ -7504,6 +7490,28 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1053393932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1053393920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42a6f95c9a9069e479c5fd3cf29e8d66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blendWeight: 0
+  blendPriority: 0
+  priorityThreshold: 0.2
+  blendPipeline: 0
+  maxSpeed: 0
+  maxAccel: 0
+  maxRotation: 0
+  maxAngularAccel: 0
+  orientation: 0
+  rotation: 0
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!1 &1056049448
 GameObject:
   m_ObjectHideFlags: 0
@@ -7562,10 +7570,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df44f7ec9dfaab94fb81396d075def22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridWorldSize: {x: 2000, y: 2000}
-  tileSize: 20
-  heightThreshold: 35
-  seaLevel: 32
+  gridWorldSize: {x: 0, y: 0}
+  tileSize: 1
+  heightThreshold: 1
+  seaLevel: 0
 --- !u!4 &1154115554
 Transform:
   m_ObjectHideFlags: 0
@@ -8924,12 +8932,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c59c8556abd1c4676b97deb06d20aff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 100
-  viewAngle: 300
-  stereoAngle: 30
+  viewRadius: 0
+  viewAngle: 0
+  stereoAngle: 0
   targetMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
   visibleTargets: []
   stereoVisibleTargets: []
 --- !u!54 &1736867218
@@ -8961,12 +8969,12 @@ MonoBehaviour:
   weight: 1
   priority: 1
   target: {fileID: 0}
-  targetRadius: 0.1
-  slowRadius: 3
+  targetRadius: 0
+  slowRadius: 0
   timeToTarget: 0.1
-  offset: 2
-  radius: 3
-  rate: 60
+  offset: 0
+  radius: 0
+  rate: 0
 --- !u!114 &1736867220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8982,12 +8990,12 @@ MonoBehaviour:
   blendPriority: 0
   priorityThreshold: 0.2
   blendPipeline: 0
-  maxSpeed: 1
-  maxAccel: 3
-  maxRotation: 80
-  maxAngularAccel: 150
+  maxSpeed: 0
+  maxAccel: 0
+  maxRotation: 0
+  maxAngularAccel: 0
   orientation: 0
-  rotation: 180
+  rotation: 0
   velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &1736867221
 MonoBehaviour:
@@ -9001,6 +9009,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherDino: {fileID: 1053393920}
+  bite: {fileID: 0}
+  Cube: {fileID: 0}
 --- !u!1 &1768558688
 GameObject:
   m_ObjectHideFlags: 0
@@ -9359,11 +9369,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   maxVelocityChange: 10
-  firstPersonCamera: {fileID: 61}
-  freecamPosition: {fileID: 1957780160}
-  movefpsScript: {fileID: 63}
-  fpsCam: {fileID: 31}
-  FreeCamera: {fileID: 142751451}
+  firstPersonCamera: {fileID: 0}
+  freecamPosition: {fileID: 0}
+  movefpsScript: {fileID: 0}
+  fpsCam: {fileID: 0}
+  FreeCamera: {fileID: 0}
 --- !u!136 &1957780155
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9404,13 +9414,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ec2fe99d1108b9d0006a298d76c639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  axes: 1
-  sensitivityX: 5
-  sensitivityY: 0
+  axes: 0
+  sensitivityX: 15
+  sensitivityY: 15
   minimumX: -360
   maximumX: 360
-  minimumY: 0
-  maximumY: 0
+  minimumY: -60
+  maximumY: 60
 --- !u!143 &1957780158
 CharacterController:
   m_ObjectHideFlags: 0
@@ -9441,7 +9451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47bb4669ad11abd5d00015498d76c639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 6
   jumpSpeed: 8
   gravity: 20
 --- !u!4 &1957780160
