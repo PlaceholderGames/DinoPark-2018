@@ -8,9 +8,9 @@ public class DinoBaseClass : StateMachineBehaviour
     public GameObject dino;
     public GameObject opponent;
     //speed properties regarding distance
-    public float speed = 2.0f;
-    public float rotationSpeed = 1.0f;
-    public float accuracy = 3.0f;
+    public float speed = 3.0f;
+    public float rotationSpeed = 2.0f;
+    public float accuracy = 5.0f;
 
     //reusing and overwritting this function every time the dino goes into the state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
