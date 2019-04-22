@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IdleState : DinoBaseClass
 {
-    //first object is to grab and get hold of the water object
+    //first object is to grab and get hold of the dino object
     GameObject moveDino;
     //loop through this array to move the dino around and make him look at the surroundings
     GameObject[] waypoints;

@@ -12,6 +12,7 @@ TagManager:
   - DinoStats
   - Anky
   - Rapty
+  - waypoint
   layers:
   - Default
   - TransparentFX
