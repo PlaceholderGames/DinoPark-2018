@@ -9,10 +9,14 @@ public class AttackState : DinoBaseClass
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        //user message in console
+        Debug.Log("Rapty is entering the Attacking State...");
+
         //keep attacking if you haven't exited this state
         base.OnStateEnter(animator, stateInfo, layerIndex);
-        dino.GetComponent<dinoAI>().startScratching();
-	}
+        dino.GetComponent<RaptyAI>().startScratching();
+
+    }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -25,7 +29,7 @@ public class AttackState : DinoBaseClass
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //just before exiting, stop attacking
-        dino.GetComponent<dinoAI>().stopScratching();
+        dino.GetComponent<RaptyAI>().stopScratching();
 	}
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

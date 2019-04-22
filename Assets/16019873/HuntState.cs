@@ -7,8 +7,15 @@ public class HuntState : DinoBaseClass {
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        //user message in console
+        Debug.Log("Rapty is entering the Hunting State...");
+
         //passing in from the Idle state
         base.OnStateEnter(animator, stateInfo, layerIndex);
+
+        //when entering this state,
+        //the walking speed is increasing for rapty
+
 	}
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

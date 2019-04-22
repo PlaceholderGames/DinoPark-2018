@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class dinoAI : MonoBehaviour
+public class RaptyAI : MonoBehaviour
 {
     Animator animator;
     //linked to the dino
