@@ -7,8 +7,7 @@ namespace StateMachineInternals
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
-
-    // Feed a type A to the StateMachine, being our agent.
+    
     public class StateMachine : MonoBehaviour
     {
 

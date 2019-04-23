@@ -31,12 +31,26 @@ public class HerdState : IState
 
     void Herd()
     {
-        agent.transform.Translate(Vector3.forward * Time.deltaTime);
-        RandomDirection();
+        MoveForward();
+        // Every random seconds, change direction:
+        // I am VERY UNCERTAIN about the while true...
+        while(true)
+        {
+            var randomNumber = Random.Range(0.0f, 5.0f);
+
+        }
+
+    }
+
+    void MoveForward()
+    {
+        // Work here. Figure out why we can't use speed instead of 0.1f.
+        // Must use MovePosition to take into account the terrain.
+        agent.GetComponent<Rigidbody>().MovePosition(agent.transform.position + agent.transform.forward * 0.1f);
     }
 
     // Get a vector to move the agent in a random direction.
-    Vector3 RandomDirection()
+    void RandomDirection()
     {
         // First set a random direction.
         var x = Random.Range(0.0f, 5.0f);
@@ -47,11 +61,8 @@ public class HerdState : IState
         Debug.Log("THE Y IS: ");
         Debug.Log(newDirection);
         Debug.Log(newDirection.y);
-
-        return newDirection;
         // Then move towards this location.
 
         // Make sure we clamp Y axis to the height map (if we have to).
-
     }
 }

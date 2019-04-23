@@ -8,10 +8,11 @@ using UnityEngine;
 public class AgentBison : AgentBase
 {
     private StateMachine stateMachine = new StateMachine();
+
     // Constructor.
     private void Start()
     {
-        // Extra health... bison are tough, or so I've heard.
+        // Extra health... bison are tough.
         this.health = 200;
         this.speed = 1;
         this.stateMachine.SwitchState(new HerdState(this.gameObject));
