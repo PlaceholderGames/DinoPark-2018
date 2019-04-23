@@ -71,9 +71,9 @@ public class RaptyAI : MonoBehaviour
         alphaRapty = animator.gameObject;
 
         //starts decreasing the hunger time
-        startTimerHung = Time.time;
+        startTimerHung = Time.deltaTime;
         //starts decreasing the hunger time
-        startTimerThir = Time.time;
+        startTimerThir = Time.deltaTime;
 
         //???
         //aStar = GetComponent<AStarSearch>();
@@ -84,16 +84,19 @@ public class RaptyAI : MonoBehaviour
     private void Update()
     {
         animator.SetFloat("distance", Vector3.Distance(transform.position, otherDino.transform.position));
-        float h = Time.time - startTimerHung;
-        float t = Time.time - startTimerHung;
+     
 
-        if (startTimerHung < h)
+        if (startTimerHung >= 100)
         {
             maxHunger -= decreaseHunger;
+            print(maxHunger.ToString());
+
         }
 
+        
+
         //pushing rapty back
-        if (startTimerThir < t)
+        //if (startTimerThir < t)
         {
             getDino();
 
