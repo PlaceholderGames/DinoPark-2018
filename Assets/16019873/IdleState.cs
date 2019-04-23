@@ -23,11 +23,13 @@ public class IdleState : DinoBaseClass
     {
         //even if the 'quest' that the dino is doing at the moment, it would still go back to the original position
         //and restart 'idle' again after being interrupted
-        //moveDino = animator.gameObject;
+        moveDino = animator.gameObject;
         base.OnStateEnter(animator, stateInfo, layerIndex);
         currentWaypoint = 0;
 
-	}
+        //user message in console
+        Debug.Log("Rapty is entering the Idle State...");
+    }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

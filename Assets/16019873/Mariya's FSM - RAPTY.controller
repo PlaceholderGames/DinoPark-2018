@@ -10,7 +10,7 @@ AnimatorController:
   m_AnimatorParameters:
   - m_Name: hunger
     m_Type: 1
-    m_DefaultFloat: 12
+    m_DefaultFloat: 100
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
@@ -39,8 +39,8 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: thirst
-    m_Type: 4
-    m_DefaultFloat: 0
+    m_Type: 1
+    m_DefaultFloat: 100
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
@@ -73,6 +73,12 @@ MonoBehaviour:
   speed: 3
   rotationSpeed: 2
   accuracy: 5
+  hunger: 100
+  thirst: 100
+  health: 100
+  waterLocation: {fileID: 0}
+  decreaseHunger: 3
+  increaseHunger: 3
 --- !u!114 &114243501916851652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -89,6 +95,12 @@ MonoBehaviour:
   speed: 2
   rotationSpeed: 1
   accuracy: 3
+  hunger: 100
+  thirst: 100
+  health: 100
+  waterLocation: {fileID: 0}
+  decreaseHunger: 3
+  increaseHunger: 3
 --- !u!114 &114599850397956906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -105,6 +117,12 @@ MonoBehaviour:
   speed: 2
   rotationSpeed: 1
   accuracy: 3
+  hunger: 100
+  thirst: 100
+  health: 100
+  waterLocation: {fileID: 0}
+  decreaseHunger: 3
+  increaseHunger: 3
 --- !u!1101 &1101112811155488176
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -228,10 +246,7 @@ AnimatorStateTransition:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: thirst
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102569262312924950}
   m_Solo: 0
@@ -252,10 +267,7 @@ AnimatorStateTransition:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: thirst
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102131023501853428}
   m_Solo: 0
@@ -330,7 +342,7 @@ AnimatorStateTransition:
     m_EventTreshold: 20
   - m_ConditionMode: 3
     m_ConditionEvent: hunger
-    m_EventTreshold: 8
+    m_EventTreshold: 50
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102349215915635324}
   m_Solo: 0
@@ -357,7 +369,7 @@ AnimatorStateTransition:
     m_EventTreshold: 20
   - m_ConditionMode: 4
     m_ConditionEvent: hunger
-    m_EventTreshold: 4
+    m_EventTreshold: 50
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102131023501853428}
   m_Solo: 0
