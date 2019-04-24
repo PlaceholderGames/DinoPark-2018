@@ -15,10 +15,10 @@ public class FieldOfView : MonoBehaviour {
     public LayerMask targetMask;
     //public LayerMask obstacleMask; // Not using raytracing to determine visibility right now
 
-    [HideInInspector] // If you want to see the list of visible Dinos in the Inspector view, comment this out
+    //[HideInInspector] // If you want to see the list of visible Dinos in the Inspector view, comment this out
     public List<Transform> visibleTargets = new List<Transform>(); // this is the list of visible dinosaurs
 
-    [HideInInspector] // If you want to see the list of visible Dinos in the Inspector view, comment this out
+    //[HideInInspector] // If you want to see the list of visible Dinos in the Inspector view, comment this out
     public List<Transform> stereoVisibleTargets = new List<Transform>(); // this is the list of visible dinosaurs in stereo
 
 	private void Start()
@@ -43,7 +43,10 @@ public class FieldOfView : MonoBehaviour {
         {
             Transform target = targetsInViewRadius[i].transform;
             Vector3 dirToTarget = (target.position - transform.position).normalized;
-
+            //int found = target.GetComponentInParent<GameObject>().layer;
+            //int found = target.GetComponent<GameObject>().layer;
+            string found = targetsInViewRadius[i].tag;
+            Debug.Log(found);
             if (Vector3.Angle(transform.forward, dirToTarget) < stereoAngle / 2) //Can be seen in stereo
             {
                 //float distanceToTarget = Vector3.Distance(transform.position, target.position); // Only if we see it do we know how far away it is, due to stereo vision
@@ -53,6 +56,7 @@ public class FieldOfView : MonoBehaviour {
                 // Note, if the animal has you on its left side, the value will be in the high 300s and will switch to low values if it crosses to having you
                 // on the right side. You might want to subtract 180 to allow 0 to be facing away, and very low and very high values are facing towards you
                 //Debug.Log("Relative angle: " + orientationOfTarget);
+                
                 stereoVisibleTargets.Add(target);
             }
             else if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle/2)

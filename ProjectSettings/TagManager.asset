@@ -12,6 +12,7 @@ TagManager:
   - DinoStats
   - Anky
   - Rapty
+  - AnkyFood
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - 
   - Obstacles
   - Dinos
-  - 
+  - AnkyFood
   - 
   - 
   - 

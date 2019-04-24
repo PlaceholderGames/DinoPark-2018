@@ -18,6 +18,8 @@ public class MyAnky : Agent
 
     public Animator anim;
 
+    public float health;
+
     // Use this for initialization
     protected override void Start()
     {
@@ -40,9 +42,11 @@ public class MyAnky : Agent
 
     protected override void Update()
     {
+        health = health - 0.001f;
+        Debug.Log(health);
         // Idle - should only be used at startup
-
-        // Eating - requires a box collision with a dead dino
+        
+        // Eating - requires a box collision with food source
 
         // Drinking - requires y value to be below 32 (?)
 
