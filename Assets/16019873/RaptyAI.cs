@@ -23,12 +23,13 @@ public class RaptyAI : MonoBehaviour
     public int maxHunger = 100;
     public int maxThirst = 100;
     public int maxHealth = 100;
+    //current hunger/thirst values
+    public static float currentHunger;
+    public static float currentThirst;
+    public static float currentHealth;
     //hunger and thirst will be decreased or increased, depending on the state by 3 values each time
-    public int decreaseHunger = 3;
-    public int increaseHunger = 3;
-    //hunger and thirst time to be started as soon as the game starts
-    private float startTimerHung;
-    private float startTimerThir;
+    public int decrease = 3;
+    public int increase = 3;
     //sea level that depends on the grid size 
     public int seaLevel = 25;
 
@@ -70,39 +71,43 @@ public class RaptyAI : MonoBehaviour
         animator = GetComponent<Animator>();
         alphaRapty = animator.gameObject;
 
-        //starts decreasing the hunger time
-        startTimerHung = Time.time;
-        //starts decreasing the hunger time
-        startTimerThir = Time.time;
-
+        //at the start of the game, dino got full health/hunger/thirst bar
+        currentHealth = maxHealth;
+        currentHunger = maxHunger;
+        currentThirst = maxThirst;
+        
         //???
-        //aStar = GetComponent<AStarSearch>();
-        //follower = GetComponent<ASPathFollower>();
+        aStar = GetComponent<AStarSearch>();
+        follower = GetComponent<ASPathFollower>();
     }
 
     //update is called once per frame
     private void Update()
     {
         animator.SetFloat("distance", Vector3.Distance(transform.position, otherDino.transform.position));
-        float h = Time.time - startTimerHung;
-        float t = Time.time - startTimerHung;
 
-        if (startTimerHung < h)
-        {
-            maxHunger -= decreaseHunger;
-        }
+        if (currentHunger < maxHunger)
+            currentHunger -= decrease * Time.deltaTime;
 
-        //pushing rapty back
-        if (startTimerThir < t)
+        if (currentThirst < maxThirst)
         {
+            currentThirst -= decrease * Time.deltaTime;
+
+            //get hold of dino
             getDino();
-
+            //and push him back to not drown
             if (transform.position.z <= seaLevel)
             {
 
             }
         }
 
+        if (currentHunger <= 0 || currentThirst <= 0 || currentHealth <= 0)
+        {
+
+        }
+            //dieDino();
+        
     }
 
 }

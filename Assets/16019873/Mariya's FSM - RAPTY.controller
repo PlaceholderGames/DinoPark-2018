@@ -90,7 +90,7 @@ MonoBehaviour:
   speed: 2
   rotationSpeed: 1
   accuracy: 3
-  waterLocation: {fileID: 0}
+  waterLocation: {fileID: 100006, guid: b544816461f324e56a39767fdeb5b114, type: 2}
 --- !u!114 &114599850397956906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,6 +108,17 @@ MonoBehaviour:
   rotationSpeed: 1
   accuracy: 3
   waterLocation: {fileID: 0}
+--- !u!114 &114780490671764694
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 930cf994286a0bb4ab9c18886645a9fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1101 &1101112811155488176
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -230,8 +241,14 @@ AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_Conditions: []
+  m_Name: hungry?no thirsty?YES!
+  m_Conditions:
+  - m_ConditionMode: 3
+    m_ConditionEvent: hunger
+    m_EventTreshold: 60
+  - m_ConditionMode: 4
+    m_ConditionEvent: thirst
+    m_EventTreshold: 50
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102569262312924950}
   m_Solo: 0
@@ -241,7 +258,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.75
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -252,7 +269,13 @@ AnimatorStateTransition:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 4
+    m_ConditionEvent: hunger
+    m_EventTreshold: 50
+  - m_ConditionMode: 3
+    m_ConditionEvent: thirst
+    m_EventTreshold: 50
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102131023501853428}
   m_Solo: 0
@@ -325,9 +348,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: hunger
     m_EventTreshold: 50
-  - m_ConditionMode: 4
-    m_ConditionEvent: distance
-    m_EventTreshold: 20
+  - m_ConditionMode: 3
+    m_ConditionEvent: thirst
+    m_EventTreshold: 60
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102349215915635324}
   m_Solo: 0
@@ -337,9 +360,9 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.75
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
-  m_InterruptionSource: 0
+  m_InterruptionSource: 2
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!1101 &1101499378572236488
@@ -350,11 +373,11 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 3
-    m_ConditionEvent: distance
-    m_EventTreshold: 20
-  - m_ConditionMode: 3
     m_ConditionEvent: hunger
     m_EventTreshold: 50
+  - m_ConditionMode: 4
+    m_ConditionEvent: thirst
+    m_EventTreshold: 60
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102131023501853428}
   m_Solo: 0
@@ -364,7 +387,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.75
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -420,7 +443,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: distance
-    m_EventTreshold: 10
+    m_EventTreshold: 7
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102349215915635324}
   m_Solo: 0
@@ -570,7 +593,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 4
     m_ConditionEvent: distance
-    m_EventTreshold: 10
+    m_EventTreshold: 7
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102196986871553830}
   m_Solo: 0
@@ -816,7 +839,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114780490671764694}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
