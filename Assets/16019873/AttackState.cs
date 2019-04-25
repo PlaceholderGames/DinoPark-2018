@@ -23,6 +23,10 @@ public class AttackState : DinoBaseClass
     {
         //continue looking at the opponent
         dino.transform.LookAt(opponent.transform.position);
+
+        //get hold of the other animal
+        opponent = dino.GetComponent<RaptyAI>().getDino();
+        opponent = dino.GetComponent<RaptyAI>().dieDino();
     }
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -30,7 +34,8 @@ public class AttackState : DinoBaseClass
     {
         //just before exiting, stop attacking
         dino.GetComponent<RaptyAI>().stopScratching();
-	}
+        Debug.Log("Rapty is exiting the Attacking State...");
+    }
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
 	//override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {

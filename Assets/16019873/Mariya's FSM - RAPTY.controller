@@ -44,6 +44,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: deadOpponent
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -102,8 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88dbd39b2e13305419049e9b8eb58c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dino: {fileID: 0}
-  opponent: {fileID: 0}
+  dino: {fileID: 100106, guid: 177ad22f7d6952b41bad200a68dfd346, type: 3}
+  opponent: {fileID: 100000, guid: 22876b3aba83f994abe2b0135f567a4f, type: 3}
   speed: 2
   rotationSpeed: 1
   accuracy: 3
@@ -119,6 +125,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 930cf994286a0bb4ab9c18886645a9fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dino: {fileID: 0}
+  opponent: {fileID: 0}
+  speed: 3
+  rotationSpeed: 2
+  accuracy: 5
+  waterLocation: {fileID: 0}
+--- !u!114 &114959670153144354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cb75cc75f75bc84db3c9df2d549b877, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dino: {fileID: 0}
+  opponent: {fileID: 0}
+  speed: 3
+  rotationSpeed: 2
+  accuracy: 5
+  waterLocation: {fileID: 0}
 --- !u!1101 &1101112811155488176
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -221,7 +250,10 @@ AnimatorStateTransition:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: deadOpponent
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102463958137329484}
   m_Solo: 0
@@ -296,7 +328,10 @@ AnimatorStateTransition:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 4
+    m_ConditionEvent: hunger
+    m_EventTreshold: 50
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102196986871553830}
   m_Solo: 0
@@ -757,7 +792,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101354676423407066}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114959670153144354}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

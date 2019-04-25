@@ -7444,6 +7444,8 @@ GameObject:
   - component: {fileID: 1053393921}
   - component: {fileID: 1053393931}
   - component: {fileID: 1053393932}
+  - component: {fileID: 1053393935}
+  - component: {fileID: 1053393934}
   m_Layer: 9
   m_Name: Rapty
   m_TagString: Rapty
@@ -7481,7 +7483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a6f95c9a9069e479c5fd3cf29e8d66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blendWeight: 0
+  blendWeight: 1
   blendPriority: 0
   priorityThreshold: 0.2
   blendPipeline: 0
@@ -7653,19 +7655,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e69c5f7ca411f24f9d25d20c500dc3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisDino: {fileID: 0}
   otherDino: {fileID: 1736867214}
   claws: {fileID: 100004, guid: 3ebccbb58c63a8d4092c2423a90aa499, type: 3}
   Cube3: {fileID: 689591201}
   follower: {fileID: 0}
-  aStar: {fileID: 0}
+  aStar: {fileID: 122096375}
   alphaRapty: 1
   returnToAlphaRapty: 0
-  maxHunger: 100
-  maxThirst: 100
-  maxHealth: 100
-  decreaseHunger: 3
-  increaseHunger: 3
+  currentHunger: 100
+  currentThirst: 100
+  currentHealth: 100
+  decrease: 3
+  increase: 3
   seaLevel: 25
+--- !u!114 &1053393934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1053393920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d3bf3ac688a604b8a7c6f6532e01ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapGrid: {fileID: 1154115553}
+  target: {fileID: 461960552}
+  nodeType: {fileID: 114276978806050306, guid: 88f27ac62f9b33544b4b892fa62b9c03, type: 2}
+  path: {fileID: 0}
+--- !u!114 &1053393935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1053393920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bb7aa2d3cbffa944b8c29611222187d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 10
 --- !u!1 &1056049448
 GameObject:
   m_ObjectHideFlags: 0
@@ -8906,6 +8936,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 3ebccbb58c63a8d4092c2423a90aa499, type: 3}
+      propertyPath: m_TagString
+      value: Claws
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ebccbb58c63a8d4092c2423a90aa499, type: 3}
   m_IsPrefabAsset: 0
@@ -9757,6 +9791,7 @@ GameObject:
   - component: {fileID: 1736867220}
   - component: {fileID: 1736867219}
   - component: {fileID: 1736867217}
+  - component: {fileID: 1736867221}
   m_Layer: 9
   m_Name: Anky
   m_TagString: Anky
@@ -9872,6 +9907,24 @@ MonoBehaviour:
   orientation: 0
   rotation: 180
   velocity: {x: 0, y: 0, z: 0}
+--- !u!95 &1736867221
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1736867214}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 177ad22f7d6952b41bad200a68dfd346, type: 3}
+  m_Controller: {fileID: 9100000, guid: e0903cee889aeb24b9a88bee6a3152a7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1768558688
 GameObject:
   m_ObjectHideFlags: 0

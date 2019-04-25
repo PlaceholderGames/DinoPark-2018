@@ -20,7 +20,9 @@ public class DinoBaseClass : StateMachineBehaviour
         //get hold of the dino
         dino = animator.gameObject;
         //get hold of the other animal
+        
         opponent = dino.GetComponent<RaptyAI>().getDino();
+
     }
 
 }
