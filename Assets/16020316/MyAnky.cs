@@ -42,8 +42,10 @@ public class MyAnky : Agent
 
     protected override void Update()
     {
+        //lowering ankys health on update
         health = health - 0.001f;
-        Debug.Log(health);
+        //Debug.Log(health);
+
         // Idle - should only be used at startup
         
         // Eating - requires a box collision with food source

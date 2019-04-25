@@ -16,7 +16,15 @@ public class FieldOfView : MonoBehaviour {
     //public LayerMask obstacleMask; // Not using raytracing to determine visibility right now
 
     //[HideInInspector] // If you want to see the list of visible Dinos in the Inspector view, comment this out
-    public List<Transform> visibleTargets = new List<Transform>(); // this is the list of visible dinosaurs
+    public List<Transform> visibleTargets = new List<Transform>();
+
+    //adding new lists to distinguish between different objects which were found
+    public List<Transform> visibleAnkys = new List<Transform>();
+
+    public List<Transform> visibleRaptys = new List<Transform>();
+
+    //only applies to ankys
+    public List<Transform> visibleFoodSource = new List<Transform>();
 
     //[HideInInspector] // If you want to see the list of visible Dinos in the Inspector view, comment this out
     public List<Transform> stereoVisibleTargets = new List<Transform>(); // this is the list of visible dinosaurs in stereo
@@ -35,6 +43,10 @@ public class FieldOfView : MonoBehaviour {
     }
     void FindVisibleTargets()
     {
+        visibleAnkys.Clear();
+        visibleFoodSource.Clear();
+        visibleRaptys.Clear();
+
         visibleTargets.Clear ();
 	stereoVisibleTargets.Clear ();
         Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
@@ -43,10 +55,10 @@ public class FieldOfView : MonoBehaviour {
         {
             Transform target = targetsInViewRadius[i].transform;
             Vector3 dirToTarget = (target.position - transform.position).normalized;
-            //int found = target.GetComponentInParent<GameObject>().layer;
-            //int found = target.GetComponent<GameObject>().layer;
+            //finding the tag of the current target within the field of view
             string found = targetsInViewRadius[i].tag;
-            Debug.Log(found);
+            //debug used to ensure that found was working as intended
+            //Debug.Log(found);
             if (Vector3.Angle(transform.forward, dirToTarget) < stereoAngle / 2) //Can be seen in stereo
             {
                 //float distanceToTarget = Vector3.Distance(transform.position, target.position); // Only if we see it do we know how far away it is, due to stereo vision
@@ -63,9 +75,26 @@ public class FieldOfView : MonoBehaviour {
             {
                 //float directionToTarget = Vector3.Angle(transform.forward, dirToTarget); // We need the direction of the object only for checking with raytracing
                 visibleTargets.Add(target); // For now, if it is in range and angle of eyesight we can see it
+                if (found == "AnkyFood")
+                {
+                    visibleFoodSource.Add(target);
+                }
+                if(found == "Anky")
+                {
+                    visibleAnkys.Add(target);
+                }
+                if(found == "Rapty")
+                {
+                    visibleRaptys.Add(target);
+                }
             }
          
         }
+        //avoiding duplicates of the same item being added
+        visibleFoodSource = visibleFoodSource.Distinct().ToList();
+        visibleAnkys = visibleAnkys.Distinct().ToList();
+        visibleRaptys = visibleRaptys.Distinct().ToList();
+
         visibleTargets = visibleTargets.Distinct().ToList();
         stereoVisibleTargets = stereoVisibleTargets.Distinct().ToList();
     }

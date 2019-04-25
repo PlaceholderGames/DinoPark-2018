@@ -6875,6 +6875,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1536
   visibleTargets: []
+  visibleAnkys: []
+  visibleRaptys: []
+  visibleFoodSource: []
   stereoVisibleTargets: []
 --- !u!54 &1736867218
 Rigidbody:
