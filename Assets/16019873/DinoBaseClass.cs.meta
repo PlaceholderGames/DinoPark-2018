@@ -3,7 +3,10 @@ guid: d7c5f0a05c38b00469d63b4ab1edb188
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - dino: {fileID: 100106, guid: 177ad22f7d6952b41bad200a68dfd346, type: 3}
+  - opponent: {fileID: 100000, guid: 22876b3aba83f994abe2b0135f567a4f, type: 3}
+  - waterLocation: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

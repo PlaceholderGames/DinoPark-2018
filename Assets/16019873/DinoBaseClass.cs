@@ -17,9 +17,11 @@ public class DinoBaseClass : StateMachineBehaviour
     public bool deadOpponent = false;
     public bool deadDino = false;
 
+
     //reusing and overwritting this function every time the dino goes into the state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        //Debug.Log("thing");
         //get hold of the dino
         dino = animator.gameObject;
         //get hold of the other animal
@@ -28,4 +30,9 @@ public class DinoBaseClass : StateMachineBehaviour
 
     }
 
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        
+
+    }
 }

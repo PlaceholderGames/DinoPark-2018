@@ -99,10 +99,9 @@ public class RaptyAI : MonoBehaviour
         currentThirst -= decrease * Time.deltaTime;
 
         animator.SetFloat("hunger", animator.GetFloat("hunger") - decrease * Time.deltaTime);
-        Debug.Log(animator.GetFloat("hunger"));
 
         //displays raptys state of hunger atm
-        
+       // Debug.Log(animator.GetFloat("hunger"));
 
         //get hold of dino
         getDino();
