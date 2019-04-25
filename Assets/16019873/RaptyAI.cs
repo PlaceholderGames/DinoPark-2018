@@ -96,10 +96,13 @@ public class RaptyAI : MonoBehaviour
         animator.SetFloat("distance", Vector3.Distance(transform.position, otherDino.transform.position));
 
         //start taking off the hunger and thirst bar of dino
-        currentHunger -= decrease * Time.deltaTime;
         currentThirst -= decrease * Time.deltaTime;
 
-        Debug.Log(currentHunger);
+        animator.SetFloat("hunger", animator.GetFloat("hunger") - decrease * Time.deltaTime);
+        Debug.Log(animator.GetFloat("hunger"));
+
+        //displays raptys state of hunger atm
+        
 
         //get hold of dino
         getDino();

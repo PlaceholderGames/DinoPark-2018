@@ -5,13 +5,15 @@ using UnityEngine;
 //new attacking state
 public class AttackState : DinoBaseClass
 {
-
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //user message in console
         Debug.Log("Rapty is entering the Attacking State...");
 
+        //reduce speed when in attack state
+        speed = 1.0f;
+        
         //keep attacking if you haven't exited this state
         base.OnStateEnter(animator, stateInfo, layerIndex);
         dino.GetComponent<RaptyAI>().startScratching();
@@ -24,9 +26,15 @@ public class AttackState : DinoBaseClass
         //continue looking at the opponent
         dino.transform.LookAt(opponent.transform.position);
 
+        //passing in from the Idle state
+        base.OnStateEnter(animator, stateInfo, layerIndex);
+
         //get hold of the other animal
         opponent = dino.GetComponent<RaptyAI>().getDino();
         opponent = dino.GetComponent<RaptyAI>().dieDino();
+
+        animator.SetBool("deadOpponent", true);
+
     }
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -34,6 +42,7 @@ public class AttackState : DinoBaseClass
     {
         //just before exiting, stop attacking
         dino.GetComponent<RaptyAI>().stopScratching();
+
         Debug.Log("Rapty is exiting the Attacking State...");
     }
 

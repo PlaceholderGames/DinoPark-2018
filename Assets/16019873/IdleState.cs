@@ -62,8 +62,8 @@ public class IdleState : DinoBaseClass
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-	
-	}
+        Debug.Log("Rapty is exiting the Idle State..."); 
+    }
 
 	
 }

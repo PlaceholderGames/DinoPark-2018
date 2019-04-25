@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EatState : DinoBaseClass
 {
+
+    private int hungerIncrease = 8;
+
     // Eating - requires a box collision with a dead dino
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -11,23 +14,27 @@ public class EatState : DinoBaseClass
         //user message in console
         Debug.Log("Rapty is entering the Eating State...");
 
+        //When eating decrease speed to 0
+        speed = 0.0f;
+
         //passing in from the Idle state
         base.OnStateEnter(animator, stateInfo, layerIndex);
-        //RaptyAI.currentHunger = RaptyAI.maxHunger;
-	}
+
+    }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
-     
+        animator.SetFloat("hunger", animator.GetFloat("hunger") + hungerIncrease * Time.deltaTime);
+        //Increase hunger in raptor
     }
 
-	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-	
-	}
+        //user message in console
+        Debug.Log("Rapty is exiting the Eating State...");
+    }
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
 	//override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {

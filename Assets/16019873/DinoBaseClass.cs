@@ -13,6 +13,9 @@ public class DinoBaseClass : StateMachineBehaviour
     public float accuracy = 5.0f;
     //water search variable
     public GameObject waterLocation;
+    //variables for the dead state
+    public bool deadOpponent = false;
+    public bool deadDino = false;
 
     //reusing and overwritting this function every time the dino goes into the state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
