@@ -13,61 +13,61 @@ AnimatorController:
     m_DefaultFloat: 100
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: distance
     m_Type: 1
     m_DefaultFloat: 100
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: speedMult
     m_Type: 1
     m_DefaultFloat: 1.5
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: health
     m_Type: 1
     m_DefaultFloat: 100
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: nobodyAround
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: thirst
     m_Type: 1
     m_DefaultFloat: 100
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: deadOpponent
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: deadDino
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isAttacking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isAlerted
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -94,6 +94,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dino: {fileID: 100106, guid: 177ad22f7d6952b41bad200a68dfd346, type: 3}
   opponent: {fileID: 100000, guid: 22876b3aba83f994abe2b0135f567a4f, type: 3}
+  fov: {fileID: 0}
+  wander: {fileID: 0}
+  pursue: {fileID: 0}
+  face: {fileID: 0}
   speed: 3
   rotationSpeed: 2
   accuracy: 5
@@ -112,7 +116,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dino: {fileID: 100106, guid: 177ad22f7d6952b41bad200a68dfd346, type: 3}
-  opponent: {fileID: 100000, guid: 22876b3aba83f994abe2b0135f567a4f, type: 3}
+  opponent: {fileID: 0}
+  fov: {fileID: 0}
+  wander: {fileID: 0}
+  pursue: {fileID: 0}
+  face: {fileID: 0}
   speed: 3
   rotationSpeed: 2
   accuracy: 5
@@ -132,6 +140,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dino: {fileID: 0}
   opponent: {fileID: 0}
+  fov: {fileID: 0}
+  wander: {fileID: 0}
+  pursue: {fileID: 0}
+  face: {fileID: 0}
   speed: 3
   rotationSpeed: 2
   accuracy: 5
@@ -151,6 +163,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dino: {fileID: 100106, guid: 177ad22f7d6952b41bad200a68dfd346, type: 3}
   opponent: {fileID: 100000, guid: 22876b3aba83f994abe2b0135f567a4f, type: 3}
+  fov: {fileID: 0}
+  wander: {fileID: 0}
+  pursue: {fileID: 0}
+  face: {fileID: 0}
   speed: 2
   rotationSpeed: 1
   accuracy: 3
@@ -170,6 +186,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dino: {fileID: 100106, guid: 177ad22f7d6952b41bad200a68dfd346, type: 3}
   opponent: {fileID: 100106, guid: 177ad22f7d6952b41bad200a68dfd346, type: 3}
+  fov: {fileID: 0}
+  wander: {fileID: 0}
+  pursue: {fileID: 0}
+  face: {fileID: 0}
   speed: 3
   rotationSpeed: 2
   accuracy: 5
@@ -200,6 +220,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dino: {fileID: 100106, guid: 177ad22f7d6952b41bad200a68dfd346, type: 3}
   opponent: {fileID: 100000, guid: 22876b3aba83f994abe2b0135f567a4f, type: 3}
+  fov: {fileID: 0}
+  wander: {fileID: 0}
+  pursue: {fileID: 0}
+  face: {fileID: 0}
   speed: 3
   rotationSpeed: 2
   accuracy: 5
@@ -219,6 +243,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dino: {fileID: 0}
   opponent: {fileID: 0}
+  fov: {fileID: 0}
+  wander: {fileID: 0}
+  pursue: {fileID: 0}
+  face: {fileID: 0}
   speed: 3
   rotationSpeed: 2
   accuracy: 5

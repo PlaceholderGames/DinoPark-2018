@@ -9,6 +9,10 @@ public class DinoBaseClass : StateMachineBehaviour
     Animator animator;
     public GameObject dino;
     public GameObject opponent;
+    public FieldOfView fov;
+    public Wander wander;
+    public Pursue pursue;
+    public Face face;
     //speed properties regarding distance
     public float speed = 3.0f;
     public float rotationSpeed = 2.0f;
@@ -31,16 +35,21 @@ public class DinoBaseClass : StateMachineBehaviour
     public const int seaLevel = 25;
 
 
-
     //reusing and overwritting this function every time the dino goes into the state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //Debug.Log("thing");
+
+        //Really bad to do this, should be loaded on awake
+        fov = dino.GetComponent<FieldOfView>();
+        pursue = dino.GetComponent<Pursue>();
+        wander = dino.GetComponent<Wander>();
+        face = dino.GetComponent<Face>();
+
         //get hold of the dino
         dino = animator.gameObject;
         //get hold of the other animal
-        
         opponent = dino.GetComponent<RaptyAI>().getDino();
+        
 
     }
 

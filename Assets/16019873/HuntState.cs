@@ -5,8 +5,8 @@ using UnityEngine;
 public class HuntState : DinoBaseClass
 {
 
-	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //user message in console
         Debug.Log("Rapty is entering the Hunting State...");
@@ -14,9 +14,12 @@ public class HuntState : DinoBaseClass
         //passing in from the Idle state
         base.OnStateEnter(animator, stateInfo, layerIndex);
 
+        pursue.enabled = true;
+        face.enabled = false;
+
         //when entering this state,
         //the walking speed is increasing for rapty
-        speed = 6.0f;
+        speed = 30.0f;
     }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -24,15 +27,19 @@ public class HuntState : DinoBaseClass
     {
         //rotate towards the detected target
         //the hunting code is here (moving code)
+
+  
         var direction = opponent.transform.position - dino.transform.position;
         dino.transform.rotation = Quaternion.Slerp(dino.transform.rotation, Quaternion.LookRotation(direction), rotationSpeed * Time.deltaTime);
         dino.transform.Translate(0, 0, Time.deltaTime * speed);
+
 	}
 
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        face.enabled = false;
         //user message in console
         Debug.Log("Rapty is exiting the Hunting State...");
     }

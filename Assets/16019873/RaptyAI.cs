@@ -24,6 +24,10 @@ public class RaptyAI : MonoBehaviour
     public float currentThirst = 100;
     public float currentHealth = 100;
 
+    public FieldOfView fov;
+    public Wander wander;
+    public Pursue pursue;
+    public Face face;
 
     //work out the distance between one dino to another
     public GameObject getDino()
@@ -66,6 +70,11 @@ public class RaptyAI : MonoBehaviour
     //use this for initialisation
     private void Start()
     {
+        fov = thisDino.GetComponent<FieldOfView>();
+        pursue = thisDino.GetComponent<Pursue>();
+        wander = thisDino.GetComponent<Wander>();
+        face = thisDino.GetComponent<Face>();
+
         //setting it to get data from the FSM created in Unity Animator
         animator = GetComponent<Animator>();
         alphaRapty = animator.gameObject;
@@ -77,29 +86,32 @@ public class RaptyAI : MonoBehaviour
         currentHealth = DinoBaseClass.maxHealth;
         currentHunger = DinoBaseClass. maxHunger;
         currentThirst = DinoBaseClass.maxThirst;
-        
+
     }
 
     //update is called once per frame
     private void Update()
     {
-        animator.SetFloat("distance", Vector3.Distance(transform.position, opponent.transform.position));
 
+       
+        //animator.SetFloat("distance", Vector3.Distance(transform.position, opponent.transform.position));
+        
         //start taking off the hunger and thirst bar of dino
-        currentThirst -= DinoBaseClass.decrease * Time.deltaTime;
+        //currentThirst -= DinoBaseClass.decrease * Time.deltaTime;
 
         animator.SetFloat("hunger", animator.GetFloat("hunger") - DinoBaseClass.decrease * Time.deltaTime);
+        //animator.SetFloat("thirst", animator.GetFloat("thirst") - DinoBaseClass.decrease * Time.deltaTime);
+        //Debug.Log(animator.GetFloat("hunger"));
 
         //displays raptys state of hunger atm
-       // Debug.Log(animator.GetFloat("hunger"));
 
         //get hold of dino
         getDino();
+
         //and push him back to not drown
         if (transform.position.z <= DinoBaseClass.seaLevel)
         {
             getDino();
-            animator.SetFloat("thirst", Vector3.Distance(transform.position, thisDino.transform.position));
         }
         
         //kill dino if he has his values to 0

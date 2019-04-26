@@ -31,19 +31,20 @@ public class IdleState : DinoBaseClass
         Debug.Log("Rapty is entering the Idle State...");
     }
 
-	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //this function will run over and over again until the dino is in this state
         if (waypoints.Length == 0) return;
         //if a waypoint is reached 
         //then update and get a new one
         //as it starts at 0
-        if(Vector3.Distance(waypoints[currentWaypoint].transform.position, moveDino.transform.position) < accuracy)
+
+        if (Vector3.Distance(waypoints[currentWaypoint].transform.position, moveDino.transform.position) < accuracy)
         {
             currentWaypoint++;
             //creates a circuit of waypoints
-            if(currentWaypoint >= waypoints.Length)
+            if (currentWaypoint >= waypoints.Length)
             {
                 currentWaypoint = 0;
             }
@@ -57,13 +58,12 @@ public class IdleState : DinoBaseClass
         //pushing it forward to the z axis
         moveDino.transform.Translate(0, 0, Time.deltaTime * speed);
 
-	}
-
-	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        Debug.Log("Rapty is exiting the Idle State..."); 
     }
 
-	
+    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        wander.enabled = false;
+        Debug.Log("Rapty is exiting the Idle State...");
+    }
 }
