@@ -8762,19 +8762,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisDino: {fileID: 0}
-  otherDino: {fileID: 1736867214}
+  opponent: {fileID: 0}
   claws: {fileID: 100004, guid: 3ebccbb58c63a8d4092c2423a90aa499, type: 3}
   Cube3: {fileID: 689591201}
-  follower: {fileID: 0}
-  aStar: {fileID: 122096375}
+  followingDino: {fileID: 0}
+  aStarVar: {fileID: 0}
   alphaRapty: 1
   returnToAlphaRapty: 0
   currentHunger: 100
   currentThirst: 100
   currentHealth: 100
-  decrease: 3
-  increase: 3
-  seaLevel: 25
 --- !u!114 &1053393934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11626,19 +11623,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisDino: {fileID: 0}
-  otherDino: {fileID: 1736867214}
+  opponent: {fileID: 0}
   claws: {fileID: 100004, guid: 3ebccbb58c63a8d4092c2423a90aa499, type: 3}
   Cube3: {fileID: 434281939}
-  follower: {fileID: 0}
-  aStar: {fileID: 122096375}
-  alphaRapty: 1
+  followingDino: {fileID: 0}
+  aStarVar: {fileID: 0}
+  alphaRapty: 0
   returnToAlphaRapty: 0
   currentHunger: 100
   currentThirst: 100
   currentHealth: 100
-  decrease: 3
-  increase: 3
-  seaLevel: 25
 --- !u!95 &1760863581
 Animator:
   serializedVersion: 3

@@ -56,6 +56,18 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: isAttacking
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: isAlerted
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -556,6 +568,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 3
     m_ConditionEvent: distance
     m_EventTreshold: 7
+  - m_ConditionMode: 2
+    m_ConditionEvent: isAttacking
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102349215915635324}
   m_Solo: 0
@@ -715,6 +730,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: distance
     m_EventTreshold: 7
+  - m_ConditionMode: 1
+    m_ConditionEvent: isAttacking
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102196986871553830}
   m_Solo: 0
@@ -993,25 +1011,25 @@ AnimatorStateMachine:
     m_Position: {x: 228, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102349215915635324}
-    m_Position: {x: 372, y: 0, z: 0}
+    m_Position: {x: 396, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102196986871553830}
-    m_Position: {x: 624, y: 0, z: 0}
+    m_Position: {x: 708, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102484899349657816}
-    m_Position: {x: 468, y: 216, z: 0}
+    m_Position: {x: 468, y: 228, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102569262312924950}
-    m_Position: {x: 228, y: 336, z: 0}
+    m_Position: {x: 228, y: 348, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102463958137329484}
-    m_Position: {x: 624, y: -132, z: 0}
+    m_Position: {x: 708, y: -132, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102125549322975454}
-    m_Position: {x: 624, y: 108, z: 0}
+    m_Position: {x: 612, y: 108, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102922742226452698}
-    m_Position: {x: 876, y: 108, z: 0}
+    m_Position: {x: 900, y: 96, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

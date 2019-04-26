@@ -4,41 +4,31 @@ using UnityEngine;
 
 public class RaptyAI : MonoBehaviour
 {
+    //creating a variable to be able to access the conditions set in the Unity Animator Controller
     Animator animator;
     //linked to the dino
     public GameObject thisDino;
-    public GameObject otherDino;
+    public GameObject opponent;
     public GameObject claws;
     public GameObject Cube3;   //rapty's body
     //there is one Alpha male raptor that will control the rest when in the hunting stage
     //the rest will follow his commands
-    public ASPathFollower follower;
+    public ASPathFollower followingDino;
     //A star path finding
-    public AStarSearch aStar;
+    public AStarSearch aStarVar;
     //alpha male variables
     public bool alphaRapty = false;
     public bool returnToAlphaRapty = false;
-    //hunger, thirst and health are represented as values
-    //that increase or decrease over time, 
-    //depending on what stage the dino is in and what was the last tracked activity
-    public static int maxHunger = 100;
-    public static int maxThirst = 100;
-    public static int maxHealth = 100;
     //current hunger/thirst values
     public float currentHunger = 100;
     public float currentThirst = 100;
     public float currentHealth = 100;
-    //hunger and thirst will be decreased or increased, depending on the state by 3 values each time
-    public int decrease = 3;
-    public int increase = 3;
-    //sea level that depends on the grid size 
-    public int seaLevel = 25;
 
 
     //work out the distance between one dino to another
     public GameObject getDino()
     {
-        return otherDino;
+        return opponent;
     }
 
     //work out the distance between one dino to another
@@ -80,25 +70,25 @@ public class RaptyAI : MonoBehaviour
         animator = GetComponent<Animator>();
         alphaRapty = animator.gameObject;
         //make other raptys follow the alpha dino
-        aStar = GetComponent<AStarSearch>();
-        follower = GetComponent<ASPathFollower>();
+        aStarVar = GetComponent<AStarSearch>();
+        followingDino = GetComponent<ASPathFollower>();
 
         //at the start of the game, dino got full health/hunger/thirst bar
-        currentHealth = maxHealth;
-        currentHunger = maxHunger;
-        currentThirst = maxThirst;
+        currentHealth = DinoBaseClass.maxHealth;
+        currentHunger = DinoBaseClass. maxHunger;
+        currentThirst = DinoBaseClass.maxThirst;
         
     }
 
     //update is called once per frame
     private void Update()
     {
-        animator.SetFloat("distance", Vector3.Distance(transform.position, otherDino.transform.position));
+        animator.SetFloat("distance", Vector3.Distance(transform.position, opponent.transform.position));
 
         //start taking off the hunger and thirst bar of dino
-        currentThirst -= decrease * Time.deltaTime;
+        currentThirst -= DinoBaseClass.decrease * Time.deltaTime;
 
-        animator.SetFloat("hunger", animator.GetFloat("hunger") - decrease * Time.deltaTime);
+        animator.SetFloat("hunger", animator.GetFloat("hunger") - DinoBaseClass.decrease * Time.deltaTime);
 
         //displays raptys state of hunger atm
        // Debug.Log(animator.GetFloat("hunger"));
@@ -106,7 +96,7 @@ public class RaptyAI : MonoBehaviour
         //get hold of dino
         getDino();
         //and push him back to not drown
-        if (transform.position.z <= seaLevel)
+        if (transform.position.z <= DinoBaseClass.seaLevel)
         {
             getDino();
             animator.SetFloat("thirst", Vector3.Distance(transform.position, thisDino.transform.position));
