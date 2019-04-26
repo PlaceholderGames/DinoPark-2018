@@ -17,8 +17,9 @@ public class MyAnky : Agent
     };
 
     public Animator anim;
-
+    public float maxHealth = 100.0f;
     public float health;
+    
 
     // Use this for initialization
     protected override void Start()
@@ -34,6 +35,7 @@ public class MyAnky : Agent
         anim.SetBool("isFleeing", false);
         anim.SetBool("isDead", false);
         anim.SetFloat("speedMod", 1.0f);
+        health = maxHealth;
         // This with GetBool and GetFloat allows 
         // you to see how to change the flag parameters in the animation controller
         base.Start();
