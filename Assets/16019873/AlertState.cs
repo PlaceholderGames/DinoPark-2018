@@ -8,13 +8,18 @@ public class AlertState : DinoBaseClass
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Rapty is entering the Alert State...");
+        animator.SetBool("isAttacked", true);
     }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-	
-	}
+        //if rapty is alert then it means that some other animal is near by
+        //and he can go into fleeing if his health is under the minimum
+        //but to try to be not noticed by anyone, the dino will not move for a few seconds
+        
+
+    }
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

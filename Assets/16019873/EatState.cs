@@ -25,8 +25,8 @@ public class EatState : DinoBaseClass
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetFloat("hunger", animator.GetFloat("hunger") + hungerIncrease * Time.deltaTime);
         //Increase hunger in raptor
+        animator.SetFloat("hunger", animator.GetFloat("hunger") + hungerIncrease * Time.deltaTime);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

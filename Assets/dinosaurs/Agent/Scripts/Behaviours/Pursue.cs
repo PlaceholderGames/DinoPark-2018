@@ -19,7 +19,7 @@ public class Pursue : Seek
     {
         Vector3 direction = targetAux.transform.position - transform.position;
         float distance = direction.magnitude;
-        float speed = agent.velocity.magnitude;
+        float speed = agent.velocity.magnitude * 10;
         float prediction;
         if (speed <= distance / maxPrediction)
             prediction = maxPrediction;

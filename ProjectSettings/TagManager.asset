@@ -14,6 +14,7 @@ TagManager:
   - Rapty
   - waypoint
   - Claws
+  - ank
   layers:
   - Default
   - TransparentFX

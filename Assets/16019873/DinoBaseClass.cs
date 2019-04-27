@@ -29,8 +29,12 @@ public class DinoBaseClass : StateMachineBehaviour
     public static int maxThirst = 100;
     public static int maxHealth = 100;
     //hunger and thirst will be decreased or increased, depending on the state by 3 values each time
-    public const int decrease = 3;
-    public const int increase = 3;
+    public const int decreaseHunger = 3;
+    public const int decreaseThirst = 1;
+    public const int increaseHunger = 3;
+    public const int increaseThirst = 2;
+    public const int decreaseHealth = 5;
+    public const int increaseHealth = 5;
     //sea level that depends on the grid size 
     public const int seaLevel = 25;
 
@@ -38,17 +42,20 @@ public class DinoBaseClass : StateMachineBehaviour
     //reusing and overwritting this function every time the dino goes into the state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
-        //Really bad to do this, should be loaded on awake
-        fov = dino.GetComponent<FieldOfView>();
-        pursue = dino.GetComponent<Pursue>();
-        wander = dino.GetComponent<Wander>();
-        face = dino.GetComponent<Face>();
-
-        //get hold of the dino
         dino = animator.gameObject;
+        wander = animator.gameObject.GetComponent<Wander>();
+        pursue = animator.gameObject.GetComponent<Pursue>();
+        face = animator.gameObject.GetComponent<Face>();
+        fov = animator.gameObject.GetComponent<FieldOfView>();
+        //Really bad to do this, should be loaded on awake
+        //fov = dino.GetComponent<FieldOfView>();
+        //pursue = dino.GetComponent<Pursue>();
+        //wander = dino.GetComponent<Wander>();
+        //face = dino.GetComponent<Face>();
+        //get hold of the dino
+        
         //get hold of the other animal
-        opponent = dino.GetComponent<RaptyAI>().getDino();
+        //opponent = dino.GetComponent<RaptyAI>().getDino();
         
 
     }

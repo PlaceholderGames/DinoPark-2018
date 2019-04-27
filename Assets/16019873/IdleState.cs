@@ -15,18 +15,21 @@ public class IdleState : DinoBaseClass
     void Awake()
     {
         waypoints = GameObject.FindGameObjectsWithTag("waypoint");
+
     }
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //this will be executed no matter what the dinos are doing at this moment
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        base.OnStateEnter(animator, stateInfo, layerIndex);
         //even if the 'quest' that the dino is doing at the moment, it would still go back to the original position
         //and restart 'idle' again after being interrupted
         moveDino = animator.gameObject;
-        base.OnStateEnter(animator, stateInfo, layerIndex);
         currentWaypoint = 0;
-
+        
+        
+        wander.enabled = true;
         //user message in console
         Debug.Log("Rapty is entering the Idle State...");
     }
@@ -39,7 +42,6 @@ public class IdleState : DinoBaseClass
         //if a waypoint is reached 
         //then update and get a new one
         //as it starts at 0
-
         if (Vector3.Distance(waypoints[currentWaypoint].transform.position, moveDino.transform.position) < accuracy)
         {
             currentWaypoint++;
@@ -53,17 +55,19 @@ public class IdleState : DinoBaseClass
         //rotate towards the target that has been detected
         //move the dino forward
         //slerp is to slowly turn and start facing the waypoint
-        var direction = waypoints[currentWaypoint].transform.position - moveDino.transform.position;
-        moveDino.transform.rotation = Quaternion.Slerp(moveDino.transform.rotation, Quaternion.LookRotation(direction), rotationSpeed * Time.deltaTime);
+        //var direction = waypoints[currentWaypoint].transform.position - moveDino.transform.position;
+        //moveDino.transform.rotation = Quaternion.Slerp(moveDino.transform.rotation, Quaternion.LookRotation(direction), rotationSpeed * Time.deltaTime);
         //pushing it forward to the z axis
-        moveDino.transform.Translate(0, 0, Time.deltaTime * speed);
-
+        //moveDino.transform.Translate(0, 0, Time.deltaTime * speed);
+        
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        base.OnStateEnter(animator, stateInfo, layerIndex);
         wander.enabled = false;
+
         Debug.Log("Rapty is exiting the Idle State...");
     }
 }

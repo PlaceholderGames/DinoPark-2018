@@ -92,21 +92,26 @@ public class RaptyAI : MonoBehaviour
     //update is called once per frame
     private void Update()
     {
-
-       
-        //animator.SetFloat("distance", Vector3.Distance(transform.position, opponent.transform.position));
+        if (animator.GetFloat("hunger") < 50)
+           animator.SetFloat("distance", Vector3.Distance(transform.position, opponent.transform.position));
         
         //start taking off the hunger and thirst bar of dino
         //currentThirst -= DinoBaseClass.decrease * Time.deltaTime;
 
-        animator.SetFloat("hunger", animator.GetFloat("hunger") - DinoBaseClass.decrease * Time.deltaTime);
-        //animator.SetFloat("thirst", animator.GetFloat("thirst") - DinoBaseClass.decrease * Time.deltaTime);
-        //Debug.Log(animator.GetFloat("hunger"));
-
+        animator.SetFloat("hunger", animator.GetFloat("hunger") - DinoBaseClass.decreaseHunger * Time.deltaTime);
+        animator.SetFloat("thirst", animator.GetFloat("thirst") - DinoBaseClass.decreaseThirst * Time.deltaTime);
+        
         //displays raptys state of hunger atm
+        //Debug.Log(animator.GetFloat("hunger"));
 
         //get hold of dino
         getDino();
+
+        //take health from rapty if it has been attacked
+        if (animator.GetBool("isAttacked") == true)
+        {
+            animator.SetFloat("health", animator.GetFloat("health") - DinoBaseClass.decreaseHealth * Time.deltaTime);
+        }
 
         //and push him back to not drown
         if (transform.position.z <= DinoBaseClass.seaLevel)
