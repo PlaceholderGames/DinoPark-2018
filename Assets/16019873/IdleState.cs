@@ -11,13 +11,14 @@ public class IdleState : DinoBaseClass
     //check which waypoint we are currently at when swapping states
     int currentWaypoint;
 
+    //EXAMPLE:https://www.youtube.com/watch?v=aEPSuGlcTUQ
+
     //find all game objects with this tag
     void Awake()
     {
         waypoints = GameObject.FindGameObjectsWithTag("waypoint");
 
     }
-
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //this will be executed no matter what the dinos are doing at this moment
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -27,12 +28,13 @@ public class IdleState : DinoBaseClass
         //and restart 'idle' again after being interrupted
         moveDino = animator.gameObject;
         currentWaypoint = 0;
-        
-        
+
+
         wander.enabled = true;
         //user message in console
         Debug.Log("Rapty is entering the Idle State...");
     }
+
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

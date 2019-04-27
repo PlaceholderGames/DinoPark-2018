@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EatState : DinoBaseClass
 {
-
     private int hungerIncrease = 8;
 
     // Eating - requires a box collision with a dead dino

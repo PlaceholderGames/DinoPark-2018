@@ -13,6 +13,8 @@ public class DinoBaseClass : StateMachineBehaviour
     public Wander wander;
     public Pursue pursue;
     public Face face;
+    public AStarSearch AS;
+    public ASPathFollower ASfollower;
     //speed properties regarding distance
     public float speed = 3.0f;
     public float rotationSpeed = 2.0f;
@@ -31,8 +33,6 @@ public class DinoBaseClass : StateMachineBehaviour
     //hunger and thirst will be decreased or increased, depending on the state by 3 values each time
     public const int decreaseHunger = 3;
     public const int decreaseThirst = 1;
-    public const int increaseHunger = 3;
-    public const int increaseThirst = 2;
     public const int decreaseHealth = 5;
     public const int increaseHealth = 5;
     //sea level that depends on the grid size 
@@ -47,16 +47,20 @@ public class DinoBaseClass : StateMachineBehaviour
         pursue = animator.gameObject.GetComponent<Pursue>();
         face = animator.gameObject.GetComponent<Face>();
         fov = animator.gameObject.GetComponent<FieldOfView>();
+        AS = animator.gameObject.GetComponent<AStarSearch>();
+        ASfollower = animator.gameObject.GetComponent<ASPathFollower>();
         //Really bad to do this, should be loaded on awake
         //fov = dino.GetComponent<FieldOfView>();
         //pursue = dino.GetComponent<Pursue>();
         //wander = dino.GetComponent<Wander>();
         //face = dino.GetComponent<Face>();
         //get hold of the dino
-        
+
         //get hold of the other animal
         //opponent = dino.GetComponent<RaptyAI>().getDino();
-        
+
+        //set the nobody around bool to be always anky
+        //opponent = GameObject.FindGameObjectsWithTag("Anky");
 
     }
 

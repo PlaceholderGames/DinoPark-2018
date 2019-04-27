@@ -9,6 +9,7 @@ public class AlertState : DinoBaseClass
     {
         Debug.Log("Rapty is entering the Alert State...");
         animator.SetBool("isAttacked", true);
+        //play animation with exclamation mark
     }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -17,13 +18,19 @@ public class AlertState : DinoBaseClass
         //if rapty is alert then it means that some other animal is near by
         //and he can go into fleeing if his health is under the minimum
         //but to try to be not noticed by anyone, the dino will not move for a few seconds
-        
+        if (animator.GetBool("nobodyAround") == false)
+        {
+            //When drinking decrease speed to 0
+            speed = 0.0f;
+            //WaitForSeconds(Time.deltaTime);
+        }
 
     }
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.SetBool("isAttacked", false);
         Debug.Log("Rapty is exiting the Alert State...");
     }
 

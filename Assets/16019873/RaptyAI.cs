@@ -23,7 +23,7 @@ public class RaptyAI : MonoBehaviour
     public float currentHunger = 100;
     public float currentThirst = 100;
     public float currentHealth = 100;
-
+    //values for enabling and disabling scripts in run time
     public FieldOfView fov;
     public Wander wander;
     public Pursue pursue;
@@ -92,12 +92,12 @@ public class RaptyAI : MonoBehaviour
     //update is called once per frame
     private void Update()
     {
+        //make the dino start facing the target if in hunting mode,
+        //(which will assume that his hunger is below 50
         if (animator.GetFloat("hunger") < 50)
            animator.SetFloat("distance", Vector3.Distance(transform.position, opponent.transform.position));
         
         //start taking off the hunger and thirst bar of dino
-        //currentThirst -= DinoBaseClass.decrease * Time.deltaTime;
-
         animator.SetFloat("hunger", animator.GetFloat("hunger") - DinoBaseClass.decreaseHunger * Time.deltaTime);
         animator.SetFloat("thirst", animator.GetFloat("thirst") - DinoBaseClass.decreaseThirst * Time.deltaTime);
         
@@ -114,6 +114,7 @@ public class RaptyAI : MonoBehaviour
         }
 
         //and push him back to not drown
+        //FIX HERE
         if (transform.position.z <= DinoBaseClass.seaLevel)
         {
             getDino();
@@ -124,6 +125,12 @@ public class RaptyAI : MonoBehaviour
         {
             dieDino();
             CancelInvoke();
+        }
+
+        //kill dino if he has his thirst has hit 0
+        if (currentThirst <= 0)
+        {
+            dieDino();
         }
 
     }
