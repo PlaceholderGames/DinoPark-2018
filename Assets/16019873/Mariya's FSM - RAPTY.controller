@@ -74,6 +74,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: yAxis
+    m_Type: 3
+    m_DefaultFloat: 0
+    m_DefaultInt: 90
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -104,6 +110,10 @@ MonoBehaviour:
   wander: {fileID: 0}
   pursue: {fileID: 0}
   face: {fileID: 0}
+  AS: {fileID: 0}
+  ASfollower: {fileID: 0}
+  flee: {fileID: 0}
+  raptyAI: {fileID: 0}
   speed: 3
   rotationSpeed: 2
   accuracy: 5
@@ -127,6 +137,10 @@ MonoBehaviour:
   wander: {fileID: 0}
   pursue: {fileID: 0}
   face: {fileID: 0}
+  AS: {fileID: 0}
+  ASfollower: {fileID: 0}
+  flee: {fileID: 0}
+  raptyAI: {fileID: 0}
   speed: 3
   rotationSpeed: 2
   accuracy: 5
@@ -150,6 +164,10 @@ MonoBehaviour:
   wander: {fileID: 0}
   pursue: {fileID: 0}
   face: {fileID: 0}
+  AS: {fileID: 0}
+  ASfollower: {fileID: 0}
+  flee: {fileID: 0}
+  raptyAI: {fileID: 0}
   speed: 3
   rotationSpeed: 2
   accuracy: 5
@@ -173,6 +191,10 @@ MonoBehaviour:
   wander: {fileID: 0}
   pursue: {fileID: 0}
   face: {fileID: 0}
+  AS: {fileID: 0}
+  ASfollower: {fileID: 0}
+  flee: {fileID: 0}
+  raptyAI: {fileID: 0}
   speed: 2
   rotationSpeed: 1
   accuracy: 3
@@ -196,6 +218,10 @@ MonoBehaviour:
   wander: {fileID: 0}
   pursue: {fileID: 0}
   face: {fileID: 0}
+  AS: {fileID: 0}
+  ASfollower: {fileID: 0}
+  flee: {fileID: 0}
+  raptyAI: {fileID: 0}
   speed: 3
   rotationSpeed: 2
   accuracy: 5
@@ -213,6 +239,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea749e29c3ca06345b87293547d9ac9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dino: {fileID: 0}
+  opponent: {fileID: 0}
+  fov: {fileID: 0}
+  wander: {fileID: 0}
+  pursue: {fileID: 0}
+  face: {fileID: 0}
+  AS: {fileID: 0}
+  ASfollower: {fileID: 0}
+  flee: {fileID: 0}
+  raptyAI: {fileID: 0}
+  speed: 3
+  rotationSpeed: 2
+  accuracy: 5
+  waterLocation: {fileID: 0}
+  deadOpponent: 0
+  deadDino: 0
 --- !u!114 &114959670153144354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -230,6 +272,10 @@ MonoBehaviour:
   wander: {fileID: 0}
   pursue: {fileID: 0}
   face: {fileID: 0}
+  AS: {fileID: 0}
+  ASfollower: {fileID: 0}
+  flee: {fileID: 0}
+  raptyAI: {fileID: 0}
   speed: 3
   rotationSpeed: 2
   accuracy: 5
@@ -253,6 +299,10 @@ MonoBehaviour:
   wander: {fileID: 0}
   pursue: {fileID: 0}
   face: {fileID: 0}
+  AS: {fileID: 0}
+  ASfollower: {fileID: 0}
+  flee: {fileID: 0}
+  raptyAI: {fileID: 0}
   speed: 3
   rotationSpeed: 2
   accuracy: 5
@@ -401,6 +451,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: thirst
     m_EventTreshold: 50
+  - m_ConditionMode: 4
+    m_ConditionEvent: yAxis
+    m_EventTreshold: 36
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102569262312924950}
   m_Solo: 0

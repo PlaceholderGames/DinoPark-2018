@@ -24,6 +24,8 @@ public class IdleState : DinoBaseClass
     //this will be executed no matter what the dinos are doing at this moment
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        //user message in console
+        Debug.Log("Rapty is entering the Idle State...");
         base.OnStateEnter(animator, stateInfo, layerIndex);
         //even if the 'quest' that the dino is doing at the moment, it would still go back to the original position
         //and restart 'idle' again after being interrupted
@@ -31,8 +33,6 @@ public class IdleState : DinoBaseClass
         currentWaypoint = 0;
 
         wander.enabled = true;
-        //user message in console
-        Debug.Log("Rapty is entering the Idle State...");
     }
 
 
@@ -40,8 +40,11 @@ public class IdleState : DinoBaseClass
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
+        animator.SetFloat("yAxis", animator.gameObject.transform.position.y);
+
         //this function will run over and over again until the dino is in this state
         if (waypoints.Length == 0) return;
+
         //if a waypoint is reached 
         //then update and get a new one
         //as it starts at 0
@@ -60,10 +63,7 @@ public class IdleState : DinoBaseClass
 
         }
 
-        
-
-        
-
+       
         //rotate towards the target that has been detected
         //move the dino forward
         //slerp is to slowly turn and start facing the waypoint

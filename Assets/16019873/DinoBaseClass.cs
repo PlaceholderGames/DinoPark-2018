@@ -43,9 +43,8 @@ public class DinoBaseClass : StateMachineBehaviour
     //reusing and overwritting this function every time the dino goes into the state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //Really bad to do this, should be loaded on awake
-
         dino = animator.gameObject;
+        //Really bad to do this, should be loaded on awake
         wander = animator.gameObject.GetComponent<Wander>();
         pursue = animator.gameObject.GetComponent<Pursue>();
         face = animator.gameObject.GetComponent<Face>();
@@ -54,6 +53,8 @@ public class DinoBaseClass : StateMachineBehaviour
         ASfollower = animator.gameObject.GetComponent<ASPathFollower>();
         flee = animator.gameObject.GetComponent<Flee>();
         raptyAI = animator.gameObject.GetComponent<RaptyAI>();
+
+        
         //get hold of the dino
         //dino = dino.GetComponent<RaptyAI>().getDino();
 
