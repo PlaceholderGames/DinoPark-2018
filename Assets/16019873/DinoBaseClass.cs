@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //new base class for the dinos (that will contain information regarding distances from other surroundings)
-public class DinoBaseClass : StateMachineBehaviour 
+public class DinoBaseClass : StateMachineBehaviour
 {
     //creating a variable to be able to access the conditions set in the Unity Animator Controller
     Animator animator;
@@ -15,6 +15,8 @@ public class DinoBaseClass : StateMachineBehaviour
     public Face face;
     public AStarSearch AS;
     public ASPathFollower ASfollower;
+    public Flee flee;
+    public RaptyAI raptyAI;
     //speed properties regarding distance
     public float speed = 3.0f;
     public float rotationSpeed = 2.0f;
@@ -38,10 +40,11 @@ public class DinoBaseClass : StateMachineBehaviour
     //sea level that depends on the grid size 
     public const int seaLevel = 25;
 
-
     //reusing and overwritting this function every time the dino goes into the state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        //Really bad to do this, should be loaded on awake
+
         dino = animator.gameObject;
         wander = animator.gameObject.GetComponent<Wander>();
         pursue = animator.gameObject.GetComponent<Pursue>();
@@ -49,15 +52,13 @@ public class DinoBaseClass : StateMachineBehaviour
         fov = animator.gameObject.GetComponent<FieldOfView>();
         AS = animator.gameObject.GetComponent<AStarSearch>();
         ASfollower = animator.gameObject.GetComponent<ASPathFollower>();
-        //Really bad to do this, should be loaded on awake
-        //fov = dino.GetComponent<FieldOfView>();
-        //pursue = dino.GetComponent<Pursue>();
-        //wander = dino.GetComponent<Wander>();
-        //face = dino.GetComponent<Face>();
+        flee = animator.gameObject.GetComponent<Flee>();
+        raptyAI = animator.gameObject.GetComponent<RaptyAI>();
         //get hold of the dino
+        //dino = dino.GetComponent<RaptyAI>().getDino();
 
         //get hold of the other animal
-        //opponent = dino.GetComponent<RaptyAI>().getDino();
+        //opponent = opponent.GetComponent<RaptyAI>().getDino();
 
         //set the nobody around bool to be always anky
         //opponent = GameObject.FindGameObjectsWithTag("Anky");

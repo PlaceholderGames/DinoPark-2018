@@ -12,8 +12,7 @@ public class HuntState : DinoBaseClass
         //user message in console
         Debug.Log("Rapty is entering the Hunting State...");
 
-        //passing in from the Idle state
-       
+        //passing in from the Idle state 
         pursue.enabled = true;
       
         //when entering this state,
@@ -42,7 +41,7 @@ public class HuntState : DinoBaseClass
         //var direction = opponent.transform.position - dino.transform.position;
         //dino.transform.rotation = Quaternion.Slerp(dino.transform.rotation, Quaternion.LookRotation(direction), rotationSpeed * Time.deltaTime);
         //dino.transform.Translate(0, 0, Time.deltaTime * speed);
-	}
+    }
 
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state

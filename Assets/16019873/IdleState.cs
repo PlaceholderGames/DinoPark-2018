@@ -19,6 +19,7 @@ public class IdleState : DinoBaseClass
         waypoints = GameObject.FindGameObjectsWithTag("waypoint");
 
     }
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //this will be executed no matter what the dinos are doing at this moment
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -29,7 +30,6 @@ public class IdleState : DinoBaseClass
         moveDino = animator.gameObject;
         currentWaypoint = 0;
 
-
         wander.enabled = true;
         //user message in console
         Debug.Log("Rapty is entering the Idle State...");
@@ -39,6 +39,7 @@ public class IdleState : DinoBaseClass
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        base.OnStateEnter(animator, stateInfo, layerIndex);
         //this function will run over and over again until the dino is in this state
         if (waypoints.Length == 0) return;
         //if a waypoint is reached 
@@ -53,6 +54,15 @@ public class IdleState : DinoBaseClass
                 currentWaypoint = 0;
             }
         }
+        if (animator.GetFloat("thirst") < 60)
+        {
+            raptyAI.move(ASfollower.getDirectionVector());
+
+        }
+
+        
+
+        
 
         //rotate towards the target that has been detected
         //move the dino forward
@@ -61,7 +71,7 @@ public class IdleState : DinoBaseClass
         //moveDino.transform.rotation = Quaternion.Slerp(moveDino.transform.rotation, Quaternion.LookRotation(direction), rotationSpeed * Time.deltaTime);
         //pushing it forward to the z axis
         //moveDino.transform.Translate(0, 0, Time.deltaTime * speed);
-        
+
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

@@ -135,4 +135,12 @@ public class RaptyAI : MonoBehaviour
 
     }
 
+    public void move(Vector3 directionVector)
+    {
+        directionVector *= 10 * Time.deltaTime;
+
+        transform.Translate(directionVector, Space.World);
+        transform.Rotate(transform.position + directionVector);
+    }
+
 }

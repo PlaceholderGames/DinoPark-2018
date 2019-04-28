@@ -8129,6 +8129,8 @@ GameObject:
   - component: {fileID: 1053393931}
   - component: {fileID: 1053393935}
   - component: {fileID: 1053393934}
+  - component: {fileID: 1053393936}
+  - component: {fileID: 1053393933}
   m_Layer: 9
   m_Name: Rapty
   m_TagString: Rapty
@@ -8353,6 +8355,20 @@ MonoBehaviour:
   wander: {fileID: 0}
   pursue: {fileID: 0}
   face: {fileID: 0}
+--- !u!114 &1053393933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1053393920}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e7473981b3e014c8ace8f069351455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  priority: 1
+  target: {fileID: 1736867214}
 --- !u!114 &1053393934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8380,6 +8396,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 10
+--- !u!114 &1053393936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1053393920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08d2dcbc07a8b8749a817970ab153d18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: {fileID: 0}
+  loop: 0
+  loopBackwards: 0
+  startAtClosest: 0
+  waitTimeAtNode: 0
 --- !u!1 &1056049448
 GameObject:
   m_ObjectHideFlags: 0
@@ -8831,6 +8863,7 @@ GameObject:
   - component: {fileID: 1187084445}
   - component: {fileID: 1187084444}
   - component: {fileID: 1187084443}
+  - component: {fileID: 1187084447}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -8899,12 +8932,24 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1187084442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1178.8103, y: 34.36, z: 542.27}
+  m_LocalPosition: {x: 1178.8103, y: 38, z: 564.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1187084447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1187084442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba048844fdb5384a9bc0032bc8d9e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 10
 --- !u!1 &1192778032
 GameObject:
   m_ObjectHideFlags: 0
@@ -11240,6 +11285,7 @@ GameObject:
   - component: {fileID: 1823471749}
   - component: {fileID: 1823471748}
   - component: {fileID: 1823471747}
+  - component: {fileID: 1823471750}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -11302,6 +11348,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1823471750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1823471746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6cf003b737d41849812bd25f328e2ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodes: []
 --- !u!1 &1837992542
 GameObject:
   m_ObjectHideFlags: 0
