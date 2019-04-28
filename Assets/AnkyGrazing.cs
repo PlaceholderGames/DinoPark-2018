@@ -15,6 +15,8 @@ public class AnkyGrazing : StateMachineBehaviour {
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         List<Transform> ankyFoodList = animator.gameObject.GetComponent<FieldOfView>().visibleFoodSource;
+        bool travelling = false;
+        //will continue to wander until food is found if none are visible
         if (ankyFoodList.Count == 0)
         {
             animator.gameObject.GetComponent<Wander>().enabled = true;
@@ -23,16 +25,16 @@ public class AnkyGrazing : StateMachineBehaviour {
             animator.gameObject.GetComponent<ASPathFollower>().enabled = false;
             animator.gameObject.GetComponent<AStarSearch>().enabled = false;
         }
-        else
+        //will travel to first food source in nearby area
+        else if (travelling == false)
         {
-            animator.gameObject.GetComponent<ASAgentInstance>().enabled = true;
             animator.gameObject.GetComponent<ASPathFollower>().enabled = true;
             animator.gameObject.GetComponent<AStarSearch>().target = animator.gameObject.GetComponent<FieldOfView>().visibleFoodSource[0].gameObject;
+            animator.gameObject.GetComponent<ASAgentInstance>().enabled = true;            
             animator.gameObject.GetComponent<AStarSearch>().enabled = true;
 
             animator.gameObject.GetComponent<Wander>().enabled = false;
-
-
+            //travelling = true;
         }
     }
 

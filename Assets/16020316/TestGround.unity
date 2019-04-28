@@ -5784,7 +5784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba048844fdb5384a9bc0032bc8d9e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 1
+  maxSpeed: 10
 --- !u!1 &492304426
 GameObject:
   m_ObjectHideFlags: 0
@@ -6830,8 +6830,8 @@ GameObject:
   - component: {fileID: 1736867219}
   - component: {fileID: 1736867217}
   - component: {fileID: 1736867225}
-  - component: {fileID: 1736867224}
   - component: {fileID: 1736867223}
+  - component: {fileID: 1736867224}
   - component: {fileID: 1736867222}
   - component: {fileID: 1736867221}
   m_Layer: 9
