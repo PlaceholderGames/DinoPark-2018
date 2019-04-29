@@ -71,12 +71,12 @@ public class MyAnky : Agent
         base.LateUpdate();
     }
 
-    void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.tag == "AnkyFood")
-        {
-            health = health + 5.0f;
-            Destroy(col.gameObject);
-        }   
-    }
+    //void OnCollisionEnter(Collision col)
+    //{
+    //    if (col.gameObject.tag == "AnkyFood")
+    //    {
+    //        health = health + 5.0f;
+    //        Destroy(col.gameObject);
+    //    }   
+    //}
 }

@@ -178,9 +178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7137675dd8356e4408a1e412cfbcdb1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sun: {fileID: 20}
-  secondsInFullDay: 120
-  currentTimeOfDay: 0
 --- !u!4 &22
 Transform:
   m_ObjectHideFlags: 0
