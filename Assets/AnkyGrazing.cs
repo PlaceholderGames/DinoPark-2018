@@ -8,7 +8,11 @@ public class AnkyGrazing : StateMachineBehaviour {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Entered Grazing State");
-        
+        animator.gameObject.GetComponent<Wander>().enabled = true;
+
+        animator.gameObject.GetComponent<ASAgentInstance>().enabled = false;
+        animator.gameObject.GetComponent<ASPathFollower>().enabled = false;
+        animator.gameObject.GetComponent<AStarSearch>().enabled = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -16,17 +20,26 @@ public class AnkyGrazing : StateMachineBehaviour {
     {
         List<Transform> ankyFoodList = animator.gameObject.GetComponent<FieldOfView>().visibleFoodSource;
         bool travelling = false;
-        //will continue to wander until food is found if none are visible
-        if (ankyFoodList.Count == 0)
+        bool foodfound = false;
+        bool foodReached = false;
+        //checking for nearby food
+        if (ankyFoodList.Count !=0)
         {
-            animator.gameObject.GetComponent<Wander>().enabled = true;
-
-            animator.gameObject.GetComponent<ASAgentInstance>().enabled = false;
-            animator.gameObject.GetComponent<ASPathFollower>().enabled = false;
-            animator.gameObject.GetComponent<AStarSearch>().enabled = false;
+            animator.SetBool("isEating", true);
         }
+        //will continue to wander until food is found if none are visible
+        //if (ankyFoodList.Count == 0 && !foodfound )
+        //{
+        //    animator.gameObject.GetComponent<Wander>().enabled = true;
+
+        //    animator.gameObject.GetComponent<ASAgentInstance>().enabled = false;
+        //    animator.gameObject.GetComponent<ASPathFollower>().enabled = false;
+        //    animator.gameObject.GetComponent<AStarSearch>().enabled = false;
+        //    foodfound = true;
+        //    Debug.Log("Trying to find food");
+        //}
         //will travel to first food source in nearby area
-        else if (travelling == false)
+        else if (travelling == false && foodfound && !foodReached)
         {
             animator.gameObject.GetComponent<ASPathFollower>().enabled = true;
             animator.gameObject.GetComponent<AStarSearch>().target = animator.gameObject.GetComponent<FieldOfView>().visibleFoodSource[0].gameObject;
@@ -34,7 +47,17 @@ public class AnkyGrazing : StateMachineBehaviour {
             animator.gameObject.GetComponent<AStarSearch>().enabled = true;
 
             animator.gameObject.GetComponent<Wander>().enabled = false;
-            //travelling = true;
+            travelling = true;
+            Debug.Log("Trying to travel to food");
+        }
+        else if (travelling && foodfound && !foodReached)
+        {
+            //if (animator.gameObject.GetComponent<AStarSearch>().end == animator.gameObject.GetComponent<AStarSearch>().start)
+            //{
+            //    foodReached = true;
+            //}
+            //foodfound = false;
+            Debug.Log("Ate and looking for new food");
         }
     }
 
