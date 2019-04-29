@@ -12,6 +12,7 @@ TagManager:
   - DinoStats
   - Anky
   - Rapty
+  - Grass
   layers:
   - Default
   - TransparentFX
