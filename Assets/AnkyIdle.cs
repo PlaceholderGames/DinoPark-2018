@@ -12,12 +12,12 @@ public class AnkyIdle : StateMachineBehaviour
         anky.enabled = true;
 
     }
-    int count = 10;
+    int count = 30;
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         
-        if (count == 10)
+        if (count == 30)
         {
             Debug.Log("In Idle State");
             count = 0;
@@ -35,8 +35,9 @@ public class AnkyIdle : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Wander anky = animator.gameObject.GetComponent<Wander>();
-        anky.enabled = false;
+        Debug.Log("Leaving Idle State");
+        //Wander anky = animator.gameObject.GetComponent<Wander>();
+        //anky.enabled = false;
         animator.SetBool("isIdle", false);
     }
 }
