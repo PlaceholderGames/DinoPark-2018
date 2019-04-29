@@ -20,17 +20,21 @@ public class AlertState : DinoBaseClass
         //but to try to be not noticed by anyone, the dino will not move for a few seconds
         if (animator.GetBool("nobodyAround") == false)
         {
-            //When drinking decrease speed to 0
+            //When someone is around
+            //stop moving for few secs (decrease speed to 0)
             speed = 0.0f;
-            //WaitForSeconds(Time.deltaTime);
+            //WaitForSeconds(4);
         }
-
+        //reset speed
+        speed = 7.0f;
     }
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool("isAttacked", false);
+        //reset speed
+        speed = 7.0f;
         Debug.Log("Rapty is exiting the Alert State...");
     }
 

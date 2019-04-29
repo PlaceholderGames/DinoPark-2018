@@ -8,60 +8,78 @@ AnimatorController:
   m_Name: AnkyloFSM
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: isIdle
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 1
-    m_Controller: {fileID: 9100000}
-  - m_Name: isEating
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: isDrinking
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: isGrazing
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: isAttacking
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: isFleeing
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: isAlerted
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: isDead
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 1
-    m_Controller: {fileID: 9100000}
   - m_Name: speedMod
     m_Type: 1
     m_DefaultFloat: 3
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
+  - m_Name: isAttacked
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: isAlert
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: isAttacking
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: deadDino
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: deadOpponent
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: thirst
+    m_Type: 1
+    m_DefaultFloat: 100
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: hunger
+    m_Type: 1
+    m_DefaultFloat: 100
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: health
+    m_Type: 1
+    m_DefaultFloat: 100
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: nobodyAround
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: yAxis
+    m_Type: 1
+    m_DefaultFloat: 100
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: distance
+    m_Type: 1
+    m_DefaultFloat: 100
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -75,6 +93,157 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!114 &114459299897196828
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cb75cc75f75bc84db3c9df2d549b877, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dino: {fileID: 100000, guid: 22876b3aba83f994abe2b0135f567a4f, type: 3}
+  opponent: {fileID: 0}
+  fov: {fileID: 0}
+  wander: {fileID: 0}
+  pursue: {fileID: 0}
+  face: {fileID: 0}
+  AS: {fileID: 0}
+  ASfollower: {fileID: 0}
+  ASagent: {fileID: 0}
+  flee: {fileID: 0}
+  raptyAI: {fileID: 0}
+  speed: 3
+  rotationSpeed: 2
+  accuracy: 5
+  waterLocation: {fileID: 0}
+  deadOpponent: 0
+  deadDino: 0
+--- !u!114 &114600545634014788
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 170f4d3755c2db84e9601a75a564194a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dino: {fileID: 100000, guid: 22876b3aba83f994abe2b0135f567a4f, type: 3}
+  opponent: {fileID: 100106, guid: 177ad22f7d6952b41bad200a68dfd346, type: 3}
+  fov: {fileID: 0}
+  wander: {fileID: 0}
+  pursue: {fileID: 0}
+  face: {fileID: 0}
+  AS: {fileID: 0}
+  ASfollower: {fileID: 0}
+  ASagent: {fileID: 0}
+  flee: {fileID: 0}
+  raptyAI: {fileID: 0}
+  speed: 3
+  rotationSpeed: 2
+  accuracy: 5
+  waterLocation: {fileID: 0}
+  deadOpponent: 0
+  deadDino: 0
+--- !u!114 &114688176829261688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea749e29c3ca06345b87293547d9ac9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dino: {fileID: 100000, guid: 22876b3aba83f994abe2b0135f567a4f, type: 3}
+  opponent: {fileID: 100106, guid: 177ad22f7d6952b41bad200a68dfd346, type: 3}
+  fov: {fileID: 0}
+  wander: {fileID: 0}
+  pursue: {fileID: 0}
+  face: {fileID: 0}
+  AS: {fileID: 0}
+  ASfollower: {fileID: 0}
+  ASagent: {fileID: 0}
+  flee: {fileID: 0}
+  raptyAI: {fileID: 0}
+  speed: 3
+  rotationSpeed: 2
+  accuracy: 5
+  waterLocation: {fileID: 0}
+  deadOpponent: 0
+  deadDino: 0
+--- !u!114 &114783486165222254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88dbd39b2e13305419049e9b8eb58c95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dino: {fileID: 100000, guid: 22876b3aba83f994abe2b0135f567a4f, type: 3}
+  opponent: {fileID: 100106, guid: 177ad22f7d6952b41bad200a68dfd346, type: 3}
+  fov: {fileID: 0}
+  wander: {fileID: 0}
+  pursue: {fileID: 0}
+  face: {fileID: 0}
+  AS: {fileID: 0}
+  ASfollower: {fileID: 0}
+  ASagent: {fileID: 0}
+  flee: {fileID: 0}
+  raptyAI: {fileID: 0}
+  speed: 3
+  rotationSpeed: 2
+  accuracy: 5
+  waterLocation: {fileID: 0}
+  deadOpponent: 0
+  deadDino: 0
+--- !u!114 &114819259818285820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 167c5a99e0a5c5c41bac1bff8dd8f962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114865010649229208
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9e127ac0775c1f4188bbf01edb883e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dino: {fileID: 100000, guid: 22876b3aba83f994abe2b0135f567a4f, type: 3}
+  opponent: {fileID: 100106, guid: 177ad22f7d6952b41bad200a68dfd346, type: 3}
+  fov: {fileID: 0}
+  wander: {fileID: 0}
+  pursue: {fileID: 0}
+  face: {fileID: 0}
+  AS: {fileID: 0}
+  ASfollower: {fileID: 0}
+  ASagent: {fileID: 0}
+  flee: {fileID: 0}
+  raptyAI: {fileID: 0}
+  speed: 3
+  rotationSpeed: 2
+  accuracy: 5
+  waterLocation: {fileID: 0}
+  deadOpponent: 0
+  deadDino: 0
 --- !u!114 &114959237897941950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -86,6 +255,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5429365fafaaf8c48b9db25c382f1d8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114992614071091348
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 930cf994286a0bb4ab9c18886645a9fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dino: {fileID: 100000, guid: 22876b3aba83f994abe2b0135f567a4f, type: 3}
+  opponent: {fileID: 0}
+  fov: {fileID: 0}
+  wander: {fileID: 0}
+  pursue: {fileID: 0}
+  face: {fileID: 0}
+  AS: {fileID: 0}
+  ASfollower: {fileID: 0}
+  ASagent: {fileID: 0}
+  flee: {fileID: 0}
+  raptyAI: {fileID: 0}
+  speed: 3
+  rotationSpeed: 2
+  accuracy: 5
+  waterLocation: {fileID: 0}
+  deadOpponent: 0
+  deadDino: 0
 --- !u!1101 &1101004818536194512
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -580,7 +777,8 @@ AnimatorState:
   - {fileID: 1101652219162571666}
   - {fileID: 1101647753528592520}
   - {fileID: 1101029107843791578}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114819259818285820}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -608,7 +806,8 @@ AnimatorState:
   - {fileID: 1101660963362306262}
   - {fileID: 1101593022320812588}
   - {fileID: 1101769447373170464}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114688176829261688}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -635,7 +834,8 @@ AnimatorState:
   m_Transitions:
   - {fileID: 1101004818536194512}
   - {fileID: 1101411844583521728}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114459299897196828}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -686,7 +886,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114992614071091348}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -716,7 +917,8 @@ AnimatorState:
   - {fileID: 1101241681876313576}
   - {fileID: 1101626937069762290}
   - {fileID: 1101769850464700790}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114865010649229208}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -744,7 +946,8 @@ AnimatorState:
   - {fileID: 1101086833238091356}
   - {fileID: 1101719920855088034}
   - {fileID: 1101972589903599538}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114783486165222254}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -771,7 +974,8 @@ AnimatorState:
   m_Transitions:
   - {fileID: 1101721883323776398}
   - {fileID: 1101826970433217446}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114600545634014788}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

@@ -15,6 +15,7 @@ public class DinoBaseClass : StateMachineBehaviour
     public Face face;
     public AStarSearch AS;
     public ASPathFollower ASfollower;
+    public ASAgentInstance ASagent;
     public Flee flee;
     public RaptyAI raptyAI;
     //speed properties regarding distance
@@ -25,7 +26,6 @@ public class DinoBaseClass : StateMachineBehaviour
     public GameObject waterLocation;
     //variables for the dead state
     public bool deadOpponent = false;
-    public bool deadDino = false;
     //hunger, thirst and health are represented as values
     //that increase or decrease over time, 
     //depending on what stage the dino is in and what was the last tracked activity
@@ -37,8 +37,6 @@ public class DinoBaseClass : StateMachineBehaviour
     public const int decreaseThirst = 1;
     public const int decreaseHealth = 5;
     public const int increaseHealth = 5;
-    //sea level that depends on the grid size 
-    public const int seaLevel = 25;
 
     //reusing and overwritting this function every time the dino goes into the state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -51,6 +49,7 @@ public class DinoBaseClass : StateMachineBehaviour
         fov = animator.gameObject.GetComponent<FieldOfView>();
         AS = animator.gameObject.GetComponent<AStarSearch>();
         ASfollower = animator.gameObject.GetComponent<ASPathFollower>();
+        ASagent = animator.gameObject.GetComponent<ASAgentInstance>();
         flee = animator.gameObject.GetComponent<Flee>();
         raptyAI = animator.gameObject.GetComponent<RaptyAI>();
 

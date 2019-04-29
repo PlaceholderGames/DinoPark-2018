@@ -40,8 +40,7 @@ public class IdleState : DinoBaseClass
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
-        animator.SetFloat("yAxis", animator.gameObject.transform.position.y);
-
+        
         //this function will run over and over again until the dino is in this state
         if (waypoints.Length == 0) return;
 
@@ -57,10 +56,14 @@ public class IdleState : DinoBaseClass
                 currentWaypoint = 0;
             }
         }
-        if (animator.GetFloat("thirst") < 60)
+
+        if (animator.GetFloat("thirst") < 50)
         {
             raptyAI.move(ASfollower.getDirectionVector());
-
+            ASagent.enabled = true;
+        } else
+        {
+            ASagent.enabled = false;
         }
 
        
@@ -78,8 +81,9 @@ public class IdleState : DinoBaseClass
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
+        //disable scripts
         wander.enabled = false;
-
+        ASagent.enabled = false;
         Debug.Log("Rapty is exiting the Idle State...");
     }
 }

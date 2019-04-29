@@ -75,9 +75,9 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: yAxis
-    m_Type: 3
-    m_DefaultFloat: 0
-    m_DefaultInt: 90
+    m_Type: 1
+    m_DefaultFloat: 100
+    m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   m_AnimatorLayers:
@@ -112,6 +112,7 @@ MonoBehaviour:
   face: {fileID: 0}
   AS: {fileID: 0}
   ASfollower: {fileID: 0}
+  ASagent: {fileID: 0}
   flee: {fileID: 0}
   raptyAI: {fileID: 0}
   speed: 3
@@ -139,6 +140,7 @@ MonoBehaviour:
   face: {fileID: 0}
   AS: {fileID: 0}
   ASfollower: {fileID: 0}
+  ASagent: {fileID: 0}
   flee: {fileID: 0}
   raptyAI: {fileID: 0}
   speed: 3
@@ -166,6 +168,7 @@ MonoBehaviour:
   face: {fileID: 0}
   AS: {fileID: 0}
   ASfollower: {fileID: 0}
+  ASagent: {fileID: 0}
   flee: {fileID: 0}
   raptyAI: {fileID: 0}
   speed: 3
@@ -193,6 +196,7 @@ MonoBehaviour:
   face: {fileID: 0}
   AS: {fileID: 0}
   ASfollower: {fileID: 0}
+  ASagent: {fileID: 0}
   flee: {fileID: 0}
   raptyAI: {fileID: 0}
   speed: 2
@@ -220,6 +224,7 @@ MonoBehaviour:
   face: {fileID: 0}
   AS: {fileID: 0}
   ASfollower: {fileID: 0}
+  ASagent: {fileID: 0}
   flee: {fileID: 0}
   raptyAI: {fileID: 0}
   speed: 3
@@ -247,6 +252,7 @@ MonoBehaviour:
   face: {fileID: 0}
   AS: {fileID: 0}
   ASfollower: {fileID: 0}
+  ASagent: {fileID: 0}
   flee: {fileID: 0}
   raptyAI: {fileID: 0}
   speed: 3
@@ -274,6 +280,7 @@ MonoBehaviour:
   face: {fileID: 0}
   AS: {fileID: 0}
   ASfollower: {fileID: 0}
+  ASagent: {fileID: 0}
   flee: {fileID: 0}
   raptyAI: {fileID: 0}
   speed: 3
@@ -301,6 +308,7 @@ MonoBehaviour:
   face: {fileID: 0}
   AS: {fileID: 0}
   ASfollower: {fileID: 0}
+  ASagent: {fileID: 0}
   flee: {fileID: 0}
   raptyAI: {fileID: 0}
   speed: 3
@@ -373,6 +381,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: hunger
     m_EventTreshold: 50
+  - m_ConditionMode: 3
+    m_ConditionEvent: thirst
+    m_EventTreshold: 70
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102349215915635324}
   m_Solo: 0
@@ -397,6 +408,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 3
     m_ConditionEvent: distance
     m_EventTreshold: 30
+  - m_ConditionMode: 2
+    m_ConditionEvent: isAttacked
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102484899349657816}
   m_Solo: 0
@@ -453,7 +467,7 @@ AnimatorStateTransition:
     m_EventTreshold: 50
   - m_ConditionMode: 4
     m_ConditionEvent: yAxis
-    m_EventTreshold: 36
+    m_EventTreshold: 37
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102569262312924950}
   m_Solo: 0
@@ -475,12 +489,9 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 4
-    m_ConditionEvent: hunger
-    m_EventTreshold: 50
   - m_ConditionMode: 3
     m_ConditionEvent: thirst
-    m_EventTreshold: 50
+    m_EventTreshold: 99
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102131023501853428}
   m_Solo: 0
@@ -505,6 +516,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 3
     m_ConditionEvent: hunger
     m_EventTreshold: 90
+  - m_ConditionMode: 2
+    m_ConditionEvent: deadOpponent
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102196986871553830}
   m_Solo: 0
@@ -529,6 +543,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: health
     m_EventTreshold: 55
+  - m_ConditionMode: 1
+    m_ConditionEvent: isAttacked
+    m_EventTreshold: 50
   - m_ConditionMode: 3
     m_ConditionEvent: hunger
     m_EventTreshold: 50
@@ -609,7 +626,10 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 4
     m_ConditionEvent: health
-    m_EventTreshold: 25
+    m_EventTreshold: 30
+  - m_ConditionMode: 3
+    m_ConditionEvent: hunger
+    m_EventTreshold: 70
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102484899349657816}
   m_Solo: 0
@@ -712,6 +732,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: thirst
     m_EventTreshold: 30
+  - m_ConditionMode: 3
+    m_ConditionEvent: hunger
+    m_EventTreshold: 70
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102569262312924950}
   m_Solo: 0
@@ -736,6 +759,12 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: health
     m_EventTreshold: 30
+  - m_ConditionMode: 4
+    m_ConditionEvent: distance
+    m_EventTreshold: 20
+  - m_ConditionMode: 3
+    m_ConditionEvent: thirst
+    m_EventTreshold: 60
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102484899349657816}
   m_Solo: 0
@@ -784,6 +813,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: distance
     m_EventTreshold: 30
+  - m_ConditionMode: 4
+    m_ConditionEvent: hunger
+    m_EventTreshold: 45
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102196986871553830}
   m_Solo: 0
@@ -804,7 +836,13 @@ AnimatorStateTransition:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 4
+    m_ConditionEvent: hunger
+    m_EventTreshold: 45
+  - m_ConditionMode: 3
+    m_ConditionEvent: thirst
+    m_EventTreshold: 60
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102349215915635324}
   m_Solo: 0
@@ -829,7 +867,7 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: distance
     m_EventTreshold: 7
-  - m_ConditionMode: 2
+  - m_ConditionMode: 1
     m_ConditionEvent: isAttacking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
@@ -856,6 +894,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: hunger
     m_EventTreshold: 50
+  - m_ConditionMode: 3
+    m_ConditionEvent: health
+    m_EventTreshold: 55
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102349215915635324}
   m_Solo: 0

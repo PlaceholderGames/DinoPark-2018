@@ -10,6 +10,7 @@ public class RaptyAI : MonoBehaviour
     public GameObject thisDino;
     public GameObject opponent;
     public GameObject claws;
+    public GameObject alpha;
     public GameObject Cube3;   //rapty's body
     //there is one Alpha male raptor that will control the rest when in the hunting stage
     //the rest will follow his commands
@@ -32,14 +33,25 @@ public class RaptyAI : MonoBehaviour
     //work out the distance between one dino to another
     public GameObject getDino()
     {
-        return opponent;
+        return thisDino;
+    }
+
+    //work out the distance between one dino to another
+    public GameObject getAlpha()
+    {
+        return alpha;
     }
 
     //work out the distance between one dino to another
     public GameObject dieDino()
     {
-        //https://answers.unity.com/questions/802351/destroyobject-vs-destroy.html
-        DestroyImmediate(thisDino);
+        //https://learn.unity.com/tutorial/destroy-i?projectId=5c8920b4edbc2a113b6bc26a#5c8a6146edbc2a001f47d5c6 - to destroy within 3 sec
+        //will stop rendering which means the thing will be removed from the scene only in runtime
+        //not from the list of objects
+        if (animator.GetBool("deadDino") == true)
+        {
+            Destroy(GetComponent<MeshRenderer>(), 3f);
+        }
         return thisDino;
     }
 
@@ -100,7 +112,7 @@ public class RaptyAI : MonoBehaviour
         //start taking off the hunger and thirst bar of dino
         animator.SetFloat("hunger", animator.GetFloat("hunger") - DinoBaseClass.decreaseHunger * Time.deltaTime);
         animator.SetFloat("thirst", animator.GetFloat("thirst") - DinoBaseClass.decreaseThirst * Time.deltaTime);
-        
+        animator.SetFloat("yAxis", animator.gameObject.transform.position.y);
         //displays raptys state of hunger atm
         //Debug.Log(animator.GetFloat("hunger"));
 
@@ -113,11 +125,23 @@ public class RaptyAI : MonoBehaviour
             animator.SetFloat("health", animator.GetFloat("health") - DinoBaseClass.decreaseHealth * Time.deltaTime);
         }
 
-        //and push him back to not drown
-        //FIX HERE
-        if (transform.position.z <= DinoBaseClass.seaLevel)
+        //if the rapty that has been selected is not the alpha male,
+        //then return to alpha rapty and follow his actions
+        if (alphaRapty != true)
         {
-            getDino();
+            //check range from aplha to this rapty
+            getAlpha();
+            //if this rapty is away from aplha, get back
+            if (animator.GetFloat("distance") == 75)
+            {
+                animator.SetFloat("distance", Vector3.Distance(transform.position, opponent.transform.position));
+            }
+        }
+
+        //and push him back to not drown
+        if (animator.GetFloat("yAxis") <= 32)
+        {
+            //animator.GetComponent("Rapty", transform.position.y);
         }
         
         //kill dino if he has his values to 0
@@ -135,6 +159,7 @@ public class RaptyAI : MonoBehaviour
 
     }
 
+    //move towards the target
     public void move(Vector3 directionVector)
     {
         directionVector *= 10 * Time.deltaTime;
