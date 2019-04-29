@@ -17,7 +17,7 @@ public class HuntState : DinoBaseClass
       
         //when entering this state,
         //the walking speed is increasing for rapty
-        speed = 10.0f;
+        //speed = 90.0f;
     }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

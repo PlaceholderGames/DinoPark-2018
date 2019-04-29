@@ -131,10 +131,14 @@ public class RaptyAI : MonoBehaviour
         {
             //check range from aplha to this rapty
             getAlpha();
+
             //if this rapty is away from aplha, get back
-            if (animator.GetFloat("distance") == 75)
+            //Compare using FOV, look for alpha rapty (for loop) 
+            if ( >= 75)
             {
+
                 animator.SetFloat("distance", Vector3.Distance(transform.position, opponent.transform.position));
+
             }
         }
 
