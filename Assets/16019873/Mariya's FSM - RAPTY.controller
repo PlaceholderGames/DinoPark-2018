@@ -120,7 +120,6 @@ MonoBehaviour:
   accuracy: 5
   waterLocation: {fileID: 0}
   deadOpponent: 0
-  deadDino: 0
 --- !u!114 &114266423954966544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,7 +147,6 @@ MonoBehaviour:
   accuracy: 5
   waterLocation: {fileID: 100000, guid: ba6a41dc489914734857bb5924eb70ad, type: 3}
   deadOpponent: 0
-  deadDino: 0
 --- !u!114 &114386396489199842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -176,7 +174,6 @@ MonoBehaviour:
   accuracy: 5
   waterLocation: {fileID: 0}
   deadOpponent: 0
-  deadDino: 0
 --- !u!114 &114599850397956906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -204,7 +201,6 @@ MonoBehaviour:
   accuracy: 3
   waterLocation: {fileID: 0}
   deadOpponent: 0
-  deadDino: 0
 --- !u!114 &114780490671764694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -232,7 +228,6 @@ MonoBehaviour:
   accuracy: 5
   waterLocation: {fileID: 0}
   deadOpponent: 0
-  deadDino: 1
 --- !u!114 &114915546000080974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -260,7 +255,6 @@ MonoBehaviour:
   accuracy: 5
   waterLocation: {fileID: 0}
   deadOpponent: 0
-  deadDino: 0
 --- !u!114 &114959670153144354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -288,7 +282,6 @@ MonoBehaviour:
   accuracy: 5
   waterLocation: {fileID: 0}
   deadOpponent: 1
-  deadDino: 0
 --- !u!114 &114976417767080646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -316,7 +309,6 @@ MonoBehaviour:
   accuracy: 5
   waterLocation: {fileID: 0}
   deadOpponent: 0
-  deadDino: 0
 --- !u!1101 &1101112811155488176
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1151,7 +1143,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102131023501853428}
-    m_Position: {x: 228, y: 120, z: 0}
+    m_Position: {x: 180, y: 72, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102349215915635324}
     m_Position: {x: 396, y: 0, z: 0}
@@ -1163,7 +1155,7 @@ AnimatorStateMachine:
     m_Position: {x: 468, y: 228, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102569262312924950}
-    m_Position: {x: 228, y: 348, z: 0}
+    m_Position: {x: 168, y: 252, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102463958137329484}
     m_Position: {x: 708, y: -132, z: 0}

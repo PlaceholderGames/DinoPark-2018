@@ -9236,7 +9236,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1053393920}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1178.06, y: 36.5, z: 500.86}
+  m_LocalPosition: {x: 1178.06, y: 43.63, z: 500.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 644835339}
@@ -9365,6 +9365,7 @@ MonoBehaviour:
   thisDino: {fileID: 1053393920}
   opponent: {fileID: 1736867214}
   claws: {fileID: 100004, guid: 3ebccbb58c63a8d4092c2423a90aa499, type: 3}
+  alpha: {fileID: 0}
   Cube3: {fileID: 689591201}
   followingDino: {fileID: 0}
   aStarVar: {fileID: 0}
@@ -9566,6 +9567,7 @@ MonoBehaviour:
   thisDino: {fileID: 1106551929}
   opponent: {fileID: 1736867214}
   claws: {fileID: 100004, guid: 3ebccbb58c63a8d4092c2423a90aa499, type: 3}
+  alpha: {fileID: 0}
   Cube3: {fileID: 1210939104}
   followingDino: {fileID: 0}
   aStarVar: {fileID: 0}
@@ -10256,6 +10258,7 @@ MonoBehaviour:
   thisDino: {fileID: 1198088580}
   opponent: {fileID: 1736867214}
   claws: {fileID: 100004, guid: 3ebccbb58c63a8d4092c2423a90aa499, type: 3}
+  alpha: {fileID: 0}
   Cube3: {fileID: 238336660}
   followingDino: {fileID: 0}
   aStarVar: {fileID: 0}
