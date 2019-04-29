@@ -19,7 +19,7 @@ public class MyAnky : Agent
     public Animator anim;
     public float maxHealth = 100.0f;
     public float health;
-    
+    public bool foodGone = false;
 
     // Use this for initialization
     protected override void Start()
@@ -77,7 +77,7 @@ public class MyAnky : Agent
         {
             health = health + 5.0f;
             Destroy(col.gameObject);
-            anim.GetComponent<AnkyEating>().foodGone = true;
+            foodGone = true;
         }   
     }
 }

@@ -9,17 +9,18 @@ public class AnkyGrazing : StateMachineBehaviour {
     {
         Debug.Log("Entered Grazing State");
         animator.gameObject.GetComponent<Wander>().enabled = true;
-
-        animator.gameObject.GetComponent<Seek>().enabled = false;
     }
 
+    int count = 30;
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //if (animator.gameObject.GetComponent<Wander>().enabled == false)
-        //{
-        //    animator.gameObject.GetComponent<Wander>
-        //}
+        if (count == 30)
+        {
+            Debug.Log("In Grazing State");
+            count = 0;
+        }
+        count++;
         bool foodFound = false;
         List<Transform> ankyFoodList = animator.gameObject.GetComponent<FieldOfView>().visibleFoodSource;
         if (ankyFoodList.Count != 0)

@@ -5970,7 +5970,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4903216018573982, guid: 58433be0ea08bd44e96f2326ec5ddf48, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 4.322876
+      value: -3.43
       objectReference: {fileID: 0}
     - target: {fileID: 4903216018573982, guid: 58433be0ea08bd44e96f2326ec5ddf48, type: 2}
       propertyPath: m_LocalRotation.x
@@ -7019,6 +7019,7 @@ MonoBehaviour:
   anim: {fileID: 1736867221}
   maxHealth: 100
   health: 100
+  foodGone: 0
 --- !u!114 &1736867223
 MonoBehaviour:
   m_ObjectHideFlags: 0
