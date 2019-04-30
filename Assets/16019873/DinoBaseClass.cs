@@ -19,7 +19,7 @@ public class DinoBaseClass : StateMachineBehaviour
     public Flee flee;
     public RaptyAI raptyAI;
     //speed properties regarding distance
-    public float speed = 3.0f;
+    public float speed = 10.0f;
     public float rotationSpeed = 2.0f;
     public float accuracy = 5.0f;
     //water search variable
@@ -38,6 +38,11 @@ public class DinoBaseClass : StateMachineBehaviour
     public const int decreaseHealth = 5;
     public const int increaseHealth = 5;
 
+    void Update()
+    {   
+        
+    }
+
     //reusing and overwritting this function every time the dino goes into the state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -53,7 +58,6 @@ public class DinoBaseClass : StateMachineBehaviour
         flee = animator.gameObject.GetComponent<Flee>();
         raptyAI = animator.gameObject.GetComponent<RaptyAI>();
 
-        
         //get hold of the dino
         //dino = dino.GetComponent<RaptyAI>().getDino();
 

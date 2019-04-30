@@ -8,8 +8,8 @@ public class FleeState : DinoBaseClass
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
-        //user message in console
-        Debug.Log("Rapty is entering the Fleeing State...");
+        Debug.Log("Rapty is entering the Fleeing State..."); //user message in console
+        
         //enable the fleeing script
         flee.enabled = true;
     }
@@ -24,8 +24,8 @@ public class FleeState : DinoBaseClass
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
-        //user message in console
-        Debug.Log("Rapty is exiting the Fleeing State...");
+        Debug.Log("Rapty is exiting the Fleeing State..."); //user message in console
+        
         //disable at the end
         flee.enabled = false;
     }

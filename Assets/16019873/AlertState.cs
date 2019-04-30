@@ -9,6 +9,7 @@ public class AlertState : DinoBaseClass
     {
         Debug.Log("Rapty is entering the Alert State...");
         animator.SetBool("isAttacked", true);
+
         //play animation with exclamation mark
     }
 
@@ -32,10 +33,10 @@ public class AlertState : DinoBaseClass
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        Debug.Log("Rapty is exiting the Alert State...");
         animator.SetBool("isAttacked", false);
         //reset speed
-        speed = 7.0f;
-        Debug.Log("Rapty is exiting the Alert State...");
+        
     }
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

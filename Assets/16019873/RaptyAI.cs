@@ -14,9 +14,11 @@ public class RaptyAI : MonoBehaviour
     public GameObject Cube3;   //rapty's body
     //there is one Alpha male raptor that will control the rest when in the hunting stage
     //the rest will follow his commands
+    public ASAgentInstance ASagent;
     public ASPathFollower followingDino;
     //A star path finding
     public AStarSearch aStarVar;
+    public GameObject waterLocation;
     //alpha male variables
     public bool alphaRapty = false;
     public bool returnToAlphaRapty = false;
@@ -86,10 +88,9 @@ public class RaptyAI : MonoBehaviour
         pursue = thisDino.GetComponent<Pursue>();
         wander = thisDino.GetComponent<Wander>();
         face = thisDino.GetComponent<Face>();
-
+        ASagent = thisDino.GetComponent<ASAgentInstance>();
         //setting it to get data from the FSM created in Unity Animator
         animator = GetComponent<Animator>();
-        alphaRapty = animator.gameObject;
         //make other raptys follow the alpha dino
         aStarVar = GetComponent<AStarSearch>();
         followingDino = GetComponent<ASPathFollower>();
@@ -127,18 +128,15 @@ public class RaptyAI : MonoBehaviour
 
         //if the rapty that has been selected is not the alpha male,
         //then return to alpha rapty and follow his actions
-        if (alphaRapty != true)
+        if (alphaRapty == false)
         {
-            //check range from aplha to this rapty
-            getAlpha();
-
-            //if this rapty is away from aplha, get back
-            //Compare using FOV, look for alpha rapty (for loop) 
-            if ( >= 75)
+            if (Vector3.Distance(thisDino.transform.position, getAlpha().transform.position) >= 80)
             {
-
-                animator.SetFloat("distance", Vector3.Distance(transform.position, opponent.transform.position));
-
+                ASagent.enabled = true;
+                aStarVar.target = getAlpha();
+            } else if(Vector3.Distance(thisDino.transform.position, getAlpha().transform.position) <= 30)
+            {
+                ASagent.enabled = false;
             }
         }
 

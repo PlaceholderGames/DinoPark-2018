@@ -13,73 +13,73 @@ AnimatorController:
     m_DefaultFloat: 3
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isAttacked
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isAlert
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isAttacking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: deadDino
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: deadOpponent
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: thirst
     m_Type: 1
     m_DefaultFloat: 100
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: hunger
     m_Type: 1
     m_DefaultFloat: 100
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: health
     m_Type: 1
     m_DefaultFloat: 100
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: nobodyAround
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: yAxis
     m_Type: 1
     m_DefaultFloat: 100
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: distance
     m_Type: 1
     m_DefaultFloat: 100
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -120,7 +120,6 @@ MonoBehaviour:
   accuracy: 5
   waterLocation: {fileID: 0}
   deadOpponent: 0
-  deadDino: 0
 --- !u!114 &114600545634014788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,7 +147,6 @@ MonoBehaviour:
   accuracy: 5
   waterLocation: {fileID: 0}
   deadOpponent: 0
-  deadDino: 0
 --- !u!114 &114688176829261688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -176,7 +174,6 @@ MonoBehaviour:
   accuracy: 5
   waterLocation: {fileID: 0}
   deadOpponent: 0
-  deadDino: 0
 --- !u!114 &114783486165222254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -204,7 +201,6 @@ MonoBehaviour:
   accuracy: 5
   waterLocation: {fileID: 0}
   deadOpponent: 0
-  deadDino: 0
 --- !u!114 &114819259818285820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,7 +239,6 @@ MonoBehaviour:
   accuracy: 5
   waterLocation: {fileID: 0}
   deadOpponent: 0
-  deadDino: 0
 --- !u!114 &114959237897941950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -282,7 +277,6 @@ MonoBehaviour:
   accuracy: 5
   waterLocation: {fileID: 0}
   deadOpponent: 0
-  deadDino: 0
 --- !u!1101 &1101004818536194512
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1009,7 +1003,7 @@ AnimatorStateMachine:
     m_Position: {x: 36, y: 216, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102290418329198986}
-    m_Position: {x: 276, y: 336, z: 0}
+    m_Position: {x: 276, y: 300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102890663960885802}
     m_Position: {x: 516, y: 384, z: 0}

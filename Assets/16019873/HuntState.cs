@@ -8,16 +8,11 @@ public class HuntState : DinoBaseClass
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
-
-        //user message in console
-        Debug.Log("Rapty is entering the Hunting State...");
-
+        Debug.Log("Rapty is entering the Hunting State..."); //user message in console
+        
         //passing in from the Idle state 
         pursue.enabled = true;
       
-        //when entering this state,
-        //the walking speed is increasing for rapty
-        //speed = 90.0f;
     }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -31,8 +26,7 @@ public class HuntState : DinoBaseClass
                 //Debug.Log("Found Anky!");
                 opponent = i.gameObject;
                 animator.SetFloat("distance", Vector3.Distance(dino.transform.position, opponent.transform.position));
-                //face.target = i.gameObject;
-                //face.enabled = true;
+
             }
         }
 

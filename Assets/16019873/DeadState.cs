@@ -15,6 +15,7 @@ public class DeadState : DinoBaseClass
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        //No leaving the dead state
         animator.SetBool("deadDino", false);
 
         //https://answers.unity.com/questions/802351/destroyobject-vs-destroy.html

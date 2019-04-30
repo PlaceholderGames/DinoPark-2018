@@ -17,21 +17,20 @@ public class IdleState : DinoBaseClass
     void Awake()
     {
         waypoints = GameObject.FindGameObjectsWithTag("waypoint");
-
     }
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //this will be executed no matter what the dinos are doing at this moment
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //user message in console
-        Debug.Log("Rapty is entering the Idle State...");
         base.OnStateEnter(animator, stateInfo, layerIndex);
+        Debug.Log("Rapty is entering the Idle State..."); //user message in console
+        
         //even if the 'quest' that the dino is doing at the moment, it would still go back to the original position
         //and restart 'idle' again after being interrupted
         moveDino = animator.gameObject;
         currentWaypoint = 0;
-
+        ASagent.enabled = false;
         wander.enabled = true;
     }
 
@@ -41,6 +40,7 @@ public class IdleState : DinoBaseClass
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
         
+        /*
         //this function will run over and over again until the dino is in this state
         if (waypoints.Length == 0) return;
 
@@ -56,15 +56,15 @@ public class IdleState : DinoBaseClass
                 currentWaypoint = 0;
             }
         }
+        */
 
         if (animator.GetFloat("thirst") < 50)
         {
             raptyAI.move(ASfollower.getDirectionVector());
+            AS.target = raptyAI.waterLocation;
             ASagent.enabled = true;
-        } else
-        {
-            ASagent.enabled = false;
         }
+      
 
        
         //rotate towards the target that has been detected
