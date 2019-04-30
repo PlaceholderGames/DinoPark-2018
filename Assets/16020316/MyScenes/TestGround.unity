@@ -6604,8 +6604,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1565994087}
-  - component: {fileID: 1565994086}
-  - component: {fileID: 1565994090}
   m_Layer: 10
   m_Name: Grass
   m_TagString: AnkyFood
@@ -6613,18 +6611,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1565994086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1565994085}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bba048844fdb5384a9bc0032bc8d9e4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 10
 --- !u!4 &1565994087
 Transform:
   m_ObjectHideFlags: 0
@@ -6639,28 +6625,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1565994090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1565994085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe399c0304a8c8d4a8b4dcd0c21b65c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blendWeight: 0
-  blendPriority: 0
-  priorityThreshold: 0.2
-  blendPipeline: 0
-  maxSpeed: 1
-  maxAccel: 3
-  maxRotation: 80
-  maxAngularAccel: 150
-  orientation: 0
-  rotation: 180
-  velocity: {x: 0.1, y: 0.1, z: 0.1}
 --- !u!1 &1634639236
 GameObject:
   m_ObjectHideFlags: 0
@@ -6976,6 +6940,7 @@ MonoBehaviour:
   orientation: 0
   rotation: 180
   velocity: {x: 0, y: 0, z: 0}
+  displacement: {x: 0, y: 0, z: 0}
 --- !u!95 &1736867221
 Animator:
   serializedVersion: 3
@@ -7016,6 +6981,7 @@ MonoBehaviour:
   orientation: 0
   rotation: 180
   velocity: {x: 0, y: 0, z: 0}
+  displacement: {x: 0, y: 0, z: 0}
   anim: {fileID: 1736867221}
   maxHealth: 100
   health: 100
@@ -7438,6 +7404,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1089582589713268, guid: 58433be0ea08bd44e96f2326ec5ddf48,
     type: 2}
   m_PrefabInternal: {fileID: 768263465}
+--- !u!114 &1950736652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1950736651}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb8190088f70434192219db5e2e4221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
 --- !u!4 &1950736655 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4903216018573982, guid: 58433be0ea08bd44e96f2326ec5ddf48,
@@ -7480,6 +7458,7 @@ MonoBehaviour:
   orientation: 0
   rotation: 0
   velocity: {x: 0, y: 0, z: 0}
+  displacement: {x: 0, y: 0, z: 0}
 --- !u!1 &1957780153
 GameObject:
   m_ObjectHideFlags: 0

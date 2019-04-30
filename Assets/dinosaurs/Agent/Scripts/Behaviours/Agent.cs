@@ -14,6 +14,7 @@ public class Agent : MonoBehaviour
     public float orientation;
     public float rotation;
     public Vector3 velocity;
+    public Vector3 displacement;
     protected Steering steering;
     private Dictionary<int, List<Steering>> groups;
 
@@ -25,15 +26,23 @@ public class Agent : MonoBehaviour
 	}
 	protected virtual void Update () // Changed so we can inherit
     {
-        Vector3 displacement = velocity * Time.deltaTime;
+        displacement = velocity * Time.deltaTime;
         orientation += rotation * Time.deltaTime;
         if (orientation < 0.0f)
             orientation += 360.0f;
         else if (orientation > 360.0f)
             orientation -= 360.0f;
-        transform.Translate(displacement, Space.World);
+        if (gameObject.tag == "AnkyFood")
+        {
+            Debug.Log("Help");
+        }
+        else
+        {
+            transform.Translate(displacement, Space.World);
+        }
         transform.rotation = new Quaternion();
         transform.Rotate(Vector3.up, orientation);
+
 	}
     protected virtual void LateUpdate () // Changed so we can inherit
     {
