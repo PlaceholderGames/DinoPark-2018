@@ -13,25 +13,37 @@ public class RaptyStateMachine : MonoBehaviour
     public List<AnkyStateMachine> enemies;
     public RaptyStats S;
     public AnkyStats A;
+    public Wander W;
+    public Pursue P;
+    public Face F;
     public GameObject deadModel;
     // Start is called before the first frame update
     void Start()
     {
         S = GetComponent<RaptyStats>();
-       
+        W = GetComponent<Wander>();
+        P = GetComponent<Pursue>();
+        F = GetComponent<Face>();
         members = new List<RaptyStateMachine>();
         InvokeRepeating("loop", 2.0f, 1.0f);
+
+        
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Anky")
         {
-            float i = Random.Range(1, 2);
-            if (i <= 1.5)
+            float a = Random.Range(1, 10);
+            if (a >= 8)
             {
-                A = other.gameObject.GetComponent<AnkyStats>();
-                A.health -= S.attack;
+                float i = Random.Range(1, 2);
+                if (i <= 1.5)
+                {
+                    A = other.gameObject.GetComponent<AnkyStats>();
+
+                    A.health -= S.attack;
+                }
             }
             //chance to attack and do damage
         }
@@ -42,8 +54,25 @@ public class RaptyStateMachine : MonoBehaviour
         position = transform.position;
         if (S.health <= 0)
         {
-           // Instantiate(deadModel, transform);
+            A = null;
+            W.target = null;
+            P.target = null;
+            F.target = null;
+            Instantiate(deadModel, transform);
             Destroy(gameObject);
+
+        }
+        if (S.hunger < 0 && S.thirst < 0)
+        {
+            S.health -= 0.004f;
+        }
+        else if (S.hunger < 0)
+        {
+            S.health -= 0.001f;
+        }
+        else if (S.thirst < 0)
+        {
+            S.health -= 0.001f;
         }
     }
 
