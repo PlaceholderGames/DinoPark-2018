@@ -2,47 +2,75 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RaptyStateMachine : RaptyStats
+public class RaptyStateMachine : MonoBehaviour
 {
-    public float hungerDisplay;
-    public float thirstDisplay;
+    
+    public Vector3 position;
+    public Vector3 velocity;
+    public Vector3 acceleration;
+
+    public List<RaptyStateMachine> members;
+    public List<AnkyStateMachine> enemies;
+    public RaptyStats S;
+    public AnkyStats A;
+    public GameObject deadModel;
     // Start is called before the first frame update
     void Start()
     {
+        S = GetComponent<RaptyStats>();
        
-       InvokeRepeating("loop", 2.0f, 1.0f);
+        members = new List<RaptyStateMachine>();
+        InvokeRepeating("loop", 2.0f, 1.0f);
     }
-    
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Anky")
+        {
+            float i = Random.Range(1, 2);
+            if (i <= 1.5)
+            {
+                A = other.gameObject.GetComponent<AnkyStats>();
+                A.health -= S.attack;
+            }
+            //chance to attack and do damage
+        }
+    }
     // Update is called once per frame
     void Update()
     {
-
-        hungerDisplay = hunger;
-        thirstDisplay = thirst;
+        position = transform.position;
+        if (S.health <= 0)
+        {
+           // Instantiate(deadModel, transform);
+            Destroy(gameObject);
+        }
     }
 
     void loop()
     {
-        hunger -= 0.5f;
-        thirst -= 1f;
+        S.hunger -= 0.5f;
+        S.thirst -= 1f;
         Wander();
-        energyMax = hunger + thirst;
+        S.energy = S.hunger + S.thirst;
     }
 
     void Wander()
     {
-        if (hunger < (hunger/2))
+        
+        if (S.hunger < (S.hunger/2))
         {
             Hungry(); 
         }
-        else if (thirst < (thirst/2))
+        else if (S.thirst < (S.thirst/2))
         {
             Thirsty();
         }
-        else if (health < healthMax)
+        else if (S.health < S.healthMax)
         {
             Injured();
         }
+        
     }
 
     void Hungry()
@@ -58,18 +86,37 @@ public class RaptyStateMachine : RaptyStats
 
     void Hunting()
     {
+
         //search for some anky to attack or scavenge
         Attack();
     }
 
+    public List<RaptyStateMachine> GetNeighbours(RaptyStateMachine member, float radius)
+    {
+        List<RaptyStateMachine> neighboursFound = new List<RaptyStateMachine>();
+
+        foreach (var otherRapty in members)
+        {
+          //  if (otherRapty = member)
+            {
+                continue;
+            }
+            if (Vector3.Distance(member.position, otherRapty.position) <= radius)
+            {
+                neighboursFound.Add(otherRapty);
+            }
+        }
+        return neighboursFound;
+    }
     void Grouping()
     {
+        
         Hunting();
     }
 
     void Attack()
     {        //if in range of a target attack, if health is below a certain amount,retreat
-        if (health <= healthMax/2)
+        if (S.health <= S.healthMax/2)
         {
             Injured();
         }
@@ -77,7 +124,7 @@ public class RaptyStateMachine : RaptyStats
 
     void Eating()
     {
-        hunger++;
+        S.hunger++;
     }
 
     void Injured()
@@ -88,32 +135,33 @@ public class RaptyStateMachine : RaptyStats
 
     void Resting()
     {
-        if (health == healthMax)
+        if (S.health == S.healthMax)
         {
-            Wander();
+            loop();
         }
-        health++;
-        energy--;
+        S.health++;
+        S.energy--;
     }
 
     void Searching()
     {
+        Wander();
         //look for water and when found go to it, and when reached go to drinking
         Drinking();
     }
 
     void Drinking()
     {
-        while (thirst < thirstMax)
+        while (S.thirst < S.thirstMax)
         {
-            thirst++;
+            S.thirst++;
         }
     }
 
     void Breed()
     {
         //when energy is high and the place is safe, choose 1 of the other rapty to breed
-        if (energy > (energyMax * 0.9f) && health == healthMax)
+        if (S.energy > (S.energyMax * 0.9f) && S.health == S.healthMax)
         {
             //using a list or array of the nearby members, grab the MAX values of the parents and combine them
         }

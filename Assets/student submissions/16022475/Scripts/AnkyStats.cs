@@ -11,7 +11,7 @@ public class AnkyStats : MonoBehaviour
     float energyModifier = 1;
     //Health Stats
     float healthMax;
-    float health;
+    public float health;
     float healthModifier = 1;
     //Speed Stats
     float speedMax;
