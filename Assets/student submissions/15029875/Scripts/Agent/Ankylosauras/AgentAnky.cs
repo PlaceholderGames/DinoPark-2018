@@ -12,14 +12,19 @@ public class AgentAnky : AgentBase
     // Constructor.
     private void Start()
     {
-        // Extra health... bison are tough.
         this.health = 200;
         this.speed = 1;
-        this.stateMachine.SwitchState(new TestState());
+        this.stateMachine.SwitchState(new HungerState());
     }
 
     public override void Update()
     {
         this.stateMachine.Update();
     }
+
+    public override void Horology()
+    {
+        throw new System.NotImplementedException();
+    }
+
 }

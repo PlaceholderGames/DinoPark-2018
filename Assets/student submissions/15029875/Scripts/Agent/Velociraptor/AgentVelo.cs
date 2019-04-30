@@ -12,14 +12,20 @@ public class AgentVelo : AgentBase
     // Constructor.
     private void Start()
     {
-        // Extra health... bison are tough.
-        this.health = 200;
+        this.health = 100;
         this.speed = 1;
-        this.stateMachine.SwitchState(new TestState());
+        this.stateMachine.SwitchState(new HungerState());
     }
 
     public override void Update()
     {
         this.stateMachine.Update();
+        Horology();
+        Debug.Log("My health is: " + this.health);
+    }
+
+    public override void Horology()
+    {
+        this.health -= Time.deltaTime;
     }
 }

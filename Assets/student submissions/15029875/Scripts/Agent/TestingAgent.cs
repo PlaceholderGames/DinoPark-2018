@@ -17,4 +17,9 @@ public class TestingAgent : AgentBase {
     {
         this.stateMachine.Update();
     }
+
+    public override void Horology()
+    {
+        throw new System.NotImplementedException();
+    }
 }

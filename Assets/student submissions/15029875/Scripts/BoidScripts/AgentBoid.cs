@@ -43,6 +43,10 @@ public class AgentBoid : AgentBase
         // Always face forward.
         transform.rotation = Quaternion.LookRotation(boidRB.velocity);
     }
+    public override void Horology()
+    {
+        throw new System.NotImplementedException();
+    }
 
     private void FixedUpdate()
     {
