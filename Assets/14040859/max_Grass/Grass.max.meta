@@ -2,7 +2,29 @@ fileFormatVersion: 2
 guid: c24c6a4938a854041be7243287701f57
 ModelImporter:
   serializedVersion: 23
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    100000: Circle001
+    100002: //RootNode
+    100004: grass_01
+    100006: grass_massive
+    100008: Object001
+    400000: Circle001
+    400002: //RootNode
+    400004: grass_01
+    400006: grass_massive
+    400008: Object001
+    2100000: 'Material #30'
+    2100002: 13 - Default
+    2300000: Circle001
+    2300002: grass_01
+    2300004: Object001
+    3300000: Circle001
+    3300002: grass_01
+    3300004: Object001
+    4300000: grass_01
+    4300002: Object001
+    4300004: Circle001
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -55,7 +77,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0

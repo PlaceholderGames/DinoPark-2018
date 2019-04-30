@@ -44,10 +44,7 @@ public class MyRapty : Agent
         // Eating - requires a box collision with a dead dino
 
         // Drinking - requires y value to be below 32 (?)
-        if (transform.position.y <= 32)
-        {
-            anim.SetBool("isDrinking", true);
-        }
+
         // Alerting
 
         // Alerted - up to the student what you do here
@@ -57,10 +54,6 @@ public class MyRapty : Agent
         // Fleeing - up to the student what you do here
 
         // Dead - If the animal is being eaten, reduce its 'health' until it is consumed
-        if (anim.GetBool("isDead") == true)
-        {
-            
-        }
 
         base.Update();
     }
