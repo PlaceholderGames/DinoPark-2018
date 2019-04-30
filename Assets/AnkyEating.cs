@@ -33,9 +33,17 @@ public class AnkyEating : StateMachineBehaviour {
         //animator.gameObject.transform.LookAt(animator.GetComponent<FieldOfView>().visibleFoodSource[0]);
         if (animator.gameObject.GetComponent<MyAnky>().foodGone)
         {
+            
             animator.gameObject.GetComponent<Seek>().enabled = false;
+            animator.gameObject.GetComponent<Seek>().target = null;
             animator.SetBool("isGrazing", true);
             Destroy(animator.gameObject.GetComponent<FieldOfView>().visibleFoodSource[0].gameObject);
+        }
+
+        if(animator.gameObject.GetComponent<Seek>().target == null)
+        {
+            animator.gameObject.GetComponent<Seek>().enabled = false;
+            animator.SetBool("isGrazing", true);
         }
 
         if (count == 30)
