@@ -46,7 +46,6 @@ public class MyAnky : Agent
     {
         //lowering ankys health on update
         health = health - 0.001f;
-        
         //Debug.Log(health);
 
         // Idle - should only be used at startup
@@ -76,7 +75,6 @@ public class MyAnky : Agent
         if (col.gameObject.tag == "AnkyFood")
         {
             health = health + 5.0f;
-            Destroy(col.gameObject);
             foodGone = true;
         }   
     }

@@ -12,12 +12,15 @@ public class AnkyEating : StateMachineBehaviour {
     {
         Debug.Log("Entering Eating State");
         GameObject ankyFood = animator.GetComponent<FieldOfView>().visibleFoodSource[0].gameObject;
+        animator.GetComponent<FieldOfView>().visibleFoodSource[0].GetComponent<Agent>().orientation = animator.GetComponent<FieldOfView>().visibleFoodSource[0].GetComponentInParent<Agent>().orientation;
+        Seek ankySeek = animator.gameObject.GetComponent<Seek>();
+        Face ankyFace = animator.gameObject.GetComponent<Face>();
 
-        animator.gameObject.GetComponent<Seek>().target = ankyFood;
-        animator.gameObject.GetComponent<Face>().target = ankyFood;
+        ankySeek.target = ankyFood;
+        ankyFace.target = ankyFood;
 
-        animator.gameObject.GetComponent<Seek>().enabled = true;
-        animator.gameObject.GetComponent<Face>().enabled = true;
+        ankyFace.enabled = true;
+        ankySeek.enabled = true;
 
         listCount = animator.gameObject.GetComponent<FieldOfView>().visibleFoodSource.Count;
     }

@@ -6654,12 +6654,12 @@ MonoBehaviour:
   blendPriority: 0
   priorityThreshold: 0.2
   blendPipeline: 0
-  maxSpeed: 0
-  maxAccel: 0
-  maxRotation: 0
-  maxAngularAccel: 0
+  maxSpeed: 1
+  maxAccel: 3
+  maxRotation: 80
+  maxAngularAccel: 150
   orientation: 0
-  rotation: 0
+  rotation: 180
   velocity: {x: 0.1, y: 0.1, z: 0.1}
 --- !u!1 &1634639236
 GameObject:
@@ -6855,8 +6855,8 @@ GameObject:
   - component: {fileID: 1736867224}
   - component: {fileID: 1736867222}
   - component: {fileID: 1736867221}
-  - component: {fileID: 1736867226}
   - component: {fileID: 1736867228}
+  - component: {fileID: 1736867226}
   - component: {fileID: 1736867227}
   m_Layer: 9
   m_Name: Anky
@@ -7071,13 +7071,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1736867214}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80aa38682c59adc4d9e66077acb9713c, type: 3}
+  m_Script: {fileID: 11500000, guid: b58f8b5cea81ad44c9ef086ed46f69d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
   priority: 1
-  target: {fileID: 1565994085}
-  maxPrediction: 15
+  target: {fileID: 0}
+  targetRadius: 0.3
+  slowRadius: 2.5
+  timeToTarget: 0.1
 --- !u!114 &1736867227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7092,8 +7094,8 @@ MonoBehaviour:
   weight: 1
   priority: 1
   target: {fileID: 0}
-  targetRadius: 0
-  slowRadius: 0
+  targetRadius: 0.3
+  slowRadius: 2.5
   timeToTarget: 0.1
 --- !u!114 &1736867228
 MonoBehaviour:
@@ -7456,6 +7458,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1950736657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1950736651}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe399c0304a8c8d4a8b4dcd0c21b65c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blendWeight: 0
+  blendPriority: 0
+  priorityThreshold: 0.2
+  blendPipeline: 0
+  maxSpeed: 0
+  maxAccel: 0
+  maxRotation: 0
+  maxAngularAccel: 0
+  orientation: 0
+  rotation: 0
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!1 &1957780153
 GameObject:
   m_ObjectHideFlags: 0
