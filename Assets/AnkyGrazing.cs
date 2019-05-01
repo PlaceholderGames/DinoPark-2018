@@ -69,6 +69,10 @@ public class AnkyGrazing : StateMachineBehaviour {
             animator.SetBool("isEating", true);
             animator.gameObject.GetComponent<MyAnky>().prevState = 4;
         }
+        if (animator.gameObject.GetComponent<MyAnky>().alpha == null && animator.gameObject.GetComponent<FieldOfView>().visibleAnkys.Count > 0)
+        {
+            animator.gameObject.GetComponent<MyAnky>().alpha = animator.gameObject.GetComponent<FieldOfView>().visibleAnkys[0].gameObject;
+        }
                
     }
 

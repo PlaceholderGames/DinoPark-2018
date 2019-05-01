@@ -27,6 +27,7 @@ public class MyAnky : Agent
 
     public int raptyChasing = -1;
 
+    public GameObject alpha = null;
     // Use this for initialization
     protected override void Start()
     {
