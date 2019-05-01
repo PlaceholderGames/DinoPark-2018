@@ -29,6 +29,20 @@ public class AnkyAlerted : StateMachineBehaviour
         {
             animator.SetBool("isFleeing", true);
         }
+        else if (!run)
+        {
+            if (animator.gameObject.GetComponent<MyAnky>().prevState == 4)
+            {
+                animator.SetBool("isGrazing", true);
+            }
+        }
+        else if (!run)
+        {
+            if (animator.gameObject.GetComponent<MyAnky>().prevState == 1)
+            {
+                animator.SetBool("isEating", true);
+            }
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

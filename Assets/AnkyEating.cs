@@ -21,7 +21,7 @@ public class AnkyEating : StateMachineBehaviour {
 
         //ankyFace.enabled = true;
         ankySeek.enabled = true;
-
+        //was going to be used so if another anky ate the food source being travelled to and more were available then the anky would switch to another food source
         listCount = animator.gameObject.GetComponent<FieldOfView>().visibleFoodSource.Count;
     }
 
