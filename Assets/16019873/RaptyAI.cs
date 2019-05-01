@@ -38,7 +38,7 @@ public class RaptyAI : MonoBehaviour
         return thisDino;
     }
 
-    //work out the distance between one dino to another
+    //work out the distance between one dino to another (the alpha one)
     public GameObject getAlpha()
     {
         return alpha;

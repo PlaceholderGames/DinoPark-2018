@@ -9,17 +9,26 @@ public class DinoAnimation : MonoBehaviour
     public GameObject dino;
     public GameObject opponent;
     public GameObject claws;
+    public GameObject exPoint;
     public float distance;
+
+
+    //work out the distance between one dino to another -  same function as the one in RaptyAI
+    public GameObject getCurrentDino()
+    {
+        return dino;
+    }
+
 
     // Use this for initialization
     void Start ()
     {
         //getting hold of the objects attached to the dino
         anim = GetComponent<Animator>();
-        claws = anim.gameObject;
         //anim.SetFloat("distance", distance);
     }
 	
+
 	// Update is called once per frame
 	void Update ()
     {
@@ -27,13 +36,47 @@ public class DinoAnimation : MonoBehaviour
         //do the attacking animation
 		if (anim.GetFloat("distance") < 7)
         {
+            //gets the current position of the dino
+            //Vector3.Distance(dino.transform.position, getCurrentDino().transform.position);
+            //dino = gameObject.transform.position;
             anim.SetBool("isAttacking", true);
+
+            //Method for adding claws, both work
             claws.GetComponent<MeshRenderer>().enabled = true;
+            claws.SetActive(true);
+            //claws.transform.position = getCurrentDino().transform.position;
         }
         else
         {
             anim.SetBool("isAttacking", false);
-            claws.GetComponent<MeshRenderer>().enabled = false;
+            
+            //Method for removing claws, both work
+            claws.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            claws.SetActive(false);
+            
         }
-	}
+
+        if (anim.GetFloat("distance") < 7)
+        {
+            //gets the current position of the dino
+            //Vector3.Distance(dino.transform.position, getCurrentDino().transform.position);
+            //dino = gameObject.transform.position;
+            anim.SetBool("isAttacking", true);
+
+            //Method for adding claws, both work
+            claws.GetComponent<MeshRenderer>().enabled = true;
+            claws.SetActive(true);
+            //claws.transform.position = getCurrentDino().transform.position;
+        }
+        else
+        {
+            anim.SetBool("isAttacking", false);
+
+            //Method for removing claws, both work
+            claws.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            claws.SetActive(false);
+
+        }
+
+    }
 }
