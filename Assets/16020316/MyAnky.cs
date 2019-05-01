@@ -24,7 +24,7 @@ public class MyAnky : Agent
     public int prevState;
     //going to be used in dead state to give rapty extra health for eating a dead anky
     public bool dead = false;
-
+    public bool decompose = false;
     public int raptyChasing = -1;
 
     public GameObject alpha = null;
@@ -55,6 +55,11 @@ public class MyAnky : Agent
         
         //lowering ankys health on update
         health = health - 0.001f;
+        //DOESNT WORK MAY BE DUE TO ANIMATOR
+        if (health == -1.0f)
+        {
+            Destroy(gameObject);
+        }
         //Debug.Log(health);
 
         // Idle - should only be used at startup
@@ -85,6 +90,10 @@ public class MyAnky : Agent
         {
             health = health + 5.0f;
             foodGone = true;
-        }   
+        }  
+        if (col.gameObject.tag == "Rapty")
+        {
+            health = health - 5.0f;
+        } 
     }
 }
