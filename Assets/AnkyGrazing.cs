@@ -58,6 +58,7 @@ public class AnkyGrazing : StateMachineBehaviour {
                 }
             }
         }
+        //food
         List<Transform> ankyFoodList = animator.gameObject.GetComponent<FieldOfView>().visibleFoodSource;
         if (ankyFoodList.Count != 0)
         {
@@ -69,6 +70,7 @@ public class AnkyGrazing : StateMachineBehaviour {
             animator.SetBool("isEating", true);
             animator.gameObject.GetComponent<MyAnky>().prevState = 4;
         }
+        //herding checks
         if (animator.gameObject.GetComponent<MyAnky>().alpha == null && animator.gameObject.GetComponent<FieldOfView>().visibleAnkys.Count > 0)
         {
             animator.gameObject.GetComponent<MyAnky>().alpha = animator.gameObject.GetComponent<FieldOfView>().visibleAnkys[0].gameObject;

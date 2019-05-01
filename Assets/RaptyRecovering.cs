@@ -2,40 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RaptyIdle : StateMachineBehaviour {
+public class RaptyRecovering : StateMachineBehaviour {
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Entered Idle State");
-        Wander rapty = animator.gameObject.GetComponent<Wander>();
-        rapty.enabled = true;
-
+        Debug.Log("Entered Recovery State");
     }
-    int count = 30;
+
+    float rec = 0.0f;
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
-        if (count == 30)
+        rec = rec + 0.01f;
+        if (rec == 5.0f)
         {
-            Debug.Log("In Idle State");
-            count = 0;
+            animator.SetBool("isEating", true);
         }
-        float health = animator.gameObject.GetComponent<MyRapty>().health;
-        float maxHealth = animator.gameObject.GetComponent<MyRapty>().maxHealth;
-        if (maxHealth > health)
-        {
-            animator.SetBool("isHunting", true);
-            animator.gameObject.GetComponent<MyRapty>().prevState = 0;
-        }
-        count++;
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Leaving Idle State");
-        animator.SetBool("isIdle", false);
+        Debug.Log("Leaving Recovery State");
+        animator.SetBool("isEating", false);
     }
+
 }

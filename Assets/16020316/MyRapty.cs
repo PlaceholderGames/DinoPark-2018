@@ -17,6 +17,13 @@ public class MyRapty : Agent
     };
     private Animator anim;
 
+    public float maxHealth = 100.0f;
+    public float health;
+
+    public bool recover = false;
+    public bool dead = false;
+    public bool foodGone = false;
+    public int prevState;
     // Use this for initialization
     protected override void Start()
     {
@@ -37,6 +44,7 @@ public class MyRapty : Agent
 
     protected override void Update()
     {
+        health = health - 0.005f;
         // Idle - should only be used at startup
 
         // Eating - requires a box collision with a dead dino
@@ -57,5 +65,22 @@ public class MyRapty : Agent
     protected override void LateUpdate()
     {
         base.LateUpdate();
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Anky")
+        {
+            health = health - 2.0f;
+            if (health == 0.0f)
+            {
+                dead = true;
+            }
+            else
+            {
+                health = health + 5.0f;
+                recover = true;
+            }
+        }
     }
 }
