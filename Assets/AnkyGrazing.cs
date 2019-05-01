@@ -72,8 +72,25 @@ public class AnkyGrazing : StateMachineBehaviour {
         if (animator.gameObject.GetComponent<MyAnky>().alpha == null && animator.gameObject.GetComponent<FieldOfView>().visibleAnkys.Count > 0)
         {
             animator.gameObject.GetComponent<MyAnky>().alpha = animator.gameObject.GetComponent<FieldOfView>().visibleAnkys[0].gameObject;
+        }       
+        //checking if alpha anky has died
+        if (animator.gameObject.GetComponent<MyAnky>().alpha.GetComponent<MyAnky>().dead)
+        {
+            if (animator.gameObject.GetComponent<FieldOfView>().visibleAnkys.Count>1)
+            {
+                animator.gameObject.GetComponent<MyAnky>().alpha = animator.gameObject.GetComponent<FieldOfView>().visibleAnkys[1].gameObject;
+            }
+            else
+            {
+                animator.gameObject.GetComponent<MyAnky>().alpha = null;
+            }
         }
-               
+        //moving towards alpha anky if it starts to get close to end of field of view
+        if (Vector3.Distance(animator.gameObject.transform.position, animator.gameObject.GetComponent<MyAnky>().alpha.transform.position) > 60)
+        {
+            animator.SetBool("isHerding", true);
+        }
+
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
