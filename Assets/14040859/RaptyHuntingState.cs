@@ -5,10 +5,7 @@ using UnityEngine;
 public class RaptyHuntingState : StateMachineBehaviour {
 
 
-    Transform raptyLocation;
     public float thirst;
-    private float thirstIncreaseTick = 10;
-    private float thirstTick = 0;
     public float hunger = 0;
     public float raptyX;
     public float raptyY;
@@ -19,22 +16,17 @@ public class RaptyHuntingState : StateMachineBehaviour {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         Debug.Log("Rapty has entered Hunting State");
         animator.SetBool("isHunting", true);
-        hunger = animator.GetFloat("Hunger");
-        thirst = animator.GetFloat("Thirst");
+        
 
-       // raptyLocation = GetComponent<Transform>();
-        animator.SetFloat("Rapty X", raptyLocation.transform.position.x);
-        animator.SetFloat("Rapty Y", raptyLocation.transform.position.y);
-        animator.SetFloat("Rapty Z", raptyLocation.transform.position.z);
+        hunger = animator.GetFloat("hungerValue");
+        thirst = animator.GetFloat("thirstValue");
+
+        
 
     }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-
-     //   animator.SetFloat("Rapty X", raptyLocation.transform.position.x);
-      //  animator.SetFloat("Rapty Y", raptyLocation.transform.position.y);
-      //  animator.SetFloat("Rapty Z", raptyLocation.transform.position.z);
 
         thirst += 0.5f;
         hunger += 10.1f; 

@@ -9,7 +9,11 @@ public class RaptyIdleState : StateMachineBehaviour {
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         Debug.Log("Rapty has entered Idle state.");
-	}
+        if (animator.GetFloat("raptyHealth") == 0.0)
+        {
+            animator.SetFloat("raptyHealth", 100.0f);
+        }
+    }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {

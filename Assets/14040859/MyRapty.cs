@@ -17,11 +17,13 @@ public class MyRapty : Agent
         DEAD        //Ded
     };
     private Animator anim;
+    private Transform raptyLoc;
 
     // Use this for initialization
     protected override void Start()
     {
         anim = GetComponent<Animator>();
+        raptyLoc = GetComponent<Transform>();
         // Assert default animation booleans and floats
         anim.SetBool("isIdle", true);
         anim.SetBool("isEating", false);
@@ -40,6 +42,9 @@ public class MyRapty : Agent
     protected override void Update()
     {
         // Idle - should only be used at startup
+        anim.SetFloat("raptyX", raptyLoc.position.x);
+        anim.SetFloat("raptyY", raptyLoc.position.y);
+        anim.SetFloat("raptyZ", raptyLoc.position.z);
 
         // Eating - requires a box collision with a dead dino
 
