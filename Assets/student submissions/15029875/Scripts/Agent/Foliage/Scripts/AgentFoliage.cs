@@ -1,16 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using StateMachineInternals;
 using UnityEngine;
 
-public class AgentFoliage : MonoBehaviour {
+// The Bison agent is special in that it has the capacity to herd
+// as well as idle.
+public class AgentFoliage : AgentBase
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // Constructor.
+    private void Start()
+    {
+        this.health = 200;
+    }
+
+    public override void Update()
+    {
+    }
+
+    public override void Horology()
+    {
+        // Increase in size.
+
+        // Increase in calories.
+    }
+
 }

@@ -10,16 +10,22 @@ public class HungerState : IState
 {
     public void BeginState()
     {
-        Debug.Log("Entered hunger state.");
+        // Decrease speed.
+        
     }
 
     public void EndState()
     {
-        Debug.Log("Exited hunger state.");
     }
 
     public void UpdateState()
     {
+    }
+
+    // Search for food.
+    public void SeekFood()
+    {
+
     }
 
 }

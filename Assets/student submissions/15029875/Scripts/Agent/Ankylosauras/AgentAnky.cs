@@ -13,8 +13,8 @@ public class AgentAnky : AgentBase
     private void Start()
     {
         this.health = 200;
-        this.speed = 1;
-        this.stateMachine.SwitchState(new HungerState());
+        this.speed = 4;
+        this.stateMachine.SwitchState(new IdleState(this.gameObject, this.speed));
     }
 
     public override void Update()

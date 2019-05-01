@@ -12,20 +12,27 @@ public class AgentVelo : AgentBase
     // Constructor.
     private void Start()
     {
-        this.health = 100;
-        this.speed = 1;
-        this.stateMachine.SwitchState(new HungerState());
+        this.health = Random.Range(90, 100);
+        this.hunger = Random.Range(0, 40);
+        this.speed = 3;
+        this.stateMachine.SwitchState(new IdleState(this.gameObject, this.speed));
     }
 
     public override void Update()
     {
-        this.stateMachine.Update();
         Horology();
-        Debug.Log("My health is: " + this.health);
+        
+
+        if(this.hunger >= 100)
+        {
+            this.stateMachine.SwitchState(new HungerState());
+        }
+
+        this.stateMachine.Update();
     }
 
     public override void Horology()
     {
-        this.health -= Time.deltaTime;
+        this.hunger += Time.deltaTime;
     }
 }
