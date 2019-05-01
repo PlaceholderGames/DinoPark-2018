@@ -13,6 +13,7 @@ TagManager:
   - Anky
   - Rapty
   - Grass
+  - DeadAnky
   layers:
   - Default
   - TransparentFX

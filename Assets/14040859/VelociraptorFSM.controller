@@ -74,19 +74,19 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Rapty X
+  - m_Name: raptyX
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Rapty Y
+  - m_Name: raptyY
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Rapty Z
+  - m_Name: raptyZ
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -553,9 +553,12 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
+  - m_ConditionMode: 4
+    m_ConditionEvent: raptyY
+    m_EventTreshold: 35
   - m_ConditionMode: 1
-    m_ConditionEvent: isDrinking
-    m_EventTreshold: 75
+    m_ConditionEvent: isIdle
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102659200117314040}
   m_Solo: 0
@@ -878,7 +881,7 @@ AnimatorStateMachine:
     m_Position: {x: 492, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102659200117314040}
-    m_Position: {x: 492, y: 276, z: 0}
+    m_Position: {x: 528, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102105260943761200}
     m_Position: {x: 36, y: 180, z: 0}
@@ -887,10 +890,10 @@ AnimatorStateMachine:
     m_Position: {x: 264, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102793654676312312}
-    m_Position: {x: 264, y: 276, z: 0}
+    m_Position: {x: 264, y: 288, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102981124334476494}
-    m_Position: {x: 36, y: 276, z: 0}
+    m_Position: {x: 12, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102772822414884686}
     m_Position: {x: 492, y: 84, z: 0}
