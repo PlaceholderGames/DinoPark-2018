@@ -28,7 +28,7 @@ public class RaptyHuntingState : StateMachineBehaviour {
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
-        thirst += 0.5f;
+        thirst += 5.5f;
         hunger += 10.1f; 
         animator.SetFloat("thirstValue", thirst);
         animator.SetFloat("hungerValue", hunger);

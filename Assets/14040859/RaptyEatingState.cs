@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class RaptyEatingState : StateMachineBehaviour {
 
+    private float hunger;
+    public float eatingRate = 10.0f;
+    private BoxCollider col;
+
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         Debug.Log("Rapty has entered Eating State");
+        hunger = animator.GetFloat("hungerValue");
     }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-	//override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
+	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+        hunger -= eatingRate;
+        animator.SetFloat("hungerValue", hunger);
+        if (animator.GetFloat("hungerValue") <= 0)
+        {
+            animator.SetBool("isHunting", true);
+        }
+
+	}
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {

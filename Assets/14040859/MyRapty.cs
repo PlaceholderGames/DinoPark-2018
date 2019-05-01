@@ -18,12 +18,15 @@ public class MyRapty : Agent
     };
     private Animator anim;
     private Transform raptyLoc;
-
+    private Wander raptyMove;
+    public BoxCollider col;
     // Use this for initialization
     protected override void Start()
     {
         anim = GetComponent<Animator>();
         raptyLoc = GetComponent<Transform>();
+        col = GetComponent<BoxCollider>();
+        raptyMove = GetComponent<Wander>();
         // Assert default animation booleans and floats
         anim.SetBool("isIdle", true);
         anim.SetBool("isEating", false);
@@ -47,7 +50,12 @@ public class MyRapty : Agent
         anim.SetFloat("raptyZ", raptyLoc.position.z);
 
         // Eating - requires a box collision with a dead dino
-
+        if (anim.GetBool("isEating") == false)
+        {
+            GetComponent<Wander>().enabled = true;
+            GetComponent<Pursue>().enabled = true;
+        }
+      
         // Drinking - requires y value to be below 32 (?)
 
         // Alerting
@@ -66,5 +74,20 @@ public class MyRapty : Agent
     protected override void LateUpdate()
     {
         base.LateUpdate();
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if (anim.GetFloat("hungerValue") <= 0 && col.gameObject.tag == "DeadAnky")
+        {
+            Destroy(col.gameObject);
+        }
+        else if (col.gameObject.tag == "DeadAnky")
+        {
+            anim.SetBool("isEating", true);
+            GetComponent<Wander>().enabled = false;
+            GetComponent<Pursue>().enabled = false;
+            Destroy(col.gameObject);
+        }
     }
 }

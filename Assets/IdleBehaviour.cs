@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class IdleBehaviour : StateMachineBehaviour {
 
-    private Transform grassPos;
     public float speed;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         Debug.Log("Anky has Entered Idle State");
 
-    animator.transform.position = Vector2.MoveTowards(animator.transform.position, grassPos.position, speed * Time.deltaTime);
+   
     
 }
 
