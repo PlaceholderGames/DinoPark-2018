@@ -30,7 +30,16 @@ public class AnkyEating : StateMachineBehaviour {
     //OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //animator.gameObject.transform.LookAt(animator.GetComponent<FieldOfView>().visibleFoodSource[0]);
+        if (animator.gameObject.GetComponent<MyAnky>().health <= 0)
+        {
+            animator.SetBool("isDead", true);
+        }
+        if (animator.gameObject.GetComponent<FieldOfView>().visibleRaptys.Count != animator.gameObject.GetComponent<MyAnky>().dangerCount)
+        {
+            animator.SetBool("isAlerted", true);
+            animator.gameObject.GetComponent<MyAnky>().prevState = 1;
+        }
+        //check if anky ate the food
         if (animator.gameObject.GetComponent<MyAnky>().foodGone)
         {
             
@@ -38,12 +47,15 @@ public class AnkyEating : StateMachineBehaviour {
             animator.gameObject.GetComponent<Seek>().target = null;
             animator.SetBool("isGrazing", true);
             Destroy(animator.gameObject.GetComponent<FieldOfView>().visibleFoodSource[0].gameObject);
+            animator.gameObject.GetComponent<MyAnky>().foodGone = false; //reseting bool
+            animator.gameObject.GetComponent<MyAnky>().prevState = 1;
         }
-
+        //check if the another anky ate food
         if(animator.gameObject.GetComponent<Seek>().target == null)
         {
             animator.gameObject.GetComponent<Seek>().enabled = false;
             animator.SetBool("isGrazing", true);
+            animator.gameObject.GetComponent<MyAnky>().prevState = 1;
         }
 
         if (count == 30)

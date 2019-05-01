@@ -20,8 +20,17 @@ public class AnkyGrazing : StateMachineBehaviour {
             Debug.Log("In Grazing State");
             count = 0;
         }
+        if (animator.gameObject.GetComponent<FieldOfView>().visibleRaptys.Count != animator.gameObject.GetComponent<MyAnky>().dangerCount)
+        {
+            animator.SetBool("isAlerted", true);
+            animator.gameObject.GetComponent<MyAnky>().prevState = 4;
+        }
         count++;
         bool foodFound = false;
+        if (animator.gameObject.GetComponent<MyAnky>().health <= 0)
+        {
+            animator.SetBool("isDead", true);
+        }
         List<Transform> ankyFoodList = animator.gameObject.GetComponent<FieldOfView>().visibleFoodSource;
         if (ankyFoodList.Count != 0)
         {
@@ -31,6 +40,7 @@ public class AnkyGrazing : StateMachineBehaviour {
         if (foodFound)
         {
             animator.SetBool("isEating", true);
+            animator.gameObject.GetComponent<MyAnky>().prevState = 4;
         }
                
     }

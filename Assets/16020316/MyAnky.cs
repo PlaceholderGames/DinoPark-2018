@@ -19,21 +19,24 @@ public class MyAnky : Agent
     public Animator anim;
     public float maxHealth = 100.0f;
     public float health;
+    public int dangerCount = 0;
     public bool foodGone = false;
+    public int prevState;
 
     // Use this for initialization
     protected override void Start()
     {
         anim = GetComponent<Animator>();
         // Assert default animation booleans and floats
-        anim.SetBool("isIdle", true);
-        anim.SetBool("isEating", false);
-        anim.SetBool("isDrinking", false);
-        anim.SetBool("isAlerted", false);
-        anim.SetBool("isGrazing", false);
-        anim.SetBool("isAttacking", false);
-        anim.SetBool("isFleeing", false);
-        anim.SetBool("isDead", false);
+        //numbers are used to keep track of previous state
+        anim.SetBool("isIdle", true); //0
+        anim.SetBool("isEating", false); //1
+        anim.SetBool("isDrinking", false); //2
+        anim.SetBool("isAlerted", false); //3
+        anim.SetBool("isGrazing", false); //4
+        anim.SetBool("isAttacking", false); //5
+        anim.SetBool("isFleeing", false); //6
+        anim.SetBool("isDead", false); //7
         anim.SetFloat("speedMod", 1.0f);
         health = maxHealth;
         // This with GetBool and GetFloat allows 
@@ -44,6 +47,7 @@ public class MyAnky : Agent
 
     protected override void Update()
     {
+        
         //lowering ankys health on update
         health = health - 0.001f;
         //Debug.Log(health);

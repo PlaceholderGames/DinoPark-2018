@@ -27,7 +27,7 @@ public class AnkyIdle : StateMachineBehaviour
         if (maxHealth>health)
         {
             animator.SetBool("isGrazing", true);
-            
+            animator.gameObject.GetComponent<MyAnky>().prevState = 0;
         }
         count++;
     }
