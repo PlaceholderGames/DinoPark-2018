@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4768221778803954}
   - component: {fileID: 137321787920540874}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4775090130925832}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftBackKneeRig_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4518271628100008}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DownMouthStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4262858369084178}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tail4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4209046626262738}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tail2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4916552449506352}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DownMouthRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4666563547588402}
   - component: {fileID: 95675874028602168}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ankylo_animated
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4575772028362336}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4367779808050844}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TailStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4241867745407272}
   - component: {fileID: 137990329442873484}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4584519096556074}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightBackKneeRig_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4484034494807594}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4057881504164568}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DownMouthRig_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4468475184246178}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: leftBackHip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +232,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4458099694129726}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftBackKneeStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4310235149052648}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightKneeRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4867008259690756}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TailRig_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4861640010197464}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftKneeRig_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4808494376247104}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftBackKneeRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +307,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4723299876258156}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: UpMouthStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +322,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4088544033431266}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftHip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -337,7 +337,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4244001638355080}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightKnee2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +352,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4287331069701598}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: UpMouthRig_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4383087784356762}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: UpMouthRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4181282515307136}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ankylosa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,7 +397,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4073229294321696}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightKneeStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -412,7 +412,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4502125551957936}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftKnee2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4561199125224814}
   - component: {fileID: 137123619438444426}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -443,7 +443,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4149131230832328}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TailRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4716947411339372}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -473,7 +473,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4025779712938722}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tail5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4113459966566332}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Estomach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4391716691320442}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HeadRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4336990637608596}
   - component: {fileID: 137765797684088180}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,7 +534,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4312926345235404}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -549,7 +549,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4710466250258328}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftKneeRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,7 +564,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4726485950556208}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -579,7 +579,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4485556425654820}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightKneeRig_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -594,7 +594,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4817828941410758}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -609,7 +609,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4557061290389456}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightBackKnee2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +624,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4273015639586602}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tail3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -639,7 +639,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4221858177134146}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftKneeStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -654,7 +654,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4406304563748274}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightBackKneeRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -670,7 +670,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4700996499694132}
   - component: {fileID: 137326088909531992}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,7 +685,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4150481294408246}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightBackHip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -703,7 +703,8 @@ GameObject:
   - component: {fileID: 54342757650755762}
   - component: {fileID: 136220372563265556}
   - component: {fileID: 114717419984127066}
-  m_Layer: 0
+  - component: {fileID: 114336194191527482}
+  m_Layer: 9
   m_Name: Ankylosi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -718,7 +719,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4926275357479490}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftBackKnee2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -733,7 +734,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4830934351811068}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightBackKneeStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -748,7 +749,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4778846046474266}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightHip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1474,6 +1475,25 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114336194191527482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1877654863563634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c59c8556abd1c4676b97deb06d20aff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewRadius: 100
+  viewAngle: 300
+  stereoAngle: 30
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 1536
+  visibleTargets: []
+  stereoVisibleTargets: []
 --- !u!114 &114717419984127066
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -20,12 +20,13 @@ public class AgentVelo : AgentBase
 
     public override void Update()
     {
+        this.stateMachine.Update();
         Horology();
         
 
         if(this.hunger >= 100)
         {
-            this.stateMachine.SwitchState(new HungerState());
+            this.stateMachine.SwitchState(new HungerState(this.gameObject));
         }
 
         this.stateMachine.Update();

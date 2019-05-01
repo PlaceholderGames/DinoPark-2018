@@ -13,6 +13,7 @@ public class AgentAnky : AgentBase
     private void Start()
     {
         this.health = 200;
+        this.hunger = Random.Range(0, 40);
         this.speed = 4;
         this.stateMachine.SwitchState(new IdleState(this.gameObject, this.speed));
     }
@@ -20,11 +21,20 @@ public class AgentAnky : AgentBase
     public override void Update()
     {
         this.stateMachine.Update();
+        Horology();
+
+
+        if (this.hunger >= 60)
+        {
+            this.stateMachine.SwitchState(new HungerState(this.gameObject));
+        }
+
+        this.stateMachine.Update();
     }
 
     public override void Horology()
     {
-        throw new System.NotImplementedException();
+        this.hunger += Time.deltaTime;
     }
 
 }
