@@ -31,6 +31,33 @@ public class AnkyGrazing : StateMachineBehaviour {
         {
             animator.SetBool("isDead", true);
         }
+        //checking distance between anky and rapty when there is only one
+        if (animator.gameObject.GetComponent<MyAnky>().dangerCount == 1)
+        {
+            float dist;
+            dist = Vector3.Distance(animator.gameObject.transform.position, animator.gameObject.GetComponent<FieldOfView>().visibleRaptys[0].gameObject.transform.position);
+            if (dist < 50)
+            {
+                animator.SetBool("isFleeing", true);
+                animator.gameObject.GetComponent<MyAnky>().prevState = 4;
+            }
+        }
+        //checks distance between all raptys
+        //else if used to avoid for loop being used unessecarily
+        else if (animator.gameObject.GetComponent<MyAnky>().dangerCount >= 1)
+        {
+            for (int i = 0; i < animator.gameObject.GetComponent<MyAnky>().dangerCount; i++)
+            {
+                float dist;
+                dist = Vector3.Distance(animator.gameObject.transform.position, animator.gameObject.GetComponent<FieldOfView>().visibleRaptys[i].gameObject.transform.position);
+                if (dist < 50)
+                {
+                    animator.SetBool("isFleeing", true);
+                    animator.gameObject.GetComponent<MyAnky>().raptyChasing = i;
+                    animator.gameObject.GetComponent<MyAnky>().prevState = 4;
+                }
+            }
+        }
         List<Transform> ankyFoodList = animator.gameObject.GetComponent<FieldOfView>().visibleFoodSource;
         if (ankyFoodList.Count != 0)
         {

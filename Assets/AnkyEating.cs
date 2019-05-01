@@ -62,6 +62,7 @@ public class AnkyEating : StateMachineBehaviour {
                 if (dist < 50)
                 {
                     animator.SetBool("isFleeing", true);
+                    animator.gameObject.GetComponent<MyAnky>().raptyChasing = i;
                     animator.gameObject.GetComponent<MyAnky>().prevState = 4;
                 }
             }

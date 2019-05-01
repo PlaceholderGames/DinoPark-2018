@@ -17,12 +17,13 @@ public class AnkyAlerted : StateMachineBehaviour
         animator.gameObject.GetComponent<MyAnky>().dangerCount = animator.gameObject.GetComponent<FieldOfView>().visibleRaptys.Count;
         float dist;
         bool run = false;
-        for (int i=0;i<animator.gameObject.GetComponent<MyAnky>().dangerCount;i++)
+        for (int i=0;i<animator.gameObject.GetComponent<FieldOfView>().visibleRaptys.Count; i++)
         {
             dist = Vector3.Distance(animator.gameObject.transform.position, animator.gameObject.GetComponent<FieldOfView>().visibleRaptys[i].gameObject.transform.position);
             if (dist < 50)
             {
                 run = true;
+                animator.gameObject.GetComponent<MyAnky>().raptyChasing = i;
             }
         }
         if (run)

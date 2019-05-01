@@ -22,6 +22,10 @@ public class MyAnky : Agent
     public int dangerCount = 0;
     public bool foodGone = false;
     public int prevState;
+    //going to be used in dead state to give rapty extra health for eating a dead anky
+    public bool dead = false;
+
+    public int raptyChasing = -1;
 
     // Use this for initialization
     protected override void Start()
