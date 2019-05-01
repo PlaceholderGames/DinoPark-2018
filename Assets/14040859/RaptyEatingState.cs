@@ -16,7 +16,10 @@ public class RaptyEatingState : StateMachineBehaviour {
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        hunger -= eatingRate;
+        if (hunger >= 1)
+        {
+            hunger -= eatingRate;
+        }
         animator.SetFloat("hungerValue", hunger);
         if (animator.GetFloat("hungerValue") <= 0)
         {
@@ -28,6 +31,7 @@ public class RaptyEatingState : StateMachineBehaviour {
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         Debug.Log("Rapty has left Eating State");
+        animator.SetBool("isEating", false);
     }
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

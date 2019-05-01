@@ -20,6 +20,7 @@ public class MyRapty : Agent
     private Transform raptyLoc;
     private Wander raptyMove;
     public BoxCollider col;
+    public Face raptyTarget;
     // Use this for initialization
     protected override void Start()
     {
@@ -27,6 +28,7 @@ public class MyRapty : Agent
         raptyLoc = GetComponent<Transform>();
         col = GetComponent<BoxCollider>();
         raptyMove = GetComponent<Wander>();
+        raptyTarget = GetComponent<Face>();
         // Assert default animation booleans and floats
         anim.SetBool("isIdle", true);
         anim.SetBool("isEating", false);
@@ -50,12 +52,20 @@ public class MyRapty : Agent
         anim.SetFloat("raptyZ", raptyLoc.position.z);
 
         // Eating - requires a box collision with a dead dino
-        if (anim.GetBool("isEating") == false)
+        if (anim.GetBool("isHunting") == true)
         {
             GetComponent<Wander>().enabled = true;
             GetComponent<Pursue>().enabled = true;
         }
       
+        if(raptyTarget.target == null)
+        {
+            raptyTarget.target = GameObject.FindGameObjectWithTag("DeadRapty");
+
+        }
+
+
+
         // Drinking - requires y value to be below 32 (?)
 
         // Alerting
@@ -67,6 +77,20 @@ public class MyRapty : Agent
         // Fleeing - up to the student what you do here
 
         // Dead - If the animal is being eaten, reduce its 'health' until it is consumed
+        if (anim.GetBool("isDead") == true)
+        {
+            GetComponent<Wander>().enabled = false;
+            GetComponent<Pursue>().enabled = false;
+            GetComponent<Face>().enabled = false;
+            GetComponent<MyRapty>().enabled = false;
+            GetComponent<Agent>().enabled = false;
+            raptyLoc.Rotate(0.0f, 0.0f, 90.0f);
+        }
+        
+        if (anim.GetFloat("raptyDecay") < 0.0f)
+        {
+            Destroy(gameObject);
+        }
 
         base.Update();
     }
@@ -78,11 +102,7 @@ public class MyRapty : Agent
 
     private void OnCollisionEnter(Collision col)
     {
-        if (anim.GetFloat("hungerValue") <= 0 && col.gameObject.tag == "DeadAnky")
-        {
-            Destroy(col.gameObject);
-        }
-        else if (col.gameObject.tag == "DeadAnky")
+        if (col.gameObject.tag == "DeadAnky")
         {
             anim.SetBool("isEating", true);
             GetComponent<Wander>().enabled = false;

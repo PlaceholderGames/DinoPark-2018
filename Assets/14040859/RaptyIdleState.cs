@@ -13,6 +13,7 @@ public class RaptyIdleState : StateMachineBehaviour {
         {
             animator.SetFloat("raptyHealth", 100.0f);
         }
+        animator.SetFloat("raptyDecay", 100.0f);
     }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

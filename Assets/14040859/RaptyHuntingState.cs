@@ -7,10 +7,7 @@ public class RaptyHuntingState : StateMachineBehaviour {
 
     public float thirst;
     public float hunger = 0;
-    public float raptyX;
-    public float raptyY;
-    public float raptyZ;
-   
+
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
@@ -20,6 +17,7 @@ public class RaptyHuntingState : StateMachineBehaviour {
 
         hunger = animator.GetFloat("hungerValue");
         thirst = animator.GetFloat("thirstValue");
+
 
         
 
@@ -35,7 +33,7 @@ public class RaptyHuntingState : StateMachineBehaviour {
         if (thirst > 50000) { 
             animator.SetBool("isDrinking", true);
         }
-
+        //if ()
     }
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
