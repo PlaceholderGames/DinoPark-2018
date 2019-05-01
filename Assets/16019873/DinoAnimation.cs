@@ -12,7 +12,7 @@ public class DinoAnimation : MonoBehaviour
     public GameObject dino;
     public GameObject opponent;
     public GameObject claws;
-    public GameObject exPoint;
+    public GameObject exMark;
     public float distance;
 
 
@@ -61,19 +61,19 @@ public class DinoAnimation : MonoBehaviour
         {
             //gets the current position of the dino
             //dino = gameObject.transform.position;
-            anim.SetBool("isAttacking", true);
+            anim.SetBool("isAlert", true);
 
             //Method for adding claws, both work
-            claws.GetComponent<MeshRenderer>().enabled = true;
-            claws.SetActive(true);
+            exMark.GetComponent<MeshRenderer>().enabled = true;
+            exMark.SetActive(true);
         }
         else
         {
-            anim.SetBool("isAttacking", false);
+            anim.SetBool("isAlert", false);
 
             //Method for removing claws, both work
-            claws.gameObject.GetComponent<MeshRenderer>().enabled = false;
-            claws.SetActive(false);
+            exMark.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            exMark.SetActive(false);
 
         }
 
