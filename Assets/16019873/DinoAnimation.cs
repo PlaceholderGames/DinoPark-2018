@@ -40,14 +40,12 @@ public class DinoAnimation : MonoBehaviour
 		if (anim.GetFloat("distance") < 7)
         {
             //gets the current position of the dino
-            //Vector3.Distance(dino.transform.position, getCurrentDino().transform.position);
             //dino = gameObject.transform.position;
             anim.SetBool("isAttacking", true);
 
             //Method for adding claws, both work
             claws.GetComponent<MeshRenderer>().enabled = true;
             claws.SetActive(true);
-            //claws.transform.position = getCurrentDino().transform.position;
         }
         else
         {
@@ -62,14 +60,12 @@ public class DinoAnimation : MonoBehaviour
         if (anim.GetFloat("distance") < 7)
         {
             //gets the current position of the dino
-            //Vector3.Distance(dino.transform.position, getCurrentDino().transform.position);
             //dino = gameObject.transform.position;
             anim.SetBool("isAttacking", true);
 
             //Method for adding claws, both work
             claws.GetComponent<MeshRenderer>().enabled = true;
             claws.SetActive(true);
-            //claws.transform.position = getCurrentDino().transform.position;
         }
         else
         {
