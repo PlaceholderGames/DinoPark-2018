@@ -19,8 +19,9 @@ public class DeadState : DinoBaseClass
         animator.SetBool("deadDino", false);
 
         //https://answers.unity.com/questions/802351/destroyobject-vs-destroy.html
-        //ALSO: https://learn.unity.com/tutorial/destroy-i?projectId=5c8920b4edbc2a113b6bc26a#5c8a6146edbc2a001f47d5c6 - to destroy within 3 sec
+        //also: https://learn.unity.com/tutorial/destroy-i?projectId=5c8920b4edbc2a113b6bc26a#5c8a6146edbc2a001f47d5c6 - to destroy within 3 sec
         DinoBaseClass.DestroyImmediate(dino);
+
     }
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state

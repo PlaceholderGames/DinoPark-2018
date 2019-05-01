@@ -35,7 +35,6 @@ public class AlertState : DinoBaseClass
     {
         Debug.Log("Rapty is exiting the Alert State...");
         animator.SetBool("isAttacked", false);
-        //reset speed
         
     }
 

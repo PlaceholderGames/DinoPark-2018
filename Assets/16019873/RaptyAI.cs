@@ -139,12 +139,6 @@ public class RaptyAI : MonoBehaviour
                 ASagent.enabled = false;
             }
         }
-
-        //and push him back to not drown
-        if (animator.GetFloat("yAxis") <= 32)
-        {
-            //animator.GetComponent("Rapty", transform.position.y);
-        }
         
         //kill dino if he has his values to 0
         if (currentHunger <= 0 || currentThirst <= 0 || currentHealth <= 0)

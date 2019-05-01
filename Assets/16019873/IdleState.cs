@@ -11,7 +11,8 @@ public class IdleState : DinoBaseClass
     //check which waypoint we are currently at when swapping states
     int currentWaypoint;
 
-    //EXAMPLE:https://www.youtube.com/watch?v=aEPSuGlcTUQ
+    //example of a basic Idle state: https://www.youtube.com/watch?v=aEPSuGlcTUQ
+    //this is not thge method that has been used (see report for more information)
 
     //find all game objects with this tag
     void Awake()
@@ -70,10 +71,10 @@ public class IdleState : DinoBaseClass
         //rotate towards the target that has been detected
         //move the dino forward
         //slerp is to slowly turn and start facing the waypoint
-        //var direction = waypoints[currentWaypoint].transform.position - moveDino.transform.position;
-        //moveDino.transform.rotation = Quaternion.Slerp(moveDino.transform.rotation, Quaternion.LookRotation(direction), rotationSpeed * Time.deltaTime);
+        var direction = waypoints[currentWaypoint].transform.position - moveDino.transform.position;
+        moveDino.transform.rotation = Quaternion.Slerp(moveDino.transform.rotation, Quaternion.LookRotation(direction), rotationSpeed * Time.deltaTime);
         //pushing it forward to the z axis
-        //moveDino.transform.Translate(0, 0, Time.deltaTime * speed);
+        moveDino.transform.Translate(0, 0, Time.deltaTime * speed);
 
     }
 
