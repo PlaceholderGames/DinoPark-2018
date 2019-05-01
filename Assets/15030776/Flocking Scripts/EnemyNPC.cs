@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : Member
+public class EnemyNPC : Member
 {
 
     override protected Vector3 Combine()

@@ -8828,8 +8828,11 @@ GameObject:
   - component: {fileID: 1736867218}
   - component: {fileID: 1736867216}
   - component: {fileID: 1736867220}
+  - component: {fileID: 1736867223}
   - component: {fileID: 1736867219}
   - component: {fileID: 1736867217}
+  - component: {fileID: 1736867222}
+  - component: {fileID: 1736867221}
   m_Layer: 9
   m_Name: Anky
   m_TagString: Anky
@@ -8945,6 +8948,61 @@ MonoBehaviour:
   orientation: 0
   rotation: 180
   velocity: {x: 0, y: 0, z: 0}
+--- !u!114 &1736867221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1736867214}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b75d57ac41fbea43ad9e8e37ffee433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  lifeTime: 10
+--- !u!95 &1736867222
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1736867214}
+  m_Enabled: 0
+  m_Avatar: {fileID: 9000000, guid: 22876b3aba83f994abe2b0135f567a4f, type: 3}
+  m_Controller: {fileID: 9100000, guid: 99470c36cefed5643be4e7a01966e53f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1736867223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1736867214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90cf21f150c8cb4db6ca6b579060ca3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blendWeight: 0
+  blendPriority: 0
+  priorityThreshold: 0.2
+  blendPipeline: 0
+  maxSpeed: 0
+  maxAccel: 0
+  maxRotation: 0
+  maxAngularAccel: 0
+  orientation: 0
+  rotation: 0
+  velocity: {x: 0, y: 0, z: 0}
+  anim: {fileID: 0}
 --- !u!1 &1768558688
 GameObject:
   m_ObjectHideFlags: 0

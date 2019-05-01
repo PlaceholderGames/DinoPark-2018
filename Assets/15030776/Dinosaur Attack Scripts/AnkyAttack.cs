@@ -9,7 +9,7 @@ public class AnkyAttack : MonoBehaviour
     public int attackDamage = 34;               // The amount of health taken away per attack.
 
     GameObject Rapty;                           // Reference to the Ankylosaurus GameObject.
-    AnkyHealth ankyHealth;                      // Reference to the Ankylosaurus' health.
+    //AnkyHealth ankyHealth;                      // Reference to the Ankylosaurus' health.
     RaptyHealth raptyHealth;                    // Reference to the Rapty's health.
 
     bool raptyInRange;                          // Whether the Ankylosaurus is within the trigger collider and can be attacked.
@@ -23,7 +23,7 @@ public class AnkyAttack : MonoBehaviour
         // Setting up the references.
         Rapty = GameObject.FindGameObjectWithTag("Rapty");
         raptyHealth = Rapty.GetComponent<RaptyHealth>();
-        ankyHealth = GetComponent<AnkyHealth>();
+        //ankyHealth = GetComponent<AnkyHealth>();
 
     }
 

@@ -12,7 +12,7 @@ public class Level : MonoBehaviour
     public int numberOfEnemies;
 
     public List<Member> members;
-    public List<Enemy> enemies;
+    public List<EnemyNPC> enemies;
 
     public float bounds;
     public float spawnRadius;
@@ -22,13 +22,13 @@ public class Level : MonoBehaviour
     {
 
         members = new List<Member>();
-        enemies = new List<Enemy>();
+        enemies = new List<EnemyNPC>();
 
         Spawn(memberPrefab, numberOfMembers);
         Spawn(enemyPrefab, numberOfEnemies);
 
         members.AddRange(FindObjectsOfType<Member>());
-        enemies.AddRange(FindObjectsOfType<Enemy>());
+        enemies.AddRange(FindObjectsOfType<EnemyNPC>());
 
     }
 
@@ -72,10 +72,10 @@ public class Level : MonoBehaviour
 
     }
 
-    public List<Enemy> GetEnemies (Member member, float radius)
+    public List<EnemyNPC> GetEnemies (Member member, float radius)
     {
 
-        List<Enemy> returnEnemies = new List<Enemy>();
+        List<EnemyNPC> returnEnemies = new List<EnemyNPC>();
 
         foreach (var enemy in enemies)
         {

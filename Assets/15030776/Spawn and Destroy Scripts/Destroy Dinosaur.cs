@@ -37,7 +37,12 @@ public class DestroyDinosaur : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
 
-        if (collision.gameObject.name == "destroyer") ;
+        if (collision.gameObject.name == "destroyer")
+        {
+
+
+
+        }
 
     }
 

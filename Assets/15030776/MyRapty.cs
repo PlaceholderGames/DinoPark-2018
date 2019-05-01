@@ -17,6 +17,8 @@ public class MyRapty : Agent
     };
     private Animator anim;
 
+    private RaptyHunting raptyHunter;
+
     // Use this for initialization
     protected override void Start()
     {
@@ -38,6 +40,13 @@ public class MyRapty : Agent
     protected override void Update()
     {
         // Idle - should only be used at startup
+        if (anim.GetBool("isIdle") == true)
+        {
+
+            anim.SetBool("isIdle", false);
+            anim.SetBool("isHunting", true);
+
+        }
 
         // Eating - requires a box collision with a dead dino
 

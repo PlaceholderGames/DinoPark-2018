@@ -190,7 +190,7 @@ public class Member : MonoBehaviour
         foreach (var enemy in enemyList)
         {
 
-            avoidVector += RunAway(enemy.position);
+            //avoidVector += RunAway(enemy.position);
 
         }
 
