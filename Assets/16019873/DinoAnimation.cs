@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//CLAWS 3D MODEL: https://www.turbosquid.com/FullPreview/Index.cfm/ID/411026
+//EXCL MARK 3D MODEL: Mariya Hristozova, 3Ds Max 2018
+
 //script for the tiny animations for attacking and being alert
 public class DinoAnimation : MonoBehaviour
 {
