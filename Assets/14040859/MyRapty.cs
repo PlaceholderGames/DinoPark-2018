@@ -18,17 +18,17 @@ public class MyRapty : Agent
     };
     private Animator anim;
     private Transform raptyLoc;
-    private Wander raptyMove;
     public BoxCollider col;
-    public Face raptyTarget;
+    public Face raptyTarget1;
+    public Pursue raptyTarget2;
     // Use this for initialization
     protected override void Start()
     {
         anim = GetComponent<Animator>();
         raptyLoc = GetComponent<Transform>();
         col = GetComponent<BoxCollider>();
-        raptyMove = GetComponent<Wander>();
-        raptyTarget = GetComponent<Face>();
+        raptyTarget1 = GetComponent<Face>();
+        raptyTarget2 = GetComponent<Pursue>();
         // Assert default animation booleans and floats
         anim.SetBool("isIdle", true);
         anim.SetBool("isEating", false);
@@ -58,25 +58,12 @@ public class MyRapty : Agent
             GetComponent<Pursue>().enabled = true;
         }
       
-        if(raptyTarget.target == null)
+        if(raptyTarget1.target == null && raptyTarget2.target == null)
         {
-            raptyTarget.target = GameObject.FindGameObjectWithTag("DeadRapty");
-
+            raptyTarget1.target = GameObject.FindWithTag("DeadRapty");
+            raptyTarget2.target = GameObject.FindWithTag("DeadRapty");
         }
 
-
-
-        // Drinking - requires y value to be below 32 (?)
-
-        // Alerting
-
-        // Alerted - up to the student what you do here
-
-        // Hunting - up to the student what you do here
-
-        // Fleeing - up to the student what you do here
-
-        // Dead - If the animal is being eaten, reduce its 'health' until it is consumed
         if (anim.GetBool("isDead") == true)
         {
             GetComponent<Wander>().enabled = false;
@@ -109,5 +96,16 @@ public class MyRapty : Agent
             GetComponent<Pursue>().enabled = false;
             Destroy(col.gameObject);
         }
+
+        if (col.gameObject.tag == "Anky")
+        {
+            anim.SetBool("isAttacking", true);
+            Debug.Log("Rapty Attacks an Anky");
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        anim.SetBool("isHunting", true);
     }
 }

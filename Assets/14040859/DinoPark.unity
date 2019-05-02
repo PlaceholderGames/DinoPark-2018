@@ -6600,6 +6600,91 @@ Transform:
   m_Father: {fileID: 1997926624}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &444822677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 444822678}
+  - component: {fileID: 444822681}
+  - component: {fileID: 444822680}
+  - component: {fileID: 444822679}
+  m_Layer: 0
+  m_Name: Water Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &444822678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 444822677}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1160.9, y: 37.46, z: 500.18}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &444822679
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 444822677}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.444336, y: 4.0875206, z: 4.1002502}
+  m_Center: {x: 0.62438965, y: -0.11283302, z: 1.5501251}
+--- !u!23 &444822680
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 444822677}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &444822681
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 444822677}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &446599446
 GameObject:
   m_ObjectHideFlags: 0
@@ -8820,6 +8905,7 @@ GameObject:
   - component: {fileID: 1053393921}
   - component: {fileID: 1053393931}
   - component: {fileID: 1053393932}
+  - component: {fileID: 1053393933}
   m_Layer: 9
   m_Name: Rapty
   m_TagString: Rapty
@@ -8838,7 +8924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c59c8556abd1c4676b97deb06d20aff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 200
+  viewRadius: 100
   viewAngle: 240
   stereoAngle: 60
   targetMask:
@@ -8869,7 +8955,8 @@ MonoBehaviour:
   rotation: 90
   velocity: {x: 0, y: 0, z: 0}
   col: {fileID: 1053393924}
-  raptyTarget: {fileID: 0}
+  raptyTarget1: {fileID: 0}
+  raptyTarget2: {fileID: 0}
 --- !u!54 &1053393923
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8983,7 +9070,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   priority: 1
-  target: {fileID: 1099239964}
+  target: {fileID: 942354971}
   maxPrediction: 15
 --- !u!114 &1053393930
 MonoBehaviour:
@@ -8998,7 +9085,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 2
   priority: 1
-  target: {fileID: 1099239964}
+  target: {fileID: 942354971}
   targetRadius: 0.3
   slowRadius: 2.5
   timeToTarget: 0.1
@@ -9032,6 +9119,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 4.8563614, z: 2.8454895}
   m_Center: {x: 0, y: -0.39118195, z: 0.92274475}
+--- !u!114 &1053393933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1053393920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ef5152a351c4024bae7f6d8aa7c7612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  priority: 1
+  target: {fileID: 0}
 --- !u!1 &1056049448
 GameObject:
   m_ObjectHideFlags: 0

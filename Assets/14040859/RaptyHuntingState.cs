@@ -14,12 +14,8 @@ public class RaptyHuntingState : StateMachineBehaviour {
         Debug.Log("Rapty has entered Hunting State");
         animator.SetBool("isHunting", true);
         
-
         hunger = animator.GetFloat("hungerValue");
         thirst = animator.GetFloat("thirstValue");
-
-
-        
 
     }
 
@@ -27,12 +23,12 @@ public class RaptyHuntingState : StateMachineBehaviour {
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
         thirst += 5.5f;
-        hunger += 10.1f; 
+        hunger += 0.1f; 
         animator.SetFloat("thirstValue", thirst);
         animator.SetFloat("hungerValue", hunger);
-        if (thirst > 50000) { 
-            animator.SetBool("isDrinking", true);
-        }
+        //if (thirst > 50000) { 
+        //    animator.SetBool("isDrinking", true);
+       // }
         //if ()
     }
 

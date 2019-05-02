@@ -10,13 +10,13 @@ public class IdleBehaviour : StateMachineBehaviour {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         Debug.Log("Anky has Entered Idle State");
 
-   
+        animator.SetFloat("AnkyHP", 250f);
     
-}
+    }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        animator.SetBool("isDead", true);
+       // animator.SetBool("isDead", true);
 	}
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
