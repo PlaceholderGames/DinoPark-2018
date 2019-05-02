@@ -1546,6 +1546,8 @@ MonoBehaviour:
   displacement: {x: 0, y: 0, z: 0}
   anim: {fileID: 95929314264675850}
   maxHealth: 100
+  hunger: 50
+  thirst: 50
   health: 100
   dangerCount: 0
   foodGone: 0
@@ -1554,6 +1556,7 @@ MonoBehaviour:
   decompose: 0
   raptyChasing: -1
   alpha: {fileID: 0}
+  waterFinder: {fileID: 0}
 --- !u!114 &114910505140701674
 MonoBehaviour:
   m_ObjectHideFlags: 1
