@@ -18,6 +18,11 @@ public class MyRapty : Agent
     private Animator anim;
 
     private RaptyHunting raptyHunter;
+    private RaptyAttack raptyAttack;
+    private RaptyEating raptyEating;
+    private RaptyFleeing raptyFleeing;
+    private RaptyDrinking raptyDrinking;
+    private RaptyDead raptyDead;
 
     // Use this for initialization
     protected override void Start()

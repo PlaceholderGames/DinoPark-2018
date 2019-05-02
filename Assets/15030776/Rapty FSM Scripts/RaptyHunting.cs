@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class RaptyHunting : StateMachineBehaviour {
 
-    private MyRapty rapty;
+    private MyRapty myRapty;
 
-    public float speed = 5;
+    private Transform ankyPos;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+
+        //ankyPos = GameObject.FindGameObjectWithTag("Anky").transform;
 
     }
 
@@ -19,12 +21,16 @@ public class RaptyHunting : StateMachineBehaviour {
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
+        //animator.transform.position = Vector3.MoveTowards(animator.transform.position, ankyPos.position, myRapty.maxSpeed);
+
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+
+        
 
     }
 
