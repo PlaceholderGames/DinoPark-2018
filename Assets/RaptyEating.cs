@@ -23,6 +23,7 @@ public class RaptyEating : StateMachineBehaviour {
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        //animator.gameObject.GetComponent<Pursue>().enabled = true;
         //checking if dead
         if (animator.gameObject.GetComponent<MyRapty>().health <= 0 || animator.gameObject.GetComponent<MyRapty>().dead)
         {
