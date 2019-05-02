@@ -46,16 +46,14 @@ public class MyRapty : Agent
 
     protected override void Update()
     {
-        // Idle - should only be used at startup
         anim.SetFloat("raptyX", raptyLoc.position.x);
         anim.SetFloat("raptyY", raptyLoc.position.y);
         anim.SetFloat("raptyZ", raptyLoc.position.z);
 
-        // Eating - requires a box collision with a dead dino
         if (anim.GetBool("isHunting") == true)
         {
             GetComponent<Wander>().enabled = true;
-            GetComponent<Pursue>().enabled = true;
+          //  GetComponent<Pursue>().enabled = true;
         }
       
         if(raptyTarget1.target == null && raptyTarget2.target == null)
@@ -72,6 +70,11 @@ public class MyRapty : Agent
             GetComponent<MyRapty>().enabled = false;
             GetComponent<Agent>().enabled = false;
             raptyLoc.Rotate(0.0f, 0.0f, 90.0f);
+        }
+
+        if (anim.GetBool("isDrinking") == true)
+        {
+           GetComponent<Wander>().enabled = false;
         }
         
         if (anim.GetFloat("raptyDecay") < 0.0f)
@@ -92,6 +95,7 @@ public class MyRapty : Agent
         if (col.gameObject.tag == "DeadAnky")
         {
             anim.SetBool("isEating", true);
+            anim.SetBool("isHunting", false);
             GetComponent<Wander>().enabled = false;
             GetComponent<Pursue>().enabled = false;
             Destroy(col.gameObject);
@@ -101,6 +105,14 @@ public class MyRapty : Agent
         {
             anim.SetBool("isAttacking", true);
             Debug.Log("Rapty Attacks an Anky");
+        }
+
+        if (col.gameObject.tag == "WaterSource")
+        {
+            anim.SetBool("isHunting", false);
+            GetComponent<Wander>().enabled = false;
+            GetComponent<Pursue>().enabled = false;
+            anim.SetBool("isDrinking", true);
         }
     }
 

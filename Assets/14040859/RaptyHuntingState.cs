@@ -23,13 +23,10 @@ public class RaptyHuntingState : StateMachineBehaviour {
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
         thirst += 5.5f;
-        hunger += 0.1f; 
+        hunger += 5.0f; 
         animator.SetFloat("thirstValue", thirst);
         animator.SetFloat("hungerValue", hunger);
-        //if (thirst > 50000) { 
-        //    animator.SetBool("isDrinking", true);
-       // }
-        //if ()
+
     }
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state

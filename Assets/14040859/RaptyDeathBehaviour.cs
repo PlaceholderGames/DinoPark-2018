@@ -6,7 +6,7 @@ public class RaptyDeathBehaviour : StateMachineBehaviour {
 
 
     public float raptyDecay;
-    public float decayRate = 1.0f;
+    public float decayRate = 0.001f;
 
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
