@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 65104931197908370}
   m_Layer: 10
   m_Name: BasicGrass_01
-  m_TagString: Untagged
+  m_TagString: FoliageTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

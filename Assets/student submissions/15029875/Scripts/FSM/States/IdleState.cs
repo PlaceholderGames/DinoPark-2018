@@ -8,20 +8,19 @@ using UnityEngine;
 // is essentially going to wander in different directions.
 public class IdleState : IState
 {
-    GameObject agent;
-    MonoBehaviour dummy;
+    AgentBase agent;
+    
     float speed;
+    bool hungry = false;
 
     float rotationSpeed = 100.0f;
 
     private bool isWandering, isRotatingLeft, isRotatingRight, isWalking = false;
 
-    public IdleState(GameObject parsedAgent, float parsedSpeed)
+    public IdleState(AgentBase parsedAgent, float parsedSpeed)
     {
-        agent = parsedAgent;
         speed = parsedSpeed;
-
-        dummy = agent.GetComponent<MonoBehaviour>();
+        agent = parsedAgent;
     }
 
     public void BeginState()
@@ -36,7 +35,7 @@ public class IdleState : IState
     {
         if (isWandering == false)
         {
-            dummy.StartCoroutine(Wander());
+            agent.StartCoroutine(Wander());
         }
         if (isRotatingRight == true)
         {
@@ -50,6 +49,15 @@ public class IdleState : IState
         {
             agent.transform.position += agent.transform.forward * speed * Time.deltaTime;
         }
+
+        
+        if(agent.hunger >= 45 && hungry == false)
+        {
+            Debug.Log(agent.name + "Hunger is true.");
+            hungry = true;
+            agent.stateMachine.SwitchState(new HungerState(agent, agent.speed, agent.FOV.visibleTargets));
+        }
+
 
     }
 

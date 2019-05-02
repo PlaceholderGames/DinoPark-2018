@@ -12,7 +12,10 @@ public abstract class AgentBase : MonoBehaviour {
     // some agents may have a greater base speed or health than other agents.
     // For now, due to the Horology() function using time.deltaTime, these variables have to be floats.
     // Will see if this presents a problem in the future.
-    protected float health, speed, hunger, thirst;
+    public float health, speed, hunger, thirst;
+
+    public StateMachine stateMachine;
+    public FieldOfView FOV;
 
     // Make the MonoBehaviour Update a public abstract function
     // so it can be overridden in agents down the line.

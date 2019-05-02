@@ -824,8 +824,8 @@ GameObject:
   - component: {fileID: 114764044483058544}
   - component: {fileID: 114424481703747598}
   m_Layer: 9
-  m_Name: Velociraptor 1
-  m_TagString: Untagged
+  m_Name: Velociraptor
+  m_TagString: Dinos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

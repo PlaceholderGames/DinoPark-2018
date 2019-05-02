@@ -7,29 +7,23 @@ using UnityEngine;
 // as well as idle.
 public class AgentAnky : AgentBase
 {
-    private StateMachine stateMachine = new StateMachine();
 
     // Constructor.
     private void Start()
     {
+        this.stateMachine = new StateMachine();
+        this.FOV = this.GetComponent<FieldOfView>();
         this.health = 200;
-        this.hunger = Random.Range(0, 40);
+        //this.hunger = Random.Range(0, 40);
+        this.hunger = 40;
         this.speed = 4;
-        this.stateMachine.SwitchState(new IdleState(this.gameObject, this.speed));
+        this.stateMachine.SwitchState(new IdleState(this, this.speed));
     }
 
     public override void Update()
     {
         this.stateMachine.Update();
         Horology();
-
-
-        if (this.hunger >= 60)
-        {
-            this.stateMachine.SwitchState(new HungerState(this.gameObject));
-        }
-
-        this.stateMachine.Update();
     }
 
     public override void Horology()

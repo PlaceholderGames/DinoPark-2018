@@ -7,29 +7,22 @@ using UnityEngine;
 // as well as idle.
 public class AgentVelo : AgentBase
 {
-    private StateMachine stateMachine = new StateMachine();
 
     // Constructor.
     private void Start()
     {
+        this.stateMachine =  new StateMachine();
+        this.FOV = this.GetComponent<FieldOfView>();
         this.health = Random.Range(90, 100);
         this.hunger = Random.Range(0, 40);
         this.speed = 3;
-        this.stateMachine.SwitchState(new IdleState(this.gameObject, this.speed));
+        this.stateMachine.SwitchState(new IdleState(this, this.speed));
     }
 
     public override void Update()
     {
         this.stateMachine.Update();
         Horology();
-        
-
-        if(this.hunger >= 100)
-        {
-            this.stateMachine.SwitchState(new HungerState(this.gameObject));
-        }
-
-        this.stateMachine.Update();
     }
 
     public override void Horology()
