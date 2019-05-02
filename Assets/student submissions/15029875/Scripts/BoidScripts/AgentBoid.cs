@@ -61,4 +61,8 @@ public class AgentBoid : AgentBase
             boidRB.velocity += (Vector3.zero - transform.localPosition) * 0.1f * Time.deltaTime;
         }
     }
+
+    public override void OnTriggerEnter(Collider other)
+    {
+    }
 }

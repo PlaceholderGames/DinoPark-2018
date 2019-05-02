@@ -9,22 +9,19 @@ using UnityEngine;
 public class IdleState : IState
 {
     AgentBase agent;
-    
-    float speed;
-    bool hungry = false;
 
     float rotationSpeed = 100.0f;
 
     private bool isWandering, isRotatingLeft, isRotatingRight, isWalking = false;
 
-    public IdleState(AgentBase parsedAgent, float parsedSpeed)
+    public IdleState(AgentBase parsedAgent)
     {
-        speed = parsedSpeed;
         agent = parsedAgent;
     }
 
     public void BeginState()
     {
+        Debug.Log("In idle.");
     }
 
     public void EndState()
@@ -47,18 +44,16 @@ public class IdleState : IState
         }
         if (isWalking == true)
         {
-            agent.transform.position += agent.transform.forward * speed * Time.deltaTime;
+            agent.transform.position += agent.transform.forward * agent.speed * Time.deltaTime;
         }
 
         
-        if(agent.hunger >= 45 && hungry == false)
+        if(agent.hunger >= 45 && agent.hungry == false)
         {
             Debug.Log(agent.name + "Hunger is true.");
-            hungry = true;
-            agent.stateMachine.SwitchState(new HungerState(agent, agent.speed, agent.FOV.visibleTargets));
+            agent.hungry = true;
+            agent.stateMachine.SwitchState(new HungerState(agent, agent.FOV.visibleTargets));
         }
-
-
     }
 
     // Enumerator to essentially feed booleans back to the coroutine.

@@ -13,6 +13,7 @@ public abstract class AgentBase : MonoBehaviour {
     // For now, due to the Horology() function using time.deltaTime, these variables have to be floats.
     // Will see if this presents a problem in the future.
     public float health, speed, hunger, thirst;
+    public bool hungry, dead;
 
     public StateMachine stateMachine;
     public FieldOfView FOV;
@@ -20,5 +21,6 @@ public abstract class AgentBase : MonoBehaviour {
     // Make the MonoBehaviour Update a public abstract function
     // so it can be overridden in agents down the line.
     public abstract void Update();
+    public abstract void OnTriggerEnter(Collider other);
     public abstract void Horology(); // Govern the laws of time. (Essentially what happens per tick.)
 }

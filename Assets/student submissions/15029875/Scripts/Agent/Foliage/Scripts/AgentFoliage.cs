@@ -30,4 +30,8 @@ public class AgentFoliage : AgentBase
             calories += Time.deltaTime;
         }
     }
+
+    public override void OnTriggerEnter(Collider other)
+    {
+    }
 }

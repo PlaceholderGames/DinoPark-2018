@@ -11,18 +11,15 @@ public class HungerState : IState
     AgentBase agent;
     List<Transform> targets;
     Transform closestTarget;
-    float speed;
 
-    public HungerState(AgentBase parsedAgent, float parsedSpeed, List<Transform> parsedTargets)
+    public HungerState(AgentBase parsedAgent, List<Transform> parsedTargets)
     {
         agent = parsedAgent;
         targets = parsedTargets;
-        speed = parsedSpeed;
     }
 
     public void BeginState()
     {
-        // Decrease speed.
         // To save writing two states for each dinosaur, it's probably more efficient to perform
         // a check here and see whether we're an anky or a velociraptor:
         if (agent.name == "Velociraptor(Clone)" || agent.name == "Velociraptor")
@@ -37,14 +34,26 @@ public class HungerState : IState
 
     public void EndState()
     {
-        // If we reach 0 hunger, become idle.
-
-        // Else, we must be dead!
     }
 
     public void UpdateState()
     {
+        if (closestTarget != null)
+        {
+            Eat(closestTarget);
+        }
+        // If we reach 0 hunger, become idle.
+        if (agent.hunger <= 0)
+        {
+            agent.hungry = false;
+            agent.stateMachine.SwitchState(new IdleState(agent));
+        }
 
+        if (agent.hunger >= 100)
+        {
+            agent.dead = true;
+
+        }
     }
 
     Transform GetClosestTarget(List<Transform> desiredTarget, string tag)
@@ -71,15 +80,17 @@ public class HungerState : IState
     // Search for something.
     public void Seek(string tag)
     {
-        Debug.Log("I am a " + agent.name + "And I am searching for: " + tag);
-        Eat(GetClosestTarget(targets, tag));
+        closestTarget = GetClosestTarget(targets, tag);
     }
 
     // Eat the food.
     public void Eat(Transform edible)
     {
         // Approach the food.
-        agent.transform.LookAt(edible);
-    }
+        var step = agent.speed * Time.deltaTime;
+        var targetRotation = Quaternion.LookRotation(edible.transform.position - agent.transform.position);
 
+        agent.transform.rotation = Quaternion.Slerp(agent.transform.rotation, targetRotation, step);
+        agent.transform.position = Vector3.MoveTowards(agent.transform.position, edible.transform.position, step);
+    }
 }

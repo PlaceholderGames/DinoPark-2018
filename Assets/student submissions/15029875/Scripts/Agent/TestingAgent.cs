@@ -22,4 +22,8 @@ public class TestingAgent : AgentBase {
     {
         throw new System.NotImplementedException();
     }
+
+    public override void OnTriggerEnter(Collider other)
+    {
+    }
 }

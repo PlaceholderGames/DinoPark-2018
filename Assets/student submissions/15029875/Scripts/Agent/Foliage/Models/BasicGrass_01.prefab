@@ -108,3 +108,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9891b34db58c04649a5cd1d857827d88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  speed: 0
+  hunger: 0
+  thirst: 0
+  hungry: 0
+  stateMachine: {fileID: 0}
+  FOV: {fileID: 0}
