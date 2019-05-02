@@ -12,13 +12,15 @@ public class MapGrid : MonoBehaviour {
 
     [HideInInspector]
     public MapTile[,] tiles;
+    public MapTile[,] WaterTiles;
+    public int Waterincrementer;
 
     private Terrain terrain;
 
     private float oldTileSize;
     private float oldHeightThreshold;
     private float oldSeaLevel;
-    
+    Vector3 mapBottomLeft;
 
     // Use this for initialization
     void Start () {
@@ -41,11 +43,11 @@ public class MapGrid : MonoBehaviour {
     private void initialiseTiles()
     {
         Vector2 tileCount = new Vector2((int)(gridWorldSize.x / tileSize), (int)(gridWorldSize.y / tileSize)); // Find how many tiles fit in the map
-
+        
         tiles = new MapTile[(int)tileCount.x, (int)tileCount.y]; // Initialise tiles array
-
+        //waterTile = new MapTile[];
         // Find bottom left of map
-        Vector3 mapBottomLeft = transform.position + (Vector3.left * gridWorldSize.x / 2) + (Vector3.back * gridWorldSize.y / 2);
+        mapBottomLeft = transform.position + (Vector3.left * gridWorldSize.x / 2) + (Vector3.back * gridWorldSize.y / 2);
 
         for (int x = 0; x < tiles.GetLength(0); x++)
         {
@@ -58,6 +60,11 @@ public class MapGrid : MonoBehaviour {
 
                 // Create new tile at tileLocation 
                 tiles[x, y] = new MapTile(tileLocation);
+
+                if (tileLocation.y <=  36)
+                {
+                    Waterincrementer++;
+                }
 
             }
         }
@@ -100,8 +107,7 @@ public class MapGrid : MonoBehaviour {
 
                 for (int i = 0; i < 4; i++)
                     heightPoints[i] = terrain.SampleHeight(points[i]);
-
-
+                
                 bool walkable = true;
 
                 if (tileLocation.y < seaLevel) // If tile is under sea, unwalkable
