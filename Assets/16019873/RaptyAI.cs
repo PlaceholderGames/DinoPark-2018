@@ -31,6 +31,8 @@ public class RaptyAI : MonoBehaviour
     public Wander wander;
     public Pursue pursue;
     public Face face;
+    public Dead deadD;
+
 
     //work out the distance between one dino to another
     public GameObject getDino()
@@ -53,6 +55,7 @@ public class RaptyAI : MonoBehaviour
         if (animator.GetBool("deadDino") == true)
         {
             Destroy(GetComponent<MeshRenderer>(), 3f);
+            animator.SetBool("deadDino", true);
         }
         return thisDino;
     }
@@ -66,19 +69,17 @@ public class RaptyAI : MonoBehaviour
         b.GetComponent<Rigidbody>().AddForce(Cube3.transform.forward * 500);
     }
 
-
     //cancelling the invoke of the attaching method
     public void stopScratching()
     {
-        CancelInvoke("Claws");
+        CancelInvoke("scratching");
     }
-
 
     //this gets called every half-second
     //make the double(float) less to get it faster
     public void startScratching()
     {
-        InvokeRepeating("Claws", 0.3f, 0.3f);
+        InvokeRepeating("scratching", 0.5f, 0.5f);
     }
 
     //use this for initialisation
@@ -89,6 +90,7 @@ public class RaptyAI : MonoBehaviour
         wander = thisDino.GetComponent<Wander>();
         face = thisDino.GetComponent<Face>();
         ASagent = thisDino.GetComponent<ASAgentInstance>();
+        deadD = thisDino.GetComponent<Dead>();
         //setting it to get data from the FSM created in Unity Animator
         animator = GetComponent<Animator>();
         //make other raptys follow the alpha dino
@@ -130,29 +132,53 @@ public class RaptyAI : MonoBehaviour
         //then return to alpha rapty and follow his actions
         if (alphaRapty == false)
         {
-            if (Vector3.Distance(thisDino.transform.position, getAlpha().transform.position) >= 80)
+            if (Vector3.Distance(thisDino.transform.position, getAlpha().transform.position) >= 40 && animator.GetFloat("thirst") > 30 )
             {
                 ASagent.enabled = true;
                 aStarVar.target = getAlpha();
-            } else if(Vector3.Distance(thisDino.transform.position, getAlpha().transform.position) <= 30)
+            } else if(Vector3.Distance(thisDino.transform.position, getAlpha().transform.position) <= 10)
             {
                 ASagent.enabled = false;
             }
+
         }
-        
-        //kill dino if he has his values to 0
-        if (currentHunger <= 0 || currentThirst <= 0 || currentHealth <= 0)
+
+        //when an anky is in vision, displays an explanation mark and saves location
+        //can track anky over long distance after seeing it
+        foreach (Transform i in fov.visibleTargets)
         {
-            dieDino();
-            CancelInvoke();
+            animator.SetBool("isAlert", false);
+            if (i.tag == "Anky")
+            {
+                //Debug.Log("Found Anky!");
+                opponent = i.gameObject;
+                animator.SetBool("isAlert", true);
+
+            } 
+
         }
 
         //kill dino if he has his thirst has hit 0
         if (currentThirst <= 0)
         {
             dieDino();
+            CancelInvoke();
         }
 
+        //kill dino if he has his thirst has hit 0
+        if (currentHunger <= 0)
+        {
+            dieDino();
+            CancelInvoke();
+        }
+
+        //kill dino if he has his values to 0
+        if (currentHunger <= 0 && currentThirst <= 0 && currentHealth <= 0)
+        {
+            dieDino();
+            CancelInvoke();
+        }
+        
     }
 
     //move towards the target

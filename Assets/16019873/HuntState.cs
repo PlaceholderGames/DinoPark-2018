@@ -9,32 +9,21 @@ public class HuntState : DinoBaseClass
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
         Debug.Log("Rapty is entering the Hunting State..."); //user message in console
-        
-        //passing in from the Idle state 
+        animator.SetBool("isAttacking", true);
         pursue.enabled = true;
-      
     }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
-        foreach (Transform i in fov.visibleTargets)
-        {
-            if(i.tag == "Anky")
-            {
-                //Debug.Log("Found Anky!");
-                opponent = i.gameObject;
-                animator.SetFloat("distance", Vector3.Distance(dino.transform.position, opponent.transform.position));
+        base.OnStateEnter(animator, stateInfo, layerIndex);
 
-            }
+        if (opponent != null)
+        {
+            animator.SetFloat("distance", Vector3.Distance(animator.gameObject.transform.position, opponent.transform.position));
+            //animator.gameObject.transform.LookAt(opponent.transform.position);
         }
 
-        //rotate towards the detected target
-        //the hunting code is here (moving code)
-        //var direction = opponent.transform.position - dino.transform.position;
-        //dino.transform.rotation = Quaternion.Slerp(dino.transform.rotation, Quaternion.LookRotation(direction), rotationSpeed * Time.deltaTime);
-        //dino.transform.Translate(0, 0, Time.deltaTime * speed);
     }
 
 
@@ -43,17 +32,9 @@ public class HuntState : DinoBaseClass
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
         pursue.enabled = false;
+        animator.SetBool("isAttacking", false);
         //user message in console
         Debug.Log("Rapty is exiting the Hunting State...");
     }
 
-	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
-	//override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
-
-	// OnStateIK is called right after Animator.OnAnimatorIK(). Code that sets up animation IK (inverse kinematics) should be implemented here.
-	//override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
 }

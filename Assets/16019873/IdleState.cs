@@ -59,22 +59,24 @@ public class IdleState : DinoBaseClass
         }
         */
 
-        if (animator.GetFloat("thirst") < 50)
+        if (animator.GetFloat("thirst") < 30)
         {
             raptyAI.move(ASfollower.getDirectionVector());
             AS.target = raptyAI.waterLocation;
             ASagent.enabled = true;
+            agent.enabled = false;
+        } else
+        {
+            agent.enabled = true;
         }
       
-
-       
         //rotate towards the target that has been detected
         //move the dino forward
         //slerp is to slowly turn and start facing the waypoint
-        var direction = waypoints[currentWaypoint].transform.position - moveDino.transform.position;
-        moveDino.transform.rotation = Quaternion.Slerp(moveDino.transform.rotation, Quaternion.LookRotation(direction), rotationSpeed * Time.deltaTime);
+        //var direction = waypoints[currentWaypoint].transform.position - moveDino.transform.position;
+        //moveDino.transform.rotation = Quaternion.Slerp(moveDino.transform.rotation, Quaternion.LookRotation(direction), rotationSpeed * Time.deltaTime);
         //pushing it forward to the z axis
-        moveDino.transform.Translate(0, 0, Time.deltaTime * speed);
+        //moveDino.transform.Translate(0, 0, Time.deltaTime * speed);
 
     }
 

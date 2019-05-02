@@ -13,12 +13,13 @@ public class EatState : DinoBaseClass
         //user message in console
         Debug.Log("Rapty is entering the Eating State...");
 
-        //When eating decrease speed to 0
-        speed = 0.0f;
-
         //passing in from the Idle state
         base.OnStateEnter(animator, stateInfo, layerIndex);
 
+        animator.SetBool("deadOpponent", true);
+
+        //When eating decrease speed to 0
+        speed = 0.0f;
     }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -26,6 +27,7 @@ public class EatState : DinoBaseClass
     {
         //Increase hunger in raptor
         animator.SetFloat("hunger", animator.GetFloat("hunger") + hungerIncrease * Time.deltaTime);
+        //if you have been eaten, die in this state
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -34,14 +36,4 @@ public class EatState : DinoBaseClass
         //user message in console
         Debug.Log("Rapty is exiting the Eating State...");
     }
-
-	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
-	//override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
-
-	// OnStateIK is called right after Animator.OnAnimatorIK(). Code that sets up animation IK (inverse kinematics) should be implemented here.
-	//override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
 }

@@ -1,23 +1,20 @@
 fileFormatVersion: 2
-guid: adc2e48f8d8036a4da811afdc4cbb142
+guid: 23d4dbf1515264b4bad34ce9f5923c0c
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: exclamation_mark
-    100004: Sphere001
+    100002: Sphere001
     400000: //RootNode
-    400002: exclamation_mark
-    400004: Sphere001
-    2100000: exclamation_markMat
-    2100002: Sphere001Mat
-    2300000: exclamation_mark
+    400002: Sphere001
+    2100000: 'Material #25'
+    2100002: 'Material #26'
+    2300000: //RootNode
     2300002: Sphere001
-    3300000: exclamation_mark
+    3300000: //RootNode
     3300002: Sphere001
-    4300000: exclamation_mark
+    4300000: exclamatio
     4300002: Sphere001
-    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -38,7 +35,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -70,7 +67,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -94,7 +91,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

@@ -13,73 +13,79 @@ AnimatorController:
     m_DefaultFloat: 3
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: isAttacked
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: isAlert
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: isAttacking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: deadDino
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: deadOpponent
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: thirst
     m_Type: 1
     m_DefaultFloat: 100
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: hunger
     m_Type: 1
-    m_DefaultFloat: 100
+    m_DefaultFloat: 200
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: health
     m_Type: 1
     m_DefaultFloat: 100
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: nobodyAround
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: yAxis
     m_Type: 1
     m_DefaultFloat: 100
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: distance
     m_Type: 1
     m_DefaultFloat: 100
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
+  - m_Name: foundFood
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -115,6 +121,9 @@ MonoBehaviour:
   ASagent: {fileID: 0}
   flee: {fileID: 0}
   raptyAI: {fileID: 0}
+  ankyAI: {fileID: 0}
+  deadD: {fileID: 0}
+  agent: {fileID: 0}
   speed: 3
   rotationSpeed: 2
   accuracy: 5
@@ -142,6 +151,9 @@ MonoBehaviour:
   ASagent: {fileID: 0}
   flee: {fileID: 0}
   raptyAI: {fileID: 0}
+  ankyAI: {fileID: 0}
+  deadD: {fileID: 0}
+  agent: {fileID: 0}
   speed: 3
   rotationSpeed: 2
   accuracy: 5
@@ -169,7 +181,40 @@ MonoBehaviour:
   ASagent: {fileID: 0}
   flee: {fileID: 0}
   raptyAI: {fileID: 0}
+  ankyAI: {fileID: 0}
+  deadD: {fileID: 0}
+  agent: {fileID: 0}
   speed: 3
+  rotationSpeed: 2
+  accuracy: 5
+  waterLocation: {fileID: 0}
+  deadOpponent: 0
+--- !u!114 &114693949452307852
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30daf5e5b17e106419daf9f529009766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dino: {fileID: 0}
+  opponent: {fileID: 0}
+  fov: {fileID: 0}
+  wander: {fileID: 0}
+  pursue: {fileID: 0}
+  face: {fileID: 0}
+  AS: {fileID: 0}
+  ASfollower: {fileID: 0}
+  ASagent: {fileID: 0}
+  flee: {fileID: 0}
+  raptyAI: {fileID: 0}
+  ankyAI: {fileID: 0}
+  deadD: {fileID: 0}
+  agent: {fileID: 0}
+  speed: 10
   rotationSpeed: 2
   accuracy: 5
   waterLocation: {fileID: 0}
@@ -196,6 +241,9 @@ MonoBehaviour:
   ASagent: {fileID: 0}
   flee: {fileID: 0}
   raptyAI: {fileID: 0}
+  ankyAI: {fileID: 0}
+  deadD: {fileID: 0}
+  agent: {fileID: 0}
   speed: 3
   rotationSpeed: 2
   accuracy: 5
@@ -212,6 +260,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167c5a99e0a5c5c41bac1bff8dd8f962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dino: {fileID: 0}
+  opponent: {fileID: 0}
+  fov: {fileID: 0}
+  wander: {fileID: 0}
+  pursue: {fileID: 0}
+  face: {fileID: 0}
+  AS: {fileID: 0}
+  ASfollower: {fileID: 0}
+  ASagent: {fileID: 0}
+  flee: {fileID: 0}
+  raptyAI: {fileID: 0}
+  ankyAI: {fileID: 0}
+  deadD: {fileID: 0}
+  agent: {fileID: 0}
+  speed: 10
+  rotationSpeed: 2
+  accuracy: 5
+  waterLocation: {fileID: 0}
+  deadOpponent: 0
 --- !u!114 &114865010649229208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -234,6 +301,9 @@ MonoBehaviour:
   ASagent: {fileID: 0}
   flee: {fileID: 0}
   raptyAI: {fileID: 0}
+  ankyAI: {fileID: 0}
+  deadD: {fileID: 0}
+  agent: {fileID: 0}
   speed: 3
   rotationSpeed: 2
   accuracy: 5
@@ -272,6 +342,9 @@ MonoBehaviour:
   ASagent: {fileID: 0}
   flee: {fileID: 0}
   raptyAI: {fileID: 0}
+  ankyAI: {fileID: 0}
+  deadD: {fileID: 0}
+  agent: {fileID: 0}
   speed: 3
   rotationSpeed: 2
   accuracy: 5
@@ -284,9 +357,9 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isGrazing
-    m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: hunger
+    m_EventTreshold: 100
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102045596370637680}
   m_Solo: 0
@@ -308,9 +381,12 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isIdle
-    m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: hunger
+    m_EventTreshold: 60
+  - m_ConditionMode: 3
+    m_ConditionEvent: thirst
+    m_EventTreshold: 60
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102407510051895398}
   m_Solo: 0
@@ -332,9 +408,9 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isFleeing
-    m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: health
+    m_EventTreshold: 60
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102074197030597232}
   m_Solo: 0
@@ -356,8 +432,8 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isFleeing
+  - m_ConditionMode: 2
+    m_ConditionEvent: nobodyAround
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102074197030597232}
@@ -380,9 +456,9 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isAttacking
-    m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: distance
+    m_EventTreshold: 7
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102675743818350194}
   m_Solo: 0
@@ -428,9 +504,12 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isDrinking
-    m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: thirst
+    m_EventTreshold: 50
+  - m_ConditionMode: 4
+    m_ConditionEvent: yAxis
+    m_EventTreshold: 37
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102890663960885802}
   m_Solo: 0
@@ -476,8 +555,11 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
+  - m_ConditionMode: 4
+    m_ConditionEvent: hunger
+    m_EventTreshold: 30
   - m_ConditionMode: 1
-    m_ConditionEvent: isEating
+    m_ConditionEvent: nobodyAround
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102290418329198986}
@@ -501,8 +583,11 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isAlerted
+    m_ConditionEvent: isAlert
     m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: health
+    m_EventTreshold: 30
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102503983953199274}
   m_Solo: 0
@@ -524,9 +609,12 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isEating
-    m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: hunger
+    m_EventTreshold: 50
+  - m_ConditionMode: 4
+    m_ConditionEvent: distance
+    m_EventTreshold: 7
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102290418329198986}
   m_Solo: 0
@@ -548,9 +636,9 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isAttacking
-    m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: distance
+    m_EventTreshold: 7
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102675743818350194}
   m_Solo: 0
@@ -572,9 +660,12 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isGrazing
-    m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: hunger
+    m_EventTreshold: 60
+  - m_ConditionMode: 4
+    m_ConditionEvent: thirst
+    m_EventTreshold: 60
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102045596370637680}
   m_Solo: 0
@@ -620,9 +711,9 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isGrazing
-    m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: thirst
+    m_EventTreshold: 100
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102045596370637680}
   m_Solo: 0
@@ -644,8 +735,8 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isDead
+  - m_ConditionMode: 4
+    m_ConditionEvent: health
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102407707993054400}
@@ -669,7 +760,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isDrinking
+    m_ConditionEvent: nobodyAround
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102890663960885802}
@@ -716,8 +807,8 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isDead
+  - m_ConditionMode: 4
+    m_ConditionEvent: health
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102407707993054400}
@@ -740,8 +831,14 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isGrazing
+  - m_ConditionMode: 4
+    m_ConditionEvent: hunger
+    m_EventTreshold: 50
+  - m_ConditionMode: 3
+    m_ConditionEvent: health
+    m_EventTreshold: 55
+  - m_ConditionMode: 2
+    m_ConditionEvent: isAlert
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102045596370637680}
@@ -855,7 +952,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101702969665840736}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114693949452307852}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

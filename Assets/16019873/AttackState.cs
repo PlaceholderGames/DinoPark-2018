@@ -23,18 +23,13 @@ public class AttackState : DinoBaseClass
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //continue looking at the opponent
-        dino.transform.LookAt(opponent.transform.position);
-
-        //passing in from the Idle state
         base.OnStateEnter(animator, stateInfo, layerIndex);
-
-        //get hold of the other animal
-        opponent = dino.GetComponent<RaptyAI>().getDino();
-        opponent = dino.GetComponent<RaptyAI>().dieDino();
-
-        animator.SetBool("deadOpponent", true);
-
+        //continue looking at the opponent
+        //dino.transform.LookAt(opponent.transform.position);
+        Animator opponentAnim = opponent.GetComponent<Animator>();
+        //Remove some of anky health
+        opponentAnim.SetFloat("health", opponentAnim.GetFloat("health") - 2);
+        
     }
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state

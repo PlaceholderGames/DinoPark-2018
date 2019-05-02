@@ -18,6 +18,9 @@ public class DinoBaseClass : StateMachineBehaviour
     public ASAgentInstance ASagent;
     public Flee flee;
     public RaptyAI raptyAI;
+    public AnkyAI ankyAI;
+    public Dead deadD;
+    public Agent agent;
     //speed properties regarding distance
     public float speed = 10.0f;
     public float rotationSpeed = 2.0f;
@@ -57,6 +60,9 @@ public class DinoBaseClass : StateMachineBehaviour
         ASagent = animator.gameObject.GetComponent<ASAgentInstance>();
         flee = animator.gameObject.GetComponent<Flee>();
         raptyAI = animator.gameObject.GetComponent<RaptyAI>();
+        ankyAI = animator.gameObject.GetComponent<AnkyAI>();
+        deadD = dino.GetComponent<Dead>();
+        agent = animator.gameObject.GetComponent<Agent>();
 
         //get hold of the dino
         //dino = dino.GetComponent<RaptyAI>().getDino();

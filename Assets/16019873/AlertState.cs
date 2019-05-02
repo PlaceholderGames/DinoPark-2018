@@ -8,7 +8,7 @@ public class AlertState : DinoBaseClass
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Rapty is entering the Alert State...");
-        animator.SetBool("isAttacked", true);
+        animator.SetBool("isAlert", true);
 
         //play animation with exclamation mark
     }
@@ -34,17 +34,8 @@ public class AlertState : DinoBaseClass
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Rapty is exiting the Alert State...");
-        animator.SetBool("isAttacked", false);
+        animator.SetBool("isAlert", false);
         
     }
 
-	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
-	//override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
-
-	// OnStateIK is called right after Animator.OnAnimatorIK(). Code that sets up animation IK (inverse kinematics) should be implemented here.
-	//override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
 }

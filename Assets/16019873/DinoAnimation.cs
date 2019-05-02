@@ -22,7 +22,6 @@ public class DinoAnimation : MonoBehaviour
         return dino;
     }
 
-
     // Use this for initialization
     void Start ()
     {
@@ -37,40 +36,31 @@ public class DinoAnimation : MonoBehaviour
     {
         //if the dino is in an attacking state,
         //do the attacking animation
-		if (anim.GetFloat("distance") < 7)
+        if (anim.GetBool("isAttacking") == true && anim.GetFloat("distance") < 7)
         {
-            //gets the current position of the dino
-            //dino = gameObject.transform.position;
-            anim.SetBool("isAttacking", true);
 
             //Method for adding claws, both work
             claws.GetComponent<MeshRenderer>().enabled = true;
             claws.SetActive(true);
         }
         else
-        {
-            anim.SetBool("isAttacking", false);
-            
+        { 
             //Method for removing claws, both work
             claws.gameObject.GetComponent<MeshRenderer>().enabled = false;
             claws.SetActive(false);
             
         }
 
-        if (anim.GetFloat("distance") < 7)
-        {
-            //gets the current position of the dino
-            //dino = gameObject.transform.position;
-            anim.SetBool("isAlert", true);
 
+        //excl mark code here
+        if (anim.GetBool("isAlert") == true)
+        {
             //Method for adding claws, both work
             exMark.GetComponent<MeshRenderer>().enabled = true;
             exMark.SetActive(true);
         }
         else
         {
-            anim.SetBool("isAlert", false);
-
             //Method for removing claws, both work
             exMark.gameObject.GetComponent<MeshRenderer>().enabled = false;
             exMark.SetActive(false);
