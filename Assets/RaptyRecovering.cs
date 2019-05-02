@@ -15,7 +15,7 @@ public class RaptyRecovering : StateMachineBehaviour {
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         rec = rec + 0.001f;
-        if (rec >= 5.0f)
+        if (rec >= 2.5f)
         {
             animator.gameObject.GetComponent<MyRapty>().recover = false;
             animator.SetBool("isEating", true);

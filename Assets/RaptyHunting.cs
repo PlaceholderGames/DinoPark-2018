@@ -44,7 +44,7 @@ public class RaptyHunting : StateMachineBehaviour {
         //checking if alpha anky has died
         if (animator.gameObject.GetComponent<MyRapty>().alpha.GetComponent<MyRapty>().dead)
         {
-            if (animator.gameObject.GetComponent<FieldOfView>().visibleAnkys.Count > 1)
+            if (animator.gameObject.GetComponent<FieldOfView>().visibleRaptys.Count > 1)
             {
                 animator.gameObject.GetComponent<MyRapty>().alpha = animator.gameObject.GetComponent<FieldOfView>().visibleRaptys[1].gameObject;
             }
