@@ -65,10 +65,16 @@ public class AnkyGrazing : StateMachineBehaviour {
             foodFound = true;
             
         }
-        if (foodFound)
+        if (foodFound && animator.gameObject.GetComponent<MyAnky>().hunger < 40)
         {
             animator.SetBool("isEating", true);
             animator.gameObject.GetComponent<MyAnky>().prevState = 4;
+        }
+        //water
+
+        if (animator.gameObject.GetComponent<MyAnky>().thirst < 30)
+        {
+            animator.SetBool("isDrinking", true);
         }
         //herding checks
         if (animator.gameObject.GetComponent<MyAnky>().alpha == null && animator.gameObject.GetComponent<FieldOfView>().visibleAnkys.Count > 0)

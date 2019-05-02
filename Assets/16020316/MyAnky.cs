@@ -18,6 +18,8 @@ public class MyAnky : Agent
 
     public Animator anim;
     public float maxHealth = 100.0f;
+    public float hunger = 50.0f;
+    public float thirst = 50.0f;
     public float health;
     public int dangerCount = 0;
     public bool foodGone = false;
@@ -28,6 +30,8 @@ public class MyAnky : Agent
     public int raptyChasing = -1;
 
     public GameObject alpha = null;
+
+    public GameObject waterFinder = null;
     // Use this for initialization
     protected override void Start()
     {
@@ -43,18 +47,19 @@ public class MyAnky : Agent
         anim.SetBool("isFleeing", false); //6
         anim.SetBool("isDead", false); //7
         anim.SetFloat("speedMod", 1.0f);
-        health = maxHealth;
+        health = hunger + thirst;
         // This with GetBool and GetFloat allows 
         // you to see how to change the flag parameters in the animation controller
-        base.Start();
-
+        base.Start();     
     }
 
     protected override void Update()
     {
         
         //lowering ankys health on update
-        health = health - 0.001f;
+        thirst = thirst - 0.001f;
+        hunger = hunger - 0.002f;
+        health = hunger + thirst;
         //DOESNT WORK MAY BE DUE TO ANIMATOR
         if (health == -1.0f)
         {
@@ -88,7 +93,11 @@ public class MyAnky : Agent
     {
         if (col.gameObject.tag == "AnkyFood")
         {
-            health = health + 5.0f;
+            hunger = hunger + 5.0f;
+            if (hunger>50.0f)
+            {
+                hunger = 50.0f;
+            }
             foodGone = true;
         }  
         if (col.gameObject.tag == "Rapty")
