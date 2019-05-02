@@ -17,6 +17,11 @@ public class AnkyFleeing : StateMachineBehaviour {
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        //death check
+        if (animator.gameObject.GetComponent<MyAnky>().health <= 0)
+        {
+            animator.SetBool("isDead", true);
+        }
         float dist;
         dist = Vector3.Distance(animator.gameObject.transform.position, animator.gameObject.GetComponent<Flee>().target.gameObject.transform.position);
         if (dist > 60)

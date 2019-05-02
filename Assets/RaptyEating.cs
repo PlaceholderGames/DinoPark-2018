@@ -10,13 +10,13 @@ public class RaptyEating : StateMachineBehaviour {
         Debug.Log("Entering Eating State");
         GameObject raptyFood = animator.GetComponent<FieldOfView>().visibleAnkys[0].gameObject;
         //animator.GetComponent<FieldOfView>().visibleFoodSource[0].GetComponent<Agent>().orientation = animator.GetComponent<FieldOfView>().visibleFoodSource[0].GetComponentInParent<Agent>().orientation;
-        Pursue raptySeek = animator.gameObject.GetComponent<Pursue>();
-        Face raptyFace = animator.gameObject.GetComponent<Face>();
+        Seek raptySeek = animator.gameObject.GetComponent<Seek>();
+        //Face raptyFace = animator.gameObject.GetComponent<Face>();
 
         raptySeek.target = raptyFood;
-        raptyFace.target = raptyFood;
+        //raptyFace.target = raptyFood;
 
-        raptyFace.enabled = true;
+        //raptyFace.enabled = true;
         raptySeek.enabled = true;
     }
 
@@ -32,14 +32,14 @@ public class RaptyEating : StateMachineBehaviour {
         //check if rapty has hit an anky
         if (animator.gameObject.GetComponent<MyRapty>().recover)
         {
-
+            animator.SetBool("isRecovering", true);
         }
         //check if rapty ate the food
         if (animator.gameObject.GetComponent<MyRapty>().foodGone)
         {
 
-            animator.gameObject.GetComponent<Pursue>().enabled = false;
-            animator.gameObject.GetComponent<Pursue>().target = null;
+            animator.gameObject.GetComponent<Seek>().enabled = false;
+            animator.gameObject.GetComponent<Seek>().target = null;
             animator.SetBool("isHunting", true);
             //Destroy(animator.gameObject.GetComponent<FieldOfView>().visibleFoodSource[0].gameObject);
             animator.gameObject.GetComponent<MyRapty>().foodGone = false; //reseting bool
@@ -48,7 +48,7 @@ public class RaptyEating : StateMachineBehaviour {
         //check if the another rapty ate food
         if (animator.gameObject.GetComponent<Pursue>().target == null)
         {
-            animator.gameObject.GetComponent<Pursue>().enabled = false;
+            animator.gameObject.GetComponent<Seek>().enabled = false;
             animator.SetBool("isHunting", true);
             animator.gameObject.GetComponent<MyRapty>().prevState = 1;
         }
@@ -60,8 +60,8 @@ public class RaptyEating : StateMachineBehaviour {
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Leaving Eating State");
-        animator.gameObject.GetComponent<Pursue>().enabled = false;
-        animator.gameObject.GetComponent<Face>().enabled = false;
+        animator.gameObject.GetComponent<Seek>().enabled = false;
+        //animator.gameObject.GetComponent<Face>().enabled = false;
         animator.SetBool("isEating", false);
     }
 

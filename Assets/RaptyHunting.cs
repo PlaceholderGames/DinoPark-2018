@@ -30,6 +30,34 @@ public class RaptyHunting : StateMachineBehaviour {
             animator.SetBool("isEating", true);
             animator.gameObject.GetComponent<MyRapty>().prevState = 4;
         }
+        //water
+
+        if (animator.gameObject.GetComponent<MyRapty>().thirst < 30)
+        {
+            animator.SetBool("isDrinking", true);
+        }
+        //herding checks
+        if (animator.gameObject.GetComponent<MyRapty>().alpha == null && animator.gameObject.GetComponent<FieldOfView>().visibleRaptys.Count > 0)
+        {
+            animator.gameObject.GetComponent<MyRapty>().alpha = animator.gameObject.GetComponent<FieldOfView>().visibleRaptys[0].gameObject;
+        }
+        //checking if alpha anky has died
+        if (animator.gameObject.GetComponent<MyRapty>().alpha.GetComponent<MyRapty>().dead)
+        {
+            if (animator.gameObject.GetComponent<FieldOfView>().visibleAnkys.Count > 1)
+            {
+                animator.gameObject.GetComponent<MyRapty>().alpha = animator.gameObject.GetComponent<FieldOfView>().visibleRaptys[1].gameObject;
+            }
+            else
+            {
+                animator.gameObject.GetComponent<MyRapty>().alpha = null;
+            }
+        }
+        //moving towards alpha anky if it starts to get close to end of field of view
+        if (Vector3.Distance(animator.gameObject.transform.position, animator.gameObject.GetComponent<MyRapty>().alpha.transform.position) > 30)
+        {
+            animator.SetBool("isHerding", true);
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

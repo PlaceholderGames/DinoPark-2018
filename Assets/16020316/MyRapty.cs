@@ -20,10 +20,17 @@ public class MyRapty : Agent
     public float maxHealth = 100.0f;
     public float health;
 
+    public float hunger = 50.0f;
+    public float thirst = 50.0f;
+
     public bool recover = false;
     public bool dead = false;
     public bool foodGone = false;
     public int prevState;
+
+    public GameObject alpha = null;
+
+    public GameObject waterFinder = null;
     // Use this for initialization
     protected override void Start()
     {
@@ -37,6 +44,7 @@ public class MyRapty : Agent
         anim.SetBool("isAttacking", false);
         anim.SetBool("isFleeing", false);
         anim.SetBool("isDead", false);
+        health = hunger + thirst;
         // This with GetBool and GetFloat allows 
         // you to see how to change the flag parameters in the animation controller
         base.Start();
@@ -44,7 +52,9 @@ public class MyRapty : Agent
 
     protected override void Update()
     {
-        health = health - 0.005f;
+        thirst = thirst - 0.001f;
+        hunger = hunger - 0.002f;
+        health = hunger + thirst;
         // Idle - should only be used at startup
 
         // Eating - requires a box collision with a dead dino
@@ -78,6 +88,15 @@ public class MyRapty : Agent
             }
             else
             {
+                if (col.gameObject.GetComponent<MyAnky>().dead)
+                {
+                    health = health + 20.0f;
+                    Destroy(col.gameObject);
+                }
+                else
+                {
+                    health = health + 5.0f;
+                }
                 health = health + 5.0f;
                 recover = true;
             }

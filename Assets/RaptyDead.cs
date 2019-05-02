@@ -2,31 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RaptyRecovering : StateMachineBehaviour {
+public class RaptyDead : StateMachineBehaviour {
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Entered Recovery State");
+        Debug.Log("Dead State Entered");
+        animator.gameObject.GetComponent<MyRapty>().dead = true;
     }
 
-    public float rec = 0.0f;
+
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        rec = rec + 0.001f;
-        if (rec >= 5.0f)
-        {
-            animator.gameObject.GetComponent<MyRapty>().recover = false;
-            animator.SetBool("isEating", true);
-        }
+        
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Leaving Recovery State");
-        animator.SetBool("isRecovering", false);
+        animator.SetBool("isDead", false);
     }
-
 }

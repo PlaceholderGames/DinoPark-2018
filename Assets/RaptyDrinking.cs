@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnkyDrinking : StateMachineBehaviour {
+public class RaptyDrinking : StateMachineBehaviour {
 
     public GameObject finder;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -25,7 +25,7 @@ public class AnkyDrinking : StateMachineBehaviour {
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //checking if anky has died
-        if (animator.gameObject.GetComponent<MyAnky>().health <= 0)
+        if (animator.gameObject.GetComponent<MyRapty>().health <= 0)
         {
             animator.SetBool("isDead", true);
         }
@@ -40,11 +40,11 @@ public class AnkyDrinking : StateMachineBehaviour {
         }
         if (drinking)
         {
-            animator.gameObject.GetComponent<MyAnky>().thirst += 0.01f;
+            animator.gameObject.GetComponent<MyRapty>().thirst += 0.01f;
         }
-        if (animator.gameObject.GetComponent<MyAnky>().thirst >= 45.0f)
+        if (animator.gameObject.GetComponent<MyRapty>().thirst >= 45.0f)
         {
-            animator.SetBool("isGrazing", true);
+            animator.SetBool("isHunting", true);
         }
     }
 
@@ -57,5 +57,4 @@ public class AnkyDrinking : StateMachineBehaviour {
         animator.gameObject.GetComponent<Seek>().target = null;
         animator.SetBool("isDrinking", false);
     }
-
 }

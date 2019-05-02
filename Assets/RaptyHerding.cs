@@ -2,31 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RaptyRecovering : StateMachineBehaviour {
+public class RaptyHerding : StateMachineBehaviour {
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Entered Recovery State");
+        Debug.Log("Entered Herding State");
+        animator.gameObject.GetComponent<Seek>().target = animator.gameObject.GetComponent<MyRapty>().gameObject.GetComponent<MyRapty>().alpha;
+        animator.gameObject.GetComponent<Seek>().enabled = true;
     }
 
-    public float rec = 0.0f;
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        rec = rec + 0.001f;
-        if (rec >= 5.0f)
+        if (Vector3.Distance(animator.gameObject.transform.position, animator.gameObject.GetComponent<MyRapty>().alpha.transform.position) < 20)
         {
-            animator.gameObject.GetComponent<MyRapty>().recover = false;
-            animator.SetBool("isEating", true);
+            animator.SetBool("isHunting", true);
         }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Leaving Recovery State");
-        animator.SetBool("isRecovering", false);
+        Debug.Log("Leaving Herding State");
+        animator.SetBool("isHerding", false);
+        animator.gameObject.GetComponent<Seek>().enabled = false;
     }
-
 }

@@ -102,7 +102,8 @@ public class MyAnky : Agent
         }  
         if (col.gameObject.tag == "Rapty")
         {
-            health = health - 5.0f;
+            hunger = hunger - 2.5f;
+            thirst = thirst - 2.5f;
         } 
     }
 }
