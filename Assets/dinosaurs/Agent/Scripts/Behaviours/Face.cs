@@ -9,8 +9,8 @@ public class Face : Align {
     {
         base.Awake();
         targetAux = target;
-        target = new GameObject();
-        target.AddComponent<Agent>();
+        //target = new GameObject();
+        //target.AddComponent<Agent>();
     }
 
     public override Steering GetSteering()
