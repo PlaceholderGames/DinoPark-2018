@@ -2,20 +2,21 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class MyRapty : Agent
+public class MyRapty : Dinosaur
 {
-    public enum raptyState
-    {
-        IDLE,       // The default state on creation.
-        EATING,     // This is for eating depending on location of a target object (killed prey)
-        DRINKING,   // This is for Drinking, depending on y value of the object to denote water level
-        ALERTED,      // This is for hightened awareness, such as looking around
-        HUNTING,    // Moving with the intent to hunt
-        ATTACKING,  // Causing damage to a specific target
-        FLEEING,     // Running away from a specific target
-        DEAD
-    };
-    private Animator anim;
+    //public enum raptyState
+    //{
+    //    IDLE,       // The default state on creation.
+    //    EATING,     // This is for eating depending on location of a target object (killed prey)
+    //    DRINKING,   // This is for Drinking, depending on y value of the object to denote water level
+    //    ALERTED,      // This is for hightened awareness, such as looking around
+    //    HUNTING,    // Moving with the intent to hunt
+    //    ATTACKING,  // Causing damage to a specific target
+    //    FLEEING,     // Running away from a specific target
+    //    DEAD
+    //};
+
+    private float moveTimer = 0.0f;
 
     // Use this for initialization
     protected override void Start()
@@ -57,5 +58,26 @@ public class MyRapty : Agent
     protected override void LateUpdate()
     {
         base.LateUpdate();
+    }
+
+    protected override void seekFood()
+    {
+        //for wondering, randomly move the target point of the dino around the map
+        moveTimer += Time.deltaTime;
+
+        if (moveTimer >= 3.0f)
+        {
+            moveTimer = 0.0f;
+
+            Vector3 randomPos = new Vector3(Random.Range(0, mapData.returnTerrainSize().x), 30.0f, Random.Range(0, mapData.returnTerrainSize().z));
+            targetObj.transform.position = randomPos;
+            seek.target = targetObj;
+            seek.GetSteering();
+        }
+    }
+
+    protected override void eat()
+    {
+
     }
 }

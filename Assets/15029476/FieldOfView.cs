@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class FieldOfView : MonoBehaviour {
+public class FieldOfView : MonoBehaviour
+{
 
-	public float viewRadius; // Range of vision. Anky = 100, Rapty = 200
+    public float viewRadius; // Range of vision. Anky = 100, Rapty = 200
 	[Range(0,360)]
+
     public float viewAngle; // Field of Vision. Anky = 300, Rapty = 240
 	[Range(0,180)]
-	public float stereoAngle; // Not doing anything with this yet. Stereo FoV Anky = 30, Rapty = 60
-    // Note: These values above are subject to change on game balancing
+
+    public float stereoAngle; // Not doing anything with this yet. Stereo FoV Anky = 30, Rapty = 60
+                              // Note: These values above are subject to change on game balancing
 
     public LayerMask targetMask;
     //public LayerMask obstacleMask; // Not using raytracing to determine visibility right now
@@ -36,7 +39,7 @@ public class FieldOfView : MonoBehaviour {
     void FindVisibleTargets()
     {
         visibleTargets.Clear ();
-	stereoVisibleTargets.Clear ();
+	    stereoVisibleTargets.Clear ();
         Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
 
         for (int i = 0; i < targetsInViewRadius.Length; i++)
@@ -73,4 +76,14 @@ public class FieldOfView : MonoBehaviour {
 		}
 		return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad),0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
 	}
+
+    public float returnViewRadius()
+    {
+        return viewRadius;
+    }
+
+    public float returnViewAngle()
+    {
+        return viewAngle;
+    }
 }
