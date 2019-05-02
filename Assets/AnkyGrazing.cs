@@ -94,7 +94,7 @@ public class AnkyGrazing : StateMachineBehaviour {
             }
         }
         //moving towards alpha anky if it starts to get close to end of field of view
-        if (Vector3.Distance(animator.gameObject.transform.position, animator.gameObject.GetComponent<MyAnky>().alpha.transform.position) > 60)
+        if (Vector3.Distance(animator.gameObject.transform.position, animator.gameObject.GetComponent<MyAnky>().alpha.transform.position) > 30)
         {
             animator.SetBool("isHerding", true);
         }

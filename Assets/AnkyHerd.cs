@@ -15,7 +15,7 @@ public class AnkyHerd : StateMachineBehaviour {
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (Vector3.Distance(animator.gameObject.transform.position, animator.gameObject.GetComponent<MyAnky>().alpha.transform.position) < 40)
+        if (Vector3.Distance(animator.gameObject.transform.position, animator.gameObject.GetComponent<MyAnky>().alpha.transform.position) < 20)
         {
             animator.SetBool("isGrazing", true);
         }

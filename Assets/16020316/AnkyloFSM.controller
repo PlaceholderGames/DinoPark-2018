@@ -156,6 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b31cf9b56155346b72cce21c89c6a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  finder: {fileID: 1825561649843546, guid: b1ead1a1fb1a3354e89b867fe91d6d81, type: 2}
+  drinking: 0
 --- !u!114 &114884399103348754
 MonoBehaviour:
   m_ObjectHideFlags: 1

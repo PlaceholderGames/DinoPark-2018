@@ -11,6 +11,7 @@ public class AnkyDrinking : StateMachineBehaviour {
         Debug.Log("Entered Drinking State");
         GameObject watFind;
         watFind = Instantiate(finder, animator.gameObject.transform);
+        
         animator.gameObject.GetComponent<Seek>().target = watFind;
         animator.gameObject.GetComponent<Seek>().enabled = true;
     }
@@ -30,6 +31,8 @@ public class AnkyDrinking : StateMachineBehaviour {
             animator.gameObject.GetComponent<Seek>().enabled = false;
             animator.gameObject.GetComponent<Seek>().target = null;
             drinking = true;
+            //removing the water finder
+            Destroy(animator.gameObject.GetComponent<Seek>().target);
         }
         if (drinking)
         {
