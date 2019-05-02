@@ -44,7 +44,8 @@ public class Idle : State<RaptyAI>
     void RandomMove(RaptyAI owner)
     {
         move = UnityEngine.Random.Range(0, 3);
-        while (moveDuration < 5)
+        //move = 1;
+        if (moveDuration < 5)
         {
             if (move == 1)
             {
@@ -57,7 +58,7 @@ public class Idle : State<RaptyAI>
                     randTarget = new Vector3(UnityEngine.Random.Range(0, 10), 0, UnityEngine.Random.Range(0, 10));
                 }
                 owner.transform.position = Vector3.MoveTowards(owner.transform.position, randTarget, owner.Speed * Time.deltaTime);
-                owner.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(owner.transform.position, randTarget - owner.transform.position, owner.Speed * 2 * Time.deltaTime, 0.0f));
+                owner.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(owner.transform.position, randTarget - owner.transform.position, owner.Speed * 5 * Time.deltaTime, 0.0f));
             }
         }
 

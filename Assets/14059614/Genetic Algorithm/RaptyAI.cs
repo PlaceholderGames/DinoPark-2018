@@ -12,7 +12,6 @@ public class RaptyAI : MonoBehaviour
     public float Health, Weight, Hunger, Age, Speed;
     int MaxHealth, MaxWeight, MaxHunger, MaxAge;
     int MinHealth, MinWeight, MinHunger, MinAge;
-    int Gender;
     bool Healthy = false, Fit = false, Hungry = false;
 
     //game time
@@ -141,6 +140,10 @@ public class RaptyAI : MonoBehaviour
             Vector3.Distance(transform.position, ankylosaurus.transform.position) <= 20.0f)      //attack even when not hungry
         {                                                                                        //
             stateMachine.ChangeState(Hunt.Instance);                                             //
+        }
+        if (Age >= 6 && Healthy == true && Fit == true && Hungry == false)
+        {
+            stateMachine.ChangeState(Breed.Instance); //assumed that they already mated
         }
         else
         stateMachine.ChangeState(Idle.Instance);

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 using FSM;
+
 public class Hunt : State<RaptyAI>
 {
     private static Hunt instance;
@@ -36,5 +37,13 @@ public class Hunt : State<RaptyAI>
     {
 
     }
+    void Attack(RaptyAI owner)
+    {
+        //AnkylosaurusAI[] ankies = UnityEngine.Object.FindObjectOfType<AnkylosaurusAI>();
+        if (Vector3.Distance(owner.transform.position, owner.ankylosaurus.transform.position) - Vector3.Distance(owner.transform.position, owner.player.transform.position) < 0)
+        {
+            //closer to anky, attack anky
 
+        }
+    }
 }
