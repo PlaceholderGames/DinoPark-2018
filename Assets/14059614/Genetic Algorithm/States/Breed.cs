@@ -4,22 +4,22 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 using FSM;
-public class Sleep : State<RaptyAI>
+public class Breed : State<RaptyAI>
 {
-    private static Sleep instance;
-    private Sleep()
+    private static Breed instance;
+    private Breed()
     {
         if (instance != null) return;
         instance = this;
     }
 
-    public static Sleep Instance
+    public static Breed Instance
     {
         get
         {
             if (instance == null)
             {
-                new Sleep();
+                new Breed();
             }
             return instance;
         }
@@ -36,5 +36,4 @@ public class Sleep : State<RaptyAI>
     {
 
     }
-
 }

@@ -1,5 +1,4 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,7 +8,8 @@ public class RaptyAI : MonoBehaviour
     public StateMachine<RaptyAI> stateMachine { get; set; }
 
     //Raptor's statistic
-    float Health, Weight, Hunger, Age, Speed;
+    [HideInInspector]
+    public float Health, Weight, Hunger, Age, Speed;
     int MaxHealth, MaxWeight, MaxHunger, MaxAge;
     int MinHealth, MinWeight, MinHunger, MinAge;
     int Gender;
@@ -17,9 +17,23 @@ public class RaptyAI : MonoBehaviour
 
     //game time
     float timer = 0.0f;
+    float dayTime = 0.0f;
+    float nightTime = 0.0f;
+    bool day, night;
+
+    //targets
+    [HideInInspector]
+    public GameObject player;
+    [HideInInspector]
+    public GameObject ankylosaurus;
+    [HideInInspector]
+    public GameObject target;
+
     // Use this for initialization
     void Start()
     {
+        day = true;
+        night = false;
         Statistics();
         stateMachine = new StateMachine<RaptyAI>(this);
         stateMachine.ChangeState(Idle.Instance);
@@ -28,69 +42,34 @@ public class RaptyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += 1.0f * Time.deltaTime;
+        timer += Time.deltaTime;
         if (timer > 0)
         {
-            Debug.Log("Time: " + Mathf.RoundToInt(timer) + "s");
+            //Debug.Log("Time: " + Mathf.RoundToInt(timer) + "s");
+
+            Hunger += 1.0f * Time.deltaTime;
         }
         stateMachine.Update(); //update states every frame
     }
 
-    void FixedUpdate()
-    {
-        Vision();
-    }
-
-    void Vision()
-    {
-        int sightDist = 10;
-        Ray FrontRay = new Ray(transform.position, transform.forward * sightDist);
-        
-
-    }
-
     void Statistics()
     {
-        RNG(Gender, 0, 2);
-        //0 = female - faster and be hungry slower
-        //1 = male - stronger in health and heavier
-        switch (Gender)
-        {
-            case 0: //female
-                MinHealth = 40;
-                MinWeight = 75;
-                MinHunger = 30;
-                MinAge = 1;
+        MinHealth = 60;
+        MinWeight = 90;
+        MinHunger = 45;
+        MinAge = 1;
 
-                MaxHealth = 100;
-                MaxWeight = 115;
-                MaxHunger = 70;
-                MaxAge = 10;
+        MaxHealth = 120;
+        MaxWeight = 130;
+        MaxHunger = 85;
+        MaxAge = 10;
 
-                RNG(Health, MinHealth, MaxHealth);
-                RNG(Weight, MinWeight, MaxWeight);
-                RNG(Hunger, MinHunger, MaxHunger);
-                RNG(Age, MinAge, MaxAge);
-                Speed = 3.0f;
-                break;
-            case 1: //male
-                MinHealth = 60;
-                MinWeight = 90;
-                MinHunger = 45;
-                MinAge = 1;
+        Speed = Age + 1;
 
-                MaxHealth = 120;
-                MaxWeight = 130;
-                MaxHunger = 85;
-                MaxAge = 10;
-
-                RNG(Health, MinHealth, MaxHealth);
-                RNG(Weight, MinWeight, MaxWeight);
-                RNG(Hunger, MinHunger, MaxHunger);
-                RNG(Age, MinAge, MaxAge);
-                Speed = 2.5f;
-                break;
-        }
+        RNG(Health, MinHealth, MaxHealth);
+        RNG(Weight, MinWeight, MaxWeight);
+        RNG(Hunger, MinHunger, MaxHunger);
+        RNG(Age, MinAge, MaxAge);
     }
 
     void RNG(float stat, int min, int max)
@@ -103,8 +82,27 @@ public class RaptyAI : MonoBehaviour
     }
     void BodyChecker()
     {
-        if (Hunger >= 90) Health -= 0.5f * Time.deltaTime;
-        if (Weight > MaxWeight || Weight < MinWeight) Health -= 0.5f * Time.deltaTime;
+
+        if (Hunger >= 90)
+        {
+            Health -= 0.5f * Time.deltaTime;
+            if (Hunger >= MaxHunger)
+            {
+                Hunger = MaxHunger;
+            }
+            else if (Hunger <= MinHunger)
+            {
+                Hunger = MinHunger;
+            }
+        }
+        if (Weight > MaxWeight || Weight < MinWeight)
+        {
+            Health -= 0.5f * Time.deltaTime;
+            if (Weight <= 0)
+            {
+                Weight = 0;
+            }
+        }
         if (Hunger > MaxHunger) Health -= 0.5f * Time.deltaTime;
         if (Age > MaxAge) Die();
         if (Health <= 0) Die();
@@ -130,15 +128,30 @@ public class RaptyAI : MonoBehaviour
     }
     void SwapState()
     {
-        if (Hungry == true) stateMachine.ChangeState(Food.Instance);
+        if (Hungry == true)
+        {
+            stateMachine.ChangeState(Food.Instance);
+            if (Vector3.Distance(transform.position, player.transform.position) <= 20.0f ||
+                Vector3.Distance(transform.position, ankylosaurus.transform.position) <= 20.0f)
+            {
+                stateMachine.ChangeState(Hunt.Instance);
+            }
+        }
+        if (Vector3.Distance(transform.position, player.transform.position) <= 20.0f ||          //
+            Vector3.Distance(transform.position, ankylosaurus.transform.position) <= 20.0f)      //attack even when not hungry
+        {                                                                                        //
+            stateMachine.ChangeState(Hunt.Instance);                                             //
+        }
+        else
+        stateMachine.ChangeState(Idle.Instance);
     }
     void PrintStats()
     {
-        Debug.Log(Mathf.RoundToInt(Health));
-        Debug.Log(Mathf.RoundToInt(Weight));
-        Debug.Log(Mathf.RoundToInt(Hunger));
-        Debug.Log(Mathf.RoundToInt(Age));
-        Debug.Log(Mathf.RoundToInt(Speed));
+        //Debug.Log(Mathf.RoundToInt(Health));
+        //Debug.Log(Mathf.RoundToInt(Weight));
+        //Debug.Log(Mathf.RoundToInt(Hunger));
+        //Debug.Log(Mathf.RoundToInt(Age));
+        //Debug.Log(Mathf.RoundToInt(Speed));
     }
 }
 

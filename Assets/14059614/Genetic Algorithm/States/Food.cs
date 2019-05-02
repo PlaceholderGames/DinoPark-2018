@@ -6,6 +6,7 @@ using System;
 using FSM;
 public class Food : State<RaptyAI>
 {
+    bool eaten;
     private static Food instance;
     private Food()
     {
@@ -35,6 +36,14 @@ public class Food : State<RaptyAI>
     public override void UpdateState(RaptyAI owner)
     {
 
+    }
+    void Eat(RaptyAI owner)
+    {
+        if (Vector3.Distance(owner.transform.position, owner.target.transform.position) < 5.0f)
+        {
+            owner.Weight += 10;
+            owner.Hunger -= 20;
+        }
     }
 
 }
