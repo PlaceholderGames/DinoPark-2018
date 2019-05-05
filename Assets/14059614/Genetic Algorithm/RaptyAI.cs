@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using FSM;
-public class RaptyAI : DinoAI
+public class RaptyAI : MonoBehaviour
 {
     public StateMachine<RaptyAI> stateMachine { get; set; }
 
     //Raptor's statistic
+    [HideInInspector]
+    public float Health, Weight, Hunger, Age, Speed;
+    int MaxHealth, MaxWeight, MaxHunger, MaxAge;
+    int MinHealth, MinWeight, MinHunger, MinAge;
+    bool Healthy = false, Fit = false, Hungry = false;
 
     //game time
     float timer = 0.0f;
+    float dayTime = 0.0f;
+    float nightTime = 0.0f;
+    bool day, night;
 
     //targets
     [HideInInspector]
@@ -23,7 +31,9 @@ public class RaptyAI : DinoAI
     // Use this for initialization
     void Start()
     {
-        Statistics(1);
+        day = true;
+        night = false;
+        Statistics();
         stateMachine = new StateMachine<RaptyAI>(this);
         stateMachine.ChangeState(Idle.Instance);
     }
@@ -31,13 +41,82 @@ public class RaptyAI : DinoAI
     // Update is called once per frame
     void Update()
     {
-        Timer();
-        BodyChecker(1);
+        timer += Time.deltaTime;
+        if (timer > 0)
+        {
+            //Debug.Log("Time: " + Mathf.RoundToInt(timer) + "s");
+
+            Hunger += 1.0f * Time.deltaTime;
+        }
         stateMachine.Update(); //update states every frame
     }
 
+    void Statistics()
+    {
+        MinHealth = 60;
+        MinWeight = 90;
+        MinHunger = 45;
+        MinAge = 1;
+
+        MaxHealth = 120;
+        MaxWeight = 130;
+        MaxHunger = 85;
+        MaxAge = 10;
+
+        Speed = Age + 1;
+
+        RNG(Health, MinHealth, MaxHealth);
+        RNG(Weight, MinWeight, MaxWeight);
+        RNG(Hunger, MinHunger, MaxHunger);
+        RNG(Age, MinAge, MaxAge);
+    }
+
+    void RNG(float stat, int min, int max)
+    {
+        stat = Random.Range(min, max);
+    }
+    void Die()
+    {
+        Destroy(gameObject);
+    }
+    void BodyChecker()
+    {
+
+        if (Hunger >= 90)
+        {
+            Health -= 0.5f * Time.deltaTime;
+            if (Hunger >= MaxHunger)
+            {
+                Hunger = MaxHunger;
+            }
+            else if (Hunger <= MinHunger)
+            {
+                Hunger = MinHunger;
+            }
+        }
+        if (Weight > MaxWeight || Weight < MinWeight)
+        {
+            Health -= 0.5f * Time.deltaTime;
+            if (Weight <= 0)
+            {
+                Weight = 0;
+            }
+        }
+        if (Hunger > MaxHunger) Health -= 0.5f * Time.deltaTime;
+        if (Age > MaxAge) Die();
+        if (Health <= 0) Die();
+    }
     void Growth()
     {
+        if (Health >= MaxHealth * 0.7)  Healthy = true;
+        else if (Health < MaxHealth * 0.7) Healthy = false;
+
+        if (Weight <= MaxWeight * 0.8 && Weight >= MaxWeight * 0.6) Fit = true;
+        else if (Weight < MaxWeight * 0.6 || Weight > 0.8) Fit = false;
+
+        if (Hunger <= MinHunger) Hungry = false;
+        else if (Hunger > MinHunger) Hungry = true;
+
         if (Healthy == true && Fit == true && Hungry == false)
         {
             Age++;
