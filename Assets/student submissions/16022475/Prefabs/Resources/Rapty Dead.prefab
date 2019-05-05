@@ -1314,8 +1314,8 @@ GameObject:
   - component: {fileID: 1361511956}
   - component: {fileID: 1361511955}
   m_Layer: 9
-  m_Name: Rapty (1)
-  m_TagString: Rapty
+  m_Name: Rapty Dead
+  m_TagString: Dead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -12,6 +12,8 @@ TagManager:
   - DinoStats
   - Anky
   - Rapty
+  - Water
+  - Dead
   layers:
   - Default
   - TransparentFX

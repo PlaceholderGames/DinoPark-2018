@@ -8,9 +8,9 @@ public class MapGrid : MonoBehaviour {
     public Vector2 gridWorldSize; // Size of the map grid
     public float tileSize = 1.0f;  // Size of each tile
     public float heightThreshold = 1.0f; // The maximum height distance between each corner of a tile to determine if walkable
-    public float seaLevel = 0.0f; // Minimum walkable height
+    public float seaLevel = 30.0f; // Minimum walkable height
 
-    [HideInInspector]
+   // [HideInInspector]
     public MapTile[,] tiles;
 
     private Terrain terrain;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RaptyStats : MonoBehaviour
 {
@@ -27,9 +28,9 @@ public class RaptyStats : MonoBehaviour
     public float rot;
     float rotModifier = 1;
     //Angular Rotation Stats
-    float angularAccelMax;
-    protected float angularAccel;
-    float angularAccelModifier = 1;
+    float angularSpeedMax;
+    protected float angularSpeed;
+    float angularSpeedModifier = 1;
     //Cohesion Variables
     public  float cohesionRadius;
     public float cohesionPriority;
@@ -51,12 +52,12 @@ public class RaptyStats : MonoBehaviour
     public float attack;
     public float attackBase = 10;
     public float attackModifier = 1;
-    public Agent A;
+    public  NavMeshAgent A;
     
     // Start is called before the first frame update
     void Start()
     {
-        A = GetComponent<Agent>();
+        A = GetComponent<NavMeshAgent>();
         if (adult == true)
         {
             energyModifier = Random.Range((0.9f * energyModifier), (1.1f * energyModifier));
@@ -64,28 +65,27 @@ public class RaptyStats : MonoBehaviour
             speedModifier = Random.Range((0.9f * speedModifier), (1.1f * speedModifier));
             accelModifier = Random.Range((0.9f * accelModifier), (1.1f * accelModifier));
             rotModifier = Random.Range((0.9f * rotModifier), (1.1f * rotModifier));
-            angularAccelModifier = Random.Range((0.9f * angularAccelModifier), (1.1f * angularAccelModifier));
+            angularSpeedModifier = Random.Range((0.9f * angularSpeedModifier), (1.1f * angularSpeedModifier));
             attackModifier = Random.Range((0.9f * attackModifier), (1.1f * attackModifier));
 
             energyMax = (100 * energyModifier);
             healthMax = (100 * healthModifier);
-            speedMax = (A.maxSpeed * speedModifier);
-            accelMax = (A.maxAccel * accelModifier);
-            rotMax = (A.maxRotation * rotModifier);
-            angularAccelMax = (A.maxAngularAccel * angularAccelModifier);
+            speedMax = (A.speed * speedModifier);
+            accelMax = (A.acceleration * accelModifier);
+         
+            angularSpeedMax = (A.angularSpeed * angularSpeedModifier);
             attack = (attackBase * attackModifier);
 
-            A.maxSpeed = speedMax;
-            A.maxAccel = accelMax;
-            A.maxRotation = rotMax;
-            A.maxAngularAccel = angularAccelMax;
+            A.speed = speedMax;
+            A.acceleration = accelMax;
+            A.angularSpeed = angularSpeedMax;
 
             energy = energyMax;
             health = healthMax;
             speed = speedMax;
             accel = accelMax;
-            rot = rotMax;
-            angularAccel = angularAccelMax;
+        
+            angularSpeed = angularSpeedMax;
 
             hungerMax = energyMax / 2;
             thirstMax = energyMax / 2;
