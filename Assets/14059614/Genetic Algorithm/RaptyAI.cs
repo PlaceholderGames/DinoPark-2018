@@ -35,7 +35,6 @@ public class RaptyAI : MonoBehaviour
     //game time
     float timer = 0.0f;
 
-
     //targets
     [HideInInspector]
     public GameObject player;
@@ -60,7 +59,7 @@ public class RaptyAI : MonoBehaviour
 
         Statistics();
         stateMachine = new StateMachine<RaptyAI>(this);
-        stateMachine.ChangeState(Idle.Instance);
+        //stateMachine.ChangeState(Idle.Instance);
     }
 
     // Update is called once per frame
@@ -150,11 +149,12 @@ public class RaptyAI : MonoBehaviour
             Hunger += (Hunger * 0.2f);
         }
     }
+    /*
     void SwapState()
     {
         if (Hungry == true)
         {
-            stateMachine.ChangeState(Food.Instance);
+            stateMachine.ChangeState(Eat.Instance);
             if (Vector3.Distance(transform.position, ankylosaurus.transform.position) <= 20.0f)
             {
                 stateMachine.ChangeState(Hunt.Instance);
@@ -171,5 +171,6 @@ public class RaptyAI : MonoBehaviour
         else
         stateMachine.ChangeState(Idle.Instance);
     }
+    */
 }
 

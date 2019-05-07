@@ -35,7 +35,7 @@ public class AnkylosaurusAI : MonoBehaviour
         night = false;
         Statistics();
         stateMachine = new StateMachine<AnkylosaurusAI>(this);
-        stateMachine.ChangeState(AnkyIdle.Instance);
+       // stateMachine.ChangeState(AnkyIdle.Instance);
     }
 
     // Update is called once per frame
@@ -145,8 +145,8 @@ public class AnkylosaurusAI : MonoBehaviour
         {
             //stateMachine.ChangeState(Breed.Instance); //assumed that they already mated
         }
-        else
-            stateMachine.ChangeState(AnkyIdle.Instance);
+        //else
+            //stateMachine.ChangeState(AnkyIdle.Instance);
     }
     void PrintStats()
     {

@@ -4,39 +4,37 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 using FSM;
-public class Idle : State<MyRapty>
+public class rapAttack : State<MyRapty>
 {
-
-    private static Idle instance;
-    private Idle()
+    bool eaten;
+    private static rapAttack instance;
+    private rapAttack()
     {
         if (instance != null) return;
         instance = this;
     }
 
-    public static Idle Instance
+    public static rapAttack Instance
     {
         get
         {
             if (instance == null)
             {
-                new Idle();
+                new rapAttack();
             }
             return instance;
         }
     }
     public override void EnterState(MyRapty owner)
     {
-        owner.animator.SetBool("isIdle", true);
+        owner.animator.SetBool("isAlert", true);
     }
     public override void ExitState(MyRapty owner)
     {
-        owner.animator.SetBool("isIdle", false);
+        owner.animator.SetBool("isAlert", false);
     }
     public override void UpdateState(MyRapty owner)
     {
-        //RandomMove(owner);
-        owner.animator.SetBool("isHunting", true);
 
     }
 

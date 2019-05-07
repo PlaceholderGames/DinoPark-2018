@@ -4,39 +4,40 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 using FSM;
-public class Food : State<RaptyAI>
+public class Eat : State<MyRapty>
 {
     bool eaten;
-    private static Food instance;
-    private Food()
+    private static Eat instance;
+    private Eat()
     {
         if (instance != null) return;
         instance = this;
     }
 
-    public static Food Instance
+    public static Eat Instance
     {
         get
         {
             if (instance == null)
             {
-                new Food();
+                new Eat();
             }
             return instance;
         }
     }
-    public override void EnterState(RaptyAI owner)
+    public override void EnterState(MyRapty owner)
     {
 
     }
-    public override void ExitState(RaptyAI owner)
+    public override void ExitState(MyRapty owner)
     {
 
     }
-    public override void UpdateState(RaptyAI owner)
+    public override void UpdateState(MyRapty owner)
     {
 
     }
+    /*
     void Eat(RaptyAI owner)
     {
         if (Vector3.Distance(owner.transform.position, owner.target.transform.position) < 5.0f)
@@ -45,5 +46,5 @@ public class Food : State<RaptyAI>
             owner.Hunger -= 20;
         }
     }
-
+    */
 }

@@ -4,37 +4,39 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 using FSM;
-public class AnkyIdle : State<MyAnky>
+public class AnkyDead : State<MyAnky>
 {
-    private static AnkyIdle instance;
-    private AnkyIdle()
+    bool eaten;
+    private static AnkyDead instance;
+    private AnkyDead()
     {
         if (instance != null) return;
         instance = this;
     }
 
-    public static AnkyIdle Instance
+    public static AnkyDead Instance
     {
         get
         {
             if (instance == null)
             {
-                new AnkyIdle();
+                new AnkyDead();
             }
             return instance;
         }
     }
     public override void EnterState(MyAnky owner)
     {
-        owner.animator.SetBool("isIdle", true);
+        Debug.Log("Entering Dead state");
+        owner.animator.SetBool("isDead", true);
     }
     public override void ExitState(MyAnky owner)
     {
-        owner.animator.SetBool("isIdle", false);
+        owner.animator.SetBool("isDead", false);
     }
     public override void UpdateState(MyAnky owner)
     {
-        owner.stateMachine.ChangeState(AnkyGraze.Instance);
+        GameObject.Destroy(owner.gameObject);
     }
 
 }

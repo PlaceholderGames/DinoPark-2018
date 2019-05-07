@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnkyBreed : MonoBehaviour {
+public class AnkyDrink : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

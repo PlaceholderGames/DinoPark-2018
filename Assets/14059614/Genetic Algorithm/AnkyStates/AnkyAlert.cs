@@ -4,37 +4,38 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 using FSM;
-public class AnkyIdle : State<MyAnky>
+public class AnkyAlert : State<MyAnky>
 {
-    private static AnkyIdle instance;
-    private AnkyIdle()
+    bool eaten;
+    private static AnkyAlert instance;
+    private AnkyAlert()
     {
         if (instance != null) return;
         instance = this;
     }
 
-    public static AnkyIdle Instance
+    public static AnkyAlert Instance
     {
         get
         {
             if (instance == null)
             {
-                new AnkyIdle();
+                new AnkyAlert();
             }
             return instance;
         }
     }
     public override void EnterState(MyAnky owner)
     {
-        owner.animator.SetBool("isIdle", true);
+        owner.animator.SetBool("isAlert", true);
     }
     public override void ExitState(MyAnky owner)
     {
-        owner.animator.SetBool("isIdle", false);
+        owner.animator.SetBool("isAlert", false);
     }
     public override void UpdateState(MyAnky owner)
     {
-        owner.stateMachine.ChangeState(AnkyGraze.Instance);
+
     }
 
 }

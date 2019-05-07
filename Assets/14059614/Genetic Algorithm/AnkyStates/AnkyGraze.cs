@@ -4,44 +4,42 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 using FSM;
-
-public class Hunt : State<MyRapty>
+public class AnkyGraze : State<MyAnky>
 {
     Vector3 randTarget;
-    private static Hunt instance;
-    private Hunt()
+    private static AnkyGraze instance;
+    private AnkyGraze()
     {
         if (instance != null) return;
         instance = this;
     }
 
-    public static Hunt Instance
+    public static AnkyGraze Instance
     {
         get
         {
             if (instance == null)
             {
-                new Hunt();
+                new AnkyGraze();
             }
             return instance;
         }
     }
-    public override void EnterState(MyRapty owner)
+    public override void EnterState(MyAnky owner)
     {
-        owner.animator.SetBool("isHunting", true);
-        
+        owner.animator.SetBool("isGrazing", true);
     }
-    public override void ExitState(MyRapty owner)
+    public override void ExitState(MyAnky owner)
     {
-        owner.animator.SetBool("isHunting", false);
+        owner.animator.SetBool("isGrazing", false);
     }
-    public override void UpdateState(MyRapty owner)
+    public override void UpdateState(MyAnky owner)
     {
         owner.animator.SetBool("isAlert", true);
         RandomMove(owner);
-    }
 
-    void RandomMove(MyRapty owner)
+    }
+    void RandomMove(MyAnky owner)
     {
         if (randTarget == owner.transform.position)
         {
@@ -49,7 +47,7 @@ public class Hunt : State<MyRapty>
         }
         else if (randTarget == new Vector3(0, 0, 0))
         {
-            randTarget = new Vector3(UnityEngine.Random.Range(0, 10), 0, UnityEngine.Random.Range(0, 10));
+            randTarget = new Vector3(UnityEngine.Random.Range(0, 2000), 0, UnityEngine.Random.Range(0, 2000));
         }
         owner.transform.position = Vector3.MoveTowards(owner.transform.position, randTarget, owner.Speed * Time.deltaTime);
         owner.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(owner.transform.position, randTarget - owner.transform.position, owner.Speed * 5 * Time.deltaTime, 0.0f));

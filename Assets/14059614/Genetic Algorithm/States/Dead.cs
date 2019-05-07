@@ -4,40 +4,39 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 using FSM;
-public class Idle : State<MyRapty>
+public class Dead : State<MyRapty>
 {
-
-    private static Idle instance;
-    private Idle()
+    bool eaten;
+    private static Dead instance;
+    private Dead()
     {
         if (instance != null) return;
         instance = this;
     }
 
-    public static Idle Instance
+    public static Dead Instance
     {
         get
         {
             if (instance == null)
             {
-                new Idle();
+                new Dead();
             }
             return instance;
         }
     }
     public override void EnterState(MyRapty owner)
     {
-        owner.animator.SetBool("isIdle", true);
+        Debug.Log("Entering Dead state");
+        owner.animator.SetBool("isDead", true);
     }
     public override void ExitState(MyRapty owner)
     {
-        owner.animator.SetBool("isIdle", false);
+        owner.animator.SetBool("isDead", false);
     }
     public override void UpdateState(MyRapty owner)
     {
-        //RandomMove(owner);
-        owner.animator.SetBool("isHunting", true);
-
+        GameObject.Destroy(owner.gameObject);
     }
 
 }
