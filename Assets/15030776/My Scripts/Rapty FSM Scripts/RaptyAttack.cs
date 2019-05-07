@@ -9,7 +9,9 @@ public class RaptyAttack : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
+        Debug.Log("Entered Attacking State.");
 
+        animator.gameObject.GetComponent<Wander>().enabled = true;
 
     }
 
@@ -17,18 +19,32 @@ public class RaptyAttack : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
+        List<Transform> targetsForRaptyList = animator.gameObject.GetComponent<FieldOfView>().ankysSeen;
+
         float health = animator.gameObject.GetComponent<MyRapty>().health;
         float hunger = animator.gameObject.GetComponent<MyRapty>().hunger;
         float thirst = animator.gameObject.GetComponent<MyRapty>().thirst;
 
-        if (health <= 0 || hunger <= 0 || thirst <= 0)
+        if (health <= 0 || hunger <= 0 || thirst <= 0 || animator.gameObject.GetComponent<MyRapty>().timeToLive <= 0)
         {
 
             animator.SetBool("isDead", true);
 
         }
 
+        if (hunger >= animator.gameObject.GetComponent<MyRapty>().maxHunger)
+        {
 
+            animator.SetBool("isHunting", true);
+
+        }
+
+        if (targetsForRaptyList.Count != 0)
+        {
+            
+            animator.SetBool("isEating", true);
+
+        }
 
     }
 
@@ -37,6 +53,8 @@ public class RaptyAttack : StateMachineBehaviour
     {
 
         Debug.Log("Left Attacking State.");
+
+        animator.gameObject.GetComponent<Wander>().enabled = false;
 
         animator.SetBool("isAttacking", false);
 

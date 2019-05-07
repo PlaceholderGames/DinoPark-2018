@@ -34,20 +34,20 @@ public class RaptyDrinking : StateMachineBehaviour
         float hunger = animator.gameObject.GetComponent<MyRapty>().hunger;
         float thirst = animator.gameObject.GetComponent<MyRapty>().thirst;
 
-        if (health <= 0 || hunger <= 0 || thirst <= 0)
+        if (health <= 0 || hunger <= 0 || thirst <= 0 || animator.gameObject.GetComponent<MyRapty>().timeToLive <= 0)
         {
 
             animator.SetBool("isDead", true);
 
         }
 
-        if (animator.gameObject.transform.position.y <= 33)
+        if (animator.gameObject.transform.position.y <= 37)
         {
 
-            Destroy(animator.gameObject.GetComponent<Seek>().target);
+            //Destroy(animator.gameObject.GetComponent<Seek>().target);
 
-            animator.gameObject.GetComponent<Seek>().enabled = false;
-            animator.gameObject.GetComponent<Seek>().target = null;
+            //animator.gameObject.GetComponent<Seek>().enabled = false;
+            //animator.gameObject.GetComponent<Seek>().target = null;
 
             isDrinking = true;
 
@@ -56,14 +56,14 @@ public class RaptyDrinking : StateMachineBehaviour
         if (isDrinking)
         {
 
-            animator.gameObject.GetComponent<MyRapty>().thirst += 1f;
+            animator.gameObject.GetComponent<MyRapty>().thirst += 0.5f;
 
-        }
+            if (thirst >= animator.gameObject.GetComponent<MyRapty>().maxThirst)
+            {
 
-        if (thirst == animator.gameObject.GetComponent<MyRapty>().maxThirst)
-        {
+                animator.SetBool("isHunting", true);
 
-            animator.SetBool("isHunting", true);
+            }
 
         }
 
@@ -74,6 +74,8 @@ public class RaptyDrinking : StateMachineBehaviour
     {
 
         Debug.Log("Left Drinking State");
+
+        Destroy(animator.gameObject.GetComponent<Seek>().target);
 
         animator.gameObject.GetComponent<Seek>().enabled = false;
         animator.gameObject.GetComponent<Seek>().target = null;

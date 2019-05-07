@@ -29,6 +29,8 @@ public class RaptyDead : StateMachineBehaviour
 
         Debug.Log("Velociraptor is Dead.");
 
+        animator.SetBool("isDead", false);
+
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

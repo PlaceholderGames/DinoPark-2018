@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour {
 
-	public float viewRadius; // Range of vision. Anky = 100, Rapty = 200
-	[Range(0,360)]
+    public float viewRadius; // Range of vision. Anky = 100, Rapty = 200
+    [Range(0,360)]
     public float viewAngle; // Field of Vision. Anky = 300, Rapty = 240
-	[Range(0,180)]
-	public float stereoAngle; // Not doing anything with this yet. Stereo FoV Anky = 30, Rapty = 60
+    [Range(0,180)]
+    public float stereoAngle; // Not doing anything with this yet. Stereo FoV Anky = 30, Rapty = 60
     // Note: These values above are subject to change on game balancing
 
     public LayerMask targetMask;
@@ -18,13 +18,17 @@ public class FieldOfView : MonoBehaviour {
     [HideInInspector] // If you want to see the list of visible Dinos in the Inspector view, comment this out
     public List<Transform> visibleTargets = new List<Transform>(); // this is the list of visible dinosaurs
 
+    public List<Transform> ankysSeen = new List<Transform>();    //
+                                                                 // Added lists for individual targeting of dinosaurs.
+    public List<Transform> raptysSeen = new List<Transform>();   //
+
     [HideInInspector] // If you want to see the list of visible Dinos in the Inspector view, comment this out
     public List<Transform> stereoVisibleTargets = new List<Transform>(); // this is the list of visible dinosaurs in stereo
 
-	private void Start()
-	{
+    private void Start()
+    {
         StartCoroutine("FindTargetsWithDelay", 0.2f);
-	}
+    }
 	IEnumerator FindTargetsWithDelay(float delay)
     {
         while (true)
@@ -35,14 +39,19 @@ public class FieldOfView : MonoBehaviour {
     }
     void FindVisibleTargets()
     {
+        ankysSeen.Clear();
+        raptysSeen.Clear();
+
         visibleTargets.Clear ();
-	stereoVisibleTargets.Clear ();
+        stereoVisibleTargets.Clear ();
         Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
 
         for (int i = 0; i < targetsInViewRadius.Length; i++)
         {
             Transform target = targetsInViewRadius[i].transform;
             Vector3 dirToTarget = (target.position - transform.position).normalized;
+
+            string detected = targetsInViewRadius[i].tag;
 
             if (Vector3.Angle(transform.forward, dirToTarget) < stereoAngle / 2) //Can be seen in stereo
             {
@@ -59,18 +68,37 @@ public class FieldOfView : MonoBehaviour {
             {
                 //float directionToTarget = Vector3.Angle(transform.forward, dirToTarget); // We need the direction of the object only for checking with raytracing
                 visibleTargets.Add(target); // For now, if it is in range and angle of eyesight we can see it
+
+                if (detected == "Anky")
+                {
+
+                    ankysSeen.Add(target);
+
+                }
+
+                if (detected == "Rapty")
+                {
+
+                    raptysSeen.Add(target);
+
+                }
             }
          
         }
+
+        ankysSeen = ankysSeen.Distinct().ToList();
+        raptysSeen = raptysSeen.Distinct().ToList();
+
         visibleTargets = visibleTargets.Distinct().ToList();
         stereoVisibleTargets = stereoVisibleTargets.Distinct().ToList();
     }
 	
-	public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
-	{
-		if (!angleIsGlobal) {
-			angleInDegrees += transform.eulerAngles.y;
-		}
-		return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad),0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
-	}
+    public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
+    {
+        if (!angleIsGlobal)
+        {
+            angleInDegrees += transform.eulerAngles.y;
+        }
+        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad),0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
+    }
 }

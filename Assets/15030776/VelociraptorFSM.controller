@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e944b409c6ce4b4da8b472ebaa6d279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Detector: {fileID: 0}
+  Detector: {fileID: 1825561649843546, guid: 90c5466a54f6e85439b46825baace5a5, type: 2}
   isDrinking: 0
 --- !u!1101 &1101030587578748812
 AnimatorStateTransition:

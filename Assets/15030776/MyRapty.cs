@@ -19,23 +19,27 @@ public class MyRapty : Agent
 
     private Animator anim;
 
+    public GameObject waterDetector = null;
+
     public float maxHealth = 100f;
     public float health;
-
 
     public float maxHunger = 100f;
     public float maxThirst = 100f;
     public float hunger;
     public float thirst;
 
-    public bool died = false;
+    public float timeToLive = 120f;
+
+    public bool killed = false;
 
     // Use this for initialization
     protected override void Start()
     {
 
-        anim = GetComponent<Animator>();    // Assert default animation booleans and floats
+        anim = GetComponent<Animator>();    
 
+        // Assert default animation booleans and floats
         anim.SetBool("isIdle", true);       //
         anim.SetBool("isEating", false);    //
         anim.SetBool("isDrinking", false);  //
@@ -59,6 +63,8 @@ public class MyRapty : Agent
         hunger = hunger - Time.deltaTime / 4;    // Hunger decreases every update.
         thirst = thirst - Time.deltaTime / 2;    // Thirst decreases every update.
 
+        timeToLive = timeToLive - Time.deltaTime;
+
         // Idle - should only be used at startup
 
         // Eating - requires a box collision with a dead dino
@@ -81,6 +87,39 @@ public class MyRapty : Agent
     {
 
         base.LateUpdate();
+
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+
+        Debug.Log("Colliding");
+
+        if (col.gameObject.tag == "Anky")
+        {
+            
+
+            if (health == 0.0f)
+            {
+
+                anim.SetBool("isDead", true);
+
+            }
+            else
+            {
+
+                if (col.gameObject.GetComponent<MyAnky>().health <= 0)
+                {
+
+                    hunger = hunger + 100;
+
+                    Destroy(col.gameObject);
+
+                }
+
+            }
+
+        }
 
     }
 

@@ -23,10 +23,17 @@ public class RaptyHunting : StateMachineBehaviour
         float hunger = animator.gameObject.GetComponent<MyRapty>().hunger;
         float thirst = animator.gameObject.GetComponent<MyRapty>().thirst;
 
-        if (health <= 0 || hunger <= 0 || thirst <= 0)
+        if (health <= 0 || hunger <= 0 || thirst <= 0 || animator.gameObject.GetComponent<MyRapty>().timeToLive <= 0)
         {
 
             animator.SetBool("isDead", true);
+
+        }
+
+        if (health != animator.gameObject.GetComponent<MyRapty>().maxHealth)
+        {
+
+            animator.gameObject.GetComponent<MyRapty>().health++;
 
         }
 
@@ -37,6 +44,13 @@ public class RaptyHunting : StateMachineBehaviour
 
         }
 
+        if (hunger <= 50)
+        {
+
+            animator.SetBool("isAttacking", true);
+
+        }
+
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -44,6 +58,8 @@ public class RaptyHunting : StateMachineBehaviour
     {
 
         Debug.Log("Left Hunting State");
+
+        animator.gameObject.GetComponent<Wander>().enabled = false;
 
         animator.SetBool("isHunting", false);
 

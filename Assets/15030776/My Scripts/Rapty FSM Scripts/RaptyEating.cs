@@ -9,7 +9,15 @@ public class RaptyEating : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
+        Debug.Log("Entered Eating State.");
 
+        GameObject foodForRapty = animator.GetComponent<FieldOfView>().ankysSeen[0].gameObject;
+
+        Seek raptySearch = animator.gameObject.GetComponent<Seek>();
+
+        raptySearch.target = foodForRapty;
+
+        raptySearch.enabled = true;
 
     }
 
@@ -21,14 +29,22 @@ public class RaptyEating : StateMachineBehaviour
         float hunger = animator.gameObject.GetComponent<MyRapty>().hunger;
         float thirst = animator.gameObject.GetComponent<MyRapty>().thirst;
 
-        if (health <= 0 || thirst <= 0 || hunger <= 0)
+        if (health <= 0 || thirst <= 0 || hunger <= 0 || animator.gameObject.GetComponent<MyRapty>().timeToLive <= 0)
         {
 
             animator.SetBool("isDead", true);
 
         }
 
+        if (hunger >= animator.gameObject.GetComponent<MyRapty>().maxHunger)
+        {
 
+            //animator.gameObject.GetComponent<Seek>().enabled = false;
+            //animator.gameObject.GetComponent<Seek>().target = null;
+
+            animator.SetBool("isAttacking", true);
+
+        }
 
     }
 
@@ -36,9 +52,16 @@ public class RaptyEating : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
+        Debug.Log("left Eating State");
 
+        animator.gameObject.GetComponent<Seek>().enabled = false;
+        animator.gameObject.GetComponent<Seek>().target = null;
+
+        animator.SetBool("isEating", false);
 
     }
+
+    
 
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
