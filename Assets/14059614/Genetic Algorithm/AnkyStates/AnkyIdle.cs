@@ -4,44 +4,44 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 using FSM;
-public class Idle : State<RaptyAI>
+public class AnkyIdle : State<AnkylosaurusAI>
 {
 
     int move;
     Vector3 randTarget;
     float moveDuration;
-    private static Idle instance;
-    private Idle()
+    private static AnkyIdle instance;
+    private AnkyIdle()
     {
         if (instance != null) return;
         instance = this;
     }
 
-    public static Idle Instance
+    public static AnkyIdle Instance
     {
         get
         {
             if (instance == null)
             {
-                new Idle();
+                new AnkyIdle();
             }
             return instance;
         }
     }
-    public override void EnterState(RaptyAI owner)
+    public override void EnterState(AnkylosaurusAI owner)
     {
     }
-    public override void ExitState(RaptyAI owner)
+    public override void ExitState(AnkylosaurusAI owner)
     {
 
     }
-    public override void UpdateState(RaptyAI owner)
+    public override void UpdateState(AnkylosaurusAI owner)
     {
         RandomMove(owner);
         moveDuration += Time.deltaTime;
         if (moveDuration > 5) moveDuration = 0;
     }
-    void RandomMove(RaptyAI owner)
+    void RandomMove(AnkylosaurusAI owner)
     {
         move = UnityEngine.Random.Range(0, 3);
         //move = 1;

@@ -6,6 +6,24 @@ using FSM;
 public class RaptyAI : MonoBehaviour
 {
     public StateMachine<RaptyAI> stateMachine { get; set; }
+    [HideInInspector]
+    public GameObject terrain;
+    [HideInInspector]
+    public Animator animator;
+    [HideInInspector]
+    public Wander wander;
+    [HideInInspector]
+    public FieldOfView vision;
+    [HideInInspector]
+    public AStarSearch astar;
+    [HideInInspector]
+    public ASPathFollower path;
+    [HideInInspector]
+    public Seek seek;
+    [HideInInspector]
+    public Flee flee;
+    [HideInInspector]
+    public Arrive arrive;
 
     //Raptor's statistic
     [HideInInspector]
@@ -16,9 +34,7 @@ public class RaptyAI : MonoBehaviour
 
     //game time
     float timer = 0.0f;
-    float dayTime = 0.0f;
-    float nightTime = 0.0f;
-    bool day, night;
+
 
     //targets
     [HideInInspector]
@@ -31,8 +47,17 @@ public class RaptyAI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        day = true;
-        night = false;
+        animator = gameObject.GetComponent<Animator>();
+        wander = gameObject.GetComponent<Wander>();
+        vision = gameObject.GetComponent<FieldOfView>();
+        astar = gameObject.GetComponent<AStarSearch>();
+        path = gameObject.GetComponent<ASPathFollower>();
+        seek = gameObject.GetComponent<Seek>();
+        flee = gameObject.GetComponent<Flee>();
+        arrive = gameObject.GetComponent<Arrive>();
+        terrain = GameObject.Find("Terrain");
+
+
         Statistics();
         stateMachine = new StateMachine<RaptyAI>(this);
         stateMachine.ChangeState(Idle.Instance);
@@ -63,7 +88,7 @@ public class RaptyAI : MonoBehaviour
         MaxHunger = 85;
         MaxAge = 10;
 
-        Speed = Age + 1;
+        Speed = 20;
 
         RNG(Health, MinHealth, MaxHealth);
         RNG(Weight, MinWeight, MaxWeight);
@@ -130,14 +155,12 @@ public class RaptyAI : MonoBehaviour
         if (Hungry == true)
         {
             stateMachine.ChangeState(Food.Instance);
-            if (Vector3.Distance(transform.position, player.transform.position) <= 20.0f ||
-                Vector3.Distance(transform.position, ankylosaurus.transform.position) <= 20.0f)
+            if (Vector3.Distance(transform.position, ankylosaurus.transform.position) <= 20.0f)
             {
                 stateMachine.ChangeState(Hunt.Instance);
             }
         }
-        if (Vector3.Distance(transform.position, player.transform.position) <= 20.0f ||          //
-            Vector3.Distance(transform.position, ankylosaurus.transform.position) <= 20.0f)      //attack even when not hungry
+        if (Vector3.Distance(transform.position, ankylosaurus.transform.position) <= 20.0f)      //attack even when not hungry
         {                                                                                        //
             stateMachine.ChangeState(Hunt.Instance);                                             //
         }
@@ -147,14 +170,6 @@ public class RaptyAI : MonoBehaviour
         }
         else
         stateMachine.ChangeState(Idle.Instance);
-    }
-    void PrintStats()
-    {
-        //Debug.Log(Mathf.RoundToInt(Health));
-        //Debug.Log(Mathf.RoundToInt(Weight));
-        //Debug.Log(Mathf.RoundToInt(Hunger));
-        //Debug.Log(Mathf.RoundToInt(Age));
-        //Debug.Log(Mathf.RoundToInt(Speed));
     }
 }
 
