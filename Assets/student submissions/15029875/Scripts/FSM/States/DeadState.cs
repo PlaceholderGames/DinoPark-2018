@@ -5,9 +5,16 @@ using UnityEngine;
 
 public class DeadState : IState
 {
+    AgentBase agent;
+
+    public DeadState(AgentBase parsedAgent)
+    {
+        agent = parsedAgent;
+    }
+
     public void BeginState()
     {
-        Debug.Log("Entered state.");
+        Debug.Log("Entered DEAD state.");
     }
 
     public void EndState()

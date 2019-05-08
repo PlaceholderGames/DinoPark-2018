@@ -704,7 +704,6 @@ GameObject:
   - component: {fileID: 136220372563265556}
   - component: {fileID: 114717419984127066}
   - component: {fileID: 114336194191527482}
-  - component: {fileID: 114522660007994878}
   m_Layer: 9
   m_Name: Ankylosi
   m_TagString: Dinos
@@ -1495,21 +1494,6 @@ MonoBehaviour:
     m_Bits: 1536
   visibleTargets: []
   stereoVisibleTargets: []
---- !u!114 &114522660007994878
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1877654863563634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af3470bcfabb3c7448a0fed073f50dfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  speed: 0
-  hunger: 0
-  thirst: 0
 --- !u!114 &114717419984127066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1526,6 +1510,8 @@ MonoBehaviour:
   hunger: 0
   thirst: 0
   hungry: 0
+  dead: 0
+  alert: 0
   stateMachine: {fileID: 0}
   FOV: {fileID: 0}
 --- !u!136 &136220372563265556

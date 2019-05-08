@@ -13,7 +13,7 @@ public abstract class AgentBase : MonoBehaviour {
     // For now, due to the Horology() function using time.deltaTime, these variables have to be floats.
     // Will see if this presents a problem in the future.
     public float health, speed, hunger, thirst;
-    public bool hungry, dead;
+    public bool hungry, dead, alert, herding;
 
     public StateMachine stateMachine;
     public FieldOfView FOV;

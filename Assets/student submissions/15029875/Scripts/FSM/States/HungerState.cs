@@ -46,13 +46,8 @@ public class HungerState : IState
         if (agent.hunger <= 0)
         {
             agent.hungry = false;
+            agent.hunger = 0; // Just in case we hit the negatives.
             agent.stateMachine.SwitchState(new IdleState(agent));
-        }
-
-        if (agent.hunger >= 100)
-        {
-            agent.dead = true;
-
         }
     }
 
@@ -80,7 +75,22 @@ public class HungerState : IState
     // Search for something.
     public void Seek(string tag)
     {
-        closestTarget = GetClosestTarget(targets, tag);
+        if (tag == "Dinos")
+        {
+            if (GetClosestTarget(targets, tag).GetComponent<AgentAnky>().herding == true)
+            {
+                Debug.Log("I'm hungry, but this target is herding - dangerous!");
+            }
+            else
+            {
+                closestTarget = GetClosestTarget(targets, tag);
+            }
+
+        }
+        else
+        {
+            closestTarget = GetClosestTarget(targets, tag);
+        }
     }
 
     // Eat the food.

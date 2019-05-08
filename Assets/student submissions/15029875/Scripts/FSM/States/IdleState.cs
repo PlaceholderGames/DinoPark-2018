@@ -21,7 +21,6 @@ public class IdleState : IState
 
     public void BeginState()
     {
-        Debug.Log("In idle.");
     }
 
     public void EndState()
@@ -48,7 +47,7 @@ public class IdleState : IState
         }
 
         
-        if(agent.hunger >= 45 && agent.hungry == false)
+        if(agent.hunger >= 45 && agent.hunger <= 100 && agent.hungry == false)
         {
             Debug.Log(agent.name + "Hunger is true.");
             agent.hungry = true;
