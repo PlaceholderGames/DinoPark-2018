@@ -67,8 +67,8 @@ public class MyRapty : Agent
 
 
         base.Start();
-        stateMachine = new StateMachine<MyRapty>(this);
-        stateMachine.ChangeState(Idle.Instance);
+        //stateMachine = new StateMachine<MyRapty>(this);
+        //stateMachine.ChangeState(Idle.Instance);
         
     }
 
@@ -168,7 +168,7 @@ public class MyRapty : Agent
         
         if (Health <= 0)
         {
-            stateMachine.ChangeState(Dead.Instance);
+            //stateMachine.ChangeState(Dead.Instance);
         }
     }
 }
