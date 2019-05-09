@@ -18,7 +18,7 @@ public class MyAnky : Agent
 
     public Animator anim;
     float health = 100;
-    float hunger = 100;
+    float hunger = 60;
     float thirst = 100;
     const int METERTHRESHOLD = 50;
 
@@ -59,31 +59,40 @@ public class MyAnky : Agent
     protected override void Update()
     {
         //Path finding setup
-        if (PathFollowScript.path.nodes.Count < 1 || PathFollowScript.path == null) //If there's no path
-            PathFollowScript.path = aStarScript.path; //set to the path created by the a star script
+        //if (PathFollowScript.path.nodes.Count < 1 || PathFollowScript.path == null) //If there's no path
+        //    PathFollowScript.path = aStarScript.path; //set to the path created by the a star script
+
+        //DEBUG
+        hunger -= 1 * Time.deltaTime;
 
         // Idle - should only be used at startup
-        CurrentState = ankyState.GRAZING;
+        if (anim.GetBool("isIdle") == true)
+        {
+            if (thirst < METERTHRESHOLD || hunger < METERTHRESHOLD)
+                CurrentState = ankyState.GRAZING;
+        }
+
+
 
         // Eating - requires to be within grass collider
         if(anim.GetBool("isEating") == true)
         {
             Debug.Log("Anky: Eating Grass");
+            hunger += 1 * Time.deltaTime;
         }
 
         // Drinking - requires y value to be below 32 (?)
         if (anim.GetBool("isDrinking") == true)
         {
             Debug.Log("Anky: Drinking Water");
+            thirst += 1 * Time.deltaTime;
         }
 
         // Alerted - up to the student what you do here
 
-        //something to cause the anky to become alerted
-
         if (anim.GetBool("isAlerted") == true) //What the anky does while in the alerted state
         {
-
+            //via "RaptorCloseCheck", in alert state, will be more aware of any possible raptors sneaking up to anky
         }
 
         // Hunting - up to the student what you do here
@@ -94,13 +103,24 @@ public class MyAnky : Agent
             if (thirst < METERTHRESHOLD)
                 PathFollowScript.target = FindClosestWater();
 
-            move(PathFollowScript.getdirectionvector());
+           // move(PathFollowScript.getdirectionvector());
         }
         // Fleeing - up to the student what you do here
+        if(anim.GetBool("isFleeing") == true)
+        {
+            //Code for running away from rapty
+        }
 
         // Dead - If the animal is being eaten, reduce its 'health' until it is consumed
+        if (anim.GetBool("isDead") == true)
+        {
+            //code to stop anky from moving and basically be a corpse for the raptors to eat
+        }
 
-
+        //Update animation floats to match actual floats
+        anim.SetFloat("health", health);
+        anim.SetFloat("hunger", hunger);
+        anim.SetFloat("thirst", thirst);
 
         StateCheck();
         base.Update();
@@ -269,26 +289,48 @@ public class MyAnky : Agent
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Water")
+        if (collision.gameObject.tag == "Water") //If anky is in water area, then set state to drinking
         {
             Debug.Log("Anky: Is on water");
             CurrentState = ankyState.DRINKING;
         }
 
-        if (collision.gameObject.tag == "Grass")
+        if (collision.gameObject.tag == "Grass") //If anky is in grass area, then set state to eating
         {
             Debug.Log("Anky: Is on grass");
             CurrentState = ankyState.EATING;
         }
     }
 
-    void move(Vector3 directionVector)
+    void RaptorCloseCheck() //checks if there is a raptor close to anky
     {
-        directionVector *= maxSpeed * Time.deltaTime;
-
-        transform.Translate(directionVector, Space.World);
-        transform.LookAt(transform.position + directionVector);
-
+        GameObject[] RaptorArray;
+        RaptorArray = GameObject.FindGameObjectsWithTag("Rapty");
+        float alertDistance = 50;
+        float fleeDistance = 20;
+        Vector3 position = transform.position;
+        foreach (GameObject r in RaptorArray)
+        {
+            Vector3 diff = r.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < alertDistance) //if distance from anky to a rapty is less than 50...
+            {
+                if(curDistance < fleeDistance) //Check if rapty is close enough to anky to cause fleeing if already alerted
+                {
+                    CurrentState = ankyState.FLEEING;
+                }
+                else
+                    CurrentState = ankyState.ALERTED;
+            }
+        }
     }
-
 }
+
+    //void move(Vector3 directionVector)
+    //{
+    //    directionVector *= maxSpeed * Time.deltaTime;
+
+    //    transform.Translate(directionVector, Space.World);
+    //    transform.LookAt(transform.position + directionVector);
+
+    //}
