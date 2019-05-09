@@ -36,6 +36,8 @@ public class MyAnky : Agent
     public GameObject closestRaptor;
     public GameObject food;
     public GameObject water;
+    [HideInInspector]
+    public GameObject rapty;
 
     public enum ankyState
     {
@@ -85,6 +87,7 @@ public class MyAnky : Agent
         if (animator.GetBool("isGrazing"))
         {
             gameObject.GetComponent<Wander>().enabled = true;
+            Weight -= 0.4f;
         }
         else if (!animator.GetBool("isGrazing"))
         {
@@ -117,7 +120,7 @@ public class MyAnky : Agent
         Weight = 60;
         Hunger = 0;
         Thirst = 0;
-        Age = 10;
+        Age = 1;
 
         Speed = 5;
     }
@@ -134,16 +137,17 @@ public class MyAnky : Agent
         else if (Hunger > 50) Hungry = true;
 
         if (Thirst <= 20) Thirsty = false;
-        //else if (Thirst > 40) Thirsty = true;
+        else if (Thirst > 40) Thirsty = true;
     }
     void Growth()
     {
-        if (Healthy == true && Fit == true && Hungry == false)
+        if (Healthy == true && Fit == true && Hungry == false && Thirsty == false)
         {
             Age++;
-            Health -= (Health * 0.1f);
-            Weight -= (Weight * 0.1f);
+            Health += (Health * 0.1f);
+            Weight += (Weight * 0.1f);
             Hunger += (Hunger * 0.2f);
+            Thirst += (Thirst * 0.2f);
         }
     }
 
@@ -176,6 +180,11 @@ public class MyAnky : Agent
                 gameObject.GetComponent<Seek>().enabled = false;
                 animator.SetBool("isEating", false);
             }
+        }
+        if (Vector3.Distance(transform.position, rapty.transform.position) <= 20.0f) //
+        {
+            //detect if raptors are nearby but should be using Field of View instead
+            animator.SetBool("isAlert", true);
         }
 
     }
