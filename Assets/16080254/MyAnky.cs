@@ -18,7 +18,14 @@ public class MyAnky : Agent
 
     public Animator anim;
     float health = 100;
+    float hunger = 100;
+    float thirst = 100;
+    const int METERTHRESHOLD = 50;
+
     ankyState CurrentState; //Used as part of the statecheck switch where the anim bools are updated to reflect the current state of the anky
+
+    AStarSearch aStarScript;
+    PathFollower PathFollowScript;
 
     // Use this for initialization
     protected override void Start()
@@ -35,8 +42,13 @@ public class MyAnky : Agent
         anim.SetBool("isDead", false);
         anim.SetFloat("speedMod", 1.0f);
         anim.SetFloat("health", health);
+        anim.SetFloat("hunger", hunger);
+        anim.SetFloat("thirst", thirst);
 
         CurrentState = ankyState.IDLE;
+
+        aStarScript = GetComponent<AStarSearch>();
+        PathFollowScript = GetComponent<PathFollower>();
         
         // This with GetBool and GetFloat allows 
         // you to see how to change the flag parameters in the animation controller
@@ -46,6 +58,10 @@ public class MyAnky : Agent
 
     protected override void Update()
     {
+        //Path finding setup
+        if (PathFollowScript.path.nodes.Count < 1 || PathFollowScript.path == null) //If there's no path
+            PathFollowScript.path = aStarScript.path; //set to the path created by the a star script
+
         // Idle - should only be used at startup
         CurrentState = ankyState.GRAZING;
 
@@ -73,7 +89,12 @@ public class MyAnky : Agent
         // Hunting - up to the student what you do here
         if (anim.GetBool("isGrazing") == true)
         {
+            if (hunger < METERTHRESHOLD)
+                PathFollowScript.target = FindClosestGrass();
+            if (thirst < METERTHRESHOLD)
+                PathFollowScript.target = FindClosestWater();
 
+            move(PathFollowScript.getdirectionvector());
         }
         // Fleeing - up to the student what you do here
 
@@ -259,6 +280,15 @@ public class MyAnky : Agent
             Debug.Log("Anky: Is on grass");
             CurrentState = ankyState.EATING;
         }
+    }
+
+    void move(Vector3 directionVector)
+    {
+        directionVector *= maxSpeed * Time.deltaTime;
+
+        transform.Translate(directionVector, Space.World);
+        transform.LookAt(transform.position + directionVector);
+
     }
 
 }
