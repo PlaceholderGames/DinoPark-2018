@@ -17,9 +17,9 @@ public class RaptyDead : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-        Destroy(animator.gameObject);
-
-        animator.SetBool("isFinished", true);
+        Destroy(animator.gameObject);           //
+                                                // Destroys the Rapty GameObject and then leaves the State/ FSM.
+        Debug.Log("Velociraptor has Died.");    //
 
     }
 

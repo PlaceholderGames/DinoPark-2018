@@ -11,26 +11,25 @@ public class ankyIdle : StateMachineBehaviour
 
         Debug.Log("Entered Idle State");
 
-        Wander anky = animator.gameObject.GetComponent<Wander>();
+        Wander anky = animator.gameObject.GetComponent<Wander>();   // Used to implement the Wander script onto the Anky GameObject.
 
-        anky.enabled = true;
+        anky.enabled = true;    // Enables the Wander script on the Anky GameObject.
 
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
-        float health = animator.gameObject.GetComponent<MyAnky>().health;
+        
         float hunger = animator.gameObject.GetComponent<MyAnky>().hunger;
         float thirst = animator.gameObject.GetComponent<MyAnky>().thirst;
 
-        if (hunger <= 75 || thirst <= 75)
-        {
-
-            animator.SetBool("isGrazing", true);
-
-        }
+        if (hunger <= 90 || thirst <= 90)           //
+        {                                           //
+                                                    // Once one of the thresholds has been met,
+            animator.SetBool("isGrazing", true);    // the Anky will enter the Grazing State.
+                                                    //
+        }                                           //
 
     }
 

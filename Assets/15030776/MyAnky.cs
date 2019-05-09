@@ -21,7 +21,7 @@ public class MyAnky : Agent
 
     public Animator anim;
 
-    public GameObject waterDetector = null;
+    public GameObject waterDetector = null; // Used as a target for the Anky to reach water to drink, won't be used until the Anky reaches the Drinking State.
 
     public float maxHealth = 100f;
     public float health;
@@ -31,7 +31,7 @@ public class MyAnky : Agent
     public float hunger;
     public float thirst;
 
-    public float timeToLive = 120f;
+    public float timeToLive = 120f; // Used as the max limit that the Anky lives, regardless of its thirst and hunger values.
 
     // Use this for initialization
     protected override void Start()
@@ -61,10 +61,10 @@ public class MyAnky : Agent
     protected override void Update()
     {
 
-        hunger = hunger - Time.deltaTime / 4;    // Hunger decreases every update.
-        thirst = thirst - Time.deltaTime / 2;    // Thirst decreases every update.
+        hunger = hunger - Time.deltaTime / 4;    // Hunger decreases every update/ over time.
+        thirst = thirst - Time.deltaTime / 2;    // Thirst decreases every update/ over time.
 
-        timeToLive = timeToLive - Time.deltaTime;
+        timeToLive = timeToLive - Time.deltaTime;   // The Anky's life timer decreases over time.
 
         // Idle - should only be used at startup
 
@@ -94,12 +94,12 @@ public class MyAnky : Agent
     void OnCollisionEnter(Collision col)
     {
 
-        if (col.gameObject.tag == "Rapty")
-        {
-
-            health = health - 20;
-
-        }
+        if (col.gameObject.tag == "Rapty")  //
+        {                                   //
+                                            // If the Anky's collision box hits the Rapty's collision box(es),
+            health = health - 20;           // then the Anky takes this amount of damage on each consecutive hit/ update.
+                                            //
+        }                                   //
 
     }
 

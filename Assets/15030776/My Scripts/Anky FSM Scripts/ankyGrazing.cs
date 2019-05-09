@@ -11,6 +11,8 @@ public class ankyGrazing : StateMachineBehaviour
 
         Debug.Log("Entered Grazing State.");
 
+        animator.gameObject.GetComponent<Wander>().enabled = true;  // Enables the Wander script in the Anky GameObject.
+
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -21,12 +23,19 @@ public class ankyGrazing : StateMachineBehaviour
         float hunger = animator.gameObject.GetComponent<MyAnky>().hunger;
         float thirst = animator.gameObject.GetComponent<MyAnky>().thirst;
 
-        if (health <= 0 || hunger <= 0 || thirst <= 0)
-        {
+        if (health <= 0 || hunger <= 0 || thirst <= 0 || animator.gameObject.GetComponent<MyAnky>().timeToLive <= 0)    //
+        {                                                                                                               //
+                                                                                                                        // Enters Dead State if any of the arguments
+            animator.SetBool("isDead", true);                                                                           // are activated, killing the Anky.
+                                                                                                                        //
+        }                                                                                                               //
 
-            animator.SetBool("isDead", true);
-
-        }
+        if (thirst <= 75)                           //
+        {                                           //
+                                                    // If the thirst level of the Anky reaches this threshold or lower,
+            animator.SetBool("isDrinking", true);   // it will enter the Drinking State.
+                                                    //
+        }                                           //
 
     }
 
@@ -35,6 +44,8 @@ public class ankyGrazing : StateMachineBehaviour
     {
 
         Debug.Log("Left Grazing State.");
+
+        animator.gameObject.GetComponent<Wander>().enabled = false; // Disables the Wander script in the Anky GameObject once the Anky leaves this State.
 
         animator.SetBool("isGrazing", false);
 

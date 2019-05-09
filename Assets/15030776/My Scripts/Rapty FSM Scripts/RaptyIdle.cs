@@ -11,9 +11,9 @@ public class RaptyIdle : StateMachineBehaviour
 
         Debug.Log("Entered Idle State.");
 
-        Wander rapty = animator.gameObject.GetComponent<Wander>();
+        Wander rapty = animator.gameObject.GetComponent<Wander>();  // Used to implement the Wander script onto the Rapty GameObject.
 
-        rapty.enabled = true;
+        rapty.enabled = true;   // Enables the Wander script on the Rapty GameObject.
 
     }
 
@@ -24,12 +24,12 @@ public class RaptyIdle : StateMachineBehaviour
         float hunger = animator.gameObject.GetComponent<MyRapty>().hunger;
         float thirst = animator.gameObject.GetComponent<MyRapty>().thirst;
 
-        if (hunger <= 75 || thirst <= 75)
-        {
-
-            animator.SetBool("isHunting", true);
-
-        }
+        if (hunger <= 75 || thirst <= 75)           //
+        {                                           //
+                                                    // Once one of the thresholds has been met,
+            animator.SetBool("isHunting", true);    // the Rapty will enter the Hunting State.
+                                                    //
+        }                                           //
 
     }
 

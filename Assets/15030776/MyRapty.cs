@@ -19,7 +19,7 @@ public class MyRapty : Agent
 
     private Animator anim;
 
-    public GameObject waterDetector = null;
+    public GameObject waterDetector = null; // Used as a target for the Rapty to reach water to drink, won't be used until the Rapty reaches the Drinking State.
 
     public float maxHealth = 100f;
     public float health;
@@ -29,9 +29,7 @@ public class MyRapty : Agent
     public float hunger;
     public float thirst;
 
-    public float timeToLive = 120f;
-
-    public bool killed = false;
+    public float timeToLive = 120f; // Used as the max limit that the Rapty lives, regardless of its thirst and hunger values.
 
     // Use this for initialization
     protected override void Start()
@@ -60,10 +58,10 @@ public class MyRapty : Agent
     protected override void Update()
     {
 
-        hunger = hunger - Time.deltaTime / 4;    // Hunger decreases every update.
-        thirst = thirst - Time.deltaTime / 2;    // Thirst decreases every update.
+        hunger = hunger - Time.deltaTime / 4;    // Hunger decreases every update/ over time.
+        thirst = thirst - Time.deltaTime / 2;    // Thirst decreases every update/ over time.
 
-        timeToLive = timeToLive - Time.deltaTime;
+        timeToLive = timeToLive - Time.deltaTime;   // The Rapty's life timer decreases over time.
 
         // Idle - should only be used at startup
 
@@ -97,25 +95,26 @@ public class MyRapty : Agent
 
         if (col.gameObject.tag == "Anky")
         {
-            
 
-            if (health == 0.0f)
-            {
+            health = health - 5f;   // Rapty's health decreases each time it collides with the Anky.
 
-                anim.SetBool("isDead", true);
-
-            }
+            if (health == 0.0f)                 //
+            {                                   //
+                                                // If the Rapty loses all its health,
+                anim.SetBool("isDead", true);   // then it dies and enters the Dead State to be destroyed.
+                                                //
+            }                                   //
             else
             {
 
-                if (col.gameObject.GetComponent<MyAnky>().health <= 0)
-                {
-
-                    hunger = hunger + 100;
-
-                    Destroy(col.gameObject);
-
-                }
+                if (col.gameObject.GetComponent<MyAnky>().health <= 0)  //
+                {                                                       //
+                                                                        //
+                    hunger = hunger + 100;                              // If the Anky the Rapty is attacking dies,
+                                                                        // then the Rapty's hunger increases by the value shown
+                    Destroy(col.gameObject);                            // and the Anky's GameObject is destroyed.
+                                                                        //
+                }                                                       //
 
             }
 

@@ -39,8 +39,8 @@ public class FieldOfView : MonoBehaviour {
     }
     void FindVisibleTargets()
     {
-        ankysSeen.Clear();
-        raptysSeen.Clear();
+        ankysSeen.Clear();  //
+        raptysSeen.Clear(); //
 
         visibleTargets.Clear ();
         stereoVisibleTargets.Clear ();
@@ -69,25 +69,25 @@ public class FieldOfView : MonoBehaviour {
                 //float directionToTarget = Vector3.Angle(transform.forward, dirToTarget); // We need the direction of the object only for checking with raytracing
                 visibleTargets.Add(target); // For now, if it is in range and angle of eyesight we can see it
 
-                if (detected == "Anky")
-                {
+                if (detected == "Anky")     //
+                {                           //
+                                            // If a Anky is detected in the Rapty's field of view,
+                    ankysSeen.Add(target);  // then it is added as a target for the Rapty.
+                                            //
+                }                           //
 
-                    ankysSeen.Add(target);
-
-                }
-
-                if (detected == "Rapty")
-                {
-
-                    raptysSeen.Add(target);
-
-                }
+                if (detected == "Rapty")    //
+                {                           //
+                                            // If a Rapty is detected in the Anky's field of view,
+                    raptysSeen.Add(target); // then it is added as target for the Anky.
+                                            //
+                }                           //
             }
          
         }
 
-        ankysSeen = ankysSeen.Distinct().ToList();
-        raptysSeen = raptysSeen.Distinct().ToList();
+        ankysSeen = ankysSeen.Distinct().ToList();      // To avoid duplicates being set from the same instance of a Dinosaur.
+        raptysSeen = raptysSeen.Distinct().ToList();    //
 
         visibleTargets = visibleTargets.Distinct().ToList();
         stereoVisibleTargets = stereoVisibleTargets.Distinct().ToList();

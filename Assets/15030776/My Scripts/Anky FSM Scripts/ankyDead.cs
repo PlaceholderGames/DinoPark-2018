@@ -17,9 +17,9 @@ public class ankyDead : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-        Debug.Log("Anylosaurus has Died.");
-
-        animator.SetBool("isFinished", true);
+        Destroy(animator.gameObject);           //
+                                                // Destroys the Anky GameObject and then leaves the State/ FSM.
+        Debug.Log("Ankylosaurus has Died.");    //
 
     }
 

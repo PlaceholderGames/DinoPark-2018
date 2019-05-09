@@ -11,7 +11,7 @@ public class RaptyHunting : StateMachineBehaviour
 
         Debug.Log("Entered Hunting State.");
 
-        animator.gameObject.GetComponent<Wander>().enabled = true;
+        animator.gameObject.GetComponent<Wander>().enabled = true;  // Enables the Wander script in the Rapty GameObject.
 
     }
 
@@ -23,33 +23,33 @@ public class RaptyHunting : StateMachineBehaviour
         float hunger = animator.gameObject.GetComponent<MyRapty>().hunger;
         float thirst = animator.gameObject.GetComponent<MyRapty>().thirst;
 
-        if (health <= 0 || hunger <= 0 || thirst <= 0 || animator.gameObject.GetComponent<MyRapty>().timeToLive <= 0)
-        {
+        if (health <= 0 || hunger <= 0 || thirst <= 0 || animator.gameObject.GetComponent<MyRapty>().timeToLive <= 0)   //
+        {                                                                                                               //
+                                                                                                                        // Enters Dead State if any of the arguments
+            animator.SetBool("isDead", true);                                                                           // are activated, killing the Rapty.
+                                                                                                                        //
+        }                                                                                                               //
 
-            animator.SetBool("isDead", true);
+        if (health != animator.gameObject.GetComponent<MyRapty>().maxHealth)    //
+        {                                                                       //
+                                                                                // If the Rapty's health is less than its max health,
+            animator.gameObject.GetComponent<MyRapty>().health++;               // then it starts regenerating health over time.
+                                                                                //
+        }                                                                       //
 
-        }
+        if (thirst <= 50)                           //
+        {                                           //
+                                                    // If the Rapty's thirst value is less than the threshold,
+            animator.SetBool("isDrinking", true);   // then it enters the Drinking State.
+                                                    //
+        }                                           //
 
-        if (health != animator.gameObject.GetComponent<MyRapty>().maxHealth)
-        {
-
-            animator.gameObject.GetComponent<MyRapty>().health++;
-
-        }
-
-        if (thirst <= 50)
-        {
-
-            animator.SetBool("isDrinking", true);
-
-        }
-
-        if (hunger <= 50)
-        {
-
-            animator.SetBool("isAttacking", true);
-
-        }
+        if (hunger <= 50)                           //
+        {                                           //
+                                                    // If the Rapty's hunger value is less than the threshold,
+            animator.SetBool("isAttacking", true);  // then it enters the Attacking State.
+                                                    //
+        }                                           //
 
     }
 
@@ -59,7 +59,7 @@ public class RaptyHunting : StateMachineBehaviour
 
         Debug.Log("Left Hunting State");
 
-        animator.gameObject.GetComponent<Wander>().enabled = false;
+        animator.gameObject.GetComponent<Wander>().enabled = false; // Disables the Wander script in the Rapty GameObject.
 
         animator.SetBool("isHunting", false);
 

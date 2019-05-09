@@ -21,12 +21,12 @@ public class ankyFleeing : StateMachineBehaviour
         float hunger = animator.gameObject.GetComponent<MyAnky>().hunger;
         float thirst = animator.gameObject.GetComponent<MyAnky>().thirst;
 
-        if (health <= 0 || hunger <= 0 || thirst <= 0)
-        {
-
-            animator.SetBool("isDead", true);
-
-        }
+        if (health <= 0 || hunger <= 0 || thirst <= 0 || animator.gameObject.GetComponent<MyAnky>().timeToLive <= 0)    //
+        {                                                                                                               //
+                                                                                                                        // Enters Dead State if any of the arguments
+            animator.SetBool("isDead", true);                                                                           // are activated, killing the Anky.
+                                                                                                                        //
+        }                                                                                                               //
 
     }
 

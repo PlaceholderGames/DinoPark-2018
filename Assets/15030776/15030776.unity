@@ -7219,7 +7219,8 @@ MonoBehaviour:
   rotation: 0
   velocity: {x: 0, y: 0, z: 0}
   anim: {fileID: 0}
-  waterDetector: {fileID: 0}
+  waterDetector: {fileID: 1825561649843546, guid: 90c5466a54f6e85439b46825baace5a5,
+    type: 2}
   maxHealth: 100
   health: 0
   maxHunger: 100
