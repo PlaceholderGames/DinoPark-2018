@@ -10,39 +10,51 @@ public class RaptyStateMachine : MonoBehaviour
     private float wanderTimer = 1;
     private float timer;
     private Transform target;
-
+    private MapGrid map;
     public Vector3 position;
     public Vector3 velocity;
     public Vector3 acceleration;
     private Vector3 closestPoint;
-
-    public List<RaptyStateMachine> members;
+    public GameObject[] rapty;
+    public GameObject[] pack;
     public List<AnkyStateMachine> enemies;
+    public List<MapTile> water;
     public RaptyStats S;
     public AnkyStats A;
-
-   // public Wander W;
-   // public Pursue P;
-  //  public Face F;
+    private Vector3 location;
+    // public Wander W;
+    // public Pursue P;
+    //  public Face F;
     public NavMeshAgent N;
     public GameObject deadModel;
-    public GameObject water;
+   // public GameObject water;
     public GameObject[] Anky;
 
     public GameObject objective;
     // Start is called before the first frame update
     void Start()
     {
-        water = GameObject.FindGameObjectWithTag("Water");
+        //water = GameObject.FindGameObjectWithTag("Water");
         S = GetComponent<RaptyStats>();
        // W = GetComponent<Wander>();
      //   P = GetComponent<Pursue>();
       //  F = GetComponent<Face>();
         N = GetComponent<NavMeshAgent>();
-        members = new List<RaptyStateMachine>();
-        InvokeRepeating("loop", 2.0f, 1.0f);
+         rapty = GameObject.FindGameObjectsWithTag("Rapty");
+        //map = new List<MapGrid>();
+        map = GameObject.FindGameObjectWithTag("Map").GetComponent<MapGrid>();
+        //members = new List<RaptyStateMachine>();
+        //foreach (MapTile tile in map.tiles)
+        //{
+        //    if (tile.position.y <= 32)
+        //    {
+        //        water.Add(tile);
+        //    }
+        //}
         Anky = GameObject.FindGameObjectsWithTag("Anky");
-       
+        InvokeRepeating("loop", 2.0f, 1.0f);
+        
+    
        // W.state = true;
       //  P.state = true;
        // F.state = true;
@@ -112,7 +124,11 @@ public class RaptyStateMachine : MonoBehaviour
         {
             S.health -= 0.001f;
         }
-        if (timer >= wanderTimer && State == 1)
+        else if (S.energy > (S.energyMax * 0.9f) && S.health == S.healthMax)
+        {
+            Breed();
+        }
+                if (timer >= wanderTimer && State == 1)
         {
 
             Vector3 newPos = Random.insideUnitSphere * 20;
@@ -150,11 +166,12 @@ public class RaptyStateMachine : MonoBehaviour
         }
         else if (S.health < S.healthMax)
         {
+            State = 4;
             Injured();
         }
         else 
         {
-
+            State = 5;
         }
         
     }
@@ -189,7 +206,7 @@ public class RaptyStateMachine : MonoBehaviour
     //}
     void Hunting()
     {
-
+       
         //search for some anky to attack or scavenge
         Attack();
     }
@@ -248,31 +265,39 @@ public class RaptyStateMachine : MonoBehaviour
 
     void Searching()
     {
-        Vector3 newPos = Random.insideUnitSphere * 50;//RandomNavSphere(transform.position)
-        newPos += transform.position;
-        NavMeshHit hit;
-        NavMesh.SamplePosition(newPos, out hit, Random.Range(0f, 50), 1);
-        if (hit.position.y <= 20)
+        float current;
+        float min = 10000;
+       
+        foreach (MapTile check in water)
         {
-            Vector3 destination = hit.position;
-            N.SetDestination(destination);
+            current = Vector3.Distance(transform.position, check.position);   
+            if(current < min)
+            {
+                current = min;
+                location = check.position;
+            }
         }
-        //look for water and when found go to it, and when reached go to drinking
+        N.SetDestination(location);
         Drinking();
     }
 
     void Drinking()
     {
-        
+        while (S.thirst < S.thirstMax)
+        {
+            if (transform.position.y < 33)
+            {
+                S.thirst++;
+            }
+        }
         
     }
 
     void Breed()
     {
         //when energy is high and the place is safe, choose 1 of the other rapty to breed
-        if (S.energy > (S.energyMax * 0.9f) && S.health == S.healthMax)
-        {
+       
             //using a list or array of the nearby members, grab the MAX values of the parents and combine them
-        }
+        
     }
 }

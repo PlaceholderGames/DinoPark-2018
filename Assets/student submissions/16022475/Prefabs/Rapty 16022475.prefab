@@ -972,18 +972,14 @@ GameObject:
   - component: {fileID: 1053393923}
   - component: {fileID: 1053393924}
   - component: {fileID: 1053393928}
-  - component: {fileID: 1053393927}
-  - component: {fileID: 1053393922}
-  - component: {fileID: 1053393926}
-  - component: {fileID: 1053393929}
-  - component: {fileID: 1053393930}
   - component: {fileID: 1053393921}
   - component: {fileID: 1053393931}
   - component: {fileID: 1053393933}
   - component: {fileID: 1053393932}
   - component: {fileID: 1053393934}
+  - component: {fileID: 1835152765}
   m_Layer: 9
-  m_Name: Rapty
+  m_Name: Rapty 16022475
   m_TagString: Rapty
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1050,107 +1046,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.75, y: 2.5, z: 3.5}
   m_Center: {x: 0.2, y: 0.5, z: 0.2}
---- !u!114 &1053393927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1053393920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe399c0304a8c8d4a8b4dcd0c21b65c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blendWeight: 1
-  blendPriority: 0
-  priorityThreshold: 0.2
-  blendPipeline: 0
-  maxSpeed: 16
-  maxAccel: 2
-  maxRotation: 80
-  maxAngularAccel: 150
-  orientation: 0
-  rotation: 0
-  velocity: {x: 0, y: 0, z: 0}
---- !u!114 &1053393922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1053393920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42a6f95c9a9069e479c5fd3cf29e8d66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blendWeight: 0
-  blendPriority: 0
-  priorityThreshold: 0.2
-  blendPipeline: 0
-  maxSpeed: 2
-  maxAccel: 4
-  maxRotation: 80
-  maxAngularAccel: 0
-  orientation: 0
-  rotation: 0
-  velocity: {x: 0, y: 0, z: 0}
---- !u!114 &1053393926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1053393920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b78ebc94aed924045a3dc4efb7a1db50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weight: 1
-  priority: 1
-  target: {fileID: 0}
-  targetRadius: 0.1
-  slowRadius: 3
-  timeToTarget: 0.1
-  offset: 2
-  radius: 3
-  rate: 60
---- !u!114 &1053393929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1053393920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80aa38682c59adc4d9e66077acb9713c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weight: 1
-  priority: 1
-  target: {fileID: 0}
-  maxPrediction: 15
---- !u!114 &1053393930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1053393920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4ca6187b927cca4da30b2d50d619de3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weight: 2
-  priority: 1
-  target: {fileID: 0}
-  targetRadius: 0.3
-  slowRadius: 2.5
-  timeToTarget: 0.1
 --- !u!114 &1053393921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1202,13 +1097,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b319199bc9a88254384a932e01e0d21d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  State: 0
   position: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   acceleration: {x: 0, y: 0, z: 0}
-  members: []
+  rapty: []
+  pack: []
   enemies: []
   S: {fileID: 0}
   A: {fileID: 0}
+  N: {fileID: 0}
+  deadModel: {fileID: 1361511954, guid: 8cb14423eb0bb64439946527b37343ba, type: 3}
+  Anky: []
+  objective: {fileID: 0}
 --- !u!114 &1053393932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1224,10 +1125,16 @@ MonoBehaviour:
   age: 0
   energyMax: 0
   energy: 0
+  energyModifier: 1
   healthMax: 0
   health: 0
+  healthModifier: 1
   speed: 0
+  speedModifier: 1
+  accelModifier: 1
   rot: 0
+  rotModifier: 1
+  angularSpeedModifier: 1
   cohesionRadius: 0
   cohesionPriority: 0
   alignmentRadius: 0
@@ -1244,6 +1151,8 @@ MonoBehaviour:
   attackBase: 10
   attackModifier: 1
   A: {fileID: 0}
+  P1: {fileID: 0}
+  P2: {fileID: 0}
 --- !u!135 &1053393934
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1257,6 +1166,28 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0.4}
+--- !u!195 &1835152765
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053393920}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1
+  m_Speed: 17.8
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 2.7
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1056049448
 GameObject:
   m_ObjectHideFlags: 0
