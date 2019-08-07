@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class MyAnky : Agent
 {
@@ -58,7 +59,6 @@ public class MyAnky : Agent
         // Grazing - grazing state for the Anky to locate food
         if (anim.GetBool("isIdle") == true)
         {
-
             anim.SetBool("isGrazing", true);
             anim.SetBool("isIdle", false);
         }
@@ -73,14 +73,34 @@ public class MyAnky : Agent
         // Drinking - requires y value to be below 32 (?)
 
         // Alerted - up to the student what you do here
-
+        if (anim.GetBool("isAlerted") == true)
+        {
+            anim.SetBool("isAlerted", false);
+            anim.SetBool("isFleeing", true);
+        }
         // Hunting - up to the student what you do here
-
+        if (anim.GetBool("isHunting") == true)
+        {
+            anim.SetBool("isHunting", false);
+            anim.SetBool("isAlerted", true);
+        }
         // Fleeing - up to the student what you do here
-
+        if (anim.GetBool("isFleeing") == true)
+        {
+            set(Ankylocation);
+        }
         // Dead - If the animal is being eaten, reduce its 'health' until it is consumed
+        if (anim.GetBool("inDead") == true)
+        {
+            Destroy(boxCol.gameObject);
+        }
 
         base.Update();
+    }
+
+    private void set(Transform ankylocation)
+    {
+        throw new NotImplementedException();
     }
 
     protected override void LateUpdate()
@@ -93,8 +113,14 @@ public class MyAnky : Agent
         if (boxCol.gameObject.tag == "GrazingPos")
         {
             anim.SetBool("isEating", true);
+            Ankylocation = boxCol.gameObject.Y;             //where Y is the Y value of the grass
             Debug.Log("Anky is Eating Grass");
             Destroy(boxCol.gameObject);
+            anim.SetBool("isGrazing", false);
+            if (anim.GetBool("GrazingPos") == false)
+            {
+                anim.SetBool("isHunting", true);
+            }
         }
     }
 }
